@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FF76BF5-E467-4671-835D-C6CD692AF04F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wings.Test</RootNamespace>
+    <AssemblyName>Wings.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wings.BLL\Wings.BLL.csproj">
+      <Project>{17ae9c6e-39d9-4444-a317-6cf6c77f0060}</Project>
+      <Name>Wings.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Common\Wings.Common.csproj">
+      <Project>{c027235c-7927-47cb-b672-57e5bab75d4f}</Project>
+      <Name>Wings.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.DAL\Wings.DAL.csproj">
+      <Project>{8614a9ae-d128-4c3c-a3ae-34e743d1061d}</Project>
+      <Name>Wings.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.DLL\Wings.DLL.csproj">
+      <Project>{34cc0ea8-d13d-4698-b6d6-5edeb5f5788e}</Project>
+      <Name>Wings.DLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Model\Wings.Model.csproj">
+      <Project>{9f5c0c07-f45e-4881-b64f-816d3579b87e}</Project>
+      <Name>Wings.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Security\Wings.Security.csproj">
+      <Project>{6d185be7-2123-4c65-9dd9-631281683e66}</Project>
+      <Name>Wings.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
