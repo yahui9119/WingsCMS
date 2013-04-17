@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "管理员后台登陆";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<title>登陆</title>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        // validate signup form on keyup and submit
+        var validator = $("#loginform").validate({
+            rules: {
+                username: "required",
+                password: "required"
+            },
+            messages: {
+                username: "输入您的用户名",
+                password: "输入您的密码"
+            },
+            // the errorPlacement has to take the layout into account
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent().find('label:first'));
+            },
+            // set new class to error-labels to indicate valid fields
+            success: function (label) {
+                // set &nbsp; as text for IE
+                label.html("&nbsp;").addClass("ok");
+            }
+        });
+
+    });
+</script>
+</head>
+<body>
+	<!-- Header -->
+	<header id="top">
+		<div class="wrapper-login">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><img src="/Content/Admin/img/logo.png" alt="Administry" /><!--<span>Administry</span> demo--></div>
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+					<li class="current"><a href="#">登陆</a></li>
+					<li><a href="#">注册（未开启）</a></li>
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<aside><b>中文</b> &middot; <a href="#">英文</a> &middot; <a href="#">繁体</a></aside>
+			<!-- End of Aside links -->
+		</div>
+	</header>
+	<!-- End of Header -->
+	<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper-login"></div>
+	</div>
+	<!-- End of Page title -->
+	
+	<!-- Page content -->
+	<div id="page">
+		<!-- Wrapper -->
+		<div class="wrapper-login">
+				<!-- Login form -->
+				<section class="full">					
+					
+					<h3>登陆的域名</h3>
+					
+					<div class="box box-info">欢迎管理员登陆</div>
+
+					<form id="loginform" method="post" action="/admin/login">
+
+						<p>
+							<label class="required" for="username">用户名:</label><br/>
+							<input type="text" id="username" class="full" value="" name="username"/>
+						</p>
+						
+						<p>
+							<label class="required" for="password">密码:</label><br/>
+							<input type="password" id="password" class="full" value="" name="password"/>
+						</p>
+						
+						<p>
+							<input type="checkbox" id="remember" class="" value="1" name="remember"/>
+							<label class="choice" for="remember">记住我?</label>
+						</p>
+						
+						<p>
+							<input type="submit" class="btn btn-green big" value="Login"/> &nbsp; <a href="javascript: //;" onClick="$('#emailform').slideDown(); return false;">忘记密码?</a> or <a href="#">需要帮助?</a>
+						</p>
+						<div class="clear">&nbsp;</div>
+
+					</form>
+					
+					<form id="emailform" style="display:none" method="post" action="#">
+						<div class="box">
+							<p id="emailinput">
+								<label for="email">邮箱:</label><br/>
+								<input type="text" id="email" class="full" value="" name="email"/>
+							</p>
+							<p>
+								<input type="submit" class="btn" value="发送"/>
+							</p>
+						</div>
+					</form>
+					
+				</section>
+				<!-- End of login form -->
+				
+		</div>
+		<!-- End of Wrapper -->
+	</div>
+	<!-- End of Page content -->
+	
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <!-- Favicons --> 
+<link rel="shortcut icon" type="image/png" href="/Content/Admin/img/favicons/favicon.png"/>
+<link rel="icon" type="image/png" href="/Content/Admin/img/favicons/favicon.png"/>
+<link rel="apple-touch-icon" href="/Content/Admin/img/favicons/apple.png" />
+<!-- Main Stylesheet --> 
+<link rel="stylesheet" href="/Content/Admin/css/style.css" type="text/css" />
+<!-- Colour Schemes
+Default colour scheme is blue. Uncomment prefered stylesheet to use it.
+<link rel="stylesheet" href="/Content/Admin/css/brown.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="/Content/Admin/css/gray.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="/Content/Admin/css/green.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/Content/Admin/css/pink.css" type="text/css" media="screen" />  
+<link rel="stylesheet" href="/Content/Admin/css/red.css" type="text/css" media="screen" />
+-->
+<!-- Your Custom Stylesheet --> 
+<link rel="stylesheet" href="/Content/Admin/css/custom.css" type="text/css" />
+<!--swfobject - needed only if you require <video> tag support for older browsers -->
+<script type="text/javascript" src="/Content/Admin/js/swfobject.js"></script>
+<!-- jQuery with plugins -->
+<script type="text/javascript"src="/Content/Admin/js/jquery-1.4.2.min.js"></script>
+<!-- Could be loaded remotely from Google CDN : <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+<script type="text/javascript"src="/Content/Admin/js/jquery.ui.core.min.js"></script>
+<script type="text/javascript"src="/Content/Admin/js/jquery.ui.widget.min.js"></script>
+<script type="text/javascript"src="/Content/Admin/js/jquery.ui.tabs.min.js"></script>
+<!-- jQuery tooltips -->
+<script type="text/javascript"src="/Content/Admin/js/jquery.tipTip.min.js"></script>
+<!-- Superfish navigation -->
+<script type="text/javascript"src="/Content/Admin/js/jquery.superfish.min.js"></script>
+<script type="text/javascript"src="/Content/Admin/js/jquery.supersubs.min.js"></script>
+<!-- jQuery form validation -->
+<script type="text/javascript"src="/Content/Admin/js/jquery.validate_pack.js"></script>
+<!-- jQuery popup box -->
+<script type="text/javascript"src="/Content/Admin/js/jquery.nyroModal.pack.js"></script>
+<!-- Internet Explorer Fixes --> 
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="/Content/Admin/css/ie.css"/>
+<scriptsrc="/Content/Admin/js/html5.js"></script>
+<![endif]-->
+<!--Upgrade MSIE5.5-7 to be compatible with MSIE8: http://ie7-js.googlecode.com/svn/version/2.1(beta3)/IE8.js -->
+<!--[if lt IE 8]>
+<scriptsrc="/Content/Admin/js/IE8.js"></script>
+<![endif]-->
+        <script type="text/javascript">
+
+             $(document).ready(function () {
+
+                 /* setup navigation, content boxes, etc... */
+                 Administry.setup();
+             });
+</script>
+            
+       @* @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    </head>
+    <body>
+        @RenderBody()
+@*        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("将你的徽标放置在此处", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                            <li>@Html.ActionLink("关于", "About", "Home")</li>
+                            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - 我的 ASP.NET MVC 应用程序</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)*@
+        	<!-- Page footer -->
+	<footer id="bottom">
+		<div class="wrapper-login">
+			<p>Copyright &copy; 2013 <b><a HREF="www.domain.com" title="www.domain.com">www.domain.com</a></b> | Icons by <a HREF="www.domain.com">domain.com</a></p>
+		</div>
+	</footer>
+	<!-- End of Page footer -->
+        <script type="text/javascript" src="/Content/Admin/js/administry.js"></script>
+    </body>
+</html>
