@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Wings.Model;
 
 namespace Wings.CMS.Controllers
 {
@@ -13,22 +14,36 @@ namespace Wings.CMS.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.login = false;
             return View();
         }
-
+        public ActionResult login()
+        {
+            return View();
+        }
         [HttpPost]
-        public ActionResult login(string username, string password)
+        public JsonResult login(string username, string password)
         {
             if (username==password)
             {
-                return View("domain");
+                return Json("domain");
             }
             else
             {
-                return View("index");
+                return Json("index");
             }
         }
-
+        public ActionResult Post()
+        {
+            return View();
+        }
+        
+        [ValidateInput(false)]
+        [HttpPost]
+        public JsonResult Post(Content content)
+        {
+            return Json("true");
+        }
         public ActionResult domain()
         {
             return View();

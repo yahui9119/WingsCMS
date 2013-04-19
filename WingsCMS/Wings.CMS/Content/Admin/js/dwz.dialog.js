@@ -220,13 +220,13 @@
 					$(this).css("height", $(this).outerHeight() + options.tmove);
 				});
 			}
-			if(target == "n" || target =="nw" || target == "ne"||target=="ferr") {
+			if(target == "n" || target =="nw" || target == "ne") {
 				shadow.css("top", options.otop - 2);
 			}
 			if(options.owidth && (target != "n" || target != "s")) {
 				shadow.css("width", options.owidth + 8);
 			}
-			if(target=="ferr"||target.indexOf("w") >= 0) {
+			if(target.indexOf("w") >= 0) {
 				shadow.css("left", options.oleft - 4);
 			}
 		},
@@ -355,27 +355,6 @@
 			$(".pageContent", dialog).css("width", (width-14) + "px");
 			
 			$(window).trigger(DWZ.eventType.resizeGrid);
-		},
-		resizeLocation:function(dialog, options) {			
-			var op = $.extend({}, this._op, options);
-			var height = op.height>op.minH?op.height:op.minH;
-			var width = op.width>op.minW?op.width:op.minW;
-		    this.resizeDialog({ style: { width: width, height: height} },dialog,"");
-			if(isNaN(dialog.height()) || dialog.height() < height){
-				$(dialog).height(height+"px");
-				$(".dialogContent",dialog).height(height - $(".dialogHeader", dialog).outerHeight() - $(".dialogFooter", dialog).outerHeight() - 6);
-			}
-			if(isNaN(dialog.css("width")) || dialog.width() < width) {
-				$(dialog).width(width+"px");
-			}
-			
-			var iTop = ($(window).height()-dialog.height())/2;
-			var Ileft=($(window).width()-dialog.width())/2;
-			dialog.css({
-				left: Ileft,
-				top: iTop > 0 ? iTop : 0
-			});			
-			this.repaint("ferr", {oleft:Ileft,otop: iTop > 0 ? iTop : 0,owidth:width});
 		}
 	};
 })(jQuery);

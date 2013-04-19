@@ -5,7 +5,7 @@
 (function($){
 	$.fn.jTable = function(options){
 		return this.each(function(){
-		 	var $table = $(this), nowrapTD = $table.attr("nowrapTD")||"false";
+		 	var $table = $(this), nowrapTD = $table.attr("nowrapTD");
 		 	var tlength = $table.width();
 			var aStyles = [];
 			var $tc = $table.parent().addClass("j-resizeGrid"); // table parent container

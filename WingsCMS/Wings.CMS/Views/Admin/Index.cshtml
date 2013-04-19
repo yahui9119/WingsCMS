@@ -2,7 +2,12 @@
     ViewBag.Title = "管理员后台登陆";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@{
+    if (ViewBag.login == false)
+    {
+    @*<script>openDialog("@Url.Action("login")", "登陆_1", 300, 200);</script>*@
+    }
+}
 <div class="tabsPageHeader">
     <div class="tabsPageHeaderContent">
         <!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
@@ -49,7 +54,7 @@
                 <div rel="Default_TaskDiv" id="Default_TaskDiv" style="padding: 5px; margin: 5px; height: 200px;">
                     <fieldset style="height: 100%; width: 100%;">
                         <legend style="padding: 8px 8px 8px 6px;">待办事项(<b><%=taskCount %></b>)</legend>
-                       
+
                     </fieldset>
                 </div>
             </div>
@@ -66,13 +71,13 @@
                             <dt>本月已请事假：</dt>
                             <dd><%=000 %>天</dd>
                         </dl>
-                        
+
                     </fieldset>
                 </div>
                 <div style="padding: 5px; margin: 5px; height: 200px;">
                     <fieldset style="height: 100%; width: 100%;">
                         <legend style="padding: 8px 8px 8px 6px;">资料下载</legend>
-                      
+
                     </fieldset>
                 </div>
             </div>

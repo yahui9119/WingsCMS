@@ -22,13 +22,8 @@ $.extend($.fn, {
 			return validator;
 		}
 
-		// Add novalidate tag if HTML5.		
-		if(!$.browser.msie){
-		   this.attr('novalidate', 'novalidate');
-	    }
-	    else{	   	
-	   	   this[0].novalidate='novalidate';
-	    }
+		// Add novalidate tag if HTML5.
+		this.attr('novalidate', 'novalidate');
 
 		validator = new $.validator( options, this[0] );
 		$.data(this[0], 'validator', validator);

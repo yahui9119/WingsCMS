@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @author ZhangHuihua@msn.com
  * 
  */
@@ -54,8 +54,6 @@ function iframeCallback(form, callback){
 	
 	_iframeResponse($iframe[0], callback || DWZ.ajaxDone);
 }
-
-
 function _iframeResponse(iframe, callback){
 	var $iframe = $(iframe), $document = $(document);
 	
