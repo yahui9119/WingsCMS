@@ -1,0 +1,74 @@
+﻿body
+{
+    margin: 0px;
+    font-size: 12px;
+}
+ul, ol
+{
+    list-style: none;
+}
+img
+{
+    border-width: 0px;
+}
+/*-------------Tree--------------*/
+.trees ul
+{
+    margin: 0 0 0 15px;
+}
+.trees li a
+{
+    color: #333;
+    background-color: transparent;
+    text-decoration: none;
+    display: inline-block;
+}
+.trees li a:hover
+{
+    text-decoration: none;
+    color: #0000ff;
+}
+img.s
+{
+    width: 16px;
+    height: 16px;
+}
+img.h
+{
+    width: 16px;
+    height: 16px;
+}
+.Closed ul
+{
+    display: none;
+}
+.Child img.s
+{
+    background: none;
+    cursor: default;
+}
+.Opened img.s
+{
+    background: url(../Images/tree/opened.gif) no-repeat 0 1px;
+}
+.Closed img.s
+{
+    background: url(../Images/tree/closed.gif) no-repeat 0 1px;
+}
+.Child img.s
+{
+    background: url(../Images/tree/child.gif) no-repeat 0 1px;
+    line-height:16px;
+}
+.Opened img.h
+{
+    background: url(../Images/tree/folder-opened.gif) no-repeat 0 1px;
+}
+.Closed img.h
+{
+    background: url(../Images/tree/folder-closed.gif) no-repeat 0 1px;
+}
+.Child img.h
+{
+    background: url(../Images/tree/child.gif) no-repeat 0 1px;
+}

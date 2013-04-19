@@ -176,69 +176,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Admin\css\custom.css" />
-    <Content Include="Content\Admin\css\style.css" />
-    <Content Include="Content\Admin\img\accept.png" />
-    <Content Include="Content\Admin\img\add.png" />
-    <Content Include="Content\Admin\img\arrows-ffffff.png" />
-    <Content Include="Content\Admin\img\book.png" />
-    <Content Include="Content\Admin\img\btn-overlay.png" />
-    <Content Include="Content\Admin\img\cancel.png" />
-    <Content Include="Content\Admin\img\datatable\back_disabled.png" />
-    <Content Include="Content\Admin\img\datatable\back_enabled.png" />
-    <Content Include="Content\Admin\img\datatable\forward_disabled.png" />
-    <Content Include="Content\Admin\img\datatable\forward_enabled.png" />
-    <Content Include="Content\Admin\img\datatable\sort_asc.png" />
-    <Content Include="Content\Admin\img\datatable\sort_asc_disabled.png" />
-    <Content Include="Content\Admin\img\datatable\sort_both.png" />
-    <Content Include="Content\Admin\img\datatable\sort_desc.png" />
-    <Content Include="Content\Admin\img\datatable\sort_desc_disabled.png" />
-    <Content Include="Content\Admin\img\delete.png" />
-    <Content Include="Content\Admin\img\error.png" />
-    <Content Include="Content\Admin\img\exclamation.png" />
-    <Content Include="Content\Admin\img\favicons\apple.png" />
-    <Content Include="Content\Admin\img\favicons\favicon.png" />
-    <Content Include="Content\Admin\img\gallery\book01.jpg" />
-    <Content Include="Content\Admin\img\gallery\card01.jpg" />
-    <Content Include="Content\Admin\img\gallery\leaflet01.jpg" />
-    <Content Include="Content\Admin\img\help.png" />
-    <Content Include="Content\Admin\img\information.png" />
-    <Content Include="Content\Admin\img\jquery.wysiwyg.gif" />
-    <Content Include="Content\Admin\img\key.png" />
-    <Content Include="Content\Admin\img\logo.png" />
-    <Content Include="Content\Admin\img\nyro\ajaxLoader.gif" />
-    <Content Include="Content\Admin\img\nyro\close.gif" />
-    <Content Include="Content\Admin\img\nyro\next.gif" />
-    <Content Include="Content\Admin\img\nyro\prev.gif" />
-    <Content Include="Content\Admin\img\page_save.png" />
-    <Content Include="Content\Admin\img\page_white_go.png" />
-    <Content Include="Content\Admin\img\preview-not-available.gif" />
-    <Content Include="Content\Admin\img\quote.png" />
-    <Content Include="Content\Admin\img\search.gif" />
-    <Content Include="Content\Admin\img\shadow.png" />
-    <Content Include="Content\Admin\img\style.png" />
-    <Content Include="Content\Admin\img\tag-bg.gif" />
-    <Content Include="Content\Admin\img\toggle-small-expand.png" />
-    <Content Include="Content\Admin\img\toggle.gif" />
-    <Content Include="Content\Admin\img\user_32.png" />
-    <Content Include="Content\Admin\img\valid.gif" />
-    <Content Include="Content\Admin\js\administry.js" />
-    <Content Include="Content\Admin\js\flot\jquery.flot.min.js" />
-    <Content Include="Content\Admin\js\flot\jquery.flot.selection.min.js" />
-    <Content Include="Content\Admin\js\jquery-1.4.2.min.js" />
-    <Content Include="Content\Admin\js\jquery.dataTables.min.js" />
-    <Content Include="Content\Admin\js\jquery.nyroModal.pack.js" />
-    <Content Include="Content\Admin\js\jquery.sparkline.min.js" />
-    <Content Include="Content\Admin\js\jquery.superfish.min.js" />
-    <Content Include="Content\Admin\js\jquery.supersubs.min.js" />
-    <Content Include="Content\Admin\js\jquery.tagInput.min.js" />
-    <Content Include="Content\Admin\js\jquery.tipTip.min.js" />
-    <Content Include="Content\Admin\js\jquery.ui.core.min.js" />
-    <Content Include="Content\Admin\js\jquery.ui.tabs.min.js" />
-    <Content Include="Content\Admin\js\jquery.ui.widget.min.js" />
-    <Content Include="Content\Admin\js\jquery.validate_pack.js" />
-    <Content Include="Content\Admin\js\jquery.wysiwyg.min.js" />
-    <Content Include="Content\Admin\js\swfobject.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -357,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Admin\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
