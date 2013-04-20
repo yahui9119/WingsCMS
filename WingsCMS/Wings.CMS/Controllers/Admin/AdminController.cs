@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Wings.Common;
 using Wings.Model;
 
 namespace Wings.CMS.Controllers
@@ -11,7 +12,7 @@ namespace Wings.CMS.Controllers
     {
         //
         // GET: /Admin/
-
+        ResultDWZ rdwz = new ResultDWZ();
         public ActionResult Index()
         {
             ViewBag.login = false;
@@ -42,7 +43,10 @@ namespace Wings.CMS.Controllers
         [HttpPost]
         public JsonResult Post(Content content)
         {
-            return Json("true");
+            rdwz.statusCode = "200";
+            rdwz.message = "操作成功";
+            rdwz.callbackType = "closeCurrent";
+            return Json(rdwz);
         }
         public ActionResult domain()
         {

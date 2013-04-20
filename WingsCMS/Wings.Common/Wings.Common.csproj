@@ -55,6 +55,7 @@
     <Compile Include="PrintObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicEnum.cs" />
+    <Compile Include="ResultDWZ.cs" />
     <Compile Include="TConvert.cs" />
     <Compile Include="Url.cs" />
   </ItemGroup>
