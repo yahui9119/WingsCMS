@@ -22,7 +22,7 @@ namespace Wings.Test
 
                 var result = from b in blogDb.Blogs
                              select b;
-                foreach (var item in result)
+                foreach (var item in result)7
                 {
                     Console.WriteLine(item.BlogName);
                 }
