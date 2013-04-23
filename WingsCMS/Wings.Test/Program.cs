@@ -27,6 +27,15 @@ namespace Wings.Test
             //        Console.WriteLine(item.BlogName);
             //    }
             //}
+            Chanel c1=new Chanel (){  ChanelIndex=1 , ChanelName="新闻", ChanelType=1};
+            Chanel c2=new Chanel (){  ChanelIndex=1 , ChanelName="体育", ChanelType=2};
+            Chanel c3=new Chanel (){  ChanelIndex=1 , ChanelName="娱乐", ChanelType=3};
+            using (WingsDBContext db=new WingsDBContext ())
+            {
+                db.Chanels.Add(c2);
+                db.Chanels.Add(c3);
+                db.SaveChanges();
+            }
             Console.ReadKey();
         }
     }

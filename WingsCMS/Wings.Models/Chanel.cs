@@ -12,7 +12,7 @@ namespace Wings.Models
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(20),MinLength(5)]
+        [MaxLength(20),MinLength(2)]
         [Required]
         public string ChanelName { get; set; }
         [Required]

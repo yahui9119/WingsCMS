@@ -24,7 +24,11 @@ namespace Wings.Models
         public string Data { get; set; }
         [Required]
         public DateTime CreateTime { get; set; }
-        
+        [MaxLength(100)]
+        public string Tag { get; set; }
+
+        public int CId { get;set; }
+        [ForeignKey("CId")]
         public virtual Chanel Chanel { get; set; }
     }
 }

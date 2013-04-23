@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Wings.Common;
-using Wings.Model;
+using Wings.Models;
 
 namespace Wings.CMS.Controllers
 {

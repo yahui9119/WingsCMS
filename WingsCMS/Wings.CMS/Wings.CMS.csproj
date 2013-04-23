@@ -294,6 +294,7 @@
     <Content Include="Views\Admin\domain.cshtml" />
     <Content Include="Views\Admin\login.cshtml" />
     <Content Include="Views\Admin\Post.cshtml" />
+    <Content Include="Views\Admin\Post1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,6 +311,10 @@
     <ProjectReference Include="..\Wings.Common\Wings.Common.csproj">
       <Project>{c027235c-7927-47cb-b672-57e5bab75d4f}</Project>
       <Name>Wings.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Models\Wings.Models.csproj">
+      <Project>{973230d1-a605-4704-8f1f-c25fb49cda71}</Project>
+      <Name>Wings.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wings.Model\Wings.Model.csproj">
       <Project>{9f5c0c07-f45e-4881-b64f-816d3579b87e}</Project>
