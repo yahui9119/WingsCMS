@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Wings.Models
 {
+    [Table("User")]
     public class User
     {
         [Key]
@@ -20,7 +21,7 @@ namespace Wings.Models
         /// <summary>
         /// 登陆密码
         /// </summary>
-        [StringLength(16)]
+        [StringLength(32)]
         public string PassWord { get; set; }
         /// <summary>
         /// 登陆ip
@@ -40,7 +41,6 @@ namespace Wings.Models
         /// <summary>
         /// QQ号
         /// </summary>
-        
         public string QQ { get; set; }
         /// <summary>
         /// 邮箱
