@@ -39,8 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChanelsBlll.cs" />
+    <Compile Include="ContentsBll.cs" />
+    <Compile Include="ModulesBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsersBLL.cs" />
+    <Compile Include="RolesBll.cs" />
+    <Compile Include="UsersBLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wings.Common\Wings.Common.csproj">
@@ -50,6 +56,10 @@
     <ProjectReference Include="..\Wings.DAL\Wings.DAL.csproj">
       <Project>{8614a9ae-d128-4c3c-a3ae-34e743d1061d}</Project>
       <Name>Wings.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Models\Wings.Models.csproj">
+      <Project>{973230d1-a605-4704-8f1f-c25fb49cda71}</Project>
+      <Name>Wings.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wings.Model\Wings.Model.csproj">
       <Project>{9f5c0c07-f45e-4881-b64f-816d3579b87e}</Project>

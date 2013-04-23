@@ -2,49 +2,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Wings.DAL;
+using Wings.DLL;
 using Wings.Models;
 
-namespace Wings.BLL
+namespace Wings.DAL
 {
-    public class UsersBll
+    public class ContentsDal
     {
-        UsersDal dal = new UsersDal();
+        BaseRepository<Content> Contents = new BaseRepository<Content>();
+
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="Content"></param>
         /// <returns></returns>
-        public User Add(User user)
+        public Content Add(Content Content)
         {
-            return dal.Add(user);
+            return Contents.AddEntities(Content);
         }
         /// <summary>
         /// 更新
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="Content"></param>
         /// <returns></returns>
-        public bool Update(User user)
+        public bool Update(Content Content)
         {
-            return dal.Update(user);
+            return Contents.UpdateEntities(Content);
         }
         /// <summary>
         /// 删除
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="Content"></param>
         /// <returns></returns>
-        public bool Delete(User user)
+        public bool Delete(Content Content)
         {
-            return dal.Delete(user);
+            return Contents.DeleteEntities(Content);
         }
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="wherelambda"></param>
         /// <returns></returns>
-        public List<User> Load(Func<User, bool> wherelambda)
+        public List<Content> Load(Func<Content, bool> wherelambda)
         {
-            return dal.Load(wherelambda);
+            return Contents.LoadEntities(wherelambda).ToList();
         }
         /// <summary>
         /// 分页
@@ -57,10 +58,10 @@ namespace Wings.BLL
         /// <param name="isAsc"></param>
         /// <param name="orderByLambda"></param>
         /// <returns></returns>
-        public List<User> LoadPager<S>(int pageSize, int pageIndex, out int total,
-            Func<User, bool> whereLambda, bool isAsc, Func<User, S> orderByLambda)
+        public List<Content> LoadPager<S>(int pageSize, int pageIndex, out int total,
+            Func<Content, bool> whereLambda, bool isAsc, Func<Content, S> orderByLambda)
         {
-            return dal.LoadPager<S>(pageSize, pageIndex, out total, whereLambda, isAsc, orderByLambda);
+            return Contents.LoadPagerEntities<S>(pageSize, pageIndex, out total, whereLambda, isAsc, orderByLambda).ToList();
         }
     }
 }

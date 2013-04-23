@@ -9,11 +9,11 @@ namespace Wings.CMS.Controllers
 {
     public class HomeController : Controller
     {
-        private UsersBLL bll = new UsersBLL();
+        //private UsersBLL bll = new UsersBLL();
         public ActionResult Index()
         {
             ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。";
-            var userss= bll.GetUsers();
+            //var userss= bll.GetUsers();
             
             return View();
         }

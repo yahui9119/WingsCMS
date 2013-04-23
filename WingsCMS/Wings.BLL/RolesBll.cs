@@ -7,42 +7,42 @@ using Wings.Models;
 
 namespace Wings.BLL
 {
-    public class UsersBll
+    public class RolesBll
     {
-        UsersDal dal = new UsersDal();
+        RolesDal dal = new RolesDal();
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="Role"></param>
         /// <returns></returns>
-        public User Add(User user)
+        public Role Add(Role Role)
         {
-            return dal.Add(user);
+            return dal.Add(Role);
         }
         /// <summary>
         /// 更新
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="Role"></param>
         /// <returns></returns>
-        public bool Update(User user)
+        public bool Update(Role Role)
         {
-            return dal.Update(user);
+            return dal.Update(Role);
         }
         /// <summary>
         /// 删除
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="Role"></param>
         /// <returns></returns>
-        public bool Delete(User user)
+        public bool Delete(Role Role)
         {
-            return dal.Delete(user);
+            return dal.Delete(Role);
         }
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="wherelambda"></param>
         /// <returns></returns>
-        public List<User> Load(Func<User, bool> wherelambda)
+        public List<Role> Load(Func<Role, bool> wherelambda)
         {
             return dal.Load(wherelambda);
         }
@@ -57,8 +57,8 @@ namespace Wings.BLL
         /// <param name="isAsc"></param>
         /// <param name="orderByLambda"></param>
         /// <returns></returns>
-        public List<User> LoadPager<S>(int pageSize, int pageIndex, out int total,
-            Func<User, bool> whereLambda, bool isAsc, Func<User, S> orderByLambda)
+        public List<Role> LoadPager<S>(int pageSize, int pageIndex, out int total,
+            Func<Role, bool> whereLambda, bool isAsc, Func<Role, S> orderByLambda)
         {
             return dal.LoadPager<S>(pageSize, pageIndex, out total, whereLambda, isAsc, orderByLambda);
         }

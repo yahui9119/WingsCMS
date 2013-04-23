@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Wings.DAL;
+using Wings.DLL;
 using Wings.Models;
 
-namespace Wings.BLL
+namespace Wings.DAL
 {
-    public class UsersBll
+    public class UsersDal
     {
-        UsersDal dal = new UsersDal();
+        BaseRepository<User> Users = new BaseRepository<User>();
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -17,7 +18,7 @@ namespace Wings.BLL
         /// <returns></returns>
         public User Add(User user)
         {
-            return dal.Add(user);
+            return Users.AddEntities(user);
         }
         /// <summary>
         /// 更新
@@ -26,7 +27,7 @@ namespace Wings.BLL
         /// <returns></returns>
         public bool Update(User user)
         {
-            return dal.Update(user);
+            return Users.UpdateEntities(user);
         }
         /// <summary>
         /// 删除
@@ -35,7 +36,7 @@ namespace Wings.BLL
         /// <returns></returns>
         public bool Delete(User user)
         {
-            return dal.Delete(user);
+            return Users.DeleteEntities(user);
         }
         /// <summary>
         /// 查询
@@ -44,7 +45,7 @@ namespace Wings.BLL
         /// <returns></returns>
         public List<User> Load(Func<User, bool> wherelambda)
         {
-            return dal.Load(wherelambda);
+            return Users.LoadEntities(wherelambda).ToList();
         }
         /// <summary>
         /// 分页
@@ -60,7 +61,7 @@ namespace Wings.BLL
         public List<User> LoadPager<S>(int pageSize, int pageIndex, out int total,
             Func<User, bool> whereLambda, bool isAsc, Func<User, S> orderByLambda)
         {
-            return dal.LoadPager<S>(pageSize, pageIndex, out total, whereLambda, isAsc, orderByLambda);
+            return Users.LoadPagerEntities<S>(pageSize, pageIndex, out total, whereLambda, isAsc, orderByLambda).ToList();
         }
     }
 }
