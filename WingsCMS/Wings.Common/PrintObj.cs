@@ -13,8 +13,6 @@ namespace Wings.Common
 {
     /// <summary>
     /// 类名：输出Excel应用类
-    /// 创建日期：2012-07-02
-    /// 创建人：flsun
     /// </summary>
     public class PrintObj
     {

@@ -9,9 +9,6 @@ using System.Configuration;
 
 namespace Wings.Common
 {
-    /// <summary>
-    /// 创建人：xzb
-    /// 创建时间：2012-04-05
     /// 创建目的：最简底层、、sql
     /// </summary>
     public class DbHelperSQL

@@ -15,8 +15,6 @@ namespace Wings.Common
 {
     /// <summary>
     /// 创建目的：枚举类，列举一些枚举类型
-    /// 创建时间：2012-05-09
-    /// 创建人：xzb
     /// </summary>
     public class PublicEnum
     {

@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRepository.cs" />
     <Compile Include="CommonDatabaseOperation.cs" />
     <Compile Include="DatabaseIdentifierConstant.cs" />
     <Compile Include="DbBase.cs" />
@@ -66,6 +68,10 @@
     <ProjectReference Include="..\Wings.Common\Wings.Common.csproj">
       <Project>{c027235c-7927-47cb-b672-57e5bab75d4f}</Project>
       <Name>Wings.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Models\Wings.Models.csproj">
+      <Project>{973230d1-a605-4704-8f1f-c25fb49cda71}</Project>
+      <Name>Wings.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wings.Security\Wings.Security.csproj">
       <Project>{6d185be7-2123-4c65-9dd9-631281683e66}</Project>
