@@ -23,6 +23,8 @@ namespace Wings.Models
         /// <summary>
         /// 对应角色
         /// </summary>
+        public int RId { get; set; }
+        [ForeignKey("RId")]
         public virtual Role Role { get; set; }
         /// <summary>
         /// 权限操作Url

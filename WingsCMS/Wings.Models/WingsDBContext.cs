@@ -15,5 +15,6 @@ namespace Wings.Models
         public DbSet<Module> Module { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<WebSite> WebSite { get; set; }
     }
 }

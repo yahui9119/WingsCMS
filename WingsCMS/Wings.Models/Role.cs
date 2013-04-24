@@ -20,6 +20,8 @@ namespace Wings.Models
         /// </summary>
         [DataType(DataType.Text)] 
         public int Name { get; set; }
+        [DataType(DataType.DateTime)] 
+        public DateTime CreateTime { get; set; }
         /// <summary>
         /// 角色对应模块
         /// </summary>

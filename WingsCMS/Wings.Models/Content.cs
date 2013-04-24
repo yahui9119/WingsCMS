@@ -35,7 +35,7 @@ namespace Wings.Models
         [MaxLength(100)]
         [DataType(DataType.Text)] 
         public string Tag { get; set; }
-
+        [Required]
         public int CId { get;set; }
         [ForeignKey("CId")]
         public virtual Chanel Chanel { get; set; }

@@ -21,5 +21,13 @@ namespace Wings.Models
         [Required]
         public int ChanelIndex { get; set; }
         public virtual List<Content> Contexts { get; set; }
+        [Required]
+        public int WId { get; set; }
+        [ForeignKey("WId")]
+        public virtual WebSite WebSite { get; set; }
+        [Required]
+        public int UId { get; set; }
+        [ForeignKey("UId")]
+        public virtual User CreateUser { get; set; }
     }
 }

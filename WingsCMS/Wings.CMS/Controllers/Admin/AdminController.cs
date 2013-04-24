@@ -60,57 +60,45 @@ namespace Wings.CMS.Controllers
         {
             ResultDWZ rdwz = new ResultDWZ();
             int Cid = Convert.ToInt32(collection["CId"]);
-            var chanel = chanelbll.Load(c => c.Id == Cid).FirstOrDefault();
-            if (chanel != null)
+            var content = new Content()
             {
-                var test = collection["Url"];
-                var content = new Content()
-                {
-                    CreateTime = DateTime.Now,
-                    Data = collection["Data"],
-                    Img = collection["Img"]==null?"":collection["Img"],
-                    Status = Convert.ToInt32(collection["Status"]),
-                    Tag = collection["Tag"],
-                    Title = collection["Title"],
-                    Url = collection["Url"] ==null ? "http://localhost" : collection["Url"]
-                    , CId=Cid 
-                };
-                try
-                {
+                CreateTime = DateTime.Now,
+                Data = collection["Data"],
+                Img = collection["Img"] == null ? "" : collection["Img"],
+                Status = Convert.ToInt32(collection["Status"]),
+                Tag = collection["Tag"],
+                Title = collection["Title"],
+                Url = collection["Url"] == null ? "http://localhost" : collection["Url"]
+                ,
+                CId = Cid
+            };
+            try
+            {
 
-                    if (contextbll.Add(content).Id>0)
-                    {
-                        rdwz.statusCode = "200";
-                        rdwz.message = "操作成功";
-                        rdwz.callbackType = "closeCurrent";
-                        return Json(rdwz);
-                    }
-                    else
-                    {
-                        rdwz.statusCode = "300";
-                        rdwz.message = "操作失败，请联系管理员";
-                        rdwz.callbackType = "closeCurrent";
-                        return Json(rdwz);
-                    }
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                if (contextbll.Add(content).Id > 0)
                 {
-                    rdwz.statusCode = "300";
-                    rdwz.message = ex.ToString();
+                    rdwz.statusCode = "200";
+                    rdwz.message = "操作成功";
                     rdwz.callbackType = "closeCurrent";
                     return Json(rdwz);
                 }
-                
-
+                else
+                {
+                    rdwz.statusCode = "300";
+                    rdwz.message = "操作失败，请联系管理员";
+                    rdwz.callbackType = "closeCurrent";
+                    return Json(rdwz);
+                }
             }
-            else
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
                 rdwz.statusCode = "300";
-                rdwz.message = "内容类型设置失败";
+                rdwz.message = ex.ToString();
                 rdwz.callbackType = "closeCurrent";
                 return Json(rdwz);
             }
-            
+
+
         }
         public ActionResult domain()
         {
