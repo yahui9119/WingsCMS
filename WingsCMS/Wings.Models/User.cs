@@ -59,7 +59,7 @@ namespace Wings.Models
         /// </summary>
         public int RId { get; set; }
         [ForeignKey("RId")]
-        public Role Role { get; set; }
+        public virtual Role Role { get; set; }
         /// <summary>
         /// 身份证号  找回密码使用
         /// </summary>

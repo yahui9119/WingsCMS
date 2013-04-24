@@ -19,7 +19,9 @@ namespace Wings.Models
         /// 角色名
         /// </summary>
         [DataType(DataType.Text)] 
-        public int Name { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; }
         [DataType(DataType.DateTime)] 
         public DateTime CreateTime { get; set; }
         /// <summary>
