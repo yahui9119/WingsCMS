@@ -7,7 +7,7 @@ using Wings.Models;
 
 namespace Wings.BLL
 {
-    public class ChanelsBlll
+    public class ChanelsBll
     {
         ChanelsDal dal = new ChanelsDal();
         /// <summary>

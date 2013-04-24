@@ -18,6 +18,7 @@ namespace Wings.Models
         /// <summary>
         /// 角色名
         /// </summary>
+        [DataType(DataType.Text)] 
         public int Name { get; set; }
         /// <summary>
         /// 角色对应模块

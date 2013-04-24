@@ -18,6 +18,7 @@ namespace Wings.Models
         /// <summary>
         /// 权限名
         /// </summary>
+        [DataType(DataType.Text)] 
         public int Name { get; set; }
         /// <summary>
         /// 对应角色
@@ -26,6 +27,7 @@ namespace Wings.Models
         /// <summary>
         /// 权限操作Url
         /// </summary>
+        [DataType(DataType.Url)] 
         public string Url { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace Wings.Models
         public int Id { get; set; }
         [MaxLength(20),MinLength(2)]
         [Required]
+        [DataType(DataType.Text)] 
         public string ChanelName { get; set; }
         [Required]
         public int ChanelType{get;set;}

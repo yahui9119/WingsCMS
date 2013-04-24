@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChanelsBlll.cs" />
+    <Compile Include="ChanelsBll.cs" />
     <Compile Include="ContentsBll.cs" />
     <Compile Include="ModulesBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

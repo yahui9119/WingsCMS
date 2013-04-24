@@ -14,15 +14,36 @@
 						<fieldset><legend>新内容添加</legend>
                             <dl class="nowrap">
                                 <dt>内容标题：</dt>
-                                <dd><input type="text" class="required" name="Title" /></dd>
+                                <dd><input style="width:200px" type="text" class="required" name="Title" /></dd>
                             </dl>
                             <dl class="nowrap">
-                                <dt>分类</dt>
-                                <dd><select><option value="21">新闻</option></select></dd>
+                                <dt>分类：</dt>
+                                <dd>@Html.DropDownList("CId")</dd>
+                            </dl>
+                            <dl class="nowrap">
+                                <dt>关键词（多个用'|'分开）：</dt>
+                                <dd><input style="width:200px" type="text" name="Tag" /></dd>
+                            </dl>
+                            <dl class="nowrap">
+                                <dt>图片：</dt>
+                                <dd><input style="width:200px" type="file" name="Img"
+                                    @*uploaderOption="{
+			                        swf:'Content/admin/uploadify/scripts/uploadify.swf',
+			                        uploader:'Content/admin/demo/common/ajaxDone.html',
+			                        formData:{PHPSESSID:'xxx', ajax:1},
+			                        buttonText:'请选择文件',
+			                        fileSizeLimit:'200KB',
+			                        fileTypeDesc:'*.jpg;*.jpeg;*.gif;*.png;',
+			                        fileTypeExts:'*.jpg;*.jpeg;*.gif;*.png;',
+			                        auto:true,
+			                        multi:true,
+			                        onUploadSuccess:uploadifySuccess,
+			                        onQueueComplete:uploadifyQueueComplete
+		                        }"*@                            /></dd>
                             </dl>
                             <dl class="nowrap">
                                 <dt>内容文本：</dt>
-                                <dd><textarea class="editor" name="data" rows="40" cols="100"
+                                <dd><textarea class="editor" name="Data" rows="40" cols="100"
 								upLinkUrl="upload.php" upLinkExt="zip,rar,txt" 
 								upImgUrl="upload.php" upImgExt="jpg,jpeg,gif,png" 
 								upFlashUrl="upload.php" upFlashExt="swf"

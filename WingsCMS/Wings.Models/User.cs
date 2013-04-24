@@ -22,21 +22,25 @@ namespace Wings.Models
         /// 登陆密码
         /// </summary>
         [StringLength(32)]
+        [DataType(DataType.Password)] 
         public string PassWord { get; set; }
         /// <summary>
         /// 登陆ip
         /// </summary>
         [StringLength(15)]
+        
         public string LogIp { get; set; }
         /// <summary>
         /// 登陆时间
         /// </summary>
         [Required]
+        [DataType(DataType.DateTime)] 
         public DateTime LogTime { get; set; }
         /// <summary>
         /// 注册时间
         /// </summary>
         [Required]
+        [DataType(DataType.DateTime)] 
         public DateTime RegTime { get; set; }
         /// <summary>
         /// QQ号
@@ -44,7 +48,7 @@ namespace Wings.Models
         public string QQ { get; set; }
         /// <summary>
         /// 邮箱
-        /// </summary>
+        [DataType(DataType.EmailAddress)] 
         public string Email { get; set; }
         /// <summary>
         /// 账号状态 0:已删除 1 正常 2 未验证邮箱 -1 禁用
@@ -57,6 +61,7 @@ namespace Wings.Models
         /// <summary>
         /// 身份证号  找回密码使用
         /// </summary>
+        
         public string IDCard { get; set; }
         /// <summary>
         /// 真实姓名  找回密码使用

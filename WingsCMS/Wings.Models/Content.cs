@@ -14,17 +14,26 @@ namespace Wings.Models
         public int Id { get; set; }
         [MaxLength(100)]
         [Required]
+        [DataType(DataType.Text)] 
         public string Title { get; set; }
         [Required]
+        
         public int Status { get; set; }
         [MaxLength(500)]
         [Required]
+        [DataType(DataType.Url)] 
         public string Url { get; set; }
+        [MaxLength(500)]
+        [DataType(DataType.ImageUrl)]
+        public string Img { get; set; }
         [Required]
+        [DataType(DataType.MultilineText)] 
         public string Data { get; set; }
         [Required]
+        [DataType(DataType.DateTime)] 
         public DateTime CreateTime { get; set; }
         [MaxLength(100)]
+        [DataType(DataType.Text)] 
         public string Tag { get; set; }
 
         public int CId { get;set; }
