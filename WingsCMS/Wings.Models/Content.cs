@@ -39,5 +39,7 @@ namespace Wings.Models
         public int CId { get;set; }
         [ForeignKey("CId")]
         public virtual Chanel Chanel { get; set; }
+
+        public virtual List<Reply> Replys { get; set; }
     }
 }
