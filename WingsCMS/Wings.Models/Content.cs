@@ -17,7 +17,9 @@ namespace Wings.Models
         [DataType(DataType.Text)] 
         public string Title { get; set; }
         [Required]
-        
+        [DataType(DataType.Text)]
+        public string EnglishTitle { get; set; }
+        [Required]
         public int Status { get; set; }
         [MaxLength(500)]
         [Required]

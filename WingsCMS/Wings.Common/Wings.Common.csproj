@@ -48,6 +48,7 @@
     <Compile Include="Cache\DataCache.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Cache\WebCache.cs" />
+    <Compile Include="ChineseToSpell.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="DESEncrypt.cs" />

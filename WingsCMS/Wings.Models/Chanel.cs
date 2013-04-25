@@ -17,6 +17,9 @@ namespace Wings.Models
         [DataType(DataType.Text)] 
         public string ChanelName { get; set; }
         [Required]
+        [DataType(DataType.Text)]
+        public string EnglishName { get; set; }
+        [Required]
         public int ChanelType{get;set;}
         [Required]
         public int ChanelIndex { get; set; }
