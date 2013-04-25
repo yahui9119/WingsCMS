@@ -17,5 +17,13 @@ namespace Wings.Models
         public DbSet<User> Users { get; set; }
         public DbSet<WebSite> WebSite { get; set; }
         public DbSet<Reply> Reply { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Reply>().HasRequired(u => u.User).WithMany(
+              r => r.Replys).HasForeignKey(u => u.UId).WillCascadeOnDelete(false);//指定
+            modelBuilder.Entity<Reply>().HasRequired(r=>r.Content);
+        }
     }
 }

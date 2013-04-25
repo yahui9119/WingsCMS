@@ -19,7 +19,8 @@ namespace Wings.Models
         /// 权限名
         /// </summary>
         [DataType(DataType.Text)] 
-        public int Name { get; set; }
+        [MaxLength(50)]
+        public string Name { get; set; }
         /// <summary>
         /// 对应角色
         /// </summary>

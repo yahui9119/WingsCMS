@@ -22,7 +22,9 @@ namespace Wings.Models
         [DataType(DataType.EmailAddress)]
         public string Eamil { get; set; }
         [DataType(DataType.Text)]
+
         public string NickName { get; set; }
+        
         public int UId { get; set; }
         [Required]
         public int CId { get; set; }
@@ -31,8 +33,9 @@ namespace Wings.Models
 
         [ForeignKey("UId")]
         public virtual User User { get; set; }
+        /// <summary>
+        /// 父留言
+        /// </summary>
         public int PId { get; set; }
-        [ForeignKey("PId")]
-        public virtual Reply Reply { get; set; }
     }
 }

@@ -69,5 +69,7 @@ namespace Wings.Models
         /// 真实姓名  找回密码使用
         /// </summary>
         public string RealName { get; set; }
+
+        public virtual List<Reply> Replys { get; set; }
     }
 }

@@ -22,10 +22,10 @@ namespace Wings.Models
         public string Tag { get; set; }
         [Required]
         public DateTime CreateTime { get; set; }
-        [Required]
+        [Required]//创建用户id
         public int UId{get;set;}
-        [ForeignKey("UId")]
-        public virtual User CreateUser { get; set; }
+        //[ForeignKey("UId")]
+        //public virtual User CreateUser { get; set; }
 
         public virtual List<Chanel> Chanels { get; set; }
     }
