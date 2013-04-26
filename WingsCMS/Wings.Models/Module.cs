@@ -30,7 +30,18 @@ namespace Wings.Models
         /// <summary>
         /// 权限操作Url
         /// </summary>
-        [DataType(DataType.Url)] 
+        [DataType(DataType.Text)] 
         public string Url { get; set; }
+        [Required]//父模版的id
+        public int PId { get; set; }
+        [Required]
+        public int ModuleType { get; set; }
+    }
+    //模版类型
+    public enum ModuleType
+    {
+        Root=0,
+        Action=1,
+        ActionGroup=2
     }
 }

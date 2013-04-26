@@ -72,4 +72,19 @@ namespace Wings.Models
 
         public virtual List<Reply> Replys { get; set; }
     }
+    public enum StatusType
+    {
+        /// <summary>
+        /// 已经删除
+        /// </summary>
+        Deleted =0,
+        /// <summary>
+        /// 正常
+        /// </summary>
+        Regular=1,
+        /// <summary>
+        /// 未验证，未启用
+        /// </summary>
+        Unverified=-1
+    }
 }
