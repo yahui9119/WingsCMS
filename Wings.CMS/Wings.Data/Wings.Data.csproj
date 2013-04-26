@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\libs\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,16 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wings.Core\Wings.Core.csproj">
+      <Project>{843fb113-5177-46e8-9f2d-2a932aea0631}</Project>
+      <Name>Wings.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Infra\Wings.Infra.csproj">
+      <Project>{95a1b816-f107-4567-9383-1feb253843ff}</Project>
+      <Name>Wings.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

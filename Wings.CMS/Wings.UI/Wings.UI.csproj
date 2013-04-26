@@ -39,6 +39,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\libs\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\libs\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\libs\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\libs\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -195,6 +207,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wings.Infra\Wings.Infra.csproj">
+      <Project>{95a1b816-f107-4567-9383-1feb253843ff}</Project>
+      <Name>Wings.Infra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Resources\Wings.Resources.csproj">
+      <Project>{7de42ce5-c65b-49fb-92cc-074e930cf1db}</Project>
+      <Name>Wings.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Service\Wings.Service.csproj">
+      <Project>{6b44827a-bc4b-46f0-bdf6-1198d5b486a7}</Project>
+      <Name>Wings.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
