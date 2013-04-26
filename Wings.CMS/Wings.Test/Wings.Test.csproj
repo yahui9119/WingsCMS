@@ -38,14 +38,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FakeItEasy">
+      <HintPath>..\libs\FakeItEasy.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Omu.AwesomeMvc">
+      <HintPath>..\libs\Omu.AwesomeMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.Drawing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Omu.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.Encrypto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Omu.Encrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.ValueInjecter, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -60,9 +85,73 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CruderControllerTests.cs" />
+    <Compile Include="IntegrationTestsBase.cs" />
+    <Compile Include="MappingTest.cs" />
+    <Compile Include="RepoTest.cs" />
+    <Compile Include="Service\CrudService.cs" />
+    <Compile Include="Service\FileManagerService.cs" />
+    <Compile Include="Service\MealService.cs" />
+    <Compile Include="Service\Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\UserService.cs" />
+    <Compile Include="TestingTools.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unitytestdemo.cs" />
+    <Compile Include="ValueInjectionsTEst.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Service\bin\Debug\Omu.Drawing.dll" />
+    <Content Include="Service\bin\Debug\Omu.Drawing.pdb" />
+    <Content Include="Service\bin\Debug\Omu.Encrypto.dll" />
+    <Content Include="Service\bin\Debug\Omu.ProDinner.Core.dll" />
+    <Content Include="Service\bin\Debug\Omu.ProDinner.Core.pdb" />
+    <Content Include="Service\bin\Debug\Omu.ProDinner.Service.dll" />
+    <Content Include="Service\bin\Debug\Omu.ProDinner.Service.pdb" />
+    <Content Include="Service\bin\Debug\Omu.ValueInjecter.dll" />
+    <Content Include="Service\bin\Debug\Omu.ValueInjecter.xml" />
+    <Content Include="Service\obj\Debug\Omu.ProDinner.Service.dll" />
+    <Content Include="Service\obj\Debug\Omu.ProDinner.Service.pdb" />
+    <Content Include="Service\obj\Debug\Service.csproj.FileListAbsolute.txt" />
+    <Content Include="Service\Service.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Service\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Service\obj\Debug\ResolveAssemblyReference.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wings.Core\Wings.Core.csproj">
+      <Project>{843fb113-5177-46e8-9f2d-2a932aea0631}</Project>
+      <Name>Wings.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Data\Wings.Data.csproj">
+      <Project>{6ea40f20-8b32-4860-b34e-44487bf0ba14}</Project>
+      <Name>Wings.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Infra\Wings.Infra.csproj">
+      <Project>{95a1b816-f107-4567-9383-1feb253843ff}</Project>
+      <Name>Wings.Infra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Resources\Wings.Resources.csproj">
+      <Project>{7de42ce5-c65b-49fb-92cc-074e930cf1db}</Project>
+      <Name>Wings.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Service\Wings.Service.csproj">
+      <Project>{6b44827a-bc4b-46f0-bdf6-1198d5b486a7}</Project>
+      <Name>Wings.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.UI\Wings.UI.csproj">
+      <Project>{82878ce1-941f-4a5a-a935-f0954a0eafce}</Project>
+      <Name>Wings.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -40,6 +40,8 @@ namespace Wings.UI
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            Bootstrapper.Bootstrap();
         }
     }
 }
