@@ -62,7 +62,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-	<Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core">
     </Reference>
     <Reference Include="System.Drawing" />
@@ -85,41 +85,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CruderControllerTests.cs" />
-    <Compile Include="IntegrationTestsBase.cs" />
-    <Compile Include="MappingTest.cs" />
-    <Compile Include="RepoTest.cs" />
-    <Compile Include="Service\CrudService.cs" />
-    <Compile Include="Service\FileManagerService.cs" />
-    <Compile Include="Service\MealService.cs" />
-    <Compile Include="Service\Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\UserService.cs" />
-    <Compile Include="TestingTools.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unitytestdemo.cs" />
-    <Compile Include="ValueInjectionsTEst.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Service\bin\Debug\Omu.Drawing.dll" />
-    <Content Include="Service\bin\Debug\Omu.Drawing.pdb" />
-    <Content Include="Service\bin\Debug\Omu.Encrypto.dll" />
-    <Content Include="Service\bin\Debug\Omu.ProDinner.Core.dll" />
-    <Content Include="Service\bin\Debug\Omu.ProDinner.Core.pdb" />
-    <Content Include="Service\bin\Debug\Omu.ProDinner.Service.dll" />
-    <Content Include="Service\bin\Debug\Omu.ProDinner.Service.pdb" />
-    <Content Include="Service\bin\Debug\Omu.ValueInjecter.dll" />
-    <Content Include="Service\bin\Debug\Omu.ValueInjecter.xml" />
-    <Content Include="Service\obj\Debug\Omu.ProDinner.Service.dll" />
-    <Content Include="Service\obj\Debug\Omu.ProDinner.Service.pdb" />
-    <Content Include="Service\obj\Debug\Service.csproj.FileListAbsolute.txt" />
-    <Content Include="Service\Service.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="Service\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="Service\obj\Debug\ResolveAssemblyReference.cache" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wings.Core\Wings.Core.csproj">
@@ -142,17 +110,8 @@
       <Project>{6b44827a-bc4b-46f0-bdf6-1198d5b486a7}</Project>
       <Name>Wings.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wings.UI\Wings.UI.csproj">
-      <Project>{82878ce1-941f-4a5a-a935-f0954a0eafce}</Project>
-      <Name>Wings.UI</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\obj\Debug\TempPE\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

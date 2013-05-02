@@ -1,8 +1,4 @@
-﻿using Wings.Core.Model;
-using Wings.Core.Service;
-using Wings.UI.Dto;
-using Wings.UI.Mappers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,26 +6,28 @@ using System.Web.Mvc;
 
 namespace Wings.UI.Controllers
 {
-    public class HomeController : Cruder<Dinner, DinnerInput>
+    public class HomeController : Controller
     {
-        public HomeController(ICrudService<Dinner> service, IMapper<Dinner, DinnerInput> v)
-            : base(service, v)
+        public string Message { get; set; }
+        public ActionResult Index()
         {
+            ViewBag.Message = Message;
+
+            return View();
         }
 
         public ActionResult About()
         {
+            ViewBag.Message = "Your app description page.";
+
             return View();
         }
 
-        public ActionResult ShowGrid()
+        public ActionResult Contact()
         {
-            return View();
-        }
+            ViewBag.Message = "Your contact page.";
 
-        protected override string RowViewName
-        {
-            get { return "ListItems/Dinner"; }
+            return View();
         }
     }
 }
