@@ -1,0 +1,334 @@
+﻿@{
+    Layout = null;
+  }
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <title>渡口网络办公管理系统</title>
+    <style type="text/css">
+        #header
+        {
+            height: 85px;
+        }
+
+        #leftside, #container, #splitBar, #splitBarProxy
+        {
+            top: 90px;
+        }
+
+        #lean_overlay
+        {
+            position: fixed;
+            z-index: 100;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            background: #000;
+            display: none;
+        }
+
+        .pageFormContent
+        {
+            text-indent: 5px;
+        }
+
+        .unit b
+        {
+            color: Red;
+        }
+
+        #table_LeaveDetails th
+        {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        #table_LeaveDetails tr
+        {
+            height: 22px;
+            line-height: 22px;
+            text-indent: 5px;
+        }
+
+        #div_TaskEdit dl
+        {
+            width: 480px;
+        }
+
+        #div_TaskEdit dt
+        {
+            width: 65px;
+        }
+
+        #div_TaskEdit dd
+        {
+            width: 380px;
+        }
+
+        #Default_UserInfo dl
+        {
+            width: 180px;
+        }
+
+        #Default_UserInfo dt
+        {
+            width: 90px;
+        }
+
+        #Default_UserInfo dd
+        {
+            width: 40px;
+        }
+
+        #div_NewsEdit dl
+        {
+            width: 750px;
+        }
+
+        .my-uploadify-button
+        {
+            background: none;
+            border: none;
+            text-shadow: none;
+            border-radius: 0;
+        }
+
+        .uploadify:hover .my-uploadify-button
+        {
+            background: none;
+            border: none;
+        }
+
+        .fileQueue
+        {
+            width: 400px;
+            height: 150px;
+            overflow: auto;
+            border: 1px solid #E5E5E5;
+            margin-bottom: 10px;
+        }
+    </style>
+    <link href="DWZ/themes/default/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="DWZ/themes/css/core.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="DWZ/themes/css/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="DWZ/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen" />
+    <!--[if IE]>
+<link href="DWZ/themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
+<![endif]-->
+    <style type="text/css">
+        #header
+        {
+            height: 85px;
+        }
+
+        #leftside, #container, #splitBar, #splitBarProxy
+        {
+            top: 90px;
+        }
+    </style>
+    <!--[if lte IE 9]>
+<script src="DWZ/js/speedup.js" type="text/javascript"></script>
+<![endif]-->
+    @*<script src="DWZ/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.min.js" type="text/javascript"></script>
+    <script src="DWZ/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="DWZ/js/jquery.validate.js" type="text/javascript"></script>
+    <script src="DWZ/js/jquery.bgiframe.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.regional.zh.js" type="text/javascript"></script>*@
+    <script src="DWZ/js/jquery-1.7.2.js" type="text/javascript"></script>
+    <script src="DWZ/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="DWZ/js/jquery.validate.js" type="text/javascript"></script>
+    <script src="DWZ/js/jquery.bgiframe.js" type="text/javascript"></script>
+    <script src="DWZ/xheditor/xheditor-1.1.14-zh-cn.min.js" type="text/javascript"></script>
+    <script src="DWZ/uploadify/scripts/jquery.uploadify.js" type="text/javascript"></script>
+    <!-- svg图表  supports Firefox 3.0+, Safari 3.0+, Chrome 5.0+, Opera 9.5+ and Internet Explorer 6.0+ -->
+    <script type="text/javascript"src="DWZ/chart/raphael.js"></script>
+    <script type="text/javascript"src="DWZ/chart/g.raphael.js"></script>
+    <script type="text/javascript"src="DWZ/chart/g.bar.js"></script>
+    <script type="text/javascript"src="DWZ/chart/g.line.js"></script>
+    <script type="text/javascript"src="DWZ/chart/g.pie.js"></script>
+    <script type="text/javascript"src="DWZ/chart/g.dot.js"></script>
+    <script src="DWZ/js/dwz.core.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.util.date.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.validate.method.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.regional.zh.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.barDrag.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.drag.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.tree.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.accordion.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.ui.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.theme.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.switchEnv.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.alertMsg.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.contextmenu.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.navTab.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.tab.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.resize.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.dialog.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.dialogDrag.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.sortDrag.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.cssTable.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.stable.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.taskBar.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.ajax.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.pagination.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.database.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.datepicker.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.effects.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.panel.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.checkbox.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.history.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.combox.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.print.js" type="text/javascript"></script>
+    <script src="DWZ/js/dwz.regional.zh.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var todayDate = Date;
+
+        DWZInit();
+        function DWZInit() {
+            DWZ.init("DWZ/config/dwz.frag.xml", {
+                loginUrl: "login_dialog.html", loginTitle: "登录", // 弹出登录对话框
+                //		loginUrl:"login.html",	// 跳到登录页面
+                statusCode: { ok: 200, error: 300, timeout: 301 }, //【可选】
+                pageInfo: { pageNum: "pageNum", numPerPage: "numPerPage", orderField: "orderField", orderDirection: "orderDirection" }, //【可选】
+                debug: false, // 调试模式 【true|false】
+                callback: function () {
+                    initEnv();
+                    $("#themeList").theme({ themeBase: "DWZ/themes" }); // themeBase 相对于index页面的主题base路径
+                }
+            });
+        }
+        function openDialogNo(url, dlgId, title, width, height) {
+            $.pdialog.openNo(url, dlgId, title, { width: width, height: height });
+        }
+        function openDialog(url, dlgId, title, width, height) {
+            $.pdialog.open(url, dlgId, title, { width: width, height: height });
+        }
+        function openTab(tabid, url, title) {
+            navTab.openTab(tabid, url, { title: title, data: {}, fresh: false, external: true });
+        }
+        function DelClick(url) {
+            var $this = $(this);
+            var title = "确定要删除吗";
+            if (title) {
+                alertMsg.confirm(title, {
+                    okCall: function () {
+                        ajaxTodo(url);
+                    }
+                });
+            } else {
+                ajaxTodo(url);
+            }
+        }
+
+        function ChangePageSize(obj) {
+            $(obj).parent().parent().parent().find("form:eq(0)").find("input[name='numPerPage']").val($(obj).val()); $(obj).parent().parent().find('.pagination').find('.j-num a:eq(0)').click();
+        }
+    </script>
+</head>
+<body>
+    <div id="layout">
+        <div id="header">
+            <div class="headerNav">
+                <a class="logo" href="/">标志</a>
+                <ul class="nav">
+                    <li><a>当前登录账号：<%=realName%></a></li>
+                    <li><a href="/Sys/Users/UserConfigEdit.aspx?uid=<%=uid.ToString() %>" target="dialog"
+                        rel="个人配置_<%=uid.ToString() %>">个人配置</a></li>
+                    <%--<li><a href="/Validate/Login.aspx?action=out">退出</a></li>--%>
+                </ul>
+                <ul class="themeList" id="themeList">
+                    <li theme="default">
+                        <div class="selected">
+                            蓝色</div>
+                    </li>
+                    <li theme="green">
+                        <div>
+                            绿色</div>
+                    </li>
+                    <!--<li theme="red"><div>红色</div></li>-->
+                    <li theme="purple">
+                        <div>
+                            紫色</div>
+                    </li>
+                    <li theme="silver">
+                        <div>
+                            银色</div>
+                    </li>
+                    <li theme="azure">
+                        <div>
+                            天蓝</div>
+                    </li>
+                </ul>
+            </div>
+            <div id="navMenu">
+                <ul>
+                    <li class='selected'><a  class='a_default' href='Sys/Modules/ModulesInfo.ashx?uid=14&sideid=233'><span>日常办公</span></a></li><li><a  href='Sys/Modules/ModulesInfo.ashx?uid=14&sideid=6'><span>系统管理</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="leftside">
+            <div id="sidebar_s">
+                <div class="collapse">
+                    <div class="toggleCollapse">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar">
+                <div class="toggleCollapse">
+                    <h2>
+                        主菜单</h2>
+                    <div>
+                        收缩</div>
+                </div>
+                <div class='accordion' fillSpace='sidebar'><div class='accordionHeader'><h2><span>Folder</span>模块列表</h2></div><div class='accordionContent'><ul class='tree treeFolder'><li><a>  个人考勤</a><ul><li><a href='Office/Leave/LeaveEdit.aspx' target='dialog' rel='功能模块_243' width='600'  height='500'>我要请假</a></li><li><a href='Office/Overtime/OvertimeEdit.aspx' target='dialog' rel='功能模块_245' width='600'  height='500'>申请加班</a></li><li><a href='Office/Leave/LeaveRecord.aspx' target='navTab' rel='234'>请假记录</a></li><li><a href='Office/Overtime/OvertimeRecord.aspx' target='navTab' rel='246'>加班记录</a></li><li><a href='Office/Working/StaffAttenceStatus.aspx' target='navTab' rel='259'>我的考勤</a></li><li><a href='Office/Task/TaskRecord.aspx?statusID=5' target='navTab' rel='237'>待办事项</a></li><li><a href='Office/Task/TaskRecord.aspx' target='navTab' rel='247'>已处理事项</a></li><li><a href='Office/Atten/AttendanceEdit.aspx' target='dialog' rel='功能模块_255' width='600'  height='500'>考勤异常申请</a></li><li><a href='Office/Atten/AttendanceRecord.aspx' target='navTab' rel='256'>考勤异常记录</a></li></ul></li><li><a>  考勤管理</a><ul><li><a href='Office/Leave/LeaveRecordManagement.aspx' target='navTab' rel='249'>请假记录管理</a></li><li><a href='Office/Overtime/OvertimeRecordManagement.aspx' target='navTab' rel='250'>加班记录管理</a></li><li><a href='Office/Working/StaffAttenceStatusManage.aspx' target='navTab' rel='257'>员工考勤信息管理</a></li><li><a href='Office/Working/StaffAttenceStatusOfOrg.aspx' target='navTab' rel='269'>部门员工考勤管理</a></li><li><a href='Office/Atten/AttendanceRecordManagement.aspx' target='navTab' rel='265'>考勤异常管理</a></li><li><a href='Office/OriAttence/SortAboutAttence.aspx' target='navTab' rel='266'>考勤相关的排序</a></li><li><a href='Office/Print/Default.aspx' target='dialog' rel='功能模块_260' width='500'  height='400'>考勤相关表单打印</a></li><li><a href='Office/OriAttence/UploadExcelOfAttence.aspx' target='navTab' rel='251'>上传打卡记录</a></li><li><a href='Office/OriAttence/StaffAttenceInfo.aspx' target='navTab' rel='274'>当前员工考勤统计查询</a></li><li><a href='Office/OriAttence/StaffAttenceInfoByTime.aspx' target='navTab' rel='275'>员工考勤统计查询</a></li><li><a href='Office/Working/StaffAttenceOutputExcel.aspx' target='navTab' rel='261'>员工考勤情况Excel</a></li></ul></li><li><a>  排班管理</a><ul><li><a href='Office/Working/StaffWorkManage.aspx' target='navTab' rel='254'>排班管理</a></li><li><a href='Office/Working/StaffWorkingEdit.aspx' target='navTab' rel='253'>批量更新排班</a></li><li><a href='Office/Working/WorkPlanManage.aspx' target='navTab' rel='258'>排班计划管理</a></li></ul></li><li><a>  合同管理</a><ul><li><a href='Office/Contract/ContractEdit.aspx' target='dialog' rel='功能模块_242' width='890'  height='550'>新建合同</a></li><li><a href='Office/Contract/ContractManagement.aspx' target='navTab' rel='270'>待处理合同</a></li><li><a href='Office/Contract/ContractManagement.aspx?statusID=1' target='navTab' rel='271'>已处理合同</a></li><li><a href='Office/Contract/ContractRecord.aspx?statusID=1' target='navTab' rel='276'>全部合同</a></li><li><a href='Office/Contract/ContractRecord.aspx' target='navTab' rel='268'>我发起的合同</a></li></ul></li><li><a>  财务管理</a><ul><li><a href='Office/Finance/FinanceEdit.aspx' target='dialog' rel='功能模块_241' width='900'  height='380'>我要请款</a></li><li><a href='Office/Finance/FinanceRecord.aspx' target='navTab' rel='277'>我发起的请款</a></li><li><a href='Office/Finance/FinanceManagement.aspx' target='navTab' rel='278'>待处理请款</a></li><li><a href='Office/Finance/FinanceManagement.aspx?statusID=1' target='navTab' rel='279'>已处理请款</a></li><li><a href='Office/Finance/FinanceRecord.aspx?statusID=1' target='navTab' rel='280'>全部请款</a></li></ul></li><li><a>  新闻公告</a><ul><li><a href='Office/News/NewsEdit.aspx?Action=Add' target='dialog' rel='功能模块_263' width='900'  height='600'>添加公告</a></li><li><a href='Office/News/NewsManagement.aspx' target='navTab' rel='264'>公告管理</a></li><li><a href='Office/News/NewsTypeManagement.aspx' target='navTab' rel='272'>资料类别管理</a></li><li><a href='Office/News/DownloadManagement.aspx' target='navTab' rel='273'>资料管理</a></li><li><a href='Office/News/DownloadEdit.aspx?Action=Add' target='dialog' rel='功能模块_267' width='500'  height='600'>上传资料</a></li></ul></li></ul></div></div>
+            </div>
+        </div>
+        <div id="container">
+            <div id="navTab" class="tabsPage">
+                <div class="tabsPageHeader">
+                    <div class="tabsPageHeaderContent">
+                        <!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+                        <ul class="navTab-tab">
+                            <li tabid="main" class="main"><a href="javascript:;"><span><span class="home_icon">我的主页</span></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="tabsLeft">
+                        left</div>
+                    <!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
+                    <div class="tabsRight">
+                        right</div>
+                    <!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
+                    <div class="tabsMore">
+                        more</div>
+                </div>
+                <ul class="tabsMoreList">
+                    <li><a href="javascript:;">我的主页</a></li>
+                </ul>
+                <div class="navTab-panel tabsPageContent layoutBox">
+                    <div class="page unitBox">
+                        <div class="accountInfo" style="display: none">
+                            <div class="alertInfo">
+                                <p>
+                                </p>
+                            </div>
+                            <div class="right">
+                            </div>
+                            <p>
+                                您好：<%=realName %></p>
+                        </div>
+                        <div class="pageFormContent" layouth="42">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        Copyright &copy; 2013 </div>
+</body>
+</html>
