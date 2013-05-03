@@ -311,6 +311,7 @@
     <Content Include="DWZ\js\dwz.drag.js" />
     <Content Include="DWZ\js\dwz.effects.js" />
     <Content Include="DWZ\js\dwz.history.js" />
+    <Content Include="DWZ\js\dwz.min.js" />
     <Content Include="DWZ\js\dwz.navTab.js" />
     <Content Include="DWZ\js\dwz.pagination.js" />
     <Content Include="DWZ\js\dwz.panel.js" />
