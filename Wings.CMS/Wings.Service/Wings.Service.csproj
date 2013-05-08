@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B44827A-BC4B-46F0-BDF6-1198D5B486A7}</ProjectGuid>
+    <ProjectGuid>{E03DA5FB-ACA6-4E05-B60D-ECC3258E0852}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wings.Service</RootNamespace>
@@ -30,18 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Omu.Drawing">
-      <HintPath>..\libs\Omu.Drawing.dll</HintPath>
-    </Reference>
-    <Reference Include="Omu.Encrypto">
-      <HintPath>..\libs\Omu.Encrypto.dll</HintPath>
-    </Reference>
-    <Reference Include="Omu.ValueInjecter">
-      <HintPath>..\libs\Omu.ValueInjecter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,13 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Wings.Core\Wings.Core.csproj">
-      <Project>{843fb113-5177-46e8-9f2d-2a932aea0631}</Project>
-      <Name>Wings.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

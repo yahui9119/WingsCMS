@@ -13,13 +13,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wings.UI</RootNamespace>
     <AssemblyName>Wings.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,27 +42,25 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Spring.Core">
-      <HintPath>..\..\libs\Spring.NET\dll\net\4.0\debug\Spring.Core.dll</HintPath>
+      <HintPath>..\..\libs\Spring.NET\bin\net\4.0\release\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Data">
-      <HintPath>..\..\libs\Spring.NET\dll\net\4.0\debug\Spring.Data.dll</HintPath>
+      <HintPath>..\..\libs\Spring.NET\bin\net\4.0\release\Spring.Data.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Web.Mvc4">
-      <HintPath>..\..\libs\Spring.NET\dll\net\4.0\debug\Spring.Web.Mvc4.dll</HintPath>
+      <HintPath>..\..\libs\Spring.NET\bin\net\4.0\release\Spring.Web.Mvc4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -123,6 +122,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>

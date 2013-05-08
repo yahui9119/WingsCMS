@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6EA40F20-8B32-4860-B34E-44487BF0BA14}</ProjectGuid>
+    <ProjectGuid>{7AC9C9C2-119F-44B2-A9E1-ABB809AD1869}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wings.Data</RootNamespace>
@@ -33,29 +33,21 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Omu.ValueInjecter">
-      <HintPath>..\libs\Omu.ValueInjecter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wings.Core\Wings.Core.csproj">
-      <Project>{843fb113-5177-46e8-9f2d-2a932aea0631}</Project>
-      <Name>Wings.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Wings.Infra\Wings.Infra.csproj">
-      <Project>{95a1b816-f107-4567-9383-1feb253843ff}</Project>
-      <Name>Wings.Infra</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
