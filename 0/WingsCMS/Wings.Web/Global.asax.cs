@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Wings.Framework.Plugin;
 
 namespace Wings.Web
 {
@@ -23,6 +24,9 @@ namespace Wings.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            IPluginsManger pm = new PluginsManger();
+            IPlugin blogplugin=new Wings.Plugin.Blog.BlogPlugin();
+            pm.InstallPlugin(blogplugin);
         }
     }
 }

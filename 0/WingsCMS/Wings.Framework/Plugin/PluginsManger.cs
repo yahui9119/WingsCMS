@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wings.Framework.Routes;
 
 namespace Wings.Framework.Plugin
 {
@@ -16,14 +17,15 @@ namespace Wings.Framework.Plugin
         {
             try
             {
-
+                RoutesRegister.RegisterRoute(plugin.routes);
+                return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                //记录日志ex
+                return false;
             }
-            return false;
+          
         }
         /// <summary>
         /// 卸载插件
@@ -34,14 +36,15 @@ namespace Wings.Framework.Plugin
         {
             try
             {
-
+                RoutesRegister.DeleteRoute(plugin.routes);
+                return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+
+                //记录日志ex
+                return false;
             }
-            return false;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace Wings.Framework.Plugin
 {
-    interface IPlugin
+    public interface IPlugin
     {
         /// <summary>
         /// 插件名
@@ -19,6 +19,6 @@ namespace Wings.Framework.Plugin
         /// <summary>
         /// 插件路由
         /// </summary>
-        List<Route> routes { get; set; }
+        IList<Route> routes { get; set; }
     }
 }

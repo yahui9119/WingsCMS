@@ -312,6 +312,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wings.Framework\Wings.Framework.csproj">
+      <Project>{f1c7efe6-96f5-419e-af73-117b844962ee}</Project>
+      <Name>Wings.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Plugin.Blog\Wings.Plugin.Blog.csproj">
+      <Project>{be5558b3-8884-4dad-b781-73757599ed4a}</Project>
+      <Name>Wings.Plugin.Blog</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
