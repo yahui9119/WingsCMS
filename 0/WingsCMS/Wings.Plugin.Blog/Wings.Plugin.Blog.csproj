@@ -294,7 +294,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /s /y "$(ProjectDir)bin\*" "$(SolutionDir)CJCMS.Web\bin\"
+    <PostBuildEvent>xcopy /s /y "$(ProjectDir)bin\*" "$(SolutionDir)Wings.Web\bin\"
 xcopy /s /y "$(ProjectDir)Content\*" "$(SolutionDir)Wings.Web\Content"
 xcopy /s /y "$(ProjectDir)Scripts\*" "$(SolutionDir)Wings.Web\Scripts"
 xcopy /s /y /i "$(ProjectDir)Views\*" "$(SolutionDir)Wings.Web\Views\Blog"</PostBuildEvent>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Wings.Framework.DDD;
+using Wings.Framework.Infrastructure;
 
 namespace Wings.Domain.Repositories
 {
