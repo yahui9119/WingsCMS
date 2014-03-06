@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
-using Wings.Plugin.MobileApp.Models;
+//using Wings.Plugin.MobileApp.Models;
 
 namespace Wings.Plugin.MobileApp
 {

@@ -65,6 +65,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
@@ -88,20 +90,45 @@
     </Compile>
     <Compile Include="DataBase\DBMappercs.cs" />
     <Compile Include="Infrastructure\DisposableObject.cs" />
+    <Compile Include="Infrastructure\ICoreServiceContract.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="InterceptionBehaviors\CachingBehavior.cs" />
+    <Compile Include="InterceptionBehaviors\ExceptionLoggingBehavior.cs" />
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\Log.cs" />
-    <Compile Include="PagedResult.cs" />
+    <Compile Include="Infrastructure\PagedResult.cs" />
     <Compile Include="Routes\CustomRouting.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\IPluginsManger.cs" />
     <Compile Include="Plugin\PluginsManger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes\RoutesRegister.cs" />
-    <Compile Include="ServiceLocator.cs" />
+    <Compile Include="Infrastructure\ServiceLocator.cs" />
     <Compile Include="Task\DefaultBackgroundTaskManager.cs" />
     <Compile Include="Task\IBackgroundTask.cs" />
     <Compile Include="Task\IBackgroundTaskManager.cs" />
+    <Compile Include="Transactions\DistributedTransactionCoordinator.cs" />
+    <Compile Include="Transactions\ITransactionCoordinator.cs" />
+    <Compile Include="Transactions\SuppressedTransactionCoordinator.cs" />
+    <Compile Include="Transactions\TransactionCoordinator.cs" />
+    <Compile Include="Transactions\TransactionCoordinatorFactory.cs" />
+    <Compile Include="UnityExtensions\GlobalSuppressions.cs" />
+    <Compile Include="UnityExtensions\UnityBehaviorExtensionElement.cs" />
+    <Compile Include="UnityExtensions\UnityCallContextInitializer.cs" />
+    <Compile Include="UnityExtensions\UnityContextChannelExtension.cs" />
+    <Compile Include="UnityExtensions\UnityContextChannelLifetimeManager.cs" />
+    <Compile Include="UnityExtensions\UnityInstanceContextExtension.cs" />
+    <Compile Include="UnityExtensions\UnityInstanceContextInitializer.cs" />
+    <Compile Include="UnityExtensions\UnityInstanceContextLifetimeManager.cs" />
+    <Compile Include="UnityExtensions\UnityInstanceProvider.cs" />
+    <Compile Include="UnityExtensions\UnityOperationContextExtension.cs" />
+    <Compile Include="UnityExtensions\UnityOperationContextLifetimeManager.cs" />
+    <Compile Include="UnityExtensions\UnityOperationContextMessageInspector.cs" />
+    <Compile Include="UnityExtensions\UnityServiceBehavior.cs" />
+    <Compile Include="UnityExtensions\UnityServiceHostBaseExtension.cs" />
+    <Compile Include="UnityExtensions\UnityServiceHostBaseLifetimeManager.cs" />
+    <Compile Include="UnityExtensions\UnityWcfExtension.cs" />
+    <Compile Include="UnityExtensions\UnityWcfLifetimeManager.cs" />
     <Compile Include="Utils\Email.cs" />
   </ItemGroup>
   <ItemGroup />
