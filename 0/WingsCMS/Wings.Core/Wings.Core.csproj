@@ -46,9 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreService.cs" />
+    <Compile Include="Implementation\MouseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Wings.Contracts\Wings.Contracts.csproj">
+      <Project>{0f693fa1-ece4-4507-875a-217bf82b5f5d}</Project>
+      <Name>Wings.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wings.Domain\Wings.Domain.csproj">
       <Project>{6e9c05d0-4dc6-4c41-b328-11896f9f3372}</Project>
       <Name>Wings.Domain</Name>

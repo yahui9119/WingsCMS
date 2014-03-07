@@ -7,5 +7,6 @@ namespace Wings.Domain.Services
 {
     public class DomainService : IDomainService
     {
+
     }
 }

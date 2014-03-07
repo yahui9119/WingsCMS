@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Wings.ModelCore">
+  <logicalClassDesignerModelMoniker Id="20e39195-d305-4c48-9842-a0fbfef8918e" />
+  <nestedChildShapes>
+    <classShape Id="8b35d64f-6748-433c-9d7d-2267287267d2" isExpanded="false" absoluteBounds="2.875, 1.5, 1.5, 0.5" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="379979e0-5fca-4b41-8b74-42f00e86611d" LastKnownName="Class1" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="2038a2ee-3c84-4689-bb0f-94ec4e3acccd" absoluteBounds="2.89, 1.8900000000000001, 1.4700000000000002, 0.226318359375" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="482768b4-90d8-4abe-b897-50317b399313" absoluteBounds="2.89, 2.126318359375, 1.4700000000000002, 0.226318359375" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

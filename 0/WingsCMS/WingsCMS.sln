@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wings.Domain.Repositories",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wings.DataObjects", "Wings.DataObjects\Wings.DataObjects.csproj", "{3DF43631-1248-4456-AF83-7C08100BA289}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Wings.Design", "Wings.Design\Wings.Design.modelproj", "{C0AF7774-14D6-48E8-9DF1-03B3F0877986}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{3DF43631-1248-4456-AF83-7C08100BA289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DF43631-1248-4456-AF83-7C08100BA289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DF43631-1248-4456-AF83-7C08100BA289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0AF7774-14D6-48E8-9DF1-03B3F0877986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0AF7774-14D6-48E8-9DF1-03B3F0877986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0AF7774-14D6-48E8-9DF1-03B3F0877986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0AF7774-14D6-48E8-9DF1-03B3F0877986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

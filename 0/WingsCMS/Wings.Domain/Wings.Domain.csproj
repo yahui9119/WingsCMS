@@ -50,7 +50,10 @@
     <Compile Include="Model\AggregateRoot.cs" />
     <Compile Include="Model\Cat.cs" />
     <Compile Include="Model\Mouse.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICatRepository.cs" />
+    <Compile Include="Repositories\IMouseRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryContext.cs" />
     <Compile Include="Repositories\Repository.cs" />

@@ -87,9 +87,12 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="MouseService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
     <ProjectReference Include="..\Wings.DataObjects\Wings.DataObjects.csproj">
       <Project>{3df43631-1248-4456-af83-7c08100ba289}</Project>
       <Name>Wings.DataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Domain\Wings.Domain.csproj">
+      <Project>{6e9c05d0-4dc6-4c41-b328-11896f9f3372}</Project>
+      <Name>Wings.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wings.Framework\Wings.Framework.csproj">
       <Project>{f1c7efe6-96f5-419e-af73-117b844962ee}</Project>

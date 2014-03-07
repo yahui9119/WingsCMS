@@ -11,6 +11,9 @@ namespace Wings.Domain.Model
     /// </summary>
     public class Mouse : AggregateRoot
     {
-
+        /// <summary>
+        /// 名字
+        /// </summary>
+        public string Name { get; set; }
     }
 }

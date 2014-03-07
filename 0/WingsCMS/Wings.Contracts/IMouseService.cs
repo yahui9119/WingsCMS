@@ -14,6 +14,6 @@ namespace Wings.Contracts
     {
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void Cry();
+        void Cry(Guid id);
     }
 }
