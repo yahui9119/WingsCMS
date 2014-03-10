@@ -56,6 +56,10 @@ namespace Wings.Domain.Model
             set { id = value; }
         }
         /// <summary>
+        /// 创建者
+        /// </summary>
+        public Guid Creator { get; set; }
+        /// <summary>
         /// 添加时间
         /// </summary>
         public DateTime CreateDate { get; set; }

@@ -73,20 +73,6 @@
       </propertyInstances>
     </stereotypeInstance>
   </appliedStereotypesInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="5ddbf51e-0c77-4b75-bfcc-0c783757983d">
-      <profileInstance Id="02c9acdd-03fc-4f88-98c3-41a82e5295ea" name="CSharpProfile">
-        <elementDefinition Id="1d3bc8b3-51dd-46eb-85f2-704313c72f0c" />
-      </profileInstance>
-      <elementDefinition Id="529203c4-9613-41e1-b95f-222c8a1ab4ec" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="e3f392a6-72d8-4515-9987-8af1efe523ba">
-      <profileInstance Id="972b3d02-2e55-4f9c-824b-ff0dd76df419" name="TextTemplateBindings">
-        <elementDefinition Id="dc81ce2c-4817-412d-909c-fdd339da860a" />
-      </profileInstance>
-      <elementDefinition Id="53d4e5cc-be0b-4bb5-adf9-19030cd96c68" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="379979e0-5fca-4b41-8b74-42f00e86611d" name="User" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -208,6 +194,18 @@
             <elementDefinition Id="28926f87-dc45-4b63-ab06-667e79ad63d6" />
             <type_NamedElement>
               <referencedTypeMoniker Id="950b3fbc-a2e8-4094-a5f6-cfffc5ed6fb6" LastKnownName="DateTime" />
+            </type_NamedElement>
+          </property>
+          <property Id="f0b5e8e6-7ef5-489c-89e8-3e0d51b96c2a" name="CreateUserID" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dda4d0db-ca50-4ee1-9d2b-8228559ad688" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="184849e3-e546-46e3-a32a-e8bfd7f41fb6" LastKnownName="Guid" />
+            </type_NamedElement>
+          </property>
+          <property Id="7f809786-44d6-4951-849e-12064cf3b10b" name="Version" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="57dfb4b7-556c-4260-95d2-2235ffd23107" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="15471dbe-e422-4c8f-a233-5729d2364612" LastKnownName="Int" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -378,6 +376,16 @@
         </generalsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="184849e3-e546-46e3-a32a-e8bfd7f41fb6" name="Guid" isAbstract="false" isLeaf="false" cachedFullName="Guid">
+        <elementDefinition Id="b50b185a-3d76-4ca0-b837-1edbe0c850e3" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="15471dbe-e422-4c8f-a233-5729d2364612" name="Int" isAbstract="false" isLeaf="false" cachedFullName="Int">
+        <elementDefinition Id="2d60a972-89ac-4b3e-9025-ffe2b56ae7dc" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="1ec99368-9212-485e-8c7e-051c97c6d242" name="Wings.Design">
     <elementDefinition Id="0277b8b6-ce86-4e69-8aec-339dc4bdc6da" />
@@ -393,6 +401,18 @@
           <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
         </profileInstance>
         <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="5ddbf51e-0c77-4b75-bfcc-0c783757983d">
+        <profileInstance Id="02c9acdd-03fc-4f88-98c3-41a82e5295ea" name="CSharpProfile">
+          <elementDefinition Id="1d3bc8b3-51dd-46eb-85f2-704313c72f0c" />
+        </profileInstance>
+        <elementDefinition Id="529203c4-9613-41e1-b95f-222c8a1ab4ec" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="e3f392a6-72d8-4515-9987-8af1efe523ba">
+        <profileInstance Id="972b3d02-2e55-4f9c-824b-ff0dd76df419" name="TextTemplateBindings">
+          <elementDefinition Id="dc81ce2c-4817-412d-909c-fdd339da860a" />
+        </profileInstance>
+        <elementDefinition Id="53d4e5cc-be0b-4bb5-adf9-19030cd96c68" />
       </packageHasProfileInstances>
     </profileInstances>
   </package>

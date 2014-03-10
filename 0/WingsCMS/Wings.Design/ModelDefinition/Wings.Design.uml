@@ -336,6 +336,42 @@
                 LastKnownLocation="Wings.Design.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="dda4d0db-ca50-4ee1-9d2b-8228559ad688"
+            name="CreateUserID"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="b50b185a-3d76-4ca0-b837-1edbe0c850e3"
+                LastKnownName="Guid"
+                LastKnownLocation="Wings.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="57dfb4b7-556c-4260-95d2-2235ffd23107"
+            name="Version"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2d60a972-89ac-4b3e-9025-ffe2b56ae7dc"
+                LastKnownName="Int"
+                LastKnownLocation="Wings.Design.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -634,6 +670,11 @@
           </generalization>
         </generalsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="2d60a972-89ac-4b3e-9025-ffe2b56ae7dc"
+        name="Int" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
