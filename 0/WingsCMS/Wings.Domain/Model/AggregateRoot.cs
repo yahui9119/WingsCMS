@@ -60,9 +60,13 @@ namespace Wings.Domain.Model
         /// </summary>
         public DateTime CreateDate { get; set; }
         /// <summary>
-        /// 最后一次修改时间 防止脏数据（版本控制）
+        /// 最后一次修改时间
         /// </summary>
         public DateTime EditDate { get; set; }
+        /// <summary>
+        /// 版本号 数据版本控制
+        /// </summary>
+        public int Version { get; set; }
         #endregion
     }
 }
