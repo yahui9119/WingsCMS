@@ -11,6 +11,7 @@ namespace Wings.Domain.Model
     /// </summary>
     public class Module:AggregateRoot
     {
+
         /// <summary>
         /// 模块控制器
         /// </summary>
@@ -26,7 +27,15 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 父模块id
         /// </summary>
-        public Guid PID { get; set; }
+        public Guid ParentID { get; set; }
+        /// <summary>
+        /// 父模块
+        /// </summary>
+        public Module ParentModule { get; set; }
+        /// <summary>
+        /// 子模块
+        /// </summary>
+        public List<Module> ChildModule { get; set; }
         /// <summary>
         /// 是否是按钮
         /// </summary>

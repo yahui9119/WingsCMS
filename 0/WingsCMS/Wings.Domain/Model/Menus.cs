@@ -34,7 +34,19 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 父菜单标示
         /// </summary>
-        public Guid PID { get; set; }
+        public Guid ParentID { get; set; }
+        /// <summary>
+        /// 父栏目
+        /// </summary>
+        public Menus ParentMenu { get; set; }
+        /// <summary>
+        /// 子菜单
+        /// </summary>
+        public List<Menus> ChildMenu { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public bool IsActive { get; set; }
         
     }
 }

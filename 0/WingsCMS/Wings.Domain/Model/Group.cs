@@ -22,6 +22,14 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 父分组的标示
         /// </summary>
-        public Guid PID { get; set; }
+        public Guid ParentID { get; set; }
+        /// <summary>
+        /// 父组
+        /// </summary>
+        public Group ParentGroup { get; set; }
+        /// <summary>
+        /// 子分组
+        /// </summary>
+        public List<Group> ChildGroup { get; set; }
     }
 }
