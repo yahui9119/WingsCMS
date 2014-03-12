@@ -19,14 +19,14 @@ namespace Wings.Domain.Model
         /// 简介说明
         /// </summary>
         public string Description { get; set; }
-        /// <summary>
-        /// 父分组的标示
-        /// </summary>
-        public Guid ParentID { get; set; }
-        /// <summary>
-        /// 父组
-        /// </summary>
-        public Group ParentGroup { get; set; }
+        ///// <summary>
+        ///// 父分组的标示
+        ///// </summary>
+        //public Guid ParentID { get; set; }
+        ///// <summary>
+        ///// 父组
+        ///// </summary>
+        //public Group ParentGroup { get; set; }
         /// <summary>
         /// 子分组
         /// </summary>

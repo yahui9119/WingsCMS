@@ -7,46 +7,58 @@ using System.Threading.Tasks;
 namespace Wings.Domain.Model
 {
     /// <summary>
-    /// 标示模块的领域的实体
+    /// 标示模块领域的实体
     /// </summary>
     public class Module:AggregateRoot
     {
-
         /// <summary>
-        /// 模块控制器
+        /// 菜单名
         /// </summary>
-        public string Controller { get; set; }
+        public string Name { get; set; }
         /// <summary>
-        /// 模块访问点
-        /// </summary>
-        public string Action { get; set; }
-        /// <summary>
-        /// 说明 简介
+        /// 详情
         /// </summary>
         public string Description { get; set; }
         /// <summary>
-        /// 父模块id
+        /// 可访问点的id 
         /// </summary>
-        public Guid ParentID { get; set; }
+        public Action Action { get; set; }
+        ///// <summary>
+        ///// 访问点的id
+        ///// </summary>
+        //public Guid ActionID { get; set; }
         /// <summary>
-        /// 父模块
+        /// 图标
         /// </summary>
-        public Module ParentModule { get; set; }
+        public string ICON { get; set; }
         /// <summary>
-        /// 子模块
+        /// 转跳链接
+        /// </summary>
+        public string Url { get; set; }
+        /// <summary>
+        /// 排序索引
+        /// </summary>
+        public int Index { get; set; }
+        ///// <summary>
+        ///// 父菜单标示
+        ///// </summary>
+        //public Guid ParentID { get; set; }
+        ///// <summary>
+        ///// 父栏目
+        ///// </summary>
+        //public Module ParentModule { get; set; }
+        /// <summary>
+        /// 子菜单
         /// </summary>
         public List<Module> ChildModule { get; set; }
         /// <summary>
-        /// 是否是按钮
+        /// 是否是菜单
         /// </summary>
-        public bool IsButton { get; set; }
+        public bool IsMenus { get; set; }
         /// <summary>
-        /// 是否是扩展模块
+        /// 是否启用
         /// </summary>
-        public bool IsPlugin { get; set; }
-        /// <summary>
-        /// 是否激活启用
-        /// </summary>
-        public bool IsActivate { get; set; }
+        public bool IsActive { get; set; }
+        
     }
 }

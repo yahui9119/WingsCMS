@@ -18,31 +18,19 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 所有者的Id
         /// </summary>
-        public Guid Own { get; set; }
+        public Guid OwnID { get; set; }
         /// <summary>
         /// 模块
         /// </summary>
         public List<Module> Modules { get; set; }
-        /// <summary>
-        /// 权限名称
-        /// </summary>
-        public string Name { get; set; }
-        /// <summary>
-        /// 简介说明
-        /// </summary>
-        public string Description { get; set; }
         ///// <summary>
-        ///// 模块ID
+        ///// 权限名称
         ///// </summary>
-        //public Guid ModuleID { get; set; }
+        //public string Name { get; set; }
         ///// <summary>
-        ///// 站点用户分组标示
+        ///// 简介说明
         ///// </summary>
-        //public Guid WebUserGroupID { get; set; }
-        ///// <summary>
-        ///// 站点用户角色标示
-        ///// </summary>
-        //public Guid WebUserRoleID { get; set; }
+        //public string Description { get; set; }
         /// <summary>
         /// 是否授权 为False 对单个用户启用控制
         /// </summary>
@@ -70,14 +58,4 @@ namespace Wings.Domain.Model
         /// </summary>
         User = 3
     }
-    ///// <summary>
-    ///// 请求类型
-    ///// </summary>
-    //public enum OptionType : int
-    //{
-    //    GET=1,
-    //    POST=2,
-    //    PUT=3,
-    //    DELETE=4
-    //}
 }

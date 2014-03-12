@@ -8,9 +8,15 @@ using Wings.Domain.Model;
 namespace Wings.Domain.Repositories
 {
     /// <summary>
-    /// 站点用户角色管理
+    /// 用户角色管理
     /// </summary>
     public interface IUserRoleRepository:IRepository<UserRole>
     {
+        /// <summary>
+        /// 根据用户获取用户角色
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        List<Role> GetRolesByUser(User user);
     }
 }

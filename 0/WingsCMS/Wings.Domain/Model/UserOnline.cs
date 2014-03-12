@@ -20,6 +20,10 @@ namespace Wings.Domain.Model
         /// </summary>
         public DateTime OnlineTime { get; set; }
         /// <summary>
+        /// 在线的站点
+        /// </summary>
+        public Web web { get; set; }
+        /// <summary>
         /// 当前是否在线
         /// </summary>
         public bool IsOnline { get; set; }

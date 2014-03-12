@@ -24,6 +24,14 @@ namespace Wings.Domain.Model
         /// </summary>
         public string Email { get; set; }
         /// <summary>
+        /// 手机号码
+        /// </summary>
+        public string PhoneNum { get; set; }
+        /// <summary>
+        /// 邮编号码
+        /// </summary>
+        public string Zip { get; set; }
+        /// <summary>
         /// QQ账号
         /// </summary>
         public string QQ{get;set;}
@@ -38,6 +46,6 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 最后登陆时间
         /// </summary>
-        public string LastloginTime { get; set; }
+        public DateTime LastloginTime { get; set; }
     }
 }

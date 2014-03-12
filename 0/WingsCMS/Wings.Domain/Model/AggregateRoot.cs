@@ -70,7 +70,7 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 版本号 数据版本控制
         /// </summary>
-        public int Version { get; set; }
+        public byte[] Version { get; set; }
         #endregion
     }
 }
