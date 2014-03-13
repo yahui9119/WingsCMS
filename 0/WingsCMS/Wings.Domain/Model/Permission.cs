@@ -52,7 +52,7 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 用户组权限
         /// </summary>
-        GroupUser = 2,
+        Group = 2,
         /// <summary>
         /// 用户权限
         /// </summary>

@@ -20,6 +20,7 @@ namespace Wings.Domain.Services
         private readonly IModuleRepository moduleRepository;
         private readonly IRoleRepository roleRepository;
         private readonly IWebModuleRepositoty webmoduleRepository;
+        private readonly IPermissionRepository permissionRepository;
           
         public DomainService(IRepositoryContext repositoryContext,
           IUserGroupRepository iusergroupRepository,
@@ -30,7 +31,8 @@ namespace Wings.Domain.Services
         IWebUserRepository iwebuserRepository,
         IGroupRepository igroupRepository,
         IModuleRepository imoduleRepository,
-            IWebModuleRepositoty webmoduleRepository)
+            IWebModuleRepositoty webmoduleRepository,
+            IPermissionRepository permissionRepository)
         {
             this.groupRepository = igroupRepository;
             this.moduleRepository = imoduleRepository;
@@ -42,6 +44,7 @@ namespace Wings.Domain.Services
             this.repositoryContext = repositoryContext;
             this.roleRepository = roleRepository;
             this.webmoduleRepository = webmoduleRepository;
+            this.permissionRepository = permissionRepository;
         }
 
         public Model.UserRole AssignUserRole(Model.User user, List<Role> roles)
@@ -62,12 +65,12 @@ namespace Wings.Domain.Services
             if (userroles != null)
             {
                 userroleRepository.Remove(userroles);
-                entity.user = user;
-                entity.roles = roles;
-                userroleRepository.Add(entity);
             }
             entity.user = user;
             entity.roles = roles;
+            entity.CreateDate = DateTime.Now;
+            entity.EditDate = DateTime.Now;
+            
             userroleRepository.Add(entity);
             repositoryContext.Commit();
             return entity;
@@ -91,14 +94,12 @@ namespace Wings.Domain.Services
             if (userwebs != null)
             {
                 webuserRepository.Remove(userwebs);
-                entity.user = user;
-                entity.webs = webs;
-                webuserRepository.Add(entity);
-                
             }
 
             entity.user = user;
             entity.webs = webs;
+            entity.CreateDate = DateTime.Now;
+            entity.EditDate = DateTime.Now;
             webuserRepository.Add(entity);
             repositoryContext.Commit();
             return entity;
@@ -125,6 +126,8 @@ namespace Wings.Domain.Services
             }
             entity.user = user;
             entity.groups = groups;
+            entity.CreateDate = DateTime.Now;
+            entity.EditDate = DateTime.Now;
             usergroupRepository.Add(entity);
             repositoryContext.Commit();
             return entity;
@@ -152,6 +155,8 @@ namespace Wings.Domain.Services
             }
             entity.web = web;
             entity.Modules = modules;
+            entity.CreateDate = DateTime.Now;
+            entity.EditDate = DateTime.Now;
             webmoduleRepository.Add(entity);
             repositoryContext.Commit();
             return entity;
@@ -160,22 +165,120 @@ namespace Wings.Domain.Services
 
         public Permission GrantRolePermission(Role role, List<Module> modules)
         {
-            throw new NotImplementedException();
+            if (role == null)
+            {
+                throw new ArgumentNullException("role");
+            }
+            if (modules == null)
+            {
+                throw new ArgumentNullException("modules");
+            }
+            role = roleRepository.Find(Specification<Role>.Eval(r => r.ID.Equals(role.ID)));
+            modules = moduleRepository.GetAll(Specification<Module>.Eval(m => modules.Contains(m))).ToList();
+            var permission = permissionRepository.Find(Specification<Permission>.Eval(p => p.OwnID == role.ID && p.Type == PermissionType.Role));
+            if (permission != null)
+            {
+                permissionRepository.Remove(permission);
+            }
+            permission = new Permission();
+            permission.IsAuthorization = true;
+            permission.Modules = modules;
+            permission.OwnID = role.ID;
+            permission.Type = PermissionType.Role;
+            permission.CreateDate = DateTime.Now;
+            permission.EditDate=DateTime.Now;
+            permissionRepository.Add(permission);
+            repositoryContext.Commit();
+            return permission;
         }
 
         public Permission GrantGroupPermission(Group group, List<Module> modules)
         {
-            throw new NotImplementedException();
+            if (group == null)
+            {
+                throw new ArgumentNullException("group");
+            }
+            if (modules == null)
+            {
+                throw new ArgumentNullException("modules");
+            }
+            group = groupRepository.Find(Specification<Group>.Eval(r => r.ID.Equals(group.ID)));
+            modules = moduleRepository.GetAll(Specification<Module>.Eval(m => modules.Contains(m))).ToList();
+            var permission = permissionRepository.Find(Specification<Permission>.Eval(p => p.OwnID == group.ID && p.Type == PermissionType.Group));
+            if (permission != null)
+            {
+                permissionRepository.Remove(permission);
+            }
+            permission = new Permission();
+            permission.IsAuthorization = true;
+            permission.Modules = modules;
+            permission.OwnID = group.ID;
+            permission.Type = PermissionType.Group;
+            permission.CreateDate = DateTime.Now;
+            permission.EditDate = DateTime.Now;
+            permissionRepository.Add(permission);
+            repositoryContext.Commit();
+            return permission;
         }
 
         public Permission AssignUserAllowPermission(User user, List<Module> modules)
         {
-            throw new NotImplementedException();
+            if (user == null)
+            {
+                throw new ArgumentNullException("user");
+            }
+            if (modules == null)
+            {
+                throw new ArgumentNullException("modules");
+            }
+            user = userRepository.Find(Specification<User>.Eval(r => r.ID.Equals(user.ID)));
+            modules = moduleRepository.GetAll(Specification<Module>.Eval(m => modules.Contains(m))).ToList();
+            var permission = permissionRepository.Find(Specification<Permission>.Eval(p => p.OwnID == user.ID && p.Type == PermissionType.User));
+            if (permission != null)
+            {
+                permissionRepository.Remove(permission);
+            }
+            permission = new Permission();
+            permission.IsAuthorization = true;
+            permission.Modules = modules;
+            permission.OwnID = user.ID;
+            permission.Type = PermissionType.User;
+            permission.CreateDate = DateTime.Now;
+            permission.EditDate = DateTime.Now;
+            permission.IsAuthorization = true;
+            permissionRepository.Add(permission);
+            repositoryContext.Commit();
+            return permission;
         }
 
         public Permission AssignUserBanPermission(User user, List<Module> modules)
         {
-            throw new NotImplementedException();
+            if (user == null)
+            {
+                throw new ArgumentNullException("user");
+            }
+            if (modules == null)
+            {
+                throw new ArgumentNullException("modules");
+            }
+            user = userRepository.Find(Specification<User>.Eval(r => r.ID.Equals(user.ID)));
+            modules = moduleRepository.GetAll(Specification<Module>.Eval(m => modules.Contains(m))).ToList();
+            var permission = permissionRepository.Find(Specification<Permission>.Eval(p => p.OwnID == user.ID && p.Type == PermissionType.User));
+            if (permission != null)
+            {
+                permissionRepository.Remove(permission);
+            }
+            permission = new Permission();
+            permission.IsAuthorization = true;
+            permission.Modules = modules;
+            permission.OwnID = user.ID;
+            permission.Type = PermissionType.User;
+            permission.CreateDate = DateTime.Now;
+            permission.EditDate = DateTime.Now;
+            permission.IsAuthorization = false;
+            permissionRepository.Add(permission);
+            repositoryContext.Commit();
+            return permission;
         }
     }
 }

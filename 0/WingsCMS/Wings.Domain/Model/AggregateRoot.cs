@@ -58,7 +58,7 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 创建者
         /// </summary>
-        public Guid Creator { get; set; }
+        public Guid? Creator { get; set; }
         /// <summary>
         /// 添加时间
         /// </summary>
