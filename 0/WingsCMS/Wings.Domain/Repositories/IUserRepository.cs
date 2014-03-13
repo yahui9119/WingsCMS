@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wings.Domain.Model;
+using Wings.Framework;
 
 namespace Wings.Domain.Repositories
 {

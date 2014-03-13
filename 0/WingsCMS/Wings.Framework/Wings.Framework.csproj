@@ -88,7 +88,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WingsConfigurationSection.csd</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\DBMappercs.cs" />
     <Compile Include="Infrastructure\DisposableObject.cs" />
     <Compile Include="Infrastructure\ICoreServiceContract.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />

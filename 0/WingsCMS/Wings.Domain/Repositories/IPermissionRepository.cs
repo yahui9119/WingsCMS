@@ -18,11 +18,5 @@ namespace Wings.Domain.Repositories
         /// <param name="webuser"></param>
         /// <returns></returns>
         List<Permission> GetPermissionByWebUser(WebUser webuser);
-        /// <summary>
-        /// 根据用户获取权限
-        /// </summary>
-        /// <param name="webuser"></param>
-        /// <returns></returns>
-        List<Permission> GetPermissionByUser(WebUser webuser);
     }
 }

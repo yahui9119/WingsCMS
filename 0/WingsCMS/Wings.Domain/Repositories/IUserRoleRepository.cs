@@ -18,5 +18,11 @@ namespace Wings.Domain.Repositories
         /// <param name="user"></param>
         /// <returns></returns>
         List<Role> GetRolesByUser(User user);
+        /// <summary>
+        /// 根据角色获取所有角色下的有效用户
+        /// </summary>
+        /// <param name="Role"></param>
+        /// <returns></returns>
+        List<User> GetUsersByRole(Role Role);
     }
 }

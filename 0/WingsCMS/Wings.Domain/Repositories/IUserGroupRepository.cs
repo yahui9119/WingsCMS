@@ -13,16 +13,17 @@ namespace Wings.Domain.Repositories
     public interface IUserGroupRepository : IRepository<UserGroup>
     {
         /// <summary>
-        /// 获取该站点用户的分组
+        /// 获取用户的分组
         /// </summary>
         /// <param name="user">用户</param>
         /// <returns></returns>
-        List<Group> GetGroupByWebUser(User user);
+        List<Group> GetGroupByUser(User user);
         /// <summary>
-        /// 是否包换该用户
+        /// 根据分组获取用户
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="group">分组</param>
         /// <returns></returns>
-        bool IsExistsUser(User user);
+        List<User> GetUserByGroup(Group group);
+
     }
 }

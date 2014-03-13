@@ -12,7 +12,6 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
         public UserRoleConfig()
             : base()
         {
-
         }
     }
 }

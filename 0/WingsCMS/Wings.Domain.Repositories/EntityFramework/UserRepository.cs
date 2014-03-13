@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Wings.Domain.Model;
 using Wings.Domain.Repositories.Specifications;
 using Wings.Domain.Specifications;
+using Wings.Framework;
 
 namespace Wings.Domain.Repositories.EntityFramework
 {
-    public class UserRepository:EntityFrameworkRepository<User>,IUserRepository
+    public class UserRepository : EntityFrameworkRepository<User>, IUserRepository
     {
         public UserRepository(IRepositoryContext context) : base(context) { }
         public bool UserNameExists(string UserName)
@@ -24,7 +25,6 @@ namespace Wings.Domain.Repositories.EntityFramework
 
         public bool CheckPassword(string UserName, string Password)
         {
-
             return Exists(new UserNameEqualsSpecification(UserName).And(new UserPasswordEqualsSpecification(Password)));
         }
 
