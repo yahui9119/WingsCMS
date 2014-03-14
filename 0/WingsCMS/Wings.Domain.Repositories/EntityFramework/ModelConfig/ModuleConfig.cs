@@ -19,6 +19,8 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(m => m.Index).IsRequired();
             Property(m => m.IsMenus).IsRequired();
             Property(m => m.IsActive).IsRequired();
+            HasMany(m => m.ChildModule).WithOptional(m => m.ParentModule).Map(m => m.MapKey("ParentID"));//自关联 
+            HasOptional(m => m.Action).WithOptionalDependent().Map(m => m.MapKey("ActionID"));//一对一关联
         }
 
     }

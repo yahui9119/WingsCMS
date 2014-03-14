@@ -21,28 +21,9 @@ namespace Wings.Domain.Repositories.EntityFramework
         /// </summary>
         /// <param name="webuser"></param>
         /// <returns></returns>
-        public List<Module> GetModuleByWebUser(WebUser webuser)
+        public List<Module> GetModuleByWebUser(User user)
         {
-            var context = EFContext.Context as WingsDbContext;
-            var query = from webmodule in context.WebModules
-                        from userweb in context.WebUsers
-                        where userweb.user.ID.Equals(webuser.ID) && userweb.webs.Contains(webmodule.web)
-                        select webmodule;
-            if (query == null)
-            { return null; }
-             List<Module> modules=new List<Module> ();
-             query.ToList().ForEach(q =>
-             {
-                 if (webuser.webs.Contains(q.web))
-                 {
-                     q.Modules.ForEach(m =>
-                     {
-                         modules.Add(m);
-                     });
-
-                 }
-             });
-             return modules;
+            return null;
         }
     }
 }

@@ -2,31 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Wings.Domain.Model
+namespace Wings.Data
 {
-    /// <summary>
-    /// 标示权限的领域的实体
-    /// </summary>
-    public class Permission : AggregateRoot
-    {
-        public Permission()
-        {
-            Modules = new List<Module>();
-        }
-        /// <summary>
+    public class PermissionDTO:BaseDTO
+    { /// <summary>
         /// 此权限类型
         /// </summary>
-        public virtual PermissionType Type { get; set; }
+        public PermissionTypeDTO Type { get; set; }
         /// <summary>
         /// 所有者的Id
         /// </summary>
-        public virtual Guid OwnID { get; set; }
+        public Guid OwnID { get; set; }
         /// <summary>
         /// 模块
         /// </summary>
-        public virtual List<Module> Modules { get; set; }
+        public List<ModuleDTO> Modules { get; set; }
         ///// <summary>
         ///// 权限名称
         ///// </summary>
@@ -38,17 +29,17 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 是否授权 为False 对单个用户启用控制
         /// </summary>
-        public virtual bool IsAuthorization { get; set; }
+        public bool IsAuthorization { get; set; }
     }
     /// <summary>
     /// 权限类型
     /// </summary>
-    public enum PermissionType : int
+    public enum PermissionTypeDTO : int
     {
         /// <summary>
         /// 无效数据类型
         /// </summary>
-        None=0,
+        None = 0,
         /// <summary>
         /// 角色权限
         /// </summary>

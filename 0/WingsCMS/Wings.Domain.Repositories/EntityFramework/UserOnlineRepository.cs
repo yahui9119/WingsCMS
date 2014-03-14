@@ -7,8 +7,12 @@ using Wings.Domain.Model;
 
 namespace Wings.Domain.Repositories.EntityFramework
 {
-    public class WebModuleRepositoty  : EntityFrameworkRepository<WebModule>, IWebModuleRepositoty
+    public class UserOnlineRepository: EntityFrameworkRepository<UserOnline>, IUserOnlineRepository
     {
-        public WebModuleRepositoty(IRepositoryContext context) : base(context) { }
+        public UserOnlineRepository(IRepositoryContext Context)
+            : base(Context)
+        {
+
+        }
     }
 }

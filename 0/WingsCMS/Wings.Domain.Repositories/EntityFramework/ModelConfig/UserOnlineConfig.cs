@@ -13,6 +13,8 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             : base()
         {
             Property(u => u.IsOnline).IsRequired();
+            HasRequired(uo => uo.user).WithRequiredDependent().Map(u => u.MapKey("UserID"));
+            HasRequired(w => w.web).WithRequiredDependent().Map(w => w.MapKey("WebID"));
         }
     }
 }

@@ -2,30 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Wings.Domain.Model
+namespace Wings.Data
 {
-    /// <summary>
-    /// 标示用户在线领域的实体
-    /// </summary>
-    public class UserOnline:AggregateRoot
+    public class UserOnlineDTO:BaseDTO
     {
         /// <summary>
         /// 在线的用户
         /// </summary>
-        public virtual User user { get; set; }
+        public UserDTO user { get; set; }
         /// <summary>
         /// 已经在线的时间
         /// </summary>
-        public virtual DateTime OnlineTime { get; set; }
+        public DateTime OnlineTime { get; set; }
         /// <summary>
         /// 在线的站点
         /// </summary>
-        public virtual Web web { get; set; }
+        public WebDTO web { get; set; }
         /// <summary>
         /// 当前是否在线
         /// </summary>
-        public virtual bool IsOnline { get; set; }
+        public bool IsOnline { get; set; }
     }
 }

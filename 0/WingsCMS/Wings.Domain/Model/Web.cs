@@ -11,17 +11,34 @@ namespace Wings.Domain.Model
     /// </summary>
     public class Web : AggregateRoot
     {
+        public Web()
+        {
+            Users = new List<User>();
+            Modules = new List<Module>();
+        }
         /// <summary>
         /// 站点名字
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         /// <summary>
         /// 简介说明
         /// </summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
         /// <summary>
         /// 域名
         /// </summary>
-        public string Domain { get; set; }
+        public virtual string Domain { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public virtual bool IsActive { get; set; }
+        /// <summary>
+        /// 可管理该站点的用户列表
+        /// </summary>
+        public virtual List<User> Users { get; set; }
+        /// <summary>
+        /// 站点下菜单模块列表
+        /// </summary>
+        public virtual List<Module> Modules { get; set; }
     }
 }

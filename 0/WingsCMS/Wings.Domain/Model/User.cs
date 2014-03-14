@@ -11,41 +11,76 @@ namespace Wings.Domain.Model
     /// </summary>
     public class User:AggregateRoot
     {
+        public User()
+        {
+            Roles = new List<Role>();
+            Webs = new List<Web>();
+            Groups = new List<Group>();
+        }
         /// <summary>
         /// 用户名
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Account { get; set; }
+        /// <summary>
+        /// 真实姓名
+        /// </summary>
+        public virtual string RealName { get; set; }
         /// <summary>
         /// 密码
         /// </summary>
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
+        /// <summary>
+        /// 性别是否是男人
+        /// </summary>
+        public virtual bool IsMan { get; set; }
+        /// <summary>
+        /// 生日
+        /// </summary>
+        public virtual DateTime Birthday { get; set; }
         /// <summary>
         /// 邮箱
         /// </summary>
-        public string Email { get; set; }
+        public virtual string Email { get; set; }
         /// <summary>
         /// 手机号码
         /// </summary>
-        public string PhoneNum { get; set; }
+        public virtual string PhoneNum { get; set; }
         /// <summary>
         /// 邮编号码
         /// </summary>
-        public string Zip { get; set; }
+        public virtual string Zip { get; set; }
         /// <summary>
         /// QQ账号
         /// </summary>
-        public string QQ{get;set;}
+        public virtual string QQ { get; set; }
         /// <summary>
         /// 阿里旺旺账号
         /// </summary>
-        public string ALiWangWang{get;set;}
+        public virtual string ALiWangWang { get; set; }
         /// <summary>
         /// 地址
         /// </summary>
-        public string Address { get; set; }
+        public virtual string Address { get; set; }
         /// <summary>
         /// 最后登陆时间
         /// </summary>
-        public DateTime LastloginTime { get; set; }
+        public virtual DateTime LastloginTime { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public virtual bool IsActive { get; set; }
+        /// <summary>
+        /// 用户拥有角色列表 多对多
+        /// </summary>
+        public virtual List<Role> Roles { get; set; }
+        /// <summary>
+        /// 用户拥有站点列表 多对多
+        /// </summary>
+        public virtual List<Web> Webs { get; set; }
+        /// <summary>
+        /// 用户所属部门列表 多对多
+        /// </summary>
+        public virtual List<Group> Groups { get; set; }
+        
     }
 }

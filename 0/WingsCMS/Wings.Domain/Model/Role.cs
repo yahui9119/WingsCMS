@@ -11,13 +11,21 @@ namespace Wings.Domain.Model
     /// </summary>
     public class Role:AggregateRoot
     {
+        public Role()
+        {
+            Users = new List<User>();
+        }
         /// <summary>
         /// 角色名
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         /// <summary>
         /// 简介说明
         /// </summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
+        /// <summary>
+        /// 拥有的用户列表
+        /// </summary>
+        public virtual List<User> Users { get; set; }
     }
 }

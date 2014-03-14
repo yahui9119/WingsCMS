@@ -11,6 +11,12 @@ namespace Wings.Domain.Model
     /// </summary>
     public abstract class AggregateRoot : IAggregateRoot
     {
+        public AggregateRoot()
+        {
+            CreateDate = DateTime.Now;
+            EditDate = DateTime.Now;
+
+        }
         #region Protected Fields
         protected Guid id;
         #endregion
@@ -67,10 +73,31 @@ namespace Wings.Domain.Model
         /// 最后一次修改时间
         /// </summary>
         public DateTime EditDate { get; set; }
+        public Status Status { get; set; }
         /// <summary>
         /// 版本号 数据版本控制
         /// </summary>
         public byte[] Version { get; set; }
         #endregion
+    }
+    public enum Status:int
+    {
+        /// <summary>
+        /// 已经删除
+        /// </summary>
+        Deleted=-1,
+        /// <summary>
+        /// 禁用，隐藏
+        /// </summary>
+        Forbidden=0,
+        /// <summary>
+        /// 正常使用
+        /// </summary>
+        Active=1,
+        /// <summary>
+        /// 未激活
+        /// </summary>
+        UnActivated=2
+        
     }
 }

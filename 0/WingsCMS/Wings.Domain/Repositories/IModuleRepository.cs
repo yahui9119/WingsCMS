@@ -18,6 +18,6 @@ namespace Wings.Domain.Repositories
         /// </summary>
         /// <param name="webuser"></param>
         /// <returns></returns>
-        List<Module> GetModuleByWebUser(WebUser webuser);
+        List<Module> GetModuleByWebUser(User webuser);
     }
 }

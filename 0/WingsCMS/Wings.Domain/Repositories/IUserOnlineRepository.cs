@@ -7,7 +7,10 @@ using Wings.Domain.Model;
 
 namespace Wings.Domain.Repositories
 {
-    public interface IWebModuleRepositoty : IRepository<WebModule>
+    /// <summary>
+    /// 用户站点在线仓库
+    /// </summary>
+    public interface IUserOnlineRepository : IRepository<UserOnline>
     {
     }
 }

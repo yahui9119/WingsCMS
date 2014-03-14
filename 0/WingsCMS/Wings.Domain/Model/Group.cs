@@ -11,25 +11,30 @@ namespace Wings.Domain.Model
     /// </summary>
     public class Group : AggregateRoot
     {
+        public Group()
+        {
+            ChildGroup = new List<Group>();
+            Users = new List<User>();
+        }
         /// <summary>
         /// 分组名字
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         /// <summary>
         /// 简介说明
         /// </summary>
-        public string Description { get; set; }
-        ///// <summary>
-        ///// 父分组的标示
-        ///// </summary>
-        //public Guid ParentID { get; set; }
-        ///// <summary>
-        ///// 父组
-        ///// </summary>
-        //public Group ParentGroup { get; set; }
+        public virtual string Description { get; set; }
+        /// <summary>
+        /// 父组
+        /// </summary>
+        public virtual  Group ParentGroup { get; set; }
         /// <summary>
         /// 子分组
         /// </summary>
-        public List<Group> ChildGroup { get; set; }
+        public virtual List<Group> ChildGroup { get; set; }
+        /// <summary>
+        /// 该分组下的用户
+        /// </summary>
+        public virtual List<User> Users { get; set; }
     }
 }

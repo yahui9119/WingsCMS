@@ -17,6 +17,6 @@ namespace Wings.Domain.Repositories
         /// </summary>
         /// <param name="webuser"></param>
         /// <returns></returns>
-        List<Permission> GetPermissionByWebUser(WebUser webuser);
+        List<Permission> GetPermissionByWebUser(User user);
     }
 }

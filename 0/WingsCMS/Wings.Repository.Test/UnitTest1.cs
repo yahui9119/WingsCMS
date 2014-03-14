@@ -17,38 +17,66 @@ namespace Wings.Repository.Test
             strs.Add("test11");
             strs.Add("test22");
             EntityFrameworkRepositoryContext context = new EntityFrameworkRepositoryContext();
-            UserRepository ur = new UserRepository(context);
-            User user = new User();
-            user.Name = "test11";
-            user.Password = "123456";
-            user.PhoneNum = "15267189886";
-            user.QQ = "123123123";
-            user.Zip = "450000";
-            user.Address = "sdfd";
-            user.CreateDate = DateTime.Now;
-            user.Creator = Guid.NewGuid();
-            user.EditDate = DateTime.Now;
-            user.Email = "sdf@df.com";
-            user.LastloginTime = DateTime.Now;
-             ur.Add(user);
+            //UserRepository ur = new UserRepository(context);
+            //User user = new User();
+            //user.Name = "test11";
+            //user.Password = "123456";
+            //user.PhoneNum = "15267189886";
+            //user.QQ = "123123123";
+            //user.Zip = "450000";
+            //user.Address = "sdfd";
+            //user.CreateDate = DateTime.Now;
+            //user.Creator = Guid.NewGuid();
+            //user.EditDate = DateTime.Now;
+            //user.Email = "sdf@df.com";
+            //user.LastloginTime = DateTime.Now;
+            // ur.Add(user);
            
-            var getuser =ur.GetUserByEmail("sdf@df.com");
-            var user2= ur.Find(Specification<User>.Eval(u => strs.Contains(u.Name)));
+            //var getuser =ur.GetUserByEmail("sdf@df.com");
+            //var user2= ur.Find(Specification<User>.Eval(u => strs.Contains(u.Name)));
             
            
-            user2.Name = "test11";
-            user2.Password = "123456";
-            user2.PhoneNum = "15267189886";
-            user2.QQ = "123123123";
-            user2.Zip = "450000";
-            user2.Address = "sdfd";
-            user2.CreateDate = DateTime.Now;
-            user2.Creator = Guid.NewGuid();
-            user2.EditDate = DateTime.Now;
-            user2.Email = "sdf@df.com";
-            user2.LastloginTime = DateTime.Now;
-            ur.Remove(user2);
+            //user2.Name = "test11";
+            //user2.Password = "123456";
+            //user2.PhoneNum = "15267189886";
+            //user2.QQ = "123123123";
+            //user2.Zip = "450000";
+            //user2.Address = "sdfd";
+            //user2.CreateDate = DateTime.Now;
+            //user2.Creator = Guid.NewGuid();
+            //user2.EditDate = DateTime.Now;
+            //user2.Email = "sdf@df.com";
+            //user2.LastloginTime = DateTime.Now;
+            //ur.Remove(user2);
+            Wings.Domain.Model.Action parentaction = new Domain.Model.Action();
+            parentaction.Status = Status.Active;
+            parentaction.IsButton = true;
+            parentaction.ActionName = "testaction";
+            parentaction.Description = "sdfsdf";
+            parentaction.Controller = "testcontroller";
+            parentaction.CreateDate = DateTime.Now;
+            parentaction.EditDate = DateTime.Now;
+            ActionRepository repository = new ActionRepository(context);
+            parentaction.ChildAction = new List<Domain.Model.Action>();
+            for (int i = 0; i < 2; i++)
+            {
+                Wings.Domain.Model.Action action = new Domain.Model.Action();
+                action.Description = "sdfsdf"+i;
+                action.Status = Status.Active;
+                action.IsButton = true;
+                action.ActionName = "testaction"+i;
+                action.Controller = "testcontroller"+i;
+                action.CreateDate = DateTime.Now;
+                action.EditDate = DateTime.Now;
+                //action. = parentaction;
+              
+                parentaction.ChildAction.Add(action);
+               
+            }
+
+            repository.Add(parentaction);
             context.Commit();
+            var result = repository.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count!=0));
         }
     }
 }

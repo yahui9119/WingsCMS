@@ -14,7 +14,7 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
         public UserConfig()
             : base()
         {
-            Property(u => u.Name).IsRequired().HasMaxLength(50);
+            Property(u => u.Account).IsRequired().HasMaxLength(50);
             Property(u => u.Email).IsRequired().HasMaxLength(50);
             Property(u => u.Password).IsRequired().HasMaxLength(50);
             Property(u => u.Email).IsRequired().HasMaxLength(50);
@@ -24,7 +24,6 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(u => u.ALiWangWang).HasMaxLength(50);
             Property(u => u.Address).IsRequired().HasMaxLength(200);
             Property(u => u.LastloginTime).IsRequired();
-
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Wings.Domain.Repositories.Specifications
         }
         public override System.Linq.Expressions.Expression<Func<User, bool>> GetExpression()
         {
-            return u => u.Name == this.Name;
+            return u => u.Account == this.Name;
         }
     }
 }

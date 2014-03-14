@@ -15,9 +15,6 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(p => p.Type).IsRequired();
             Property(p => p.OwnID).IsRequired();
             Property(p => p.IsAuthorization).IsRequired();
-
-            //Property(p => p.Name).IsRequired();
-            //Property(p => p.Description).IsRequired();
         }
     }
 }

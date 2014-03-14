@@ -13,7 +13,7 @@ namespace Wings.Domain.Repositories.EntityFramework
             : base(Context) { }
 
 
-        public List<Model.Permission> GetPermissionByWebUser(Model.WebUser webuser)
+        public List<Model.Permission> GetPermissionByWebUser(User user)
         {
             //全部获取 过滤等
             throw new NotImplementedException();
