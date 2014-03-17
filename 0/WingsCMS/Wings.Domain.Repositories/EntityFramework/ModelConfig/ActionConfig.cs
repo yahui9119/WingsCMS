@@ -17,6 +17,7 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(w => w.Description).IsRequired().HasMaxLength(50);
             Property(w => w.IsButton).IsRequired();
             Property(w => w.Status).IsRequired();
+           
             HasMany(a => a.ChildAction).WithOptional(a => a.ParentAction).Map(a => a.MapKey("ParentID"));//自关联 
         }
     }

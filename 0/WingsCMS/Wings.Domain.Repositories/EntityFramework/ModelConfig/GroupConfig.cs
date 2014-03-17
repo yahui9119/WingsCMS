@@ -16,6 +16,13 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(g => g.Description).IsRequired().HasMaxLength(200);
             HasMany(g => g.ChildGroup).WithOptional(g => g.ParentGroup).Map(g => g.MapKey("ParentID"));//自关联 
             HasMany(g => g.Users).WithMany(u => u.Groups).Map(g => { g.MapLeftKey("UserId"); g.MapRightKey("GroupID"); g.ToTable("UserGroup"); });//多对多关联
+            //HasOptional(g => g.Permission).WithOptionalDependent().Map(g => { g.MapKey("PermissionID"); });
+            HasMany(g => g.Modules).WithMany(m => m.Groups).Map(g => 
+            {
+                g.MapLeftKey("ModuleID");
+                g.MapRightKey("GroupID");
+                g.ToTable("GroupPermission");
+            });
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Wings.Repository.Test
             List<string> strs=new List<string> ();
             strs.Add("test11");
             strs.Add("test22");
-            EntityFrameworkRepositoryContext context = new EntityFrameworkRepositoryContext();
+           
             //UserRepository ur = new UserRepository(context);
             //User user = new User();
             //user.Name = "test11";
@@ -56,6 +56,7 @@ namespace Wings.Repository.Test
             parentaction.Controller = "testcontroller";
             parentaction.CreateDate = DateTime.Now;
             parentaction.EditDate = DateTime.Now;
+             EntityFrameworkRepositoryContext context = new EntityFrameworkRepositoryContext();
             ActionRepository repository = new ActionRepository(context);
             parentaction.ChildAction = new List<Domain.Model.Action>();
             for (int i = 0; i < 2; i++)
@@ -68,15 +69,22 @@ namespace Wings.Repository.Test
                 action.Controller = "testcontroller"+i;
                 action.CreateDate = DateTime.Now;
                 action.EditDate = DateTime.Now;
-                //action. = parentaction;
-              
                 parentaction.ChildAction.Add(action);
                
             }
 
             repository.Add(parentaction);
             context.Commit();
-            var result = repository.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count!=0));
+            context.Dispose();
+            EntityFrameworkRepositoryContext context1 = new EntityFrameworkRepositoryContext();
+            ActionRepository repository1 = new ActionRepository(context1);
+            List<Wings.Domain.Model.Action> result = (List<Wings.Domain.Model.Action>)repository1.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count != 0));
+            var actionget = result.Find(a => a.ActionName.Length > 0);
+            actionget.ActionName = "1111111111111";
+            actionget.ChildAction.Clear();
+            actionget.ChildAction.Add(new Wings.Domain.Model.Action() { ID = Guid.Parse("6203F9E2-9AAD-E311-BEE2-D067E50A7F1D") });
+            repository1.Update(actionget);
+            context1.Commit();
         }
     }
 }

@@ -53,7 +53,6 @@
     <Compile Include="Model\UserOnline.cs" />
     <Compile Include="Model\Module.cs" />
     <Compile Include="Model\Action.cs" />
-    <Compile Include="Model\Permission.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Web.cs" />
@@ -61,7 +60,6 @@
     <Compile Include="Repositories\IActionRepository.cs" />
     <Compile Include="Repositories\IGroupRepository.cs" />
     <Compile Include="Repositories\IModuleRepository.cs" />
-    <Compile Include="Repositories\IPermissionRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IUserOnlineRepository.cs" />
     <Compile Include="Repositories\IWebRepository.cs" />

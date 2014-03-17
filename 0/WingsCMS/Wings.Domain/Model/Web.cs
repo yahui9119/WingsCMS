@@ -40,5 +40,9 @@ namespace Wings.Domain.Model
         /// 站点下菜单模块列表
         /// </summary>
         public virtual List<Module> Modules { get; set; }
+        /// <summary>
+        /// 该站点拥有的访问点
+        /// </summary>
+        public virtual List<Action> Actions { get; set; }
     }
 }

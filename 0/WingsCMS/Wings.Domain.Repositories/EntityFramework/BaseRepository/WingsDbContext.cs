@@ -18,14 +18,17 @@ namespace Wings.Domain.Repositories.EntityFramework
             this.Configuration.LazyLoadingEnabled = true;
 
         }
-        public DbSet<User> Users
-        {
-            get { return Set<User>(); }
-        }
+
         public DbSet<Wings.Domain.Model.Action> Actions
         {
             get { return Set<Wings.Domain.Model.Action>(); }
         }
+
+        public DbSet<User> Users
+        {
+            get { return Set<User>(); }
+        }
+
         public DbSet<Group> Groups
         {
             get { return Set<Group>(); }
@@ -34,10 +37,10 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             get { return Set<Module>(); }
         }
-        public DbSet<Permission> Permissions
-        {
-            get { return Set<Permission>(); }
-        }
+        //public DbSet<Permission> Permissions
+        //{
+        //    get { return Set<Permission>(); }
+        //}
         public DbSet<Role> Roles
         {
             get { return Set<Role>(); }
@@ -53,13 +56,14 @@ namespace Wings.Domain.Repositories.EntityFramework
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
-            modelBuilder.Configurations.Add(new UserConfig());
             modelBuilder.Configurations.Add(new ActionConfig());
+
+            modelBuilder.Configurations.Add(new UserConfig());
+
             modelBuilder.Configurations.Add(new GroupConfig());
 
             modelBuilder.Configurations.Add(new ModuleConfig());
-            modelBuilder.Configurations.Add(new PermissionConfig());
+            //modelBuilder.Configurations.Add(new PermissionConfig());
             modelBuilder.Configurations.Add(new RoleConfig());
             modelBuilder.Configurations.Add(new UserOnlineConfig());
             modelBuilder.Configurations.Add(new WebConfig());

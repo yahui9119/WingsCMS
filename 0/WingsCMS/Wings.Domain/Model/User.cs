@@ -81,6 +81,78 @@ namespace Wings.Domain.Model
         /// 用户所属部门列表 多对多
         /// </summary>
         public virtual List<Group> Groups { get; set; }
-        
+        /// <summary>
+        /// 此用户拥有的模块
+        /// </summary>
+        public virtual List<Module> ModuleAllow { get; set; }
+        /// <summary>
+        /// 此用户禁止使用的模块
+        /// </summary>
+        public virtual List<Module> ModuleBan { get; set; }
+        /// <summary>
+        /// 已经拥有的角色
+        /// </summary>
+        public string HaveRoles { get {
+            string result = string.Empty;
+            Roles.ForEach(r =>
+            {
+                if (r.Status == Status.Active)
+                {
+                    result += string.Format("{0},", r.Name);
+                }
+                
+            });
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                result = result.Substring(0, result.Length - 1);
+            }
+            return result;
+        } }
+        /// <summary>
+        /// 已经拥有的分组
+        /// </summary>
+        public string HaveGroups
+        {
+            get
+            {
+                string result = string.Empty;
+                Groups.ForEach(r =>
+                {
+                    if (r.Status == Status.Active)
+                    {
+                        result += string.Format("{0},", r.Name);
+                    }
+
+                });
+                if (!string.IsNullOrWhiteSpace(result))
+                {
+                    result = result.Substring(0, result.Length - 1);
+                }
+                return result;
+            }
+        }
+        /// <summary>
+        /// 已经拥有的站点
+        /// </summary>
+        public string HaveWebs
+        {
+            get
+            {
+                string result = string.Empty;
+                Webs.ForEach(r =>
+                {
+                    if (r.Status == Status.Active)
+                    {
+                        result += string.Format("{0},", r.Name);
+                    }
+
+                });
+                if (!string.IsNullOrWhiteSpace(result))
+                {
+                    result = result.Substring(0, result.Length - 1);
+                }
+                return result;
+            }
+        }
     }
 }

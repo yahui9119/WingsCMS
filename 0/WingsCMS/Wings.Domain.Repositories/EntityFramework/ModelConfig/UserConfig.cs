@@ -24,6 +24,21 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(u => u.ALiWangWang).HasMaxLength(50);
             Property(u => u.Address).IsRequired().HasMaxLength(200);
             Property(u => u.LastloginTime).IsRequired();
+            HasMany(u => u.ModuleAllow).WithMany(m => m.UserAllow).Map(u =>
+            {
+                u.MapLeftKey("ModuleID");
+                u.MapRightKey("UserID");
+                u.ToTable("UserAllowPermission");
+            });
+            HasMany(u => u.ModuleBan).WithMany(m => m.UserBan).Map(u =>
+            {
+                u.MapLeftKey("ModuleID");
+                u.MapRightKey("UserID");
+                u.ToTable("UserBanPermission");
+            });
+            Ignore(u => u.HaveGroups);
+            Ignore(u => u.HaveRoles);
+            Ignore(u => u.HaveWebs);
         }
     }
 }

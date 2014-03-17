@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Wings.Data
+namespace Wings.DataObjects
 {
+    public class WebDTOList : List<WebDTO>
+    { }
     public class WebDTO:BaseDTO
     {
         /// <summary>

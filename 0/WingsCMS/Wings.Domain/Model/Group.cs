@@ -36,5 +36,9 @@ namespace Wings.Domain.Model
         /// 该分组下的用户
         /// </summary>
         public virtual List<User> Users { get; set; }
+        /// <summary>
+        /// 该用户组拥有的模块
+        /// </summary>
+        public virtual List<Module> Modules { get; set; }
     }
 }

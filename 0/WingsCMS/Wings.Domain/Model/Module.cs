@@ -63,5 +63,16 @@ namespace Wings.Domain.Model
         /// 是否启用
         /// </summary>
         public virtual bool IsActive { get; set; }
+        /// <summary>
+        /// 拥有着的分组
+        /// </summary>
+        public virtual List<Group> Groups { get; set; }
+        /// <summary>
+        /// 拥有着的角色
+        /// </summary>
+        public virtual List<Role> Roles { get; set; }
+        public virtual List<User> UserAllow { get; set; }
+        public virtual List<User> UserBan { get; set; }
+        
     }
 }

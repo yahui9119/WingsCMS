@@ -12,6 +12,6 @@ namespace Wings.Domain.Repositories
     /// </summary>
     public interface IGroupRepository:IRepository<Group>
     {
-
+        
     }
 }

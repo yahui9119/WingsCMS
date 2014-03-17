@@ -15,7 +15,7 @@ namespace Wings.Domain.Model
         {
             ChildAction = new List<Action>();
         }
-
+        public virtual Web web { get; set; }
         /// <summary>
         /// 模块控制器
         /// </summary>
@@ -36,6 +36,7 @@ namespace Wings.Domain.Model
         /// 子访问点
         /// </summary>
         public virtual  List<Action> ChildAction { get; set; }
+
         /// <summary>
         /// 是否是按钮
         /// </summary>

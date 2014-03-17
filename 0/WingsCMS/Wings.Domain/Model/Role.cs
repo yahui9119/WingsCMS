@@ -27,5 +27,9 @@ namespace Wings.Domain.Model
         /// 拥有的用户列表
         /// </summary>
         public virtual List<User> Users { get; set; }
+        /// <summary>
+        /// 该角色拥有的模块
+        /// </summary>
+        public virtual List<Module> Modules { get; set; }
     }
 }

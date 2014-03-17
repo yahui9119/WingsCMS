@@ -20,6 +20,12 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
                 ur.MapLeftKey("UserID");
                 ur.MapRightKey("RoleID");
             });
+            HasMany(r => r.Modules).WithMany(m => m.Roles).Map(r => 
+            {
+                r.MapLeftKey("ModuleID");
+                r.MapRightKey("RoleID");
+                r.ToTable("RolePermission");
+            });
         }
     }
 }

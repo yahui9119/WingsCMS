@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Wings.Data
+namespace Wings.DataObjects
 {
+    public class ActionDTOList : List<ActionDTO>
+    { 
+    }
     /// <summary>
     /// 标示可访问点的领域的实体
     /// </summary>
