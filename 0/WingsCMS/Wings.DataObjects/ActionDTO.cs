@@ -14,29 +14,35 @@ namespace Wings.DataObjects
     public class ActionDTO : BaseDTO
     {
 
+          public ActionDTO()
+        {
+            ChildAction = new List<ActionDTO>();
+        }
+        public virtual WebDTO web { get; set; }
         /// <summary>
         /// 模块控制器
         /// </summary>
-        public string Controller { get; set; }
+        public virtual  string Controller { get; set; }
         /// <summary>
         /// 模块访问点
         /// </summary>
-        public string ActionName { get; set; }
+        public virtual string ActionName { get; set; }
         /// <summary>
         /// 说明 简介
         /// </summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
+        ///// <summary>
+        ///// 父访问点
+        ///// </summary>
+        public virtual ActionDTO ParentAction { get; set; }
         /// <summary>
-        /// 子模块
+        /// 子访问点
         /// </summary>
-        public List<ActionDTO> ChildModule { get; set; }
+        public virtual List<ActionDTO> ChildAction { get; set; }
+
         /// <summary>
         /// 是否是按钮
         /// </summary>
-        public bool IsButton { get; set; }
-        /// <summary>
-        /// 是否激活启用
-        /// </summary>
-        public bool IsActivate { get; set; }
+        public virtual bool IsButton { get; set; }
     }
 }

@@ -39,21 +39,21 @@ namespace Wings.Contracts
         /// <param name="user"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void CreateUser(UserDTO user);
+        UserDTOList CreateUser(UserDTOList user);
         /// <summary>
         /// 编辑一个用户的个人信息
         /// </summary>
         /// <param name="user"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void EidtUser(UserDTO user);
+        UserDTOList EidtUser(UserDTOList user);
         /// <summary>
         /// 删除一个用户
         /// </summary>
         /// <param name="UserID"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void DeleteUser(Guid UserID);
+        void DeleteUser(IDList UserIDs);
         /// <summary>
         /// 通过id获取一个用户
         /// </summary>
@@ -86,7 +86,7 @@ namespace Wings.Contracts
         /// <param name="moduleids"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void AssignUserPermission(Guid userid, List<Guid> moduleids);
+        UserDTO AssignUserPermission(Guid userid,IDList moduleids);
 
         #region 用户角色
         /// <summary>
@@ -95,21 +95,21 @@ namespace Wings.Contracts
         /// <param name="role"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void CreateRole(RoleDTO role);
+        RoleDTOList CreateRole(RoleDTOList role);
         /// <summary>
         /// 编辑一个角色
         /// </summary>
         /// <param name="role"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void EditRole(RoleDTO role);
+        RoleDTOList EditRole(RoleDTOList role);
         /// <summary>
         /// 删除一个角色 角色id
         /// </summary>
         /// <param name="roleid"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void DeleteRole(Guid roleid);
+        void DeleteRole(IDList roleid);
         /// <summary>
         /// 根据角色id获取所有该角色下的用户
         /// </summary>
@@ -125,7 +125,7 @@ namespace Wings.Contracts
         /// <param name="moduleids"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void AssignRolePermission(Guid roleid, List<Guid> moduleids);
+        RoleDTO AssignRolePermission(Guid roleid, IDList moduleids);
         /// <summary>
         /// 获取角色的分页
         /// </summary>
@@ -141,7 +141,7 @@ namespace Wings.Contracts
         /// <param name="roles">角色id</param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void AssignUserRole(Guid userid, List<Guid> roleids);
+        UserDTO AssignUserRole(Guid userid,IDList roleids);
         #endregion
         #region 用户分组
         /// <summary>
@@ -151,36 +151,29 @@ namespace Wings.Contracts
         /// <param name="groupids">角色id列表</param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void AssignUserGroup(Guid userid, List<Guid> groupids);
+        UserDTO AssignUserGroup(Guid userid, IDList groupids);
         /// <summary>
         /// 添加一个新的分组
         /// </summary>
         /// <param name="group"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void CreateGroup(GroupDTO group);
+        GroupDTOList CreateGroup(GroupDTOList group);
         /// <summary>
         /// 编辑一个分组
         /// </summary>
         /// <param name="group"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void EditGroup(GroupDTO group);
+        GroupDTOList EditGroup(GroupDTOList group);
         /// <summary>
         /// 删除一个分组
         /// </summary>
         /// <param name="groupid"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void DeleteGroup(Guid groupid);
-        /// <summary>
-        /// 获取的分页
-        /// </summary>
-        /// <param name="pagination"></param>
-        /// <returns></returns>
-        [OperationContract]
-        [FaultContract(typeof(FaultData))]
-        DataObjectListWithPagination<RoleDTOList> GetRolesByPage(Pagination pagination);
+        void DeleteGroup(IDList groupid);
+
         #endregion
     }
 }

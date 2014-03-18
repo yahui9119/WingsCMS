@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wings.Domain.Events;
 
 namespace Wings.Domain.Model
 {
     /// <summary>
     /// 表示用户领域的值的对象
     /// </summary>
-    public class User:AggregateRoot
+    public class User : AggregateRoot
     {
         public User()
         {
@@ -92,22 +93,26 @@ namespace Wings.Domain.Model
         /// <summary>
         /// 已经拥有的角色
         /// </summary>
-        public string HaveRoles { get {
-            string result = string.Empty;
-            Roles.ForEach(r =>
+        public string HaveRoles
+        {
+            get
             {
-                if (r.Status == Status.Active)
+                string result = string.Empty;
+                Roles.ForEach(r =>
                 {
-                    result += string.Format("{0},", r.Name);
+                    if (r.Status == Status.Active)
+                    {
+                        result += string.Format("{0},", r.Name);
+                    }
+
+                });
+                if (!string.IsNullOrWhiteSpace(result))
+                {
+                    result = result.Substring(0, result.Length - 1);
                 }
-                
-            });
-            if (!string.IsNullOrWhiteSpace(result))
-            {
-                result = result.Substring(0, result.Length - 1);
+                return result;
             }
-            return result;
-        } }
+        }
         /// <summary>
         /// 已经拥有的分组
         /// </summary>
@@ -153,6 +158,53 @@ namespace Wings.Domain.Model
                 }
                 return result;
             }
+        }
+        /// <summary>
+        /// 禁用该用户
+        /// </summary>
+        public void Forbidden()
+        {
+            Events.DomainEvent.Publish<UserForbiddenEvent>(new UserForbiddenEvent(this) { ForbinddenDate = DateTime.Now, UserEmail = Email, UserID = this.ID, UserName = this.RealName });
+        }
+        /// <summary>
+        /// 启用该帐号
+        /// </summary>
+        public void Enabled()
+        {
+            Events.DomainEvent.Publish<UserEnabledEvent>(new UserEnabledEvent(this) { EnableDate = DateTime.Now, UserEmail = Email, UserID = this.ID, UserName = this.RealName });
+        }
+        /// <summary>
+        /// 角色更新
+        /// </summary>
+        public void UpdateRole()
+        {
+            Events.DomainEvent.Publish<UserRoleUpdateEvent>(new UserRoleUpdateEvent(this) { Email = Email, UpdateTime = DateTime.Now, UserID = this.ID, UserName = this.RealName });
+        }
+        /// <summary>
+        /// 分组更新
+        /// </summary>
+        public void UpdateGroup()
+        {
+            DomainEvent.Publish<UserGroupUpdateEvent>(new UserGroupUpdateEvent(this)
+            {
+                UpdateTime = DateTime.Now,
+                Email = this.Email,
+                UserID = this.ID,
+                UserName = this.RealName
+            });
+        }
+        /// <summary>
+        /// 使用站点更新
+        /// </summary>
+        public void UpdateWeb()
+        {
+            DomainEvent.Publish<UserWebUpdateEvent>(new UserWebUpdateEvent(this)
+            {
+                UpdateTime = DateTime.Now,
+                Email = this.Email,
+                UserID = this.ID,
+                UserName = this.RealName
+            });
         }
     }
 }

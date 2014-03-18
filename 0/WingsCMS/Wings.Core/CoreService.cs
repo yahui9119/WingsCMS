@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wings.DataObjects;
 using Wings.Domain;
+using Wings.Domain.Model;
 using Wings.Domain.Repositories;
 using Wings.Framework.Infrastructure;
 
@@ -184,6 +186,27 @@ namespace Wings.Core
         /// 1. AutoMapper框架的初始化</remarks>
         public static void Initialize()
         {
+            Mapper.CreateMap<BaseDTO, AggregateRoot>();
+            Mapper.CreateMap<UserDTO, User>();
+            Mapper.CreateMap<User,UserDTO>();
+
+            Mapper.CreateMap<ActionDTO, Wings.Domain.Model.Action>();
+            Mapper.CreateMap<Wings.Domain.Model.Action, ActionDTO>();
+
+            Mapper.CreateMap<Group, GroupDTO>();
+            Mapper.CreateMap<GroupDTO, Group>();
+
+            Mapper.CreateMap<ModuleDTO, Module>();
+            Mapper.CreateMap<Module, ModuleDTO>();
+
+            Mapper.CreateMap<Role, RoleDTO>();
+            Mapper.CreateMap<RoleDTO, Role>();
+
+            Mapper.CreateMap<UserOnline, UserOnlineDTO>();
+            Mapper.CreateMap<UserOnlineDTO, UserOnline>();
+
+            Mapper.CreateMap<Web, WebDTO>();
+            Mapper.CreateMap<WebDTO, Web>();
             //Mapper.CreateMap<AddressDataObject, Address>();
             //Mapper.CreateMap<UserDataObject, User>()
             //    .ForMember(uMember => uMember.ContactAddress, mceUDO =>

@@ -9,25 +9,34 @@ namespace Wings.DataObjects
     { }
     public class GroupDTO:BaseDTO
     {
+        public GroupDTO()
+        {
+            ChildGroup = new List<GroupDTO>();
+            Users = new List<UserDTO>();
+        }
         /// <summary>
         /// 分组名字
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         /// <summary>
         /// 简介说明
         /// </summary>
-        public string Description { get; set; }
-        ///// <summary>
-        ///// 父分组的标示
-        ///// </summary>
-        //public Guid ParentID { get; set; }
-        ///// <summary>
-        ///// 父组
-        ///// </summary>
-        //public Group ParentGroup { get; set; }
+        public virtual string Description { get; set; }
+        /// <summary>
+        /// 父组
+        /// </summary>
+        public virtual GroupDTO ParentGroup { get; set; }
         /// <summary>
         /// 子分组
         /// </summary>
-        public List<GroupDTO> ChildGroup { get; set; }
+        public virtual List<GroupDTO> ChildGroup { get; set; }
+        /// <summary>
+        /// 该分组下的用户
+        /// </summary>
+        public virtual List<UserDTO> Users { get; set; }
+        /// <summary>
+        /// 该用户组拥有的模块
+        /// </summary>
+        public virtual List<ModuleDTO> Modules { get; set; }
     }
 }

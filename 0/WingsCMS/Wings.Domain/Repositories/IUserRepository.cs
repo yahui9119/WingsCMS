@@ -11,11 +11,11 @@ namespace Wings.Domain.Repositories
     public interface IUserRepository:IRepository<User>
     {
         /// <summary>
-        /// 用户名是否已经存在
+        /// 帐户名是否已经存在
         /// </summary>
-        /// <param name="UserNamed">用户名</param>
+        /// <param name="account">帐户名</param>
         /// <returns></returns>
-        bool UserNameExists(string UserNamed);
+        bool IsExistsAccount(string account);
         /// <summary>
         /// 邮箱是否已经存在
         /// </summary>

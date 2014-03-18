@@ -44,8 +44,18 @@
   <ItemGroup>
     <Compile Include="DomainException.cs" />
     <Compile Include="Events\DomainEvent.cs" />
+    <Compile Include="Events\Handlers\UserEnabledEventHandlers.cs" />
+    <Compile Include="Events\Handlers\UserForbinddenEventHandlers.cs" />
+    <Compile Include="Events\Handlers\UserGroupUpdateEventHandler.cs" />
+    <Compile Include="Events\Handlers\UserRoleUpdateEventHandler.cs" />
+    <Compile Include="Events\Handlers\UserWebUpdateEventHandler.cs" />
     <Compile Include="Events\IDomainEvent.cs" />
     <Compile Include="Events\IDomainEventHandler.cs" />
+    <Compile Include="Events\UserEnabledEvent.cs" />
+    <Compile Include="Events\UserForbiddenEvent.cs" />
+    <Compile Include="Events\UserGroupUpdateEvent.cs" />
+    <Compile Include="Events\UserRoleUpdateEvent.cs" />
+    <Compile Include="Events\UserWebUpdateEvent.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Model\AggregateRoot.cs" />

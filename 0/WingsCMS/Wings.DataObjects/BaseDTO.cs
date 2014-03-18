@@ -11,7 +11,7 @@ namespace Wings.DataObjects
         /// <summary>
         /// 唯一标示
         /// </summary>
-        public Guid ID { get; set; }
+        public string ID { get; set; }
         /// <summary>
         /// 创建者标示
         /// </summary>
@@ -25,8 +25,32 @@ namespace Wings.DataObjects
         /// </summary>
         public DateTime EditDate { get; set; }
         /// <summary>
-        /// 版本号
+        ///  状态
+        /// </summary>
+        public Status Status { get; set; }
+        /// <summary>
+        /// 版本号 数据版本控制
         /// </summary>
         public byte[] Version { get; set; }
+    }
+    public enum Status:int
+    {
+        /// <summary>
+        /// 已经删除
+        /// </summary>
+        Deleted=-1,
+        /// <summary>
+        /// 禁用，隐藏
+        /// </summary>
+        Forbidden=0,
+        /// <summary>
+        /// 正常使用
+        /// </summary>
+        Active=1,
+        /// <summary>
+        /// 未激活
+        /// </summary>
+        UnActivated=2
+        
     }
 }

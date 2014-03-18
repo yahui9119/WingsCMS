@@ -9,7 +9,7 @@ namespace Wings.DataObjects
     /// 数据列表分页数据信息
     /// </summary>
     /// <typeparam name="T">数据列表</typeparam>
-    public class DataObjectListWithPagination<T> where T:List<BaseDTO>,new()
+    public class DataObjectListWithPagination<T> where T : new() //List<BaseDTO>,
     {
         public DataObjectListWithPagination()
         {

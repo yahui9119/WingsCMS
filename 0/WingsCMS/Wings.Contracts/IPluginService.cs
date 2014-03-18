@@ -16,6 +16,7 @@ namespace Wings.Contracts
     {
         /// <summary>
         /// 初始化一个站点扩展
+        /// 提供站点action的自动添加和站点guid的初始化
         /// </summary>
         /// <param name="web"></param>
         [OperationContract]
@@ -23,6 +24,7 @@ namespace Wings.Contracts
         void InstallPlugin(WebDTO web);
         /// <summary>
         /// 插件更新
+        /// 更新新添加或删除的action
         /// </summary>
         /// <param name="web"></param>
         [OperationContract]
@@ -30,6 +32,7 @@ namespace Wings.Contracts
         void UpdatePlugin(WebDTO web);
         /// <summary>
         /// 禁用一个插件
+        /// 自动设置此站点的状态为未激活
         /// </summary>
         /// <param name="web"></param>
         [OperationContract]

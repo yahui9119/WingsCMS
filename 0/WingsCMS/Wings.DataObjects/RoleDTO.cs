@@ -9,13 +9,25 @@ namespace Wings.DataObjects
     { }
     public class RoleDTO : BaseDTO
     {
+         public RoleDTO()
+        {
+            Users = new List<UserDTO>();
+        }
         /// <summary>
         /// 角色名
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         /// <summary>
         /// 简介说明
         /// </summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
+        /// <summary>
+        /// 拥有的用户列表
+        /// </summary>
+        public virtual List<UserDTO> Users { get; set; }
+        /// <summary>
+        /// 该角色拥有的模块
+        /// </summary>
+        public virtual List<ModuleDTO> Modules { get; set; }
     }
 }
