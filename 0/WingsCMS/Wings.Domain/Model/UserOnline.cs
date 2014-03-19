@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wings.Domain.Events;
 
 namespace Wings.Domain.Model
 {
@@ -27,5 +28,19 @@ namespace Wings.Domain.Model
         /// 当前是否在线
         /// </summary>
         public virtual bool IsOnline { get; set; }
+        /// <summary>
+        /// 上线
+        /// </summary>
+        public void Online()
+        {
+            DomainEvent.Publish<UserOnlineEvent>(new UserOnlineEvent(this);
+        }
+        /// <summary>
+        /// 下线
+        /// </summary>
+        public void Offline()
+        {
+            
+        }
     }
 }

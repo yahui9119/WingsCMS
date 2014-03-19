@@ -15,7 +15,7 @@ namespace Wings.Admin
 
             routes.MapRoute(
                 name: "Admin",
-                url: "Admin/{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

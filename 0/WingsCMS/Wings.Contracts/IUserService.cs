@@ -86,7 +86,14 @@ namespace Wings.Contracts
         /// <param name="moduleids"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        UserDTO AssignUserPermission(Guid userid,IDList moduleids);
+        UserDTO AssignUserPermission(Guid userid, IDList moduleids);
+        /// <summary>
+        /// 取消用户权限
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="moduleids"></param>
+        /// <returns></returns>
+        public UserDTO UnAssignUserPermission(Guid userid, IDList moduleids);
 
         #region 用户角色
         /// <summary>
@@ -141,7 +148,22 @@ namespace Wings.Contracts
         /// <param name="roles">角色id</param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        UserDTO AssignUserRole(Guid userid,IDList roleids);
+        UserDTO AssignUserRole(Guid userid, IDList roleids);
+        /// <summary>
+        /// 通过id获取单个角色
+        /// </summary>
+        /// <param name="roleid"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        RoleDTO GetRoleByID(Guid roleid);
+        /// <summary>
+        /// 获取所有的角色
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        RoleDTOList GetAllRoles();
         #endregion
         #region 用户分组
         /// <summary>
@@ -172,8 +194,30 @@ namespace Wings.Contracts
         /// <param name="groupid"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void DeleteGroup(IDList groupid);
-
+        void DeleteGroup(GroupDTOList groups);
+        /// <summary>
+        /// 根据父id获取分组
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        GroupDTOList GetGroupParentID(Guid id);
+        /// <summary>
+        /// 根据分组id获取分组信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        GroupDTO GetGroupByID(Guid id);
+        /// <summary>
+        /// 获取所有分组信息
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        GroupDTOList GetAllGroups();
         #endregion
     }
 }

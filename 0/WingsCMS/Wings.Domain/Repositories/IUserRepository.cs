@@ -35,5 +35,15 @@ namespace Wings.Domain.Repositories
         /// <param name="Email"></param>
         /// <returns></returns>
         User GetUserByEmail(string Email);
+        ///// <summary>
+        ///// 根据分页信息获取用户列表
+        ///// </summary>
+        ///// <param name="pageNum"></param>
+        ///// <param name="pageSize"></param>
+        ///// <param name="TotalPages"></param>
+        ///// <param name="groupid"></param>
+        ///// <param name="likeUserName"></param>
+        ///// <returns></returns>
+        //PagedResult<User> GetUsersWithPaged(int pageNum , int pageSize , out int TotalPages,int? groupid,string likeUserName);
     }
 }

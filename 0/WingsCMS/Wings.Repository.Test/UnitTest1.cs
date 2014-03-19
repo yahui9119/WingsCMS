@@ -78,11 +78,13 @@ namespace Wings.Repository.Test
             context.Dispose();
             EntityFrameworkRepositoryContext context1 = new EntityFrameworkRepositoryContext();
             ActionRepository repository1 = new ActionRepository(context1);
+            var resul2 = repository1.Get(Specification<Wings.Domain.Model.Action>.Eval(a => a.ID == Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
             List<Wings.Domain.Model.Action> result = (List<Wings.Domain.Model.Action>)repository1.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count != 0));
-            var actionget = result.Find(a => a.ActionName.Length > 0);
+           
+            var actionget = result.Find(a => a.ID.Equals(Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
             actionget.ActionName = "1111111111111";
-            actionget.ChildAction.Clear();
-            actionget.ChildAction.Add(new Wings.Domain.Model.Action() { ID = Guid.Parse("6203F9E2-9AAD-E311-BEE2-D067E50A7F1D") });
+            actionget.ChildAction.RemoveAt(0);
+           
             repository1.Update(actionget);
             context1.Commit();
         }

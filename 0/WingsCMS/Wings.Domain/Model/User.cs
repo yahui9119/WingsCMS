@@ -67,10 +67,6 @@ namespace Wings.Domain.Model
         /// </summary>
         public virtual DateTime LastloginTime { get; set; }
         /// <summary>
-        /// 是否启用
-        /// </summary>
-        public virtual bool IsActive { get; set; }
-        /// <summary>
         /// 用户拥有角色列表 多对多
         /// </summary>
         public virtual List<Role> Roles { get; set; }
@@ -205,6 +201,13 @@ namespace Wings.Domain.Model
                 UserID = this.ID,
                 UserName = this.RealName
             });
+        }
+        /// <summary>
+        /// 用户使用模块更新
+        /// </summary>
+        public void UpdateModule(bool IsBan)
+        {
+                
         }
     }
 }

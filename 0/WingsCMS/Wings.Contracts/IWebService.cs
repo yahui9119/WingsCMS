@@ -58,19 +58,28 @@ namespace Wings.Contracts
         /// <param name="moduledto"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void CreateModule(Guid webid,ModuleDTO moduledto);
+        ModuleDTO CreateModule(Guid webid, ModuleDTO moduledto);
         /// <summary>
         /// 修改模块
         /// </summary>
         /// <param name="moduledto"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void EditModule(ModuleDTO moduledto);
+        ModuleDTO EditModule(ModuleDTO moduledto);
         /// <summary>
         /// 删除一个模块
         /// </summary>
-        /// <param name="webid"></param>
         /// <param name="moduleid"></param>
-        void DeleteModule(Guid webid, Guid moduleid);
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void DeleteModule(Guid moduleid);
+        /// <summary>
+        /// 获取所有的有效站点模块
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        WebDTOList GetAllWebModules();
+
     }
 }

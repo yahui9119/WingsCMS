@@ -13,7 +13,7 @@ namespace Wings.Domain.Repositories.EntityFramework
     public class UserRepository : EntityFrameworkRepository<User>, IUserRepository
     {
         public UserRepository(IRepositoryContext context) : base(context) { }
-        public bool UserNameExists(string UserName)
+        public bool IsExistsAccount(string UserName)
         {
             return Exists(new UserNameEqualsSpecification(UserName));
         }

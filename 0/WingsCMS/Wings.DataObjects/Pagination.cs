@@ -20,6 +20,10 @@ namespace Wings.DataObjects
         /// </summary>
         public int? TotalPages { get; set; }
         /// <summary>
+        /// 获取总共多少行
+        /// </summary>
+        public int TotalRecords { get;set; }
+        /// <summary>
         /// 数据开始时间
         /// </summary>
         public DateTime? StartTime { get; set; }
@@ -28,9 +32,9 @@ namespace Wings.DataObjects
         /// </summary>
         public DateTime? EndTime { get; set; }
         /// <summary>
-        /// 排序字段
+        /// 模糊查询 一般指定名字
         /// </summary>
-        public string OrderField { get; set; }
+        public string LikeWord { get; set; }
         /// <summary>
         /// 是否倒叙排列
         /// </summary>
