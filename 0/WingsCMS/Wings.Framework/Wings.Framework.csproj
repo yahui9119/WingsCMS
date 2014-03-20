@@ -96,6 +96,7 @@
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Infrastructure\PagedResult.cs" />
+    <Compile Include="Plugin\WingsController.cs" />
     <Compile Include="Routes\CustomRouting.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\IPluginsManger.cs" />
@@ -111,6 +112,11 @@
     <Compile Include="Transactions\SuppressedTransactionCoordinator.cs" />
     <Compile Include="Transactions\TransactionCoordinator.cs" />
     <Compile Include="Transactions\TransactionCoordinatorFactory.cs" />
+    <Compile Include="Plugin\UI\AnonymousAttribute.cs" />
+    <Compile Include="Plugin\UI\DefaultPageAttribute.cs" />
+    <Compile Include="Plugin\UI\ExceFilterAttribute.cs" />
+    <Compile Include="Plugin\UI\LoginAllowViewAttribute.cs" />
+    <Compile Include="Plugin\UI\PermissionFilterAttribute.cs" />
     <Compile Include="UnityExtensions\GlobalSuppressions.cs" />
     <Compile Include="UnityExtensions\UnityBehaviorExtensionElement.cs" />
     <Compile Include="UnityExtensions\UnityCallContextInitializer.cs" />

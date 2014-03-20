@@ -86,14 +86,7 @@ namespace Wings.Contracts
         /// <param name="moduleids"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        UserDTO AssignUserPermission(Guid userid, IDList moduleids);
-        /// <summary>
-        /// 取消用户权限
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <param name="moduleids"></param>
-        /// <returns></returns>
-        public UserDTO UnAssignUserPermission(Guid userid, IDList moduleids);
+        UserDTO AssignUserPermission(Guid userid, IDList moduleids, bool IsBan);
 
         #region 用户角色
         /// <summary>

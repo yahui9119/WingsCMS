@@ -383,7 +383,7 @@ namespace Wings.Core.Implementation
         /// </summary>
         /// <param name="roleid"></param>
         /// <returns></returns>
-        RoleDTO GetRoleByID(Guid roleid)
+        public RoleDTO GetRoleByID(Guid roleid)
         {
             return Mapper.Map<Role, RoleDTO>(roleRepository.Get(Specification<Role>.Eval(r => r.ID.Equals(roleid))));
         }
@@ -391,7 +391,7 @@ namespace Wings.Core.Implementation
         /// 获取所有的角色
         /// </summary>
         /// <returns></returns>
-        RoleDTOList GetAllRoles()
+        public RoleDTOList GetAllRoles()
         {
             RoleDTOList roledtolist = new RoleDTOList();
             var roles = roleRepository.GetAll();
@@ -466,7 +466,7 @@ namespace Wings.Core.Implementation
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        GroupDTOList GetGroupParentID(Guid id)
+        public GroupDTOList GetGroupParentID(Guid id)
         {
             var groups = groupRespository.FindAll(Specification<Group>.Eval(g => g.ParentGroup.ID.Equals(id)));
             GroupDTOList gdtolist = new GroupDTOList();
@@ -481,7 +481,7 @@ namespace Wings.Core.Implementation
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        GroupDTO GetGroupByID(Guid id)
+        public GroupDTO GetGroupByID(Guid id)
         {
             var group= groupRespository.Find(Specification<Group>.Eval(g => g.ID.Equals(id)));
             return Mapper.Map<Group, GroupDTO>(group);
@@ -490,7 +490,7 @@ namespace Wings.Core.Implementation
         /// 获取所有分组信息
         /// </summary>
         /// <returns></returns>
-        GroupDTOList GetAllGroups()
+        public GroupDTOList GetAllGroups()
         {
             var groups = groupRespository.FindAll();
             GroupDTOList gdtolist = new GroupDTOList();
@@ -504,7 +504,7 @@ namespace Wings.Core.Implementation
         /// 获取所有的有效站点模块
         /// </summary>
         /// <returns></returns>
-        WebDTOList GetAllWebModules()
+        public WebDTOList GetAllWebModules()
         {
             var webs = webRepository.GetAll(Specification<Web>.Eval(w=>w.Status==Wings.Domain.Model.Status.Active));
             WebDTOList wdtolist=new WebDTOList ();
@@ -517,6 +517,17 @@ namespace Wings.Core.Implementation
                 wdtolist.Add(Mapper.Map<Web, WebDTO>(item));
 	        }
             return wdtolist;
+        }
+
+
+        public void DeleteUser(IDList UserIDs)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteRole(IDList roleid)
+        {
+            throw new NotImplementedException();
         }
     }
 }

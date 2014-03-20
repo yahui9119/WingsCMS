@@ -114,5 +114,11 @@ namespace Wings.Core.Implementation
             moduleRepository.Update(module);
             Context.Commit();
         }
+
+
+        public WebDTOList GetAllWebModules()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

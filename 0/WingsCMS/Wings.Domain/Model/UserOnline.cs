@@ -33,14 +33,14 @@ namespace Wings.Domain.Model
         /// </summary>
         public void Online()
         {
-            DomainEvent.Publish<UserOnlineEvent>(new UserOnlineEvent(this);
+            DomainEvent.Publish<UserOnlineEvent>(new UserOnlineEvent(this));
         }
         /// <summary>
         /// 下线
         /// </summary>
         public void Offline()
         {
-            
+            DomainEvent.Publish<UserOfflineEvent>(new UserOfflineEvent(this));
         }
     }
 }

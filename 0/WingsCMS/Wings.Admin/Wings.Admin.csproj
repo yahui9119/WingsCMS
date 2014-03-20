@@ -191,6 +191,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -710,13 +711,13 @@
     <Content Include="Content\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.uk.js" />
     <Content Include="Content\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-CN.js" />
     <Content Include="Content\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-TW.js" />
-    <Content Include="Content\plugins\bootstrap-datepicker\tests\assets\coverage.js" />
-    <Content Include="Content\plugins\bootstrap-datepicker\tests\assets\jquery-1.7.1.min.js" />
-    <Content Include="Content\plugins\bootstrap-datepicker\tests\assets\mock.js" />
-    <Content Include="Content\plugins\bootstrap-datepicker\tests\assets\qunit-logging.js" />
-    <Content Include="Content\plugins\bootstrap-datepicker\tests\assets\qunit.css" />
-    <Content Include="Content\plugins\bootstrap-datepicker\tests\assets\qunit.js" />
-    <Content Include="Content\plugins\bootstrap-datepicker\tests\assets\utils.js" />
+    <Content Include="Content\plugins\bootstrap-datepicker\tests\Content\coverage.js" />
+    <Content Include="Content\plugins\bootstrap-datepicker\tests\Content\jquery-1.7.1.min.js" />
+    <Content Include="Content\plugins\bootstrap-datepicker\tests\Content\mock.js" />
+    <Content Include="Content\plugins\bootstrap-datepicker\tests\Content\qunit-logging.js" />
+    <Content Include="Content\plugins\bootstrap-datepicker\tests\Content\qunit.css" />
+    <Content Include="Content\plugins\bootstrap-datepicker\tests\Content\qunit.js" />
+    <Content Include="Content\plugins\bootstrap-datepicker\tests\Content\utils.js" />
     <Content Include="Content\plugins\bootstrap-datepicker\tests\run-qunit.js" />
     <Content Include="Content\plugins\bootstrap-datepicker\tests\suites\calendar-weeks.js" />
     <Content Include="Content\plugins\bootstrap-datepicker\tests\suites\component.js" />
@@ -799,13 +800,13 @@
     <Content Include="Content\plugins\bootstrap-datetimepicker\screenshot\standard_hour_meridian.png" />
     <Content Include="Content\plugins\bootstrap-datetimepicker\screenshot\standard_month.png" />
     <Content Include="Content\plugins\bootstrap-datetimepicker\screenshot\standard_year.png" />
-    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\assets\coverage.js" />
-    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\assets\jquery-1.7.1.min.js" />
-    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\assets\mock.js" />
-    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\assets\qunit-logging.js" />
-    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\assets\qunit.css" />
-    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\assets\qunit.js" />
-    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\assets\utils.js" />
+    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\Content\coverage.js" />
+    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\Content\jquery-1.7.1.min.js" />
+    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\Content\mock.js" />
+    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\Content\qunit-logging.js" />
+    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\Content\qunit.css" />
+    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\Content\qunit.js" />
+    <Content Include="Content\plugins\bootstrap-datetimepicker\tests\Content\utils.js" />
     <Content Include="Content\plugins\bootstrap-datetimepicker\tests\run-qunit.js" />
     <Content Include="Content\plugins\bootstrap-datetimepicker\tests\suites\component.js" />
     <Content Include="Content\plugins\bootstrap-datetimepicker\tests\suites\events.js" />
@@ -1041,20 +1042,20 @@
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\ajax.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\api.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\appendto.html" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\assets\inlineall\logo.png" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\assets\sample.css" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\assets\sample.jpg" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\Content\inlineall\logo.png" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\Content\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\Content\sample.css" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\Content\sample.jpg" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\Content\uilanguages\languages.js" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\divreplace.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\index.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\inlineall.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\inlinebycode.html" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\dialog\Content\my_dialog.js" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\dialog\dialog.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\enterkey\enterkey.html" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\Content\outputforflash\outputforflash.swf" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\Content\outputforflash\swfobject.js" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\magicline\magicline.html" />
@@ -1284,20 +1285,20 @@
     <Content Include="Content\plugins\ckeditor\samples\ajax.html" />
     <Content Include="Content\plugins\ckeditor\samples\api.html" />
     <Content Include="Content\plugins\ckeditor\samples\appendto.html" />
-    <Content Include="Content\plugins\ckeditor\samples\assets\inlineall\logo.png" />
-    <Content Include="Content\plugins\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
-    <Content Include="Content\plugins\ckeditor\samples\assets\sample.css" />
-    <Content Include="Content\plugins\ckeditor\samples\assets\sample.jpg" />
-    <Content Include="Content\plugins\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Content\plugins\ckeditor\samples\Content\inlineall\logo.png" />
+    <Content Include="Content\plugins\ckeditor\samples\Content\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\plugins\ckeditor\samples\Content\sample.css" />
+    <Content Include="Content\plugins\ckeditor\samples\Content\sample.jpg" />
+    <Content Include="Content\plugins\ckeditor\samples\Content\uilanguages\languages.js" />
     <Content Include="Content\plugins\ckeditor\samples\divreplace.html" />
     <Content Include="Content\plugins\ckeditor\samples\index.html" />
     <Content Include="Content\plugins\ckeditor\samples\inlineall.html" />
     <Content Include="Content\plugins\ckeditor\samples\inlinebycode.html" />
-    <Content Include="Content\plugins\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Content\plugins\ckeditor\samples\plugins\dialog\Content\my_dialog.js" />
     <Content Include="Content\plugins\ckeditor\samples\plugins\dialog\dialog.html" />
     <Content Include="Content\plugins\ckeditor\samples\plugins\enterkey\enterkey.html" />
-    <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
-    <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\Content\outputforflash\outputforflash.swf" />
+    <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\Content\outputforflash\swfobject.js" />
     <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
     <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
     <Content Include="Content\plugins\ckeditor\samples\plugins\magicline\magicline.html" />
@@ -2225,8 +2226,8 @@
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\plugins\wsc\LICENSE.md" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\plugins\wsc\README.md" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\README.md" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\assets\posteddata.php" />
-    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\Content\posteddata.php" />
+    <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\plugins\htmlwriter\Content\outputforflash\outputforflash.fla" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\samples\sample_posteddata.php" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -2239,8 +2240,8 @@
     <Content Include="Content\plugins\ckeditor\plugins\wsc\LICENSE.md" />
     <Content Include="Content\plugins\ckeditor\plugins\wsc\README.md" />
     <Content Include="Content\plugins\ckeditor\README.md" />
-    <Content Include="Content\plugins\ckeditor\samples\assets\posteddata.php" />
-    <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Content\plugins\ckeditor\samples\Content\posteddata.php" />
+    <Content Include="Content\plugins\ckeditor\samples\plugins\htmlwriter\Content\outputforflash\outputforflash.fla" />
     <Content Include="Content\plugins\ckeditor\samples\sample_posteddata.php" />
     <Content Include="Content\plugins\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\plugins\clockface\LICENSE-MIT" />
@@ -2423,32 +2424,32 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_Theme.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Wings.DataObjects\Wings.DataObjects.csproj">
+      <Project>{3df43631-1248-4456-af83-7c08100ba289}</Project>
+      <Name>Wings.DataObjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wings.Framework\Wings.Framework.csproj">
       <Project>{f1c7efe6-96f5-419e-af73-117b844962ee}</Project>
       <Name>Wings.Framework</Name>

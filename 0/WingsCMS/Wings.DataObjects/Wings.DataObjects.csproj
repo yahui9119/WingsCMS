@@ -47,6 +47,7 @@
     <Compile Include="FaultData.cs" />
     <Compile Include="GroupDTO.cs" />
     <Compile Include="IDList.cs" />
+    <Compile Include="MenusDTO.cs" />
     <Compile Include="ModuleDTO.cs" />
     <Compile Include="Pagination.cs" />
     <Compile Include="PermissionDTO.cs" />
