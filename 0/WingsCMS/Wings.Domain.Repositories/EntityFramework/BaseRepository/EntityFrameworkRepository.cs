@@ -72,7 +72,7 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             var results = this.DoFindAll(specification, sortPredicate, sortOrder);
             if (results == null || results.Count() == 0)
-                throw new ArgumentException("无法根据指定的查询条件找到所需的聚合根。");
+                throw new ArgumentException("无法根据指定的查询条件找到所需的数据。");
             return results;
         }
 
@@ -80,7 +80,7 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             var results = this.DoFindAll(specification, sortPredicate, sortOrder, pageNumber, pageSize);
             if (results == null || results == PagedResult<TAggregateRoot>.Empty || results.Data.Count() == 0)
-                throw new ArgumentException("无法根据指定的查询条件找到所需的聚合根。");
+                throw new ArgumentException("无法根据指定的查询条件找到所需的数据。");
             return results;
         }
 
@@ -139,7 +139,7 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             TAggregateRoot result = this.DoFind(specification);
             if (result == null)
-                throw new ArgumentException("无法根据指定的查询条件找到所需的聚合根。");
+                throw new ArgumentException("无法根据指定的查询条件找到所需的数据。");
             return result;
         }
 
@@ -189,7 +189,7 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             var results = this.DoFindAll(specification, sortPredicate, sortOrder, eagerLoadingProperties);
             if (results == null || results.Count() == 0)
-                throw new ArgumentException("无法根据指定的查询条件找到所需的聚合根。");
+                throw new ArgumentException("无法根据指定的查询条件找到所需的数据。");
             return results;
         }
 
@@ -197,7 +197,7 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             var results = this.DoFindAll(specification, sortPredicate, sortOrder, pageNumber, pageSize, eagerLoadingProperties);
             if (results == null || results == PagedResult<TAggregateRoot>.Empty || results.Data.Count() == 0)
-                throw new ArgumentException("无法根据指定的查询条件找到所需的聚合根。");
+                throw new ArgumentException("无法根据指定的查询条件找到所需的数据。");
             return results;
         }
 
@@ -291,7 +291,7 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             TAggregateRoot result = this.DoFind(specification, eagerLoadingProperties);
             if (result == null)
-                throw new ArgumentException("无法根据指定的查询条件找到所需的聚合根。");
+                throw new ArgumentException("无法根据指定的查询条件找到所需的数据。");
             return result;
         }
     }

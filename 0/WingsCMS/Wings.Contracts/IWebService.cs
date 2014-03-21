@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using Wings.DataObjects;
+using Wings.Framework.Infrastructure;
 
 namespace Wings.Contracts
 {
@@ -12,29 +13,29 @@ namespace Wings.Contracts
     /// 标示 “站点” 服务的契约
     /// </summary>
     [ServiceContract(Name = "http://www.wings.com")]
-    public interface IWebService
+    public interface IWebService:ICoreServiceContract
     {
         /// <summary>
-        /// 添加一个新的站点
+        /// 添加新的站点
         /// </summary>
         /// <param name="webdto"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void CreateWeb(WebDTO webdto);
+        WebDTOList CreateWeb(WebDTOList webdto);
         /// <summary>
         /// 编辑站点
         /// </summary>
         /// <param name="webdto"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void EditWeb(WebDTO webdto);
+        WebDTOList EditWeb(WebDTOList webdto);
         /// <summary>
-        /// 删除一个现有站点
+        /// 删除现有站点
         /// </summary>
         /// <param name="webid"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void DeleteWeb(Guid webid);
+        void DeleteWeb(IDList webids);
         /// <summary>
         /// 获取使用此站点下的所有用户
         /// </summary>
@@ -72,7 +73,7 @@ namespace Wings.Contracts
         /// <param name="moduleid"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void DeleteModule(Guid moduleid);
+        void DeleteModule(IDList moduleids);
         /// <summary>
         /// 获取所有的有效站点模块
         /// </summary>

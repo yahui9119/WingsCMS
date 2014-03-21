@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using Wings.DataObjects;
+using Wings.Framework.Infrastructure;
 
 namespace Wings.Contracts
 {
@@ -12,7 +13,7 @@ namespace Wings.Contracts
     /// 标示“站点扩展”的领域的服务
     /// </summary>
     [ServiceContract(Name = "http://www.wings.com")]
-    public interface IPluginService
+    public interface IPluginService : ICoreServiceContract
     {
         /// <summary>
         /// 初始化一个站点扩展
@@ -21,7 +22,7 @@ namespace Wings.Contracts
         /// <param name="web"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void InstallPlugin(WebDTO web);
+        WebDTO InstallPlugin(WebDTO webdto);
         /// <summary>
         /// 插件更新
         /// 更新新添加或删除的action
@@ -29,7 +30,7 @@ namespace Wings.Contracts
         /// <param name="web"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void UpdatePlugin(WebDTO web);
+        WebDTO UpdatePlugin(WebDTO webdto);
         /// <summary>
         /// 禁用一个插件
         /// 自动设置此站点的状态为未激活

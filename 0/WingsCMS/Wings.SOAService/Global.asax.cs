@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using Wings.Core;
+using Wings.Domain.Repositories.EntityFramework;
 
 namespace Wings.SOAService
 {
@@ -14,6 +15,7 @@ namespace Wings.SOAService
         protected void Application_Start(object sender, EventArgs e)
         {
             //数据库初始化
+            WingsDbContextInitailizer.Initailizer();
             CoreService.Initialize();//映射初始化
             log4net.Config.XmlConfigurator.Configure();//日志初始化
         }

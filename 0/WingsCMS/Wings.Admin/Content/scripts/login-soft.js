@@ -1,4 +1,4 @@
-var Login = function () {
+﻿var Login = function () {
 
 	var handleLogin = function() {
 		$('.login-form').validate({
@@ -19,10 +19,10 @@ var Login = function () {
 
 	            messages: {
 	                username: {
-	                    required: "Username is required."
+	                    required: "用户名必填."
 	                },
 	                password: {
-	                    required: "Password is required."
+	                    required: "密码必填."
 	                }
 	            },
 
@@ -126,7 +126,7 @@ var Login = function () {
 
 		function format(state) {
             if (!state.id) return state.text; // optgroup
-            return "<img class='flag' src='Content/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
+            return "<img class='flag' src='/Content/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
         }
 
 
@@ -250,10 +250,10 @@ var Login = function () {
             handleRegister();        
 	       
 	       	$.backstretch([
-		        "Content/img/bg/1.jpg",
-		        "Content/img/bg/2.jpg",
-		        "Content/img/bg/3.jpg",
-		        "Content/img/bg/4.jpg"
+		        "/Content/img/bg/1.jpg",
+		        "/Content/img/bg/2.jpg",
+		        "/Content/img/bg/3.jpg",
+		        "/Content/img/bg/4.jpg"
 		        ], {
 		          fade: 1000,
 		          duration: 8000

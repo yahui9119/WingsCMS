@@ -10,7 +10,7 @@ namespace Wings.Domain.Events
     /// 标示用户禁用的领域事件
     /// </summary>
     [Serializable]
-    public class UserForbiddenEvent:DomainEvent
+    public class UserForbiddenEvent : DomainEvent
     {
         public UserForbiddenEvent() { }
         public UserForbiddenEvent(IEntity source):base(source) { }

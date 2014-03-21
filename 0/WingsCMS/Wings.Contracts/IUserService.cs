@@ -63,6 +63,15 @@ namespace Wings.Contracts
         [FaultContract(typeof(FaultData))]
         UserDTO GetUserByID(Guid UserID);
         /// <summary>
+        /// 获取所有的用户
+        /// </summary>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        UserDTOList GetAllUsers();
+
+        /// <summary>
         /// 获取用户的分页
         /// </summary>
         /// <param name="pagination"></param>
@@ -70,6 +79,7 @@ namespace Wings.Contracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         DataObjectListWithPagination<UserDTOList> GetUsersByPage(Pagination pagination);
+
         /// <summary>
         /// 获取所有用户已经拥有的模块
         /// </summary>

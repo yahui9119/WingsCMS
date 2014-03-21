@@ -31,20 +31,7 @@ namespace Wings.Core.Implementation
             this.moduleRepository = moduleRepository;
             this.webRepository = webRepository;
         }
-        public void CreateWeb(DataObjects.WebDTO webdto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void EditWeb(DataObjects.WebDTO webdto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteWeb(Guid webid)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public UserDTOList GetUsersByWeb(Guid webid)
         {
@@ -107,18 +94,59 @@ namespace Wings.Core.Implementation
             return Mapper.Map<Module, ModuleDTO>(module);
         }
 
-        public void DeleteModule(Guid moduleid)
-        {
-            var module = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(moduleid)));
-            module.Status = Wings.Domain.Model.Status.Deleted;
-            moduleRepository.Update(module);
-            Context.Commit();
-        }
-
-
+       
         public WebDTOList GetAllWebModules()
         {
-            throw new NotImplementedException();
+            WebDTOList webdtolist = new WebDTOList();
+            var webs = webRepository.GetAll(Specification<Web>.Eval(w => w.Status == Wings.Domain.Model.Status.Active));
+            foreach (var item in webs)
+            {
+                item.Modules = item.Modules.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ToList();
+                webdtolist.Add(Mapper.Map<Web, WebDTO>(item));
+            }
+            return webdtolist;
+        }
+
+        public WebDTOList CreateWeb(WebDTOList webdtos)
+        {
+            return PerformCreateObjects<WebDTOList, WebDTO, Web>(webdtos, webRepository);
+        }
+
+        public WebDTOList EditWeb(WebDTOList webdtos)
+        {
+            return PerformUpdateObjects<WebDTOList, WebDTO, Web>(webdtos, webRepository, w => w.ID, (w, wdto) =>
+            {
+                w.Name = wdto.Name;
+                w.Description = wdto.Description;
+                w.Domain = wdto.Domain;
+                w.EditDate = DateTime.Now;
+            });
+        }
+
+        public void DeleteWeb(IDList webids)
+        {
+            WebDTOList webdtolist = new WebDTOList();
+            webids.ForEach(s =>
+            {
+                webdtolist.Add(new WebDTO() { ID = s });
+            });
+            PerformUpdateObjects<WebDTOList, WebDTO, Web>(webdtolist, webRepository, w => w.ID, (w, wdto) =>
+            {
+                w.Status = Wings.Domain.Model.Status.Deleted;
+            });
+        }
+
+        public void DeleteModule(IDList moduleids)
+        {
+            ModuleDTOList moduledtolist = new ModuleDTOList();
+            moduleids.ForEach(s =>
+            {
+                moduledtolist.Add(new ModuleDTO() { ID = s });
+            });
+            PerformUpdateObjects<ModuleDTOList, ModuleDTO, Module>(moduledtolist, moduleRepository, w => w.ID, (w, wdto) =>
+            {
+                w.Status = Wings.Domain.Model.Status.Deleted;
+            });
         }
     }
 }

@@ -46,9 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreService.cs" />
-    <Compile Include="Implementation\UserServiceImple.cs" />
+    <Compile Include="Implementation\UserServiceImpl.cs" />
     <Compile Include="Implementation\WebServiceImpl.cs" />
-    <Compile Include="PluguinServiceImpl.cs" />
+    <Compile Include="Implementation\PluguinServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

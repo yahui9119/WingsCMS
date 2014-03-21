@@ -68,6 +68,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,6 +83,8 @@
     <Compile Include="Caching\CachingMethod.cs" />
     <Compile Include="Caching\EntLibCacheProvider.cs" />
     <Compile Include="Caching\ICacheProvider.cs" />
+    <Compile Include="Communication\ChannelFactoryManager.cs" />
+    <Compile Include="Communication\ServiceProxy.cs" />
     <Compile Include="Config\WingsConfigurationReader.cs" />
     <Compile Include="Config\WingsConfigurationSection.csd.cs">
       <AutoGen>True</AutoGen>
@@ -96,6 +99,7 @@
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Infrastructure\PagedResult.cs" />
+    <Compile Include="Plugin\Web\WingsMembershipProvider.cs" />
     <Compile Include="Plugin\WingsController.cs" />
     <Compile Include="Routes\CustomRouting.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
