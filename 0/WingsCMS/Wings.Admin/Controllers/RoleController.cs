@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Wings.Framework.Plugin;
+using Wings.DataObjects;
 
 namespace Wings.Admin.Controllers
 {
@@ -17,7 +18,9 @@ namespace Wings.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            RoleDTOList roles = new RoleDTOList();
+
+            return View(roles);
         }
         public ActionResult Edit()
         {
