@@ -99,6 +99,7 @@
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Infrastructure\PagedResult.cs" />
+    <Compile Include="Plugin\Web\CachedConfigContext.cs" />
     <Compile Include="Plugin\Web\WingsMembershipProvider.cs" />
     <Compile Include="Plugin\WingsController.cs" />
     <Compile Include="Routes\CustomRouting.cs" />
@@ -140,7 +141,9 @@
     <Compile Include="UnityExtensions\UnityWcfLifetimeManager.cs" />
     <Compile Include="Utils\Email.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Utils\ValidateCode\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Config\WingsConfigurationSection.csd">
       <Generator>CsdFileGenerator</Generator>
