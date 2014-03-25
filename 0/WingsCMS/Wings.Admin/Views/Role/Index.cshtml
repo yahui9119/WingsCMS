@@ -1,4 +1,6 @@
-﻿<div class="page-content">
+﻿@using Wings.DataObjects;
+@model RoleDTOList
+<div class="page-content">
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
     <!-- BEGIN PAGE HEADER-->
     <div class="row">
@@ -7,18 +9,16 @@
             <h3 class="page-title">角色管理
             </h3>
             <ul class="page-breadcrumb breadcrumb">
-               
+
                 <li>
                     <i class="fa fa-home"></i>
                     主页
                     <i class="fa fa-angle-right"></i>
                 </li>
-                <li>
-                    组织结构
+                <li>组织结构
                     <i class="fa fa-angle-right"></i>
                 </li>
-                <li>
-                    角色管理
+                <li>角色管理
                 </li>
             </ul>
             <!-- END PAGE TITLE & BREADCRUMB-->
@@ -29,9 +29,9 @@
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
-            <div class="portlet  light-grey">
+            <div class="portlet box light-grey">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-globe"></i>Managed Table</div>
+                    <div class="caption"><i class="fa fa-globe"></i>角色表</div>
                     <div class="tools">
                         <a href="javascript:;" class="collapse"></a>
                         <a href="javascript:;" class="remove"></a>
@@ -40,250 +40,49 @@
                 <div class="portlet-body">
                     <div class="table-toolbar">
                         <div class="btn-group">
-                            <button id="sample_editable_1_new" class="btn green">
-                                添加 <i class="fa fa-plus"></i>
-                            </button>
+                            @Html.ActionLink("添加", "Add", new { }, new  { @class="btn green  roleadd" })
+                             @Html.ActionLink("删除", "Delete", new {  }, new { @class="btn red roledelete"})
                         </div>
-                        
+
                     </div>
-                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                    <table class="table table-striped table-bordered table-hover" id="roledatatable">
                         <thead>
                             <tr>
                                 <th class="table-checkbox">
-                                    <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Points</th>
-                                <th>Joined</th>
-                                <th>&nbsp;</th>
+                                    <input type="checkbox" class="group-checkable" data-set="#roledatatable .checkboxes" /></th>
+                                <th>角色名</th>
+                                <th>描述</th>
+                                <th>创建时间</th>
+                                <th>当前状态</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>shuxer</td>
-                                <td><a href="mailto:shuxer@gmail.com">shuxer@gmail.com</a></td>
-                                <td>120</td>
-                                <td class="center">12 Jan 2012</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>looper</td>
-                                <td><a href="mailto:looper90@gmail.com">looper90@gmail.com</a></td>
-                                <td>120</td>
-                                <td class="center">12.12.2011</td>
-                                <td><span class="label label-sm label-warning">Suspended</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>userwow</td>
-                                <td><a href="mailto:userwow@yahoo.com">userwow@yahoo.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.12.2012</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>user1wow</td>
-                                <td><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.12.2012</td>
-                                <td><span class="label label-sm label-default">Blocked</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>restest</td>
-                                <td><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.12.2012</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>foopl</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">19.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>weep</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">19.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>coop</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">19.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>pppol</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">19.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>test</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">19.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>userwow</td>
-                                <td><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.12.2012</td>
-                                <td><span class="label label-sm label-default">Blocked</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>test</td>
-                                <td><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.12.2012</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>goop</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>weep</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">15.11.2011</td>
-                                <td><span class="label label-sm label-default">Blocked</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>toopl</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">16.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>userwow</td>
-                                <td><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">9.12.2012</td>
-                                <td><span class="label label-sm label-default">Blocked</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>tes21t</td>
-                                <td><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">14.12.2012</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>fop</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">13.11.2010</td>
-                                <td><span class="label label-sm label-warning">Suspended</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>kop</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">17.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>vopl</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">19.11.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>userwow</td>
-                                <td><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.12.2012</td>
-                                <td><span class="label label-sm label-default">Blocked</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>wap</td>
-                                <td><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">12.12.2012</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>test</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">19.12.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>toop</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">17.12.2010</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
-                            <tr class="odd gradeX">
-                                <td>
-                                    <input type="checkbox" class="checkboxes" value="1" /></td>
-                                <td>weep</td>
-                                <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
-                                <td>20</td>
-                                <td class="center">15.11.2011</td>
-                                <td><span class="label label-sm label-success">Approved</span></td>
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+                                    <td>
+                                        <input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td class="center">@item.CreateDate.ToLocalTime()</td>
+                                    <td class="center">
+                                        @{
+                                var statusicon = item.Status == Status.Active ? "label-success" : "label-default";
+                                         
+                                            <span class="label label-sm @statusicon ">
+                                                @item.Status
+                                            </span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            @Html.ActionLink("修改", "Edit", new { ID = item.ID }, new { @class="btn yellow roleedit"})
+                                         
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -291,6 +90,83 @@
             <!-- END EXAMPLE TABLE PORTLET-->
         </div>
     </div>
-
     <!-- END PAGE CONTENT-->
 </div>
+@section JS{
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="Content/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="Content/plugins/data-tables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="Content/plugins/data-tables/DT_bootstrap.js"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script>
+        jQuery(document).ready(function () {
+            //begin datatable
+            if (!jQuery().dataTable) {
+                return;
+            }
+            // begin first table
+            $('#roledatatable').dataTable({
+                "aoColumns": [
+                  { "bSortable": false },
+                  null,
+                  { "bSortable": false },
+                  null,
+                  { "bSortable": false },
+                  { "bSortable": false }
+                ],
+                "aLengthMenu": [
+                    [5, 15, 20, -1],
+                    [5, 15, 20, "All"] // change per page values here
+                ],
+                // set the initial value
+                "iDisplayLength": 5,
+                "sPaginationType": "bootstrap",
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_",
+                    "oPaginate": {
+                        "sPrevious": "上一页",
+                        "sNext": "下一页"
+                    }
+                },
+                "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0]
+                }
+                ]
+            });
+
+            jQuery('#roledatatable .group-checkable').change(function () {
+                var set = jQuery(this).attr("data-set");
+                var checked = jQuery(this).is(":checked");
+                jQuery(set).each(function () {
+                    if (checked) {
+                        $(this).attr("checked", true);
+                    } else {
+                        $(this).attr("checked", false);
+                    }
+                    $(this).parents('tr').toggleClass("active");
+                });
+                jQuery.uniform.update(set);
+
+            });
+
+            jQuery('#roledatatable tbody tr .checkboxes').change(function () {
+                $(this).parents('tr').toggleClass("active");
+            });
+
+            jQuery('#roledatatable .dataTables_filter input').addClass("form-control input-medium"); // modify table search input
+            jQuery('#roledatatable .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
+
+            //end datatable
+            $('.roleedit').click(function () {
+                return false;
+            })
+            $('.roledelete').click(function () {
+                return false;
+            })
+            $('.roleadd').click(function () {
+                return false;
+            })
+        });
+    </script>
+}

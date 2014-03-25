@@ -146,7 +146,7 @@ namespace Wings.Core.Implementation
         public UserDTOList GetAllUsers()
         {
             UserDTOList userdtolist = new UserDTOList();
-            var users= userRepository.GetAll();
+            var users= userRepository.GetAll(Specification<User>.Eval(u=>u.Status.Equals(Wings.Domain.Model.Status.Active)));
             foreach (var item in users)
             {
                 userdtolist.Add(Mapper.Map<User, UserDTO>(item));

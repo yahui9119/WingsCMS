@@ -21,9 +21,14 @@ namespace Wings.Framework.Plugin.UI
             var exception = filterContext.Exception;
             if (exception != null)
             {
-                JsonResult exResult = new JsonResult();
-                exResult.Data = exception.Message;
-                filterContext.Result = exResult;
+                
+                //JsonResult exResult = new JsonResult();
+                //exResult.Data = exception.Message;
+                filterContext.Controller.ViewData["ErrorMessage"]=exception.Message;
+                filterContext.Result = new ViewResult() { 
+                 ViewName="Error",
+                 ViewData = filterContext.Controller.ViewData
+                };
                 filterContext.ExceptionHandled = true;
             }
         }

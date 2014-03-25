@@ -31,3 +31,115 @@
    在 Wings.Domain.Repositories.Repository`1.GetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 433
    在 Wings.Core.Implementation.UserServiceImpl.GetUsersByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 167
    在 DynamicModule.ns.Wrapped_IUserService_3b45ac5cc50a469a99ccc50e65f54e78.<GetUsersByPage_DelegateImplementation>__7(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:18:55,339 [24] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_d215ad5ffa314c06948a9431def6e969.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:19:09,111 [24] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_d215ad5ffa314c06948a9431def6e969.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:19:21,171 [24] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_d215ad5ffa314c06948a9431def6e969.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:19:28,302 [24] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_d215ad5ffa314c06948a9431def6e969.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:19:48,246 [24] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_d215ad5ffa314c06948a9431def6e969.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:20:10,925 [24] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_d215ad5ffa314c06948a9431def6e969.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:21:46,404 [14] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_0d86aaa2f9ad4ef7a7d5312676ac3761.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:22:35,241 [14] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_0d86aaa2f9ad4ef7a7d5312676ac3761.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:22:48,617 [14] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_0d86aaa2f9ad4ef7a7d5312676ac3761.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:29:45,462 [14] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_0d86aaa2f9ad4ef7a7d5312676ac3761.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:40:57,976 [23] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_eee1bd2468544b2f9afe7d10613d3baf.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 10:41:26,751 [23] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_eee1bd2468544b2f9afe7d10613d3baf.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 11:39:18,240 [23] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_eee1bd2468544b2f9afe7d10613d3baf.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 11:39:19,502 [23] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_eee1bd2468544b2f9afe7d10613d3baf.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 11:39:20,051 [23] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_eee1bd2468544b2f9afe7d10613d3baf.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-25 11:39:20,722 [23] ERROR Wings.Logger - System.ArgumentException: 无法根据指定的查询条件找到所需的数据。
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 75
+   在 Wings.Domain.Repositories.Repository`1.DoGetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 52
+   在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
+   在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
+   在 DynamicModule.ns.Wrapped_IUserService_eee1bd2468544b2f9afe7d10613d3baf.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
