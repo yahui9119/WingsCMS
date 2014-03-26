@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="ActionDTO.cs" />
     <Compile Include="BaseDTO.cs" />
+    <Compile Include="Custom\DataGrid.cs" />
+    <Compile Include="Custom\Result.cs" />
     <Compile Include="DataObjectListWithPagination.cs" />
     <Compile Include="FaultData.cs" />
     <Compile Include="GroupDTO.cs" />
@@ -50,7 +52,6 @@
     <Compile Include="MenusDTO.cs" />
     <Compile Include="ModuleDTO.cs" />
     <Compile Include="Pagination.cs" />
-    <Compile Include="PermissionDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleDTO.cs" />
     <Compile Include="UserDTO.cs" />

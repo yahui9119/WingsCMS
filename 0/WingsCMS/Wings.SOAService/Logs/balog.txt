@@ -143,3 +143,620 @@
    在 Wings.Domain.Repositories.Repository`1.GetAll() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 372
    在 Wings.Core.Implementation.UserServiceImpl.GetAllRoles() 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 412
    在 DynamicModule.ns.Wrapped_IUserService_eee1bd2468544b2f9afe7d10613d3baf.<GetAllRoles_DelegateImplementation>__18(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 14:56:31,989 [6] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 352
+   在 DynamicModule.ns.Wrapped_IUserService_18bc0e93601a4ee3a4a31009ee451c96.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 14:58:32,980 [5] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 352
+   在 DynamicModule.ns.Wrapped_IUserService_9caf97faff3c4545bb271be6f8130da4.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:00:04,938 [5] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 352
+   在 DynamicModule.ns.Wrapped_IUserService_9caf97faff3c4545bb271be6f8130da4.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:00:52,115 [5] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 352
+   在 DynamicModule.ns.Wrapped_IUserService_9caf97faff3c4545bb271be6f8130da4.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:32:29,817 [5] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 352
+   在 DynamicModule.ns.Wrapped_IUserService_038e37647c2942efbfd37dde70684c93.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:02,464 [5] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 352
+   在 DynamicModule.ns.Wrapped_IUserService_038e37647c2942efbfd37dde70684c93.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:48,372 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:50,116 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:50,760 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:50,968 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:51,169 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:54,748 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:55,402 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:55,623 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:33:55,803 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_8746b5ceec4441ab9b2db01c7a98085e.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:34:34,614 [5] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 360
+   在 DynamicModule.ns.Wrapped_IUserService_38223417003e431082dba2fcb88ecb5b.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:36:55,878 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 356
+   在 DynamicModule.ns.Wrapped_IUserService_9edbc251f4a7489d8b04fcb5a9e04570.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:37:00,673 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 356
+   在 DynamicModule.ns.Wrapped_IUserService_9edbc251f4a7489d8b04fcb5a9e04570.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:37:03,340 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 356
+   在 DynamicModule.ns.Wrapped_IUserService_9edbc251f4a7489d8b04fcb5a9e04570.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:37:04,086 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 356
+   在 DynamicModule.ns.Wrapped_IUserService_9edbc251f4a7489d8b04fcb5a9e04570.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:37:10,259 [18] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 356
+   在 DynamicModule.ns.Wrapped_IUserService_9edbc251f4a7489d8b04fcb5a9e04570.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:37:49,238 [6] ERROR Wings.Logger - System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 356
+   在 DynamicModule.ns.Wrapped_IUserService_74672e3ae0ab461b9224144af10c26a2.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:53:01,685 [27] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_7c0a26407757496ea494b83ed2f50859.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:53:01,685 [13] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_7c0a26407757496ea494b83ed2f50859.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:53:26,430 [27] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_7c0a26407757496ea494b83ed2f50859.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 15:57:55,368 [27] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_be6b9ef60b59416c837ad23593f27ebd.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:00:59,132 [35] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_770c8597b3124da0b7f1bc3543477d8a.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:01:02,325 [35] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_770c8597b3124da0b7f1bc3543477d8a.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:06:06,080 [17] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_0ee209e18cb24d72b2cb097ff68aa459.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:07:18,618 [24] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_ca382d84f06b486d958c237255636fb6.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:09:30,198 [6] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_3c2055c964814e199f2c0b76a5980e60.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:11:46,010 [19] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_790940c817004f86a6eff6bb3987aba4.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:14:19,031 [19] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_790940c817004f86a6eff6bb3987aba4.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:16:56,903 [6] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_5edf44efebe742abb36757107c068e71.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:17:58,460 [6] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_5edf44efebe742abb36757107c068e71.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:18:02,528 [6] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_5edf44efebe742abb36757107c068e71.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:18:54,899 [6] ERROR Wings.Logger - AutoMapper.AutoMapperMappingException: 
+
+Mapping types:
+String -> Guid
+System.String -> System.Guid
+
+Destination path:
+Role.ID.ID
+
+Source value:
+0 ---> System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.GuidResult.SetFailure(ParseFailureKind failure, String failureMessageID, Object failureMessageFormatArgument, String failureArgumentName, Exception innerException)
+   在 System.Guid.TryParseGuidWithNoStyle(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid..ctor(String g)
+   在 System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   在 System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   在 AutoMapper.Mappers.TypeConverterMapper.<>c__DisplayClass2.<GetConverter>b__1()
+   在 AutoMapper.Mappers.TypeConverterMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)
+   在 AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   在 AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   在 AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   在 AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   在 AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   在 Wings.Core.CoreService.PerformCreateObjects[TDataObjectList,TDataObject,TAggregateRoot](TDataObjectList dataTransferObjects, IRepository`1 repository, Action`1 processDto, Action`1 processAggregateRoot) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\CoreService.cs:行号 94
+   在 Wings.Core.Implementation.UserServiceImpl.CreateRole(RoleDTOList roles) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 274
+   在 DynamicModule.ns.Wrapped_IUserService_9fbe9ef144a245c984d7c8275c1a219c.<CreateRole_DelegateImplementation>__10(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:51:47,537 [29] ERROR Wings.Logger - System.ArgumentException: 没有为类型“Wings.Domain.Model.Role”定义实例属性“sort”
+   在 System.Linq.Expressions.Expression.Property(Expression expression, String propertyName)
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.InvokeSortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 66
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.SortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 23
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoFindAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 126
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 83
+   在 Wings.Domain.Repositories.Repository`1.GetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 433
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 350
+   在 DynamicModule.ns.Wrapped_IUserService_6c53bbc9d262455b854199537fd54322.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:51:49,841 [29] ERROR Wings.Logger - System.ArgumentException: 没有为类型“Wings.Domain.Model.Role”定义实例属性“sort”
+   在 System.Linq.Expressions.Expression.Property(Expression expression, String propertyName)
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.InvokeSortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 66
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.SortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 23
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoFindAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 126
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 83
+   在 Wings.Domain.Repositories.Repository`1.GetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 433
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 350
+   在 DynamicModule.ns.Wrapped_IUserService_6c53bbc9d262455b854199537fd54322.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:51:50,496 [29] ERROR Wings.Logger - System.ArgumentException: 没有为类型“Wings.Domain.Model.Role”定义实例属性“sort”
+   在 System.Linq.Expressions.Expression.Property(Expression expression, String propertyName)
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.InvokeSortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 66
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.SortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 23
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoFindAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 126
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 83
+   在 Wings.Domain.Repositories.Repository`1.GetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 433
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 350
+   在 DynamicModule.ns.Wrapped_IUserService_6c53bbc9d262455b854199537fd54322.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 16:51:51,011 [29] ERROR Wings.Logger - System.ArgumentException: 没有为类型“Wings.Domain.Model.Role”定义实例属性“sort”
+   在 System.Linq.Expressions.Expression.Property(Expression expression, String propertyName)
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.InvokeSortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate, SortOrder sortOrder) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 66
+   在 Wings.Domain.Repositories.EntityFramework.SortByExtension.SortBy[TAggregateRoot](IQueryable`1 query, Expression`1 sortPredicate) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\SortByExtension.cs:行号 23
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoFindAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 126
+   在 Wings.Domain.Repositories.EntityFramework.EntityFrameworkRepository`1.DoGetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain.Repositories\EntityFramework\BaseRepository\EntityFrameworkRepository.cs:行号 83
+   在 Wings.Domain.Repositories.Repository`1.GetAll(ISpecification`1 specification, Expression`1 sortPredicate, SortOrder sortOrder, Int32 pageNumber, Int32 pageSize) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Domain\Repositories\Repository.cs:行号 433
+   在 Wings.Core.Implementation.UserServiceImpl.GetRolesByPage(Pagination pagination) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 350
+   在 DynamicModule.ns.Wrapped_IUserService_6c53bbc9d262455b854199537fd54322.<GetRolesByPage_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+
+2014-03-26 18:40:55,554 [5] ERROR Wings.Logger - System.NotImplementedException: 未实现该方法或操作。
+   在 Wings.Core.Implementation.UserServiceImpl.DeleteRole(IDList roleid) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 559
+   在 DynamicModule.ns.Wrapped_IUserService_2040835fc84e4f8b8b81864c73d71e4f.<DeleteRole_DelegateImplementation>__12(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)

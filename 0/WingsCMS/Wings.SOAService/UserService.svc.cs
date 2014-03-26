@@ -166,7 +166,7 @@ namespace Wings.SOAService
         {
             try
             {
-                DeleteRole(roleid);
+                userServiceImpl.DeleteRole(roleid);
             }
             catch (Exception ex)
             {

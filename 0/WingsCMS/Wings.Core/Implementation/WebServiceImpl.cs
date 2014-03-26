@@ -50,7 +50,7 @@ namespace Wings.Core.Implementation
             Specification<Web> starttime = Specification<Web>.Eval(u => pagination.StartTime != null ? u.CreateDate < pagination.StartTime : true);
             Specification<Web> endtime = Specification<Web>.Eval(u => pagination.EndTime != null ? u.CreateDate > pagination.EndTime : true);
             Specification<Web> likeword = Specification<Web>.Eval(u => (string.IsNullOrEmpty(pagination.LikeWord) ? u.Name.Contains(pagination.LikeWord) : true));
-            PagedResult<Web> userpages = webRepository.GetAll(starttime.And(endtime).And(likeword), u => u.CreateDate, SortOrder.Descending, pagination.PageNumber, pagination.PageSize);
+            PagedResult<Web> userpages = webRepository.GetAll(starttime.And(endtime).And(likeword), u => u.CreateDate, SortOrder.Descending, pagination.page, pagination.rows);
             DataObjectListWithPagination<WebDTOList> result = new DataObjectListWithPagination<WebDTOList>();
             if (userpages.Data != null)
             {
@@ -60,8 +60,8 @@ namespace Wings.Core.Implementation
                 });
             }
             else { result.DataObjectList = new WebDTOList(); }
-            result.pagination.PageNumber = userpages.PageNumber;
-            result.pagination.PageSize = userpages.PageSize;
+            result.pagination.page = userpages.PageNumber;
+            result.pagination.rows = userpages.PageSize;
             result.pagination.TotalPages = userpages.TotalPages;
             result.pagination.TotalRecords = userpages.TotalRecords;
             return result;

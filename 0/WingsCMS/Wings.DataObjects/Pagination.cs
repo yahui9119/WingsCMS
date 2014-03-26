@@ -7,14 +7,25 @@ namespace Wings.DataObjects
 {
     public class Pagination
     {
+        public Pagination()
+        {
+            page = 0;
+            rows = 0;
+            TotalPages = 0;
+            TotalRecords = 0;
+            StartTime = null;
+            EndTime = null;
+            LikeWord = string.Empty;
+            IsDesc = false;
+        }
         /// <summary>
         /// 页索引
         /// </summary>
-        public int PageNumber { get; set; }
+        public int page { get; set; }
         /// <summary>
         /// 单页显示大小
         /// </summary>
-        public int PageSize { get; set; }
+        public int rows { get; set; }
         /// <summary>
         /// 总共多少页
         /// </summary>
@@ -39,6 +50,14 @@ namespace Wings.DataObjects
         /// 是否倒叙排列
         /// </summary>
         public bool IsDesc { get; set; }
+        /// <summary>
+        /// 排序的列明
+        /// </summary>
+        public string sort { get; set; }
+        /// <summary>
+        /// 排序方式
+        /// </summary>
+        public string order { get; set; }
          
     }
 }

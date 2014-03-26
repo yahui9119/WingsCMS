@@ -14,8 +14,8 @@ namespace Wings.DataObjects
         public DataObjectListWithPagination()
         {
             pagination = new Pagination();
-            pagination.PageSize = 10;
-            pagination.PageNumber = 1;
+            pagination.rows = 10;
+            pagination.page = 1;
             DataObjectList = new T();;
         }
         /// <summary>

@@ -1,0 +1,16 @@
+﻿body{font-size:12px;background: url(../images/bg.gif);}
+#login{position: absolute;margin-top: -140px;width: 727px;height: 230px;margin-left: -350px;top: 45%;left: 50%;}
+#login .login-body{background: url(../images/loginbg.png);width: 727px;height: 200px;}
+#login div.login-body > form{margin-left:360px;padding-top:20px;}
+#fotter{text-align: center;color: #999;}
+#login .control-label{width:40px;}
+#login .control-group{margin-bottom:5px;}
+#login .controls{ margin-left:60px;}
+#verifycode-layer{position:absolute;width:139px;border:solid 1px #ccc;display:none;z-index:201;background-color:#fff; font-size:12px; border-top-width:0px;}
+#verifycode-layer .header{width:100%;height:25px;line-height:25px;background-image:url(../images/top-bg.gif); border-bottom:solid 1px #ccc;text-align:right;}
+#verifycode-layer .header a{ margin-right:5px;color:#999;text-decoration:none;}
+#verifycode-layer .header a:hover{ margin-right:5px;color:rgb(0,136,204); text-decoration:underline;}
+#verifycode-layer .content{width:100%;height:60px; margin-top:5px;}
+#verifycode-layer .content .left{text-align:left; margin-left:10px;}
+#verifycode-layer .content .left img{width:80px;height:35px;}
+#verifycode-layer .content .right{text-align:right; margin-right:10px;}

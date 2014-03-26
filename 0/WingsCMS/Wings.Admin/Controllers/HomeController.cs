@@ -19,6 +19,15 @@ namespace Wings.Admin.Controllers
             return View();
         }
         /// <summary>
+        /// 主页面
+        /// </summary>
+        /// <returns></returns>
+        [LoginAllowView]
+        public ActionResult Main()
+        {
+            return View();
+        }
+        /// <summary>
         /// 载入菜单 （工具条）
         /// </summary>
         /// <returns></returns>

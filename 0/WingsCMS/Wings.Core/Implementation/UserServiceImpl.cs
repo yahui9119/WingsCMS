@@ -12,6 +12,7 @@ using Wings.Domain.Specifications;
 using Wings.Framework;
 using Wings.Framework.Transactions;
 using Wings.Events.Bus;
+using System.Linq.Expressions;
 
 namespace Wings.Core.Implementation
 {
@@ -146,7 +147,7 @@ namespace Wings.Core.Implementation
         public UserDTOList GetAllUsers()
         {
             UserDTOList userdtolist = new UserDTOList();
-            var users= userRepository.GetAll(Specification<User>.Eval(u=>u.Status.Equals(Wings.Domain.Model.Status.Active)));
+            var users = userRepository.GetAll(Specification<User>.Eval(u => u.Status.Equals(Wings.Domain.Model.Status.Active)));
             foreach (var item in users)
             {
                 userdtolist.Add(Mapper.Map<User, UserDTO>(item));
@@ -161,10 +162,10 @@ namespace Wings.Core.Implementation
         public DataObjectListWithPagination<UserDTOList> GetUsersByPage(Pagination pagination)
         {
 
-            Specification<User> starttime = Specification<User>.Eval(u => pagination.StartTime != null ? u.CreateDate < pagination.StartTime : true);
-            Specification<User> endtime = Specification<User>.Eval(u => pagination.EndTime != null ? u.CreateDate > pagination.EndTime : true);
-            Specification<User> likeword = Specification<User>.Eval(u => (string.IsNullOrEmpty(pagination.LikeWord) ? u.RealName.Contains(pagination.LikeWord) : true));
-            PagedResult<User> userpages = userRepository.GetAll(starttime.And(endtime).And(likeword), u => u.CreateDate, SortOrder.Descending, pagination.PageNumber, pagination.PageSize);
+            Specification<User> starttime = Specification<User>.Eval(u => pagination.StartTime != null ? u.CreateDate > pagination.StartTime : true);
+            Specification<User> endtime = Specification<User>.Eval(u => pagination.EndTime != null ? u.CreateDate < pagination.EndTime : true);
+            Specification<User> likeword = Specification<User>.Eval(u => (!string.IsNullOrEmpty(pagination.LikeWord) ? u.RealName.Contains(pagination.LikeWord) : true));
+            PagedResult<User> userpages = userRepository.GetAll(starttime.And(endtime).And(likeword), u => u.CreateDate, SortOrder.Descending, pagination.page, pagination.rows);
             DataObjectListWithPagination<UserDTOList> result = new DataObjectListWithPagination<UserDTOList>();
             if (userpages.Data != null)
             {
@@ -174,8 +175,8 @@ namespace Wings.Core.Implementation
                 });
             }
             else { result.DataObjectList = new UserDTOList(); }
-            result.pagination.PageNumber = userpages.PageNumber;
-            result.pagination.PageSize = userpages.PageSize;
+            result.pagination.page = userpages.PageNumber;
+            result.pagination.rows = userpages.PageSize;
             result.pagination.TotalPages = userpages.TotalPages;
             result.pagination.TotalRecords = userpages.TotalRecords;
             return result;
@@ -281,6 +282,7 @@ namespace Wings.Core.Implementation
                 r.Name = rdto.Name;
                 r.Description = rdto.Description;
                 r.EditDate = DateTime.Now;
+                r.Status =( Domain.Model.Status) rdto.Status;
             });
         }
 
@@ -342,13 +344,26 @@ namespace Wings.Core.Implementation
 
         public DataObjectListWithPagination<RoleDTOList> GetRolesByPage(Pagination pagination)
         {
-
-            Specification<Role> starttime = Specification<Role>.Eval(u => pagination.StartTime != null ? u.CreateDate < pagination.StartTime : true);
-            Specification<Role> endtime = Specification<Role>.Eval(u => pagination.EndTime != null ? u.CreateDate > pagination.EndTime : true);
-            Specification<Role> likeword = Specification<Role>.Eval(u => (string.IsNullOrEmpty(pagination.LikeWord) ? u.Name.Contains(pagination.LikeWord) : true));
-
-            PagedResult<Role> rolepages = roleRepository.GetAll(starttime.And(endtime).And(likeword), u => u.CreateDate, SortOrder.Descending, pagination.PageNumber, pagination.PageSize);
+            Specification<Role> starttime = Specification<Role>.Eval(u => pagination.StartTime != null ? u.CreateDate > pagination.StartTime : true);
+            Specification<Role> endtime = Specification<Role>.Eval(u => pagination.EndTime != null ? u.CreateDate < pagination.EndTime : true);
+            Specification<Role> likeword = Specification<Role>.Eval(u => (!string.IsNullOrEmpty(pagination.LikeWord) ? u.Name.Contains(pagination.LikeWord) : true));
+            Expression<Func<Role, dynamic>> sortPredicate;
+            var property = typeof(Role).GetProperty(pagination.sort);
+            if (property != null)
+            {
+                sortPredicate = r => property.Name;
+            }
+            else
+            {
+                sortPredicate = r => r.CreateDate;
+            }
+            PagedResult<Role> rolepages = roleRepository.GetAll(starttime.And(endtime).And(likeword), sortPredicate
+            , pagination.order.ToLower()=="desc" ? SortOrder.Descending : SortOrder.Ascending, pagination.page, pagination.rows);
             DataObjectListWithPagination<RoleDTOList> result = new DataObjectListWithPagination<RoleDTOList>();
+            if (rolepages == null)
+            {
+                return result;
+            }
             if (rolepages.Data != null)
             {
                 rolepages.Data.ForEach(u =>
@@ -357,8 +372,8 @@ namespace Wings.Core.Implementation
                 });
             }
             else { result.DataObjectList = new RoleDTOList(); }
-            result.pagination.PageNumber = rolepages.PageNumber;
-            result.pagination.PageSize = rolepages.PageSize;
+            result.pagination.page = rolepages.PageNumber;
+            result.pagination.rows = rolepages.PageSize;
             result.pagination.TotalPages = rolepages.TotalPages;
             result.pagination.TotalRecords = rolepages.TotalRecords;
             return result;
@@ -475,7 +490,7 @@ namespace Wings.Core.Implementation
         {
             //销毁处理
         }
-       
+
         /// <summary>
         /// 根据父id获取分组
         /// </summary>
@@ -498,7 +513,7 @@ namespace Wings.Core.Implementation
         /// <returns></returns>
         public GroupDTO GetGroupByID(Guid id)
         {
-            var group= groupRespository.Find(Specification<Group>.Eval(g => g.ID.Equals(id)));
+            var group = groupRespository.Find(Specification<Group>.Eval(g => g.ID.Equals(id)));
             return Mapper.Map<Group, GroupDTO>(group);
         }
         /// <summary>
@@ -521,28 +536,56 @@ namespace Wings.Core.Implementation
         /// <returns></returns>
         public WebDTOList GetAllWebModules()
         {
-            var webs = webRepository.GetAll(Specification<Web>.Eval(w=>w.Status==Wings.Domain.Model.Status.Active));
-            WebDTOList wdtolist=new WebDTOList ();
+            var webs = webRepository.GetAll(Specification<Web>.Eval(w => w.Status == Wings.Domain.Model.Status.Active));
+            WebDTOList wdtolist = new WebDTOList();
             foreach (var item in webs)
             {
                 item.Modules.RemoveAll(m => m.Status != Wings.Domain.Model.Status.Active);
             }
             foreach (var item in webs)
-	        {
+            {
                 wdtolist.Add(Mapper.Map<Web, WebDTO>(item));
-	        }
+            }
             return wdtolist;
         }
 
 
         public void DeleteUser(IDList UserIDs)
         {
-            throw new NotImplementedException();
+            UserDTOList users = new UserDTOList();
+            Guid temp = Guid.Empty;
+            UserIDs.ForEach(
+                r =>
+                {
+                    if (Guid.TryParse(r, out temp))
+                    {
+                        users.Add(new UserDTO() { ID = temp.ToString() });
+                    }
+                }
+                );
+            PerformUpdateObjects<UserDTOList, UserDTO, User>(users, userRepository, g => g.ID, (g, gdto) =>
+            {
+                g.Status = Wings.Domain.Model.Status.Deleted;
+            });
         }
 
         public void DeleteRole(IDList roleid)
         {
-            throw new NotImplementedException();
+            RoleDTOList roles = new RoleDTOList();
+            Guid temp = Guid.Empty;
+            roleid.ForEach(
+                r =>
+                {
+                    if (Guid.TryParse(r, out temp))
+                    {
+                        roles.Add(new RoleDTO() { ID = temp.ToString() });
+                    }
+                }
+                );
+            PerformUpdateObjects<RoleDTOList, RoleDTO, Role>(roles, roleRepository, g => g.ID, (g, gdto) =>
+            {
+                g.Status = Wings.Domain.Model.Status.Deleted;
+            });
         }
     }
 }

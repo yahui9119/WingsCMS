@@ -32,8 +32,8 @@ namespace Wings.Admin.Controllers
             {
                 islogin = proxy.Channel.CheckPassword(username, password);
                 Pagination p = new Pagination();
-                p.PageNumber = 1;
-                p.PageSize = 10;
+                p.page = 1;
+                p.rows = 10;
                 
                 var test = proxy.Channel.GetAllUsers();
             }
