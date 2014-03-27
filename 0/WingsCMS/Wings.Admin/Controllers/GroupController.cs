@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Wings.Framework.Plugin;
+using Wings.Contracts;
 using Wings.DataObjects;
 using Wings.Framework.Communication;
-using Wings.Contracts;
-using Wings.DataObjects.Custom;
+using Wings.Framework.Plugin;
 
 namespace Wings.Admin.Controllers
 {
-    /// <summary>
-    /// 角色管理
-    /// </summary>
-    public class RoleController : WingsController
+    public class GroupController : WingsController
     {
         //
-        // GET: /Role/
+        // GET: /Group/
+
         public ActionResult Index()
         {
 

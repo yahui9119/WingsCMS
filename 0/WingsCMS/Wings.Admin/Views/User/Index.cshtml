@@ -1,18 +1,16 @@
 ﻿@{
-    ViewBag.Title = "角色管理";
-            //RoleGroupsBLL _RoleGroupsBLL = new RoleGroupsBLL();
-            //IList<SelectListItem> _GroupList = _RoleGroupsBLL.GetRoleGroupList(true);
+    ViewBag.Title = "用户管理";
 }
 <div id="system-iframe-north" data-options="region:'north'" style="overflow-y: hidden; padding: 5px 0px 0px 5px; border-width: 0px;">
     <div class="input-prepend inline">
-        <span class="add-on">角色名称</span>
-        <input id="LikeWord" type="text" maxlength="50" class="span2" placeholder="角色名称" />
+        <span class="add-on">用户名称</span>
+        <input id="LikeWord" type="text" maxlength="50" class="span2" placeholder="用户的真实姓名" />
     </div>
     <div class="input-prepend inline">
         <span class="add-on">添加时间</span>
-        <input id="StartTime" type="text" class="easyui-datetimebox" style="width:139px" placeholder="开始时间" />
+        <input id="StartTime" type="text" class="easyui-datetimebox" style="width: 139px" placeholder="开始时间" />
         <span>-</span>
-        <input id="EndTime" type="text" class="easyui-datetimebox" style="width:139px" placeholder="结束时间" />
+        <input id="EndTime" type="text" class="easyui-datetimebox" style="width: 139px" placeholder="结束时间" />
     </div>
 
     <div class="input-append inline">
@@ -46,7 +44,7 @@
             $dg.datagrid({
                 loadMsg: '数据加载中，请稍后……',
                 method: 'post',
-                url: '@Url.Action("GetDataGrid", "Role")',
+                url: '@Url.Action("GetDataGrid", "User")',
                 sortName: 'Sort',
                 sortOrder: 'desc',
                 pageList: [5, 10, 20, 30, 40, 50, 100, 200, 500],
@@ -54,13 +52,20 @@
                 toolbar: '#toolbar',
                 columns: [[
                     { field: 'ID', checkbox: true, width: 20, align: 'center' },
-                    { field: 'Name', title: '角色名称', width: 120, align: 'center', sortable: true },
+                    { field: 'Account', title: '帐户名', width: 120, align: 'center', sortable: true },
+                     { field: 'RealName', title: '用户名', width: 120, align: 'center', sortable: true },
+                      { field: 'Gender', title: '性别', width: 60, align: 'center', sortable: true, formatter: function (value) { return value == 1 ? "男" : "女"; } },
 
-                    { field: 'Status', title: '状态', width: 60, align: 'center', sortable: true, formatter: function (value) { return Common.formatBoolean(value==1); } },
-                    //{ field: 'AddUserName', title: '添加人', width: 100, align: 'center', sortable: true },
+                     { field: 'HaveGroups', title: '部门', width: 60, align: 'center', sortable: true, formatter: function (value) { if (value == '') { return '--'; } return value; } },
+
+                     { field: 'HaveRoles', title: '角色', width: 60, align: 'center', sortable: true, formatter: function (value) { if (value == '') { return '--'; } return value; } },
+
+                     { field: 'HaveWebs', title: '拥有站点', width: 60, align: 'center', sortable: true, formatter: function (value) { if (value == '') { return '--'; } return value; } },
+                    { field: 'Status', title: '状态', width: 60, align: 'center', sortable: true, formatter: function (value) { return Common.formatBoolean(value == 1); } },
+
                     { field: 'CreateDate', title: '添加时间', width: 80, align: 'center', sortable: true, formatter: function (value) { return Common.formatDate(value); } },
                     { field: 'EditDate', title: '更新时间', width: 80, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return Common.formatDate(value); } },
-                    { field: 'Description', title: '角色组描述', width: 300, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return value; } }
+                    { field: 'Description', title: '简介', width: 300, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return value; } }
 
                 ]],
                 fit: true,
@@ -105,7 +110,7 @@
                             buffer.append(selecteds[i].ID);
                         }
                         var idList = buffer.toString(",");
-                        $.post('@Url.Action("Delete", "Role")', { idList: idList },
+                        $.post('@Url.Action("Delete", "User")', { idList: idList },
                             function (data) {
                                 if (data.success) {
                                     $.messager.alert('提示', data.message, 'info');
@@ -146,15 +151,15 @@
                 $.messager.confirm('确认', '是否删除此条数据？', function (r) {
                     if (r) {
                         $.post('@Url.Action("Delete", "Role")', { idList: rowData["ID"] },
-                function (data) {
-                    if (data.success) {
-                        $.messager.alert('提示', data.message, 'info');
-                        $dg.datagrid('reload');
-                        $dg.datagrid('clearSelections');
-                    } else {
-                        $.messager.alert('错误', data.message, 'error');
-                    }
-                });
+function (data) {
+    if (data.success) {
+        $.messager.alert('提示', data.message, 'info');
+        $dg.datagrid('reload');
+        $dg.datagrid('clearSelections');
+    } else {
+        $.messager.alert('错误', data.message, 'error');
+    }
+});
                 }
                 });
             });
@@ -167,46 +172,14 @@
                 $dg.datagrid('reload');
             });
 
-            ////高级查询
-            //$('#btnHighQuery').on('click', function () {
-            //    $('#HighSearch').window('open');
-            //});
-            //$('#btnHighSearch').on('click', function () {
-            //    var addDateStart = $("#hs_AddDateStart").datebox('getValue') == null ? "" : $("#hs_AddDateStart").datebox('getValue');
-            //    var addDateEnd = $("#hs_AddDateEnd").datebox('getValue') == null ? "" : $("#hs_AddDateEnd").datebox('getValue');
-            //    var lastUpdateStart = $("#hs_LastUpdateStart").datebox('getValue') == null ? "" : $("#hs_LastUpdateStart").datebox('getValue');
-            //    var lastUpdateEnd = $("#hs_LastUpdateEnd").datebox('getValue') == null ? "" : $("#hs_LastUpdateEnd").datebox('getValue');
-            //    if (addDateStart != "" && addDateEnd != "" && Common.compareDate(addDateStart, addDateEnd)) {
-            //        $.messager.alert('警告', "发布时间开始日期不能大于结束日期！", "warning");
-            //        return false;
-            //    }
-            //    if (lastUpdateStart != "" && lastUpdateEnd != "" && Common.compareDate(lastUpdateStart, lastUpdateEnd)) {
-            //        $.messager.alert('警告', "修改时间开始日期不能大于结束日期！", "warning");
-            //        return false;
-            //    }
-            //    var parm = {
-            //        RoleName: $('#hs_RoleName').val(),
-            //        GroupID: $('#hs_GroupID').val(),
-            //        Description: $('#hs_Description').val(),
-            //        IsDisplay: $('#hs_IsDisplay').val(),
-            //        AddUserName: $('#hs_AddUserName').val(),
-            //        UpdateUserName: $('#hs_UpdateUserName').val(),
-            //        AddDateStart: addDateStart,
-            //        AddDateEnd: addDateEnd,
-            //        LastUpdateStart: lastUpdateStart,
-            //        LastUpdateEnd: lastUpdateEnd
-            //    };
-            //    $dg.datagrid('load', parm);
-            //    $dg.datagrid('clearSelections');
-            //    return false;
-            //});
+
             //重置表单
             $('#btnSearchRest').on('click', function () {
                 $('#frmSearch')[0].reset();
             });
             //编辑
             function Edit(id) {
-                $.post('@Url.Action("Get", "Role")/' + id, function (data) {
+                $.post('@Url.Action("Get", "User")/' + id, function (data) {
                     $('#frmAddEdit').form('load', data);
                     var isDisplay = data.IsDisplay ? 'True' : 'False';
                     $('#_IsDisplay').val(isDisplay);
@@ -222,8 +195,8 @@
             });
             $('#btnOK').on('click', function () {
 
-                var add = "@Url.Action("add", "role")";
-                var edit = "@Url.Action("edit", "role")";
+                var add = "@Url.Action("add", "User")";
+                var edit = "@Url.Action("edit", "User")";
                 var action = $('#_ID').val() == '0' ? add : edit;
                 if ($('#frmAddEdit').form('validate')) {
                     $.ajax({

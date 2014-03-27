@@ -117,6 +117,7 @@ namespace Wings.Core.Implementation
                 {
                     u.Zip = uto.Zip;
                 }
+                u.Status = (Domain.Model.Status)uto.Status;
             });
         }
         /// <summary>
@@ -165,20 +166,35 @@ namespace Wings.Core.Implementation
             Specification<User> starttime = Specification<User>.Eval(u => pagination.StartTime != null ? u.CreateDate > pagination.StartTime : true);
             Specification<User> endtime = Specification<User>.Eval(u => pagination.EndTime != null ? u.CreateDate < pagination.EndTime : true);
             Specification<User> likeword = Specification<User>.Eval(u => (!string.IsNullOrEmpty(pagination.LikeWord) ? u.RealName.Contains(pagination.LikeWord) : true));
-            PagedResult<User> userpages = userRepository.GetAll(starttime.And(endtime).And(likeword), u => u.CreateDate, SortOrder.Descending, pagination.page, pagination.rows);
-            DataObjectListWithPagination<UserDTOList> result = new DataObjectListWithPagination<UserDTOList>();
-            if (userpages.Data != null)
+            Expression<Func<User, dynamic>> sortPredicate;
+            var property = typeof(User).GetProperty(pagination.sort);
+            if (property != null)
             {
-                userpages.Data.ForEach(u =>
+                sortPredicate = r => property.Name;
+            }
+            else
+            {
+                sortPredicate = r => r.CreateDate;
+            }
+            PagedResult<User> rolepages = userRepository.GetAll(starttime.And(endtime).And(likeword), sortPredicate
+            , pagination.order.ToLower() == "desc" ? SortOrder.Descending : SortOrder.Ascending, pagination.page, pagination.rows);
+            DataObjectListWithPagination<UserDTOList> result = new DataObjectListWithPagination<UserDTOList>();
+            if (rolepages == null)
+            {
+                return result;
+            }
+            if (rolepages.Data != null)
+            {
+                rolepages.Data.ForEach(u =>
                 {
                     result.DataObjectList.Add(Mapper.Map<User, UserDTO>(u));
                 });
             }
             else { result.DataObjectList = new UserDTOList(); }
-            result.pagination.page = userpages.PageNumber;
-            result.pagination.rows = userpages.PageSize;
-            result.pagination.TotalPages = userpages.TotalPages;
-            result.pagination.TotalRecords = userpages.TotalRecords;
+            result.pagination.page = rolepages.PageNumber;
+            result.pagination.rows = rolepages.PageSize;
+            result.pagination.TotalPages = rolepages.TotalPages;
+            result.pagination.TotalRecords = rolepages.TotalRecords;
             return result;
         }
         /// <summary>

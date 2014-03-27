@@ -28,14 +28,68 @@ namespace Wings.DataObjects
         /// 密码
         /// </summary>
         public virtual string Password { get; set; }
+        private bool _isman = false;
         /// <summary>
         /// 性别是否是男人
         /// </summary>
-        public virtual bool IsMan { get; set; }
+        public virtual bool IsMan
+        {
+            get
+            {
+                return _isman;
+            }
+            set
+            {
+                _isman = value;
+            }
+        }
+        /// <summary>
+        /// 性别 1 是男的 其他是0
+        /// </summary>
+        public virtual int Gender
+        {
+            get
+            {
+                return _isman ? 1 : 0;
+            }
+            set
+            {
+                this._isman = value == 1;
+            }
+        }
+        private DateTime _birthday;
         /// <summary>
         /// 生日
         /// </summary>
-        public virtual DateTime Birthday { get; set; }
+        public virtual DateTime Birthday
+        {
+            get
+            {
+                return _birthday;
+            }
+            set
+            {
+                _birthday = value;
+            }
+        }
+        /// <summary>
+        /// 生日 字符串显示
+        /// </summary>
+        public virtual string BirthDays
+        {
+            get
+            {
+                string format = "yyyy-MM-dd";
+                return _birthday != null ? _birthday.ToString(format) : DateTime.MinValue.AddSeconds(1).ToString(format);
+            }
+            set
+            {
+                DateTime datetemp = DateTime.MinValue.AddSeconds(1);
+                DateTime.TryParse(value, out datetemp);
+                _birthday = datetemp;
+
+            }
+        }
         /// <summary>
         /// 邮箱
         /// </summary>
@@ -64,10 +118,10 @@ namespace Wings.DataObjects
         /// 最后登陆时间
         /// </summary>
         public virtual DateTime LastloginTime { get; set; }
-        /// <summary>
-        /// 是否启用
-        /// </summary>
-        public virtual bool IsActive { get; set; }
+        ///// <summary>
+        ///// 是否启用
+        ///// </summary>
+        //public virtual bool IsActive { get; set; }
         /// <summary>
         /// 用户拥有角色列表 多对多
         /// </summary>

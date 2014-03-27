@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Wings.Framework.Plugin;
-using Wings.DataObjects;
-using Wings.Framework.Communication;
 using Wings.Contracts;
+using Wings.DataObjects;
 using Wings.DataObjects.Custom;
+using Wings.Framework.Communication;
+using Wings.Framework.Plugin;
 
 namespace Wings.Admin.Controllers
 {
-    /// <summary>
-    /// 角色管理
-    /// </summary>
-    public class RoleController : WingsController
+    public class UserController : WingsController
     {
         //
-        // GET: /Role/
+        // GET: /User/
+
         public ActionResult Index()
         {
 
@@ -26,29 +24,30 @@ namespace Wings.Admin.Controllers
         [HttpPost]
         public ActionResult GetDataGrid(Pagination p)
         {
-            DataObjectListWithPagination<RoleDTOList> pageData = new DataObjectListWithPagination<RoleDTOList>();
+            DataObjectListWithPagination<UserDTOList> pageData = new DataObjectListWithPagination<UserDTOList>();
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                pageData = proxy.Channel.GetRolesByPage(p);
+                pageData = proxy.Channel.GetUsersByPage(p);
             }
             var result = new DataGrid() { total = pageData.pagination.TotalRecords, rows = pageData.DataObjectList };
             return Json(result);
         }
         [HttpPost]
-        public ActionResult Add(RoleDTO role)
+        public ActionResult Add(UserDTO user)
         {
             Result result = new Result();
-            result.message = "添加角色失败";
+            result.message = "添加用户失败";
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                role.CreateDate = DateTime.Now;
-                role.EditDate = DateTime.Now;
-                role.Status = Status.Active;
-                role.Creator = null;
-                RoleDTOList dtolist = new RoleDTOList();
-                dtolist.Add(role);
-                proxy.Channel.CreateRole(dtolist);
-                if (!string.IsNullOrEmpty(role.ID))
+                user.CreateDate = DateTime.Now;
+                user.EditDate = DateTime.Now;
+                
+                user.Creator = null;
+                user.LastloginTime = DateTime.Now;
+                UserDTOList dtolist = new UserDTOList();
+                dtolist.Add(user);
+                proxy.Channel.CreateUser(dtolist);
+                if (!string.IsNullOrEmpty(user.ID))
                 {
                     result.success = true;
                     result.message = "添加角色成功";
@@ -57,20 +56,20 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
-        public ActionResult Edit(RoleDTO role)
+        public ActionResult Edit(UserDTO user)
         {
             Result result = new Result();
-            result.message = "修改角色失败";
+            result.message = "修改用户失败";
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                role.EditDate = DateTime.Now;
-                RoleDTOList dtolist = new RoleDTOList();
-                dtolist.Add(role);
-                proxy.Channel.EditRole(dtolist);
-                if (!string.IsNullOrEmpty(role.ID))
+                user.EditDate = DateTime.Now;
+                UserDTOList dtolist = new UserDTOList();
+                dtolist.Add(user);
+                proxy.Channel.EidtUser(dtolist);
+                if (!string.IsNullOrEmpty(user.ID))
                 {
                     result.success = true;
-                    result.message = "修改角色成功";
+                    result.message = "修改用户成功";
                 }
             }
             return Json(result);
@@ -78,20 +77,18 @@ namespace Wings.Admin.Controllers
         [HttpPost]
         public ActionResult Get(Guid ID)
         {
-            RoleDTO roledto = new RoleDTO();
+            UserDTO userdto = new UserDTO();
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                roledto = proxy.Channel.GetRoleByID(ID);
+                userdto = proxy.Channel.GetUserByID(ID);
             }
-            return Json(roledto);
+            return Json(userdto);
         }
         [HttpPost]
         public ActionResult Delete(IDList idlist)
         {
             Result result = new Result();
-            result.message = "删除角色失败";
-
-
+            result.message = "删除用户失败";
             if (idlist == null || idlist.Count == 0)
             {
                 result.message = "您提交的数据为空，请重新选择!";
@@ -117,7 +114,7 @@ namespace Wings.Admin.Controllers
                 try
                 {
 
-                    proxy.Channel.DeleteRole(ids);
+                    proxy.Channel.DeleteUser(ids);
                     result.success = true;
                     result.message = "删除成功";
                 }
@@ -129,5 +126,6 @@ namespace Wings.Admin.Controllers
             }
             return Json(result);
         }
+
     }
 }
