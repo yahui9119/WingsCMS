@@ -3,37 +3,36 @@
         <div class="control-group">
             <label class="control-label" for="_DepartmentName">部门名称</label>
             <div class="controls">
-                <input name="DepartmentName" id="_DepartmentName" class="span3 easyui-validatebox" placeholder="部门名称" maxlength="20" type="text" data-options="required:true"/>
+                <input name="Name" id="_DepartmentName" class="span3 easyui-validatebox" placeholder="部门名称" maxlength="20" type="text" data-options="required:true"/>
             </div>
         </div>
         <div class="input-prepend inline">
             <label class="control-label" for="_ParentID">上级部门</label>
             <div class="controls">
-                <input name="ParentID" id="_ParentID" class="span3 easyui-combotree" data-options="url:'@Url.Action("Tree", "Group")',method:'post',required:true" style="width:216px;height:24px;"/>
-            </div>
-        </div>
-        <div class="input-prepend inline">
-            <label class="control-label" for="_UnitID">所属单位</label>
-            <div class="controls">
-                <input name="UnitID" id="_UnitID" class="span3 easyui-combotree" data-options="url:'@Url.Action("Tree", "Unit", new { isDefault = false })',method:'get',required:true" style="width:216px;height:24px;"/>
+                <input name="ParentID" id="_ParentID" class="span3 easyui-combotree" data-options="url:'@Url.Action("Tree", "Group")',method:'post'" style="width:216px;height:24px;"/>
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="_Sort">排序</label>
+            <label class="control-label" for="_Index">排序</label>
             <div class="controls">
-                <input name="Sort" id="_Sort" class="span3 easyui-numberspinner" placeholder="排序" type="text" data-options="required:true,min:0,max:100000,missingMessage: '此项为整数，数值越大排序越靠前'" style="width:216px;height:24px;"/>
+                <input name="Index" id="_Index" class="span3 easyui-numberspinner" placeholder="排序" type="text" data-options="required:true,min:0,max:100000,missingMessage: '此项为整数，数值越大排序越靠前'" style="width:216px;height:24px;"/>
             </div>
         </div>
         <div class="input-prepend inline">
-            <label class="control-label" for="_IsDisplay">是否显示</label>
+            <label class="control-label" for="_Status">是否显示</label>
             <div class="controls">
-               
+                <select name="Status" id="_Status"   style = "width:216px;">
+                    <option value="-1">已删除</option>
+                    <option value="-1">禁用</option>
+                    <option value="1">正常</option>
+                    <option value="2">未激活</option>
+                </select>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="_Description">备注</label>
             <div class="controls">
-                <textarea id="_Description" name="Description" class="span3 easyui-validatebox" placeholder="备注" data-options="required:false" rows="4" maxlength="200"></textarea>
+                <textarea id="_Description" name="Description" class="span3 easyui-validatebox" placeholder="备注" data-options="required:true" rows="4" maxlength="200"></textarea>
             </div>
         </div>
         <div class="control-group">

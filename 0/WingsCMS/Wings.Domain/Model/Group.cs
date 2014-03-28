@@ -21,6 +21,10 @@ namespace Wings.Domain.Model
         /// </summary>
         public virtual string Name { get; set; }
         /// <summary>
+        /// 排序
+        /// </summary>
+        public virtual int Index { get; set; }
+        /// <summary>
         /// 简介说明
         /// </summary>
         public virtual string Description { get; set; }

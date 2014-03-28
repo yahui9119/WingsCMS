@@ -42,7 +42,38 @@ namespace Wings.DataObjects
                 });
             return trees;
         }
-        
+        public GroupDTOList Trim(GroupDTOList groups=null)
+        {
+            GroupDTOList gdtolist = new GroupDTOList();
+            if (groups == null)
+            {
+                groups=this;
+                Trim(groups);
+            }
+            else
+            {
+                groups.ForEach(g =>
+                {
+                    GroupDTO dto = new GroupDTO();
+                    dto.CreateDate = g.CreateDate;
+                    dto.Creator = g.Creator;
+                    dto.Description = g.Description;
+                    dto.EditDate = g.EditDate;
+                    dto.ID = g.ID.ToString();
+                    dto.Name = g.Name;
+                    dto.ParentID = g.ParentID;
+                    dto.ParentName =g.ParentName;
+                    dto.Status = (Wings.DataObjects.Status)g.Status;
+                   
+                    if (g.ChildGroup != null && g.ChildGroup.Count > 0)
+                    {
+                        dto.ChildGroup=this.Trim((GroupDTOList)g.ChildGroup);
+                    }
+                    gdtolist.Add(dto);
+                });
+            }
+            return gdtolist;
+        }
     }
     [DataContract]
     [Serializable]
@@ -68,34 +99,47 @@ namespace Wings.DataObjects
         /// 父组
         /// </summary>
         public virtual GroupDTO ParentGroup { get; set; }
+        private Guid _parentid = Guid.Empty;
         [DataMember]
         /// <summary>
         /// 父节点ID
         /// </summary>
-        public virtual Guid ParentID
+        public virtual Guid? ParentID { get; set; }
+        public Guid? _parentId
         {
-            get
-            {
-                if (ParentGroup != null)
-                {
-                    Guid temp = Guid.Empty;
-                    if (Guid.TryParse(ParentGroup.ID, out temp))
-                    {
-                        return temp;
-                    }
-                }
-                return Guid.Empty;
-            }
-            set
-            {
-                Guid temp = Guid.Empty;
-                if (Guid.TryParse(value.ToString(), out temp))
-                {
-                    ParentGroup = new GroupDTO();
-                    ParentGroup.ID = value.ToString();
-                }
-            }
-        }
+            get {
+                return ParentID.HasValue?ParentID.Value == Guid.Empty ? null : ParentID:null;
+        } }
+        //{
+        //    get
+        //    {
+        //        if (ParentGroup != null)
+        //        {
+        //            Guid temp = Guid.Empty;
+        //            if (Guid.TryParse(ParentGroup.ID, out temp))
+        //            {
+        //                return temp;
+        //            }
+        //        }
+        //        return _parentid;
+        //    }
+        //    set
+        //    {
+        //        Guid temp = Guid.Empty;
+        //        if (Guid.TryParse(value.ToString(), out temp)&&value!=Guid.Empty)
+        //        {
+        //            ParentGroup = new GroupDTO();
+        //            ParentGroup.ID = value.ToString();
+        //        }
+        //        _parentid = value;
+        //    }
+        //}
+        [DataMember]
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public virtual int Index { get; set; }
+        private string _parentname=string.Empty;
         [DataMember]
         /// <summary>
         /// 父节点名字
@@ -109,7 +153,7 @@ namespace Wings.DataObjects
                 {
                     return ParentGroup.Name;
                 }
-                return string.Empty;
+                return _parentname;
             }
             set
             {
@@ -118,6 +162,7 @@ namespace Wings.DataObjects
                     ParentGroup = new GroupDTO();
                     ParentGroup.Name = value.ToString();
                 }
+                _parentname = value;
             }
         }
         [DataMember]

@@ -481,17 +481,39 @@ namespace Wings.Core.Implementation
 
         public GroupDTOList CreateGroup(GroupDTOList groups)
         {
+            groups.ForEach(g =>
+            {
+                if (g.ParentID != null && g.ParentID != Guid.Empty)
+                {
+                    var parent = groupRespository.GetByKey(g.ParentID.Value);
+                    if (parent != null)
+                    {
+                        g.ParentGroup = Mapper.Map<Group, GroupDTO>(parent);
+                    }
+                }
+            });
             return PerformCreateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository);
         }
 
         public GroupDTOList EditGroup(GroupDTOList groups)
         {
+            groups.ForEach(g =>
+            {
+                if (g.ParentID != null && g.ParentID != Guid.Empty)
+                {
+                    g.ParentGroup = Mapper.Map<Group, GroupDTO>(groupRespository.GetByKey(g.ParentID.Value));
+                }
+            });
             return PerformUpdateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository, g => g.ID, (g, gdto) =>
             {
                 g.Name = gdto.Name;
                 g.Description = gdto.Description;
                 g.EditDate = DateTime.Now;
-            });
+                if (gdto.ParentGroup != null)
+                {
+                    g.ParentGroup = Mapper.Map<GroupDTO, Group>(gdto.ParentGroup);
+                }
+            }).Trim();
         }
 
         public void DeleteGroup(GroupDTOList groups)
@@ -512,7 +534,7 @@ namespace Wings.Core.Implementation
 
         public GroupDTOList GetGroupParentID(Guid? id)
         {
-            
+
             var groups = groupRespository.FindAll(Specification<Group>.Eval(g => g.ParentGroup.ID.Equals(id))).ToList();
             GroupDTOList gdtolist = GetGroupChild(groups);
             return gdtolist;
@@ -541,13 +563,14 @@ namespace Wings.Core.Implementation
                     dto.ID = g.ID.ToString();
                     dto.Name = g.Name;
                     dto.ParentID = g.ParentGroup != null ? g.ParentGroup.ID : Guid.Empty;
-                    dto.ParentName=g.ParentGroup != null ? g.ParentGroup.Name : string.Empty;
+                    dto.ParentName = g.ParentGroup != null ? g.ParentGroup.Name : string.Empty;
                     dto.Status = (Wings.DataObjects.Status)g.Status;
-                    gdtolist.Add(dto);
-                    if (g.ChildGroup != null&&g.ChildGroup.Count>0)
+
+                    if (g.ChildGroup != null && g.ChildGroup.Count > 0)
                     {
-                        GetGroupChild(g.ChildGroup);
+                        dto.ChildGroup = GetGroupChild(g.ChildGroup);
                     }
+                    gdtolist.Add(dto);
                 });
             }
             return gdtolist;
@@ -560,7 +583,21 @@ namespace Wings.Core.Implementation
         public GroupDTO GetGroupByID(Guid id)
         {
             var group = groupRespository.Find(Specification<Group>.Eval(g => g.ID.Equals(id)));
-            return Mapper.Map<Group, GroupDTO>(group);
+            var groupdto = Mapper.Map<Group, GroupDTO>(group);
+            GroupDTO dto = new GroupDTO();
+            dto.ID = groupdto.ID;
+            dto.Index = groupdto.Index;
+            dto.Name = groupdto.Name;
+            dto.ParentGroup = new GroupDTO();
+            if(groupdto.ParentGroup != null)
+            {
+                dto.ParentID=Guid.Parse(groupdto.ParentGroup.ID);
+                dto.ParentName = groupdto.ParentGroup.Name; ;
+            }
+            
+            dto.Status = groupdto.Status;
+            dto.Version = groupdto.Version;
+            return dto;
         }
         /// <summary>
         /// 获取所有分组信息
@@ -569,7 +606,7 @@ namespace Wings.Core.Implementation
         public GroupDTOList GetAllGroups()
         {
             var groups = groupRespository.FindAll().ToList();
-            GroupDTOList gdtolist =  GetGroupChild(groups);
+            GroupDTOList gdtolist = GetGroupChild(groups);
             return gdtolist;
         }
         /// <summary>

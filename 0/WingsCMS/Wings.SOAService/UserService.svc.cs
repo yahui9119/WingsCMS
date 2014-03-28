@@ -262,7 +262,7 @@ namespace Wings.SOAService
         {
             try
             {
-                return userServiceImpl.CreateGroup(group);
+                return userServiceImpl.CreateGroup(group).Trim();
             }
             catch (Exception ex)
             {
@@ -298,6 +298,7 @@ namespace Wings.SOAService
         {
             try
             {
+                
                 return userServiceImpl.GetGroupParentID(id);
             }
             catch (Exception ex)
@@ -310,7 +311,9 @@ namespace Wings.SOAService
         {
             try
             {
+                
                 return userServiceImpl.GetGroupByID(id);
+                
             }
             catch (Exception ex)
             {

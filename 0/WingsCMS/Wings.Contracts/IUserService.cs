@@ -208,7 +208,7 @@ namespace Wings.Contracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         
-        [ApplyProxyDataContractResolver]
+        //[ApplyProxyDataContractResolver]
         GroupDTOList GetGroupParentID(Guid? id);
         /// <summary>
         /// 根据分组id获取分组信息

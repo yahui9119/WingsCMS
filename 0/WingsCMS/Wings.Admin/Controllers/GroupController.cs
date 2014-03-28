@@ -29,6 +29,7 @@ namespace Wings.Admin.Controllers
             {
                 groupdata = proxy.Channel.GetAllGroups();
             }
+            groupdata.ForEach(g => g.ChildGroup = null);
             var result = new DataGrid() { total = groupdata.Count, rows = groupdata };
             return Json(result);
         }
@@ -53,7 +54,6 @@ namespace Wings.Admin.Controllers
             {
                 groupdto.CreateDate = DateTime.Now;
                 groupdto.EditDate = DateTime.Now;
-                groupdto.Status = Status.Active;
                 groupdto.Creator = null;
                 GroupDTOList dtolist = new GroupDTOList();
                 dtolist.Add(groupdto);
