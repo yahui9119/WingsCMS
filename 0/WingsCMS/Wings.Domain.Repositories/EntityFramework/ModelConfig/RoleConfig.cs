@@ -17,13 +17,13 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             HasMany(r => r.Users).WithMany(u => u.Roles).Map(ur =>
             {
                 ur.ToTable("UserRole");
-                ur.MapLeftKey("UserID");
-                ur.MapRightKey("RoleID");
+                ur.MapLeftKey("RoleID");
+                ur.MapRightKey("UserID");
             });
             HasMany(r => r.Modules).WithMany(m => m.Roles).Map(r => 
             {
-                r.MapLeftKey("ModuleID");
-                r.MapRightKey("RoleID");
+                r.MapLeftKey("RoleID");
+                r.MapRightKey("ModuleID");
                 r.ToTable("RolePermission");
             });
         }

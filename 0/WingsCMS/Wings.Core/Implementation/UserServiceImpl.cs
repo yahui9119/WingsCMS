@@ -298,7 +298,7 @@ namespace Wings.Core.Implementation
                 r.Name = rdto.Name;
                 r.Description = rdto.Description;
                 r.EditDate = DateTime.Now;
-                r.Status =( Domain.Model.Status) rdto.Status;
+                r.Status = (Domain.Model.Status)rdto.Status;
             });
         }
 
@@ -374,7 +374,7 @@ namespace Wings.Core.Implementation
                 sortPredicate = r => r.CreateDate;
             }
             PagedResult<Role> rolepages = roleRepository.GetAll(starttime.And(endtime).And(likeword), sortPredicate
-            , pagination.order.ToLower()=="desc" ? SortOrder.Descending : SortOrder.Ascending, pagination.page, pagination.rows);
+            , pagination.order.ToLower() == "desc" ? SortOrder.Descending : SortOrder.Ascending, pagination.page, pagination.rows);
             DataObjectListWithPagination<RoleDTOList> result = new DataObjectListWithPagination<RoleDTOList>();
             if (rolepages == null)
             {
@@ -502,23 +502,53 @@ namespace Wings.Core.Implementation
            });
         }
 
-        public void Dispose()
-        {
-            //销毁处理
-        }
+
 
         /// <summary>
         /// 根据父id获取分组
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public GroupDTOList GetGroupParentID(Guid id)
+
+        public GroupDTOList GetGroupParentID(Guid? id)
         {
-            var groups = groupRespository.FindAll(Specification<Group>.Eval(g => g.ParentGroup.ID.Equals(id)));
+            
+            var groups = groupRespository.FindAll(Specification<Group>.Eval(g => g.ParentGroup.ID.Equals(id))).ToList();
+            GroupDTOList gdtolist = GetGroupChild(groups);
+            return gdtolist;
+        }
+        /// <summary>
+        /// 获取所有分组 树形结构
+        /// </summary>
+        /// <param name="groups"></param>
+        /// <returns></returns>
+        private GroupDTOList GetGroupChild(List<Group> groups)
+        {
             GroupDTOList gdtolist = new GroupDTOList();
-            foreach (var item in groups)
+            if (groups == null)
             {
-                gdtolist.Add(Mapper.Map<Group, GroupDTO>(item));
+                return gdtolist;
+            }
+            else
+            {
+                groups.ForEach(g =>
+                {
+                    GroupDTO dto = new GroupDTO();
+                    dto.CreateDate = g.CreateDate;
+                    dto.Creator = g.Creator;
+                    dto.Description = g.Description;
+                    dto.EditDate = g.EditDate;
+                    dto.ID = g.ID.ToString();
+                    dto.Name = g.Name;
+                    dto.ParentID = g.ParentGroup != null ? g.ParentGroup.ID : Guid.Empty;
+                    dto.ParentName=g.ParentGroup != null ? g.ParentGroup.Name : string.Empty;
+                    dto.Status = (Wings.DataObjects.Status)g.Status;
+                    gdtolist.Add(dto);
+                    if (g.ChildGroup != null&&g.ChildGroup.Count>0)
+                    {
+                        GetGroupChild(g.ChildGroup);
+                    }
+                });
             }
             return gdtolist;
         }
@@ -538,12 +568,8 @@ namespace Wings.Core.Implementation
         /// <returns></returns>
         public GroupDTOList GetAllGroups()
         {
-            var groups = groupRespository.FindAll();
-            GroupDTOList gdtolist = new GroupDTOList();
-            foreach (var item in groups)
-            {
-                gdtolist.Add(Mapper.Map<Group, GroupDTO>(item));
-            }
+            var groups = groupRespository.FindAll().ToList();
+            GroupDTOList gdtolist =  GetGroupChild(groups);
             return gdtolist;
         }
         /// <summary>

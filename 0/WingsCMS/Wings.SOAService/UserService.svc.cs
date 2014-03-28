@@ -294,7 +294,7 @@ namespace Wings.SOAService
             }
         }
 
-        public DataObjects.GroupDTOList GetGroupParentID(Guid id)
+        public DataObjects.GroupDTOList GetGroupParentID(Guid? id)
         {
             try
             {

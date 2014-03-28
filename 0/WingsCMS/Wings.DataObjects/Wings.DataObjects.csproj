@@ -45,6 +45,7 @@
     <Compile Include="BaseDTO.cs" />
     <Compile Include="Custom\DataGrid.cs" />
     <Compile Include="Custom\Result.cs" />
+    <Compile Include="Custom\Tree.cs" />
     <Compile Include="DataObjectListWithPagination.cs" />
     <Compile Include="FaultData.cs" />
     <Compile Include="GroupDTO.cs" />

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Wings.Contracts;
 using Wings.DataObjects;
+using Wings.DataObjects.Custom;
 using Wings.Framework.Communication;
 using Wings.Framework.Plugin;
 
@@ -23,51 +24,63 @@ namespace Wings.Admin.Controllers
         [HttpPost]
         public ActionResult GetDataGrid(Pagination p)
         {
-            DataObjectListWithPagination<RoleDTOList> pageData = new DataObjectListWithPagination<RoleDTOList>();
+            GroupDTOList groupdata = new GroupDTOList();
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                pageData = proxy.Channel.GetRolesByPage(p);
+                groupdata = proxy.Channel.GetAllGroups();
             }
-            var result = new DataGrid() { total = pageData.pagination.TotalRecords, rows = pageData.DataObjectList };
+            var result = new DataGrid() { total = groupdata.Count, rows = groupdata };
             return Json(result);
         }
         [HttpPost]
-        public ActionResult Add(RoleDTO role)
+        public ActionResult Tree()
         {
-            Result result = new Result();
-            result.message = "添加角色失败";
+            GroupDTOList groupdtolist;
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                role.CreateDate = DateTime.Now;
-                role.EditDate = DateTime.Now;
-                role.Status = Status.Active;
-                role.Creator = null;
-                RoleDTOList dtolist = new RoleDTOList();
-                dtolist.Add(role);
-                proxy.Channel.CreateRole(dtolist);
-                if (!string.IsNullOrEmpty(role.ID))
+               
+               groupdtolist= proxy.Channel.GetGroupParentID(null);
+               
+            }
+            return Json(groupdtolist.ToTree());
+        }
+        [HttpPost]
+        public ActionResult Add(GroupDTO groupdto)
+        {
+            Result result = new Result();
+            result.message = "添加部门失败";
+            using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
+            {
+                groupdto.CreateDate = DateTime.Now;
+                groupdto.EditDate = DateTime.Now;
+                groupdto.Status = Status.Active;
+                groupdto.Creator = null;
+                GroupDTOList dtolist = new GroupDTOList();
+                dtolist.Add(groupdto);
+                proxy.Channel.CreateGroup(dtolist);
+                if (!string.IsNullOrEmpty(groupdto.ID))
                 {
                     result.success = true;
-                    result.message = "添加角色成功";
+                    result.message = "添加部门成功";
                 }
             }
             return Json(result);
         }
         [HttpPost]
-        public ActionResult Edit(RoleDTO role)
+        public ActionResult Edit(GroupDTO group)
         {
             Result result = new Result();
-            result.message = "修改角色失败";
+            result.message = "修改部门失败";
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                role.EditDate = DateTime.Now;
-                RoleDTOList dtolist = new RoleDTOList();
-                dtolist.Add(role);
-                proxy.Channel.EditRole(dtolist);
-                if (!string.IsNullOrEmpty(role.ID))
+                group.EditDate = DateTime.Now;
+                GroupDTOList dtolist = new GroupDTOList();
+                dtolist.Add(group);
+                proxy.Channel.EditGroup(dtolist);
+                if (!string.IsNullOrEmpty(group.ID))
                 {
                     result.success = true;
-                    result.message = "修改角色成功";
+                    result.message = "修改部门成功";
                 }
             }
             return Json(result);
@@ -75,18 +88,18 @@ namespace Wings.Admin.Controllers
         [HttpPost]
         public ActionResult Get(Guid ID)
         {
-            RoleDTO roledto = new RoleDTO();
+            GroupDTO groupdto = new GroupDTO();
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
-                roledto = proxy.Channel.GetRoleByID(ID);
+                groupdto = proxy.Channel.GetGroupByID(ID);
             }
-            return Json(roledto);
+            return Json(groupdto);
         }
         [HttpPost]
         public ActionResult Delete(IDList idlist)
         {
             Result result = new Result();
-            result.message = "删除角色失败";
+            result.message = "删除部门失败";
 
 
             if (idlist == null || idlist.Count == 0)
@@ -94,8 +107,7 @@ namespace Wings.Admin.Controllers
                 result.message = "您提交的数据为空，请重新选择!";
                 return Json(result);
             }
-            IDList ids = new IDList();
-
+            GroupDTOList dtolist = new GroupDTOList();
             idlist.Where(f => !string.IsNullOrEmpty(f)).ToList().ForEach(s =>
             {
                 Guid temp = Guid.Empty;
@@ -104,7 +116,7 @@ namespace Wings.Admin.Controllers
 
                     if (Guid.TryParse(g, out temp))
                     {
-                        ids.Add(g);
+                        dtolist.Add(new GroupDTO() { ID = g }); ;
                     }
                 }
                     );
@@ -114,7 +126,7 @@ namespace Wings.Admin.Controllers
                 try
                 {
 
-                    proxy.Channel.DeleteRole(ids);
+                    proxy.Channel.DeleteGroup(dtolist);
                     result.success = true;
                     result.message = "删除成功";
                 }

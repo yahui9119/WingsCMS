@@ -17,8 +17,8 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             HasMany(w => w.Modules).WithOptional().Map(w => w.MapKey("WebID"));
             HasMany(w => w.Users).WithMany(u => u.Webs).Map(uw =>
             {
-                uw.MapLeftKey("UserID");
-                uw.MapRightKey("WebID");
+                uw.MapLeftKey("WebID");
+                uw.MapRightKey("UserID");
                 uw.ToTable("UserWeb");
             });
             HasMany(w => w.Actions).WithOptional(a => a.web).Map(a => a.MapKey("WebID"));

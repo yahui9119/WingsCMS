@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Wings.DataObjects;
 using Wings.Framework.Infrastructure;
 using Wings.Framework;
+using Wings.Framework.Caching;
 
 namespace Wings.Contracts
 {
@@ -14,6 +15,7 @@ namespace Wings.Contracts
     /// 标示“用户相关的应用层服务契约”
     /// </summary>
     [ServiceContract(Name = "http://www.wings.com")]
+
     public interface IUserService : ICoreServiceContract
     {
         /// <summary>
@@ -205,7 +207,9 @@ namespace Wings.Contracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        GroupDTOList GetGroupParentID(Guid id);
+        
+        [ApplyProxyDataContractResolver]
+        GroupDTOList GetGroupParentID(Guid? id);
         /// <summary>
         /// 根据分组id获取分组信息
         /// </summary>

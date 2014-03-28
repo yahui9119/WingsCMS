@@ -26,14 +26,14 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(u => u.LastloginTime).IsRequired();
             HasMany(u => u.ModuleAllow).WithMany(m => m.UserAllow).Map(u =>
             {
-                u.MapLeftKey("ModuleID");
-                u.MapRightKey("UserID");
+                u.MapLeftKey("UserID");
+                u.MapRightKey("ModuleID");
                 u.ToTable("UserAllowPermission");
             });
             HasMany(u => u.ModuleBan).WithMany(m => m.UserBan).Map(u =>
             {
-                u.MapLeftKey("ModuleID");
-                u.MapRightKey("UserID");
+                u.MapLeftKey("UserID");
+                u.MapRightKey("ModuleID");
                 u.ToTable("UserBanPermission");
             });
             Ignore(u => u.HaveGroups);

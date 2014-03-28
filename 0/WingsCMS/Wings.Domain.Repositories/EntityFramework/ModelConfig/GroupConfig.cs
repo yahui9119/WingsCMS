@@ -19,8 +19,8 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             //HasOptional(g => g.Permission).WithOptionalDependent().Map(g => { g.MapKey("PermissionID"); });
             HasMany(g => g.Modules).WithMany(m => m.Groups).Map(g => 
             {
-                g.MapLeftKey("ModuleID");
-                g.MapRightKey("GroupID");
+                g.MapLeftKey("GroupID");
+                g.MapRightKey("ModuleID");
                 g.ToTable("GroupPermission");
             });
         }

@@ -37,7 +37,7 @@ namespace Wings.Framework.InterceptionBehaviors
                         var sb = new StringBuilder();
                         for (int i = 0; i < input.Arguments.Count; i++)
                         {
-                            sb.Append(input.Arguments[i].ToString());
+                            sb.Append(input.Arguments[i]!=null?input.Arguments[i].ToString():null);
                             if (i != input.Arguments.Count - 1)
                                 sb.Append("_");
                         }
