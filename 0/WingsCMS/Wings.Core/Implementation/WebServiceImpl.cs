@@ -31,7 +31,7 @@ namespace Wings.Core.Implementation
             this.moduleRepository = moduleRepository;
             this.webRepository = webRepository;
         }
-       
+
 
         public UserDTOList GetUsersByWeb(Guid webid)
         {
@@ -44,7 +44,23 @@ namespace Wings.Core.Implementation
             }
             return udtolist;
         }
-
+        public WebDTO GetWebByID(Guid webid)
+        {
+            var web = Mapper.Map<Web, WebDTO>(webRepository.Get(Specification<Web>.Eval(w => w.ID.Equals(webid))));
+            return new WebDTO()
+            {
+                ID = web.ID,
+                CreateDate = web.CreateDate,
+                Creator = web.Creator,
+                Description = web.Description,
+                Domain = web.Domain,
+                EditDate = web.EditDate,
+                Name = web.Name,
+                IsActive = web.IsActive,
+                Status = (Wings.DataObjects.Status)web.Status,
+                Version = web.Version
+            };
+        }
         public DataObjects.DataObjectListWithPagination<DataObjects.WebDTOList> GetWebsByPage(DataObjects.Pagination pagination)
         {
             Specification<Web> starttime = Specification<Web>.Eval(u => pagination.StartTime != null ? u.CreateDate < pagination.StartTime : true);
@@ -94,7 +110,7 @@ namespace Wings.Core.Implementation
             return Mapper.Map<Module, ModuleDTO>(module);
         }
 
-       
+
         public WebDTOList GetAllWebModules()
         {
             WebDTOList webdtolist = new WebDTOList();
@@ -147,6 +163,14 @@ namespace Wings.Core.Implementation
             {
                 w.Status = Wings.Domain.Model.Status.Deleted;
             });
+        }
+
+
+
+
+        public ModuleDTO GetModuleByID(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

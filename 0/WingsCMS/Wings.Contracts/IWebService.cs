@@ -45,6 +45,14 @@ namespace Wings.Contracts
         [FaultContract(typeof(FaultData))]
         UserDTOList GetUsersByWeb(Guid webid);
         /// <summary>
+        /// 通过站点id获取站点的基本信息
+        /// </summary>
+        /// <param name="webid"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        WebDTO GetWebByID(Guid webid);
+        /// <summary>
         /// 获取站点的分页
         /// </summary>
         /// <param name="pagination"></param>
@@ -81,6 +89,14 @@ namespace Wings.Contracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         WebDTOList GetAllWebModules();
+        /// <summary>
+        /// 根部模块id获取此模块的基本信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        ModuleDTO GetModuleByID(Guid id);
 
     }
 }

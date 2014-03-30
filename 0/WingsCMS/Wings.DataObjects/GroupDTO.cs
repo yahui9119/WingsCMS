@@ -28,7 +28,7 @@ namespace Wings.DataObjects
             {
                 return null;
             }
-
+            groupdtolist.OrderByDescending(g=>g.Index);
             groupdtolist.ForEach(g =>
                 {
                     Tree tree = new Tree();
@@ -42,7 +42,7 @@ namespace Wings.DataObjects
                 });
             return trees;
         }
-        public GroupDTOList Trim(GroupDTOList groups=null)
+        public GroupDTOList Trim(List<GroupDTO> groups = null)
         {
             GroupDTOList gdtolist = new GroupDTOList();
             if (groups == null)
@@ -52,6 +52,7 @@ namespace Wings.DataObjects
             }
             else
             {
+                groups.OrderByDescending(g => g.Index);
                 groups.ForEach(g =>
                 {
                     GroupDTO dto = new GroupDTO();
@@ -64,10 +65,10 @@ namespace Wings.DataObjects
                     dto.ParentID = g.ParentID;
                     dto.ParentName =g.ParentName;
                     dto.Status = (Wings.DataObjects.Status)g.Status;
-                   
+                    dto.Index = g.Index;
                     if (g.ChildGroup != null && g.ChildGroup.Count > 0)
                     {
-                        dto.ChildGroup=this.Trim((GroupDTOList)g.ChildGroup);
+                        dto.ChildGroup=this.Trim(g.ChildGroup);
                     }
                     gdtolist.Add(dto);
                 });
@@ -157,11 +158,11 @@ namespace Wings.DataObjects
             }
             set
             {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    ParentGroup = new GroupDTO();
-                    ParentGroup.Name = value.ToString();
-                }
+                //if (!string.IsNullOrEmpty(value))
+                //{
+                //    ParentGroup = new GroupDTO();
+                //    ParentGroup.Name = value.ToString();
+                //}
                 _parentname = value;
             }
         }

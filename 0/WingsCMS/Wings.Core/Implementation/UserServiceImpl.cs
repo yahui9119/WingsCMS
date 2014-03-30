@@ -481,38 +481,23 @@ namespace Wings.Core.Implementation
 
         public GroupDTOList CreateGroup(GroupDTOList groups)
         {
-            groups.ForEach(g =>
+            GroupDTOList result= PerformCreateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository);
+            return PerformUpdateObjects<GroupDTOList, GroupDTO, Group>(result, groupRespository, g => g.ID, (g, gdto) =>
             {
-                if (g.ParentID != null && g.ParentID != Guid.Empty)
-                {
-                    var parent = groupRespository.GetByKey(g.ParentID.Value);
-                    if (parent != null)
-                    {
-                        g.ParentGroup = Mapper.Map<Group, GroupDTO>(parent);
-                    }
-                }
-            });
-            return PerformCreateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository);
+                var thisdto=groups[result.IndexOf(gdto)];
+                g.ParentGroup = !thisdto._parentId.HasValue ? null : groupRespository.Find(Specification<Group>.Eval(gg => gg.ID.Equals(thisdto._parentId.Value)));
+            }).Trim();
         }
 
         public GroupDTOList EditGroup(GroupDTOList groups)
         {
-            groups.ForEach(g =>
-            {
-                if (g.ParentID != null && g.ParentID != Guid.Empty)
-                {
-                    g.ParentGroup = Mapper.Map<Group, GroupDTO>(groupRespository.GetByKey(g.ParentID.Value));
-                }
-            });
             return PerformUpdateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository, g => g.ID, (g, gdto) =>
             {
+                g.Index = gdto.Index;
                 g.Name = gdto.Name;
                 g.Description = gdto.Description;
                 g.EditDate = DateTime.Now;
-                if (gdto.ParentGroup != null)
-                {
-                    g.ParentGroup = Mapper.Map<GroupDTO, Group>(gdto.ParentGroup);
-                }
+                g.ParentGroup = !gdto._parentId.HasValue ? null : groupRespository.Find(Specification<Group>.Eval(gg => gg.ID.Equals(gdto._parentId.Value)));
             }).Trim();
         }
 
@@ -553,6 +538,7 @@ namespace Wings.Core.Implementation
             }
             else
             {
+                groups.OrderByDescending(g => g.Index);
                 groups.ForEach(g =>
                 {
                     GroupDTO dto = new GroupDTO();
@@ -562,6 +548,7 @@ namespace Wings.Core.Implementation
                     dto.EditDate = g.EditDate;
                     dto.ID = g.ID.ToString();
                     dto.Name = g.Name;
+                    dto.Index = g.Index;
                     dto.ParentID = g.ParentGroup != null ? g.ParentGroup.ID : Guid.Empty;
                     dto.ParentName = g.ParentGroup != null ? g.ParentGroup.Name : string.Empty;
                     dto.Status = (Wings.DataObjects.Status)g.Status;
@@ -588,6 +575,7 @@ namespace Wings.Core.Implementation
             dto.ID = groupdto.ID;
             dto.Index = groupdto.Index;
             dto.Name = groupdto.Name;
+            dto.Description = groupdto.Description;
             dto.ParentGroup = new GroupDTO();
             if(groupdto.ParentGroup != null)
             {
