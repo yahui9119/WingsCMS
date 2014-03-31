@@ -3,12 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using Wings.DataObjects.Custom;
 
 namespace Wings.DataObjects
 {
     [Serializable]
     public class UserDTOList : List<UserDTO>
-    { }
+    {
+        public UserDTOList ToViewModel()
+        {
+            UserDTOList dtolist = new UserDTOList();
+            if (this == null)
+            {
+                return dtolist;
+            }
+            this.ForEach(u =>
+            {
+
+                dtolist.Add(u.ToViewModel());
+            });
+            return dtolist;
+        }
+        public List<Tree> ToTree()
+        {
+            List<Tree> trees = new List<Tree>();
+            if (this != null)
+            {
+                this.ForEach(t =>
+                {
+                    Tree tree = new Tree();
+                    tree.id = t.ID;
+                    tree.text = t.RealName;
+                    trees.Add(tree);
+                });
+            }
+            return trees;
+        }
+    }
     [DataContract]
     public class UserDTO : BaseDTO
     {
@@ -17,6 +48,46 @@ namespace Wings.DataObjects
             Roles = new List<RoleDTO>();
             Webs = new List<WebDTO>();
             Groups = new List<GroupDTO>();
+        }
+        public UserDTO ToViewModel()
+        {
+            UserDTO dto = new UserDTO();
+            dto.Account = this.Account;
+            dto.Address = this.Address;
+            dto.ALiWangWang = this.ALiWangWang;
+            dto.Birthday = this.Birthday;
+            dto.BirthDays = this.BirthDays;
+            dto.CreateDate = this.CreateDate;
+            dto.Creator = this.Creator;
+            dto.EditDate = this.EditDate;
+            dto.Email = this.Email;
+            dto.Gender = this.Gender;
+            dto.HaveGroups = this.HaveGroups;
+            dto.HaveRoles = this.HaveRoles;
+            dto.HaveWebs = this.HaveWebs;
+            dto.ID = this.ID;
+            dto.IsMan = this.IsMan;
+            dto.LastloginTime = this.LastloginTime;
+            dto.Password = this.Password;
+            dto.PhoneNum = this.PhoneNum;
+            dto.QQ = this.QQ;
+            dto.RealName = this.RealName;
+            dto.Status = this.Status;
+            dto.Version = this.Version;
+            dto.Zip = this.Zip;
+            if (this.Roles != null && this.Roles.Count > 0)
+            {
+                dto.RoleIDS= this.Roles.GroupBy(g => g.ID).Select(r => r.Key).ToArray();
+            }
+            if (this.Groups != null && this.Groups.Count > 0)
+            {
+                dto.GroupIDS= this.Groups.GroupBy(g => g.ID).Select(r => r.Key).ToArray();
+            }
+            if (this.Webs != null && this.Webs.Count > 0)
+            {
+                dto.WebIDS= this.Webs.GroupBy(g => g.ID).Select(r => r.Key).ToArray();
+            }
+            return dto;
         }
         [DataMember]
         /// <summary>
@@ -165,8 +236,68 @@ namespace Wings.DataObjects
         /// <summary>
         /// 此用户禁止使用的模块
         /// </summary>
-        
+
         public virtual List<ModuleDTO> ModuleBan { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 拥有角色的id
+        /// </summary>
+        public string[] RoleIDS
+        {
+            get
+            {
+                if (_RoleIDS != null)
+                {
+                    return _RoleIDS;
+                }
+                return new string[0] { };
+            }
+            set
+            {
+                _RoleIDS = value;
+            }
+        }
+        private string[] _RoleIDS;
+        [DataMember]
+        /// <summary>
+        /// 拥有分组的id
+        /// </summary>
+        public string[] GroupIDS
+        {
+            get
+            {
+                if (_GroupIDS != null)
+                {
+                    return _GroupIDS;
+                }
+                return new string[0] { };
+            }
+            set
+            {
+                _GroupIDS = value;
+            }
+        }
+        public string[] _GroupIDS;
+        [DataMember]
+        /// <summary>
+        /// 拥有站点的id
+        /// </summary>
+        public string[] WebIDS
+        {
+            get
+            {
+                if (_WebIDS != null)
+                {
+                    return _WebIDS;
+                }
+                return new string[0] { };
+            }
+            set
+            {
+                _WebIDS = value;
+            }
+        }
+        public string[] _WebIDS;
         [DataMember]
         /// <summary>
         /// 已经拥有的角色
@@ -196,3 +327,4 @@ namespace Wings.DataObjects
         }
     }
 }
+

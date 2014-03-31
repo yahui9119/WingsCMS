@@ -3,13 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using Wings.DataObjects.Custom;
 
 namespace Wings.DataObjects
     
 {
 
     public class WebDTOList : List<WebDTO>
-    { }
+    {
+        public WebDTOList ToViewModel()
+        {
+            WebDTOList dtolist=new WebDTOList ();
+            if (this == null)
+            {
+                return dtolist;
+            }
+            this.ForEach(t => {
+                WebDTO dto = new WebDTO();
+                dto.ID = t.ID;
+                dto.IsActive = t.IsActive;
+                dto.Name = t.Name;
+                dto.Status = t.Status;
+                dto.Version = t.Version;
+                dto.CreateDate = t.CreateDate;
+                dto.Creator = t.Creator;
+                dto.Description = t.Description;
+                dto.Domain = t.Domain;
+                dto.EditDate = t.EditDate;
+                dtolist.Add(dto);
+            });
+            return dtolist;
+        }
+        public  List<Tree> ToTree()
+        {
+            List<Tree> trees = new List<Tree>();
+            if (this != null)
+            {
+                this.ForEach(t =>
+                {
+                    Tree tree = new Tree();
+                    tree.id = t.ID;
+                    tree.text = t.Name;
+                    trees.Add(tree);
+                });
+            }
+            return trees;
+        }
+      }
     [DataContract]
     public class WebDTO:BaseDTO
     {

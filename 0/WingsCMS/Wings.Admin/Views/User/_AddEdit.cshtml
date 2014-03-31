@@ -136,6 +136,31 @@
             message: '两次输入的密码不一致！'
         }
     });
+    jQuery.extend(jQuery.fn.datagrid.defaults.editors, {
+        combotree: {
+            init: function (container, options) {
+                var editor = jQuery('<input type="text">').appendTo(container);
+                editor.combotree(options);
+                return editor;
+            },
+            destroy: function (target) {
+                jQuery(target).combotree('destroy');
+            },
+            getValue: function (target) {
+                var temp = jQuery(target).combotree('getValues');
+                //alert(temp);  
+                return temp.join(',');
+            },
+            setValue: function (target, value) {
+                var temp = value.split(',');
+                //alert(temp);  
+                jQuery(target).combotree('setValues', temp);
+            },
+            resize: function (target, width) {
+                jQuery(target).combotree('resize', width);
+            }
+        }
+    });
 </script>
 <div id="AddEdit" class="easyui-window" data-options="modal:true,closed:true,maximizable:false,resizable:false,minimizable:false,collapsible:false" style="padding: 10px; width: 340px;">
     <form id="frmAddEdit" class="form-horizontal" method="post">
@@ -220,9 +245,28 @@
                 </select>
             </div>
         </div>
+        <div class="input-prepend inline">
+            <label class="control-label" for="_Groups">部门</label>
+            <div class="controls">
+                 <input type="text" name="GroupIDS" id="_Groups"   class="span3 easyui-combotree" data-options="url:'@Url.Action("Tree", "Group")',method:'post',multiple:true" style="width:216px;height:24px;"/>
+            </div>
+        </div>
+        <div class="input-prepend inline">
+            <label class="control-label" for="_Roles">角色</label>
+            <div class="controls">
+                  <input type="text" name="RoleIDS"  id="_Roles"   class="span3 easyui-combotree" data-options="url:'@Url.Action("Tree", "Role")',method:'post',multiple:true," style="width:216px;height:24px;"/>
+               
+            </div>
+        </div>
+        <div class="input-prepend inline">
+            <label class="control-label" for="_Webs">拥有站点</label>
+            <div class="controls">
+                <input type="text" name="WebIDS" id="_Webs"   class="span3 easyui-combotree" data-options="url:'@Url.Action("Tree", "Web")',method:'post',multiple:true" style="width:216px;height:24px;"/>
+            </div>
+        </div>
         <div class="control-group">
             <div class="controls">
-                <input id="_ID" name="ID" type="hidden" />
+                <input name="ID" type="hidden" />
                 <a id="btnOK" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
                 <a id="btnRest" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">重置</a>
             </div>

@@ -61,6 +61,13 @@ namespace Wings.Contracts
         [FaultContract(typeof(FaultData))]
         DataObjectListWithPagination<WebDTOList> GetWebsByPage(Pagination pagination);
         /// <summary>
+        /// 获取所有的站点信息
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        WebDTOList GetAllWebs();
+        /// <summary>
         /// 该站点创建模块
         /// </summary>
         /// <param name="webid"></param>

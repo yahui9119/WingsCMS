@@ -55,7 +55,7 @@ namespace Wings.Core.Implementation
 
         public UserDTOList CreateUser(UserDTOList user)
         {
-            return PerformCreateObjects<UserDTOList, UserDTO, User>(user, userRepository);
+            return PerformCreateObjects<UserDTOList, UserDTO, User>(user, userRepository).ToViewModel();
         }
         /// <summary>
         /// 修改用户的个人信息
@@ -118,7 +118,68 @@ namespace Wings.Core.Implementation
                     u.Zip = uto.Zip;
                 }
                 u.Status = (Domain.Model.Status)uto.Status;
-            });
+                u.Groups = new List<Group>();
+                // 部门保存
+                if (uto.GroupIDS != null)
+                {
+                    List<Guid> groupids = new List<Guid>();
+                    uto.GroupIDS.ToList().ForEach(i =>
+                    {
+                        if (!string.IsNullOrEmpty(i))
+                        {
+                            Guid swap = Guid.Empty;
+                            if (Guid.TryParse(i, out swap))
+                            {
+                                groupids.Add(swap);
+                            }
+                        }
+                    });
+                    groupRespository.GetAll(Specification<Group>.Eval(g => groupids.Contains(g.ID))).ToList().ForEach(g => u.Groups.Add(g));
+                }
+
+                // 角色保存
+                u.Roles = new List<Role>();
+                if (uto.RoleIDS != null)
+                {
+                    List<Guid> roleids = new List<Guid>();
+                    uto.RoleIDS.ToList().ForEach(i =>
+                    {
+                        if (!string.IsNullOrEmpty(i))
+                        {
+                            Guid swap = Guid.Empty;
+                            if (Guid.TryParse(i, out swap))
+                            {
+                                roleids.Add(swap);
+                            }
+                        }
+                    });
+                    roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID))).ToList().ForEach(r =>
+                    {
+                        u.Roles.Add(r);
+                    });
+                }
+                u.Webs = new List<Web>();
+                // 站点保存
+                if (uto.WebIDS != null)
+                {
+                    List<Guid> webids = new List<Guid>();
+                    uto.WebIDS.ToList().ForEach(i =>
+                    {
+                        if (!string.IsNullOrEmpty(i))
+                        {
+                            Guid swap = Guid.Empty;
+                            if (Guid.TryParse(i, out swap))
+                            {
+                                webids.Add(swap);
+                            }
+                        }
+                    });
+                    webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID))).ToList().ForEach(w =>
+                    {
+                        u.Webs.Add(w);
+                    });
+                }
+            }).ToViewModel();
         }
         /// <summary>
         /// 批量删除用户
@@ -138,7 +199,7 @@ namespace Wings.Core.Implementation
         /// <returns></returns>
         public UserDTO GetUserByID(Guid UserID)
         {
-            return Mapper.Map<User, UserDTO>(userRepository.GetByKey(UserID));
+            return Mapper.Map<User, UserDTO>(userRepository.GetByKey(UserID)).ToViewModel();
         }
         /// <summary>
         /// 获取所有的用户
@@ -153,7 +214,7 @@ namespace Wings.Core.Implementation
             {
                 userdtolist.Add(Mapper.Map<User, UserDTO>(item));
             }
-            return userdtolist;
+            return userdtolist.ToViewModel();
         }
         /// <summary>
         /// 根据分页获取用户信息
@@ -191,6 +252,7 @@ namespace Wings.Core.Implementation
                 });
             }
             else { result.DataObjectList = new UserDTOList(); }
+            result.DataObjectList = result.DataObjectList.ToViewModel();
             result.pagination.page = rolepages.PageNumber;
             result.pagination.rows = rolepages.PageSize;
             result.pagination.TotalPages = rolepages.TotalPages;
@@ -388,6 +450,7 @@ namespace Wings.Core.Implementation
                 });
             }
             else { result.DataObjectList = new RoleDTOList(); }
+            result.DataObjectList = result.DataObjectList.ToViewModel();
             result.pagination.page = rolepages.PageNumber;
             result.pagination.rows = rolepages.PageSize;
             result.pagination.TotalPages = rolepages.TotalPages;
@@ -445,7 +508,7 @@ namespace Wings.Core.Implementation
             {
                 roledtolist.Add(Mapper.Map<Role, RoleDTO>(r));
             });
-            return roledtolist;
+            return roledtolist.ToViewModel();
         }
 
         public UserDTO AssignUserGroup(Guid userid, IDList groupids)
@@ -470,7 +533,7 @@ namespace Wings.Core.Implementation
                     throw new NullReferenceException("无法找指定的用户");
                 }
 
-                var groups = groupRespository.GetAll((Specification<Group>.Eval(g => gids.Contains(g.ID)))).ToList(); ;
+                var groups = groupRespository.GetAll((Specification<Group>.Eval(g => gids.Contains(g.ID)))).ToList();
                 user.Groups = groups;
                 userRepository.Update(user);
                 user.UpdateGroup();
@@ -481,12 +544,12 @@ namespace Wings.Core.Implementation
 
         public GroupDTOList CreateGroup(GroupDTOList groups)
         {
-            GroupDTOList result= PerformCreateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository);
+            GroupDTOList result = PerformCreateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository);
             return PerformUpdateObjects<GroupDTOList, GroupDTO, Group>(result, groupRespository, g => g.ID, (g, gdto) =>
             {
-                var thisdto=groups[result.IndexOf(gdto)];
+                var thisdto = groups[result.IndexOf(gdto)];
                 g.ParentGroup = !thisdto._parentId.HasValue ? null : groupRespository.Find(Specification<Group>.Eval(gg => gg.ID.Equals(thisdto._parentId.Value)));
-            }).Trim();
+            }).ToViewModel();
         }
 
         public GroupDTOList EditGroup(GroupDTOList groups)
@@ -498,7 +561,7 @@ namespace Wings.Core.Implementation
                 g.Description = gdto.Description;
                 g.EditDate = DateTime.Now;
                 g.ParentGroup = !gdto._parentId.HasValue ? null : groupRespository.Find(Specification<Group>.Eval(gg => gg.ID.Equals(gdto._parentId.Value)));
-            }).Trim();
+            }).ToViewModel();
         }
 
         public void DeleteGroup(GroupDTOList groups)
@@ -577,12 +640,12 @@ namespace Wings.Core.Implementation
             dto.Name = groupdto.Name;
             dto.Description = groupdto.Description;
             dto.ParentGroup = new GroupDTO();
-            if(groupdto.ParentGroup != null)
+            if (groupdto.ParentGroup != null)
             {
-                dto.ParentID=Guid.Parse(groupdto.ParentGroup.ID);
+                dto.ParentID = Guid.Parse(groupdto.ParentGroup.ID);
                 dto.ParentName = groupdto.ParentGroup.Name; ;
             }
-            
+
             dto.Status = groupdto.Status;
             dto.Version = groupdto.Version;
             return dto;

@@ -76,6 +76,7 @@ namespace Wings.Core.Implementation
                 });
             }
             else { result.DataObjectList = new WebDTOList(); }
+            result.DataObjectList = result.DataObjectList.ToViewModel();
             result.pagination.page = userpages.PageNumber;
             result.pagination.rows = userpages.PageSize;
             result.pagination.TotalPages = userpages.TotalPages;
@@ -171,6 +172,18 @@ namespace Wings.Core.Implementation
         public ModuleDTO GetModuleByID(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+
+        public WebDTOList GetAllWebs()
+        {
+            WebDTOList dtolist = new WebDTOList();
+            var result=webRepository.GetAll();
+            foreach (var item in result)
+            {
+                dtolist.Add(Mapper.Map<Web, WebDTO>(item));
+            }
+            return dtolist.ToViewModel() ;
         }
     }
 }

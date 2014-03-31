@@ -262,7 +262,7 @@ namespace Wings.SOAService
         {
             try
             {
-                return userServiceImpl.CreateGroup(group).Trim();
+                return userServiceImpl.CreateGroup(group).ToViewModel();
             }
             catch (Exception ex)
             {

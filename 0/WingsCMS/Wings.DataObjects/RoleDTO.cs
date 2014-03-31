@@ -3,16 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using Wings.DataObjects.Custom;
 
 namespace Wings.DataObjects
 {
 
     public class RoleDTOList : List<RoleDTO>
-    { }
+    {
+        public RoleDTOList ToViewModel()
+        {
+            RoleDTOList viewmodels = new RoleDTOList();
+            if (this != null)
+            {
+                this.ForEach(r => 
+                {
+                    RoleDTO dto = new RoleDTO();
+                    dto.ID = r.ID;
+                    dto.Name = r.Name;
+                    dto.Status = r.Status;
+                    dto.Version = r.Version;
+                    dto.CreateDate = r.CreateDate;
+                    dto.Creator = r.Creator;
+                    dto.Description = r.Description;
+                    dto.EditDate = r.EditDate;
+                    viewmodels.Add(dto);
+                });
+            }
+            return viewmodels;
+        }
+        public List<Tree> ToTree()
+        {
+            List<Tree> trees = new List<Tree>();
+            if (this != null)
+            {
+                this.ForEach(r =>
+                {
+                    Tree tree = new Tree();
+                    tree.id = r.ID;
+                    tree.text = r.Name;
+                    trees.Add(tree);
+                });
+            }
+            return trees;
+        }
+    }
     [DataContract]
     public class RoleDTO : BaseDTO
     {
-         public RoleDTO()
+        public RoleDTO()
         {
             Users = new List<UserDTO>();
         }

@@ -131,5 +131,43 @@ namespace Wings.SOAService
         {
             webServiceImpl.Dispose();
         }
+
+
+        public WebDTO GetWebByID(Guid webid)
+        {
+            try
+            {
+                return webServiceImpl.GetWebByID(webid);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public ModuleDTO GetModuleByID(Guid id)
+        {
+            try
+            {
+                return webServiceImpl.GetModuleByID(id);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+
+        public WebDTOList GetAllWebs()
+        {
+            try
+            {
+                return webServiceImpl.GetAllWebs();
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
     }
 }

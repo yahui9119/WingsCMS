@@ -35,6 +35,18 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        public ActionResult Tree()
+        {
+            RoleDTOList dtolist;
+            using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
+            {
+
+                dtolist = proxy.Channel.GetAllRoles();
+
+            }
+            return Json(dtolist.ToTree());
+        }
+        [HttpPost]
         public ActionResult Add(RoleDTO role)
         {
             Result result = new Result();

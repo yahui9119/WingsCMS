@@ -35,6 +35,18 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        public ActionResult Tree()
+        {
+            WebDTOList groupdtolist;
+            using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
+            {
+
+                groupdtolist = proxy.Channel.GetAllWebs();
+
+            }
+            return Json(groupdtolist.ToTree());
+        }
+        [HttpPost]
         public ActionResult Add(WebDTO Web)
         {
             Result result = new Result();
@@ -81,7 +93,7 @@ namespace Wings.Admin.Controllers
             WebDTO Webdto = new WebDTO();
             using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
             {
-                Webdto = proxy.Channel.get(ID);
+                Webdto = proxy.Channel.GetWebByID(ID);
             }
             return Json(Webdto);
         }
