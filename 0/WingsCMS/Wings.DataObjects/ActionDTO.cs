@@ -28,10 +28,10 @@ namespace Wings.DataObjects
                         Tree tree = new Tree();
                         tree.id = t.ID;
                         tree.text = t.ActionName;
-                        if (t.ChildAction != null && t.ChildAction.Count > 0)
-                        {
-                            tree.children = ToTree(t.ChildAction);
-                        }
+                        //if (t.ChildAction != null && t.ChildAction.Count > 0)
+                        //{
+                        //    tree.children = ToTree(t.ChildAction);
+                        //}
                         trees.Add(tree);
                     });
             }
@@ -61,10 +61,10 @@ namespace Wings.DataObjects
                     dto.IsButton = a.IsButton;
                     dto.Status = a.Status;
                     dto.Version = a.Version;
-                    if (a.ChildAction != null && a.ChildAction.Count > 0)
-                    {
-                        dto.ChildAction = ToViewModel(a.ChildAction);
-                    }
+                    //if (a.ChildAction != null && a.ChildAction.Count > 0)
+                    //{
+                    //    dto.ChildAction = ToViewModel(a.ChildAction);
+                    //}
                     dtolist.Add(dto);
                 });
             }
@@ -82,7 +82,7 @@ namespace Wings.DataObjects
 
         public ActionDTO()
         {
-            ChildAction = new List<ActionDTO>();
+            //ChildAction = new List<ActionDTO>();
         }
         [DataMember]
         public virtual WebDTO web { get; set; }
@@ -101,16 +101,21 @@ namespace Wings.DataObjects
         /// 说明 简介
         /// </summary>
         public virtual string Description { get; set; }
-        [DataMember]
-        ///// <summary>
-        ///// 父访问点
-        ///// </summary>
-        public virtual ActionDTO ParentAction { get; set; }
-        [DataMember]
         /// <summary>
-        /// 子访问点
+        /// 视图ationid
         /// </summary>
-        public virtual List<ActionDTO> ChildAction { get; set; }
+        [DataMember]
+        public virtual Guid ViewActionID { get; set; }
+        //[DataMember]
+        /////// <summary>
+        /////// 父访问点
+        /////// </summary>
+        //public virtual ActionDTO ParentAction { get; set; }
+        //[DataMember]
+        ///// <summary>
+        ///// 子访问点
+        ///// </summary>
+        //public virtual List<ActionDTO> ChildAction { get; set; }
         [DataMember]
 
         /// <summary>

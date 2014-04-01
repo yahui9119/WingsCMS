@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Wings.Contracts;
@@ -63,24 +64,39 @@ namespace Wings.Core.Implementation
         }
         public DataObjects.DataObjectListWithPagination<DataObjects.WebDTOList> GetWebsByPage(DataObjects.Pagination pagination)
         {
-            Specification<Web> starttime = Specification<Web>.Eval(u => pagination.StartTime != null ? u.CreateDate < pagination.StartTime : true);
-            Specification<Web> endtime = Specification<Web>.Eval(u => pagination.EndTime != null ? u.CreateDate > pagination.EndTime : true);
-            Specification<Web> likeword = Specification<Web>.Eval(u => (string.IsNullOrEmpty(pagination.LikeWord) ? u.Name.Contains(pagination.LikeWord) : true));
-            PagedResult<Web> userpages = webRepository.GetAll(starttime.And(endtime).And(likeword), u => u.CreateDate, SortOrder.Descending, pagination.page, pagination.rows);
-            DataObjectListWithPagination<WebDTOList> result = new DataObjectListWithPagination<WebDTOList>();
-            if (userpages.Data != null)
+            Specification<Web> starttime = Specification<Web>.Eval(u => pagination.StartTime != null ? u.CreateDate > pagination.StartTime : true);
+            Specification<Web> endtime = Specification<Web>.Eval(u => pagination.EndTime != null ? u.CreateDate < pagination.EndTime : true);
+            Specification<Web> likeword = Specification<Web>.Eval(u => (!string.IsNullOrEmpty(pagination.LikeWord) ? u.Name.Contains(pagination.LikeWord) : true));
+            Expression<Func<Web, dynamic>> sortPredicate;
+            var property = typeof(Role).GetProperty(pagination.sort);
+            if (property != null)
             {
-                userpages.Data.ForEach(u =>
+                sortPredicate = r => property.Name;
+            }
+            else
+            {
+                sortPredicate = r => r.CreateDate;
+            }
+            PagedResult<Web> rolepages = webRepository.GetAll(starttime.And(endtime).And(likeword), sortPredicate
+            , pagination.order.ToLower() == "desc" ? SortOrder.Descending : SortOrder.Ascending, pagination.page, pagination.rows);
+            DataObjectListWithPagination<WebDTOList> result = new DataObjectListWithPagination<WebDTOList>();
+            if (rolepages == null)
+            {
+                return result;
+            }
+            if (rolepages.Data != null)
+            {
+                rolepages.Data.ForEach(u =>
                 {
                     result.DataObjectList.Add(Mapper.Map<Web, WebDTO>(u));
                 });
             }
             else { result.DataObjectList = new WebDTOList(); }
             result.DataObjectList = result.DataObjectList.ToViewModel();
-            result.pagination.page = userpages.PageNumber;
-            result.pagination.rows = userpages.PageSize;
-            result.pagination.TotalPages = userpages.TotalPages;
-            result.pagination.TotalRecords = userpages.TotalRecords;
+            result.pagination.page = rolepages.PageNumber;
+            result.pagination.rows = rolepages.PageSize;
+            result.pagination.TotalPages = rolepages.TotalPages;
+            result.pagination.TotalRecords = rolepages.TotalRecords;
             return result;
         }
 
@@ -137,6 +153,7 @@ namespace Wings.Core.Implementation
                 w.Description = wdto.Description;
                 w.Domain = wdto.Domain;
                 w.EditDate = DateTime.Now;
+                w.Status = (Wings.Domain.Model.Status)wdto.Status;
             });
         }
 

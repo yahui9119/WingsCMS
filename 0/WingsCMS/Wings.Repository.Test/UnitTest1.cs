@@ -58,20 +58,20 @@ namespace Wings.Repository.Test
             parentaction.EditDate = DateTime.Now;
              EntityFrameworkRepositoryContext context = new EntityFrameworkRepositoryContext();
             ActionRepository repository = new ActionRepository(context);
-            parentaction.ChildAction = new List<Domain.Model.Action>();
-            for (int i = 0; i < 2; i++)
-            {
-                Wings.Domain.Model.Action action = new Domain.Model.Action();
-                action.Description = "sdfsdf"+i;
-                action.Status = Status.Active;
-                action.IsButton = true;
-                action.ActionName = "testaction"+i;
-                action.Controller = "testcontroller"+i;
-                action.CreateDate = DateTime.Now;
-                action.EditDate = DateTime.Now;
-                parentaction.ChildAction.Add(action);
+            //parentaction.ChildAction = new List<Domain.Model.Action>();
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    Wings.Domain.Model.Action action = new Domain.Model.Action();
+            //    action.Description = "sdfsdf"+i;
+            //    action.Status = Status.Active;
+            //    action.IsButton = true;
+            //    action.ActionName = "testaction"+i;
+            //    action.Controller = "testcontroller"+i;
+            //    action.CreateDate = DateTime.Now;
+            //    action.EditDate = DateTime.Now;
+            //    parentaction.ChildAction.Add(action);
                
-            }
+            //}
 
             repository.Add(parentaction);
             context.Commit();
@@ -79,14 +79,14 @@ namespace Wings.Repository.Test
             EntityFrameworkRepositoryContext context1 = new EntityFrameworkRepositoryContext();
             ActionRepository repository1 = new ActionRepository(context1);
             var resul2 = repository1.Get(Specification<Wings.Domain.Model.Action>.Eval(a => a.ID == Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
-            List<Wings.Domain.Model.Action> result = (List<Wings.Domain.Model.Action>)repository1.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count != 0));
+            //List<Wings.Domain.Model.Action> result = (List<Wings.Domain.Model.Action>)repository1.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count != 0));
            
-            var actionget = result.Find(a => a.ID.Equals(Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
-            actionget.ActionName = "1111111111111";
-            actionget.ChildAction.RemoveAt(0);
+            //var actionget = result.Find(a => a.ID.Equals(Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
+            //actionget.ActionName = "1111111111111";
+            //actionget.ChildAction.RemoveAt(0);
            
-            repository1.Update(actionget);
-            context1.Commit();
+            //repository1.Update(actionget);
+            //context1.Commit();
         }
     }
 }

@@ -57,6 +57,7 @@ namespace Wings.Admin.Controllers
                 Web.EditDate = DateTime.Now;
                 Web.Status = Status.Active;
                 Web.Creator = null;
+                Web.IsActive = true;
                 WebDTOList dtolist = new WebDTOList();
                 dtolist.Add(Web);
                 proxy.Channel.CreateWeb(dtolist);

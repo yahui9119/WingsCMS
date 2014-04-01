@@ -55,7 +55,81 @@ namespace Wings.Core.Implementation
 
         public UserDTOList CreateUser(UserDTOList user)
         {
-            return PerformCreateObjects<UserDTOList, UserDTO, User>(user, userRepository).ToViewModel();
+            user.ForEach(u=>
+            {
+              
+            });
+            return PerformCreateObjects<UserDTOList, UserDTO, User>(user, userRepository, udto =>
+            {
+
+            }, u => {
+                if (u.GroupIDS != null)
+                {
+                    List<Guid> groupids = new List<Guid>();
+                    u.GroupIDS.ToList().ForEach(i =>
+                    {
+                        if (!string.IsNullOrEmpty(i))
+                        {
+                            Guid swap = Guid.Empty;
+                            if (Guid.TryParse(i, out swap))
+                            {
+                                groupids.Add(swap);
+                            }
+                        }
+                    });
+                    List<GroupDTO> groups = new List<GroupDTO>();
+                    u.Groups = groupRespository.GetAll(Specification<Group>.Eval(g => groupids.Contains(g.ID))).ToList();
+                    
+                }
+
+                // 角色保存
+                //u.Roles = new List<Role>();
+                if (u.RoleIDS != null)
+                {
+                    List<Guid> roleids = new List<Guid>();
+                    u.RoleIDS.ToList().ForEach(i =>
+                    {
+                        if (!string.IsNullOrEmpty(i))
+                        {
+                            Guid swap = Guid.Empty;
+                            if (Guid.TryParse(i, out swap))
+                            {
+                                roleids.Add(swap);
+                            }
+                        }
+                    });
+                    List<RoleDTO> roles = new List<RoleDTO>();
+
+                     u.Roles =roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID))).ToList();
+                }
+                //u.Webs = new List<Web>();
+                // 站点保存
+                if (u.WebIDS != null)
+                {
+                    List<Guid> webids = new List<Guid>();
+                    u.WebIDS.ToList().ForEach(i =>
+                    {
+                        if (!string.IsNullOrEmpty(i))
+                        {
+                            Guid swap = Guid.Empty;
+                            if (Guid.TryParse(i, out swap))
+                            {
+                                webids.Add(swap);
+                            }
+                        }
+                    });
+                    List<WebDTO> webs = new List<WebDTO>();
+                     u.Webs=webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID))).ToList();
+
+                }
+            }).ToViewModel();
+            //return PerformUpdateObjects<UserDTOList, UserDTO, User>(, userRepository, uto => uto.ID, (u, uto) =>
+            //{
+            //    //u.Groups = new List<Group>();
+            //    // 部门保存
+                
+            //}).ToViewModel();
+
         }
         /// <summary>
         /// 修改用户的个人信息

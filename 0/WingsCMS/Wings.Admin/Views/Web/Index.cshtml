@@ -1,16 +1,17 @@
 ﻿@{
-    ViewBag.Title = "用户管理";
+    ViewBag.Title = "站点管理";
+         
 }
 <div id="system-iframe-north" data-options="region:'north'" style="overflow-y: hidden; padding: 5px 0px 0px 5px; border-width: 0px;">
     <div class="input-prepend inline">
-        <span class="add-on">用户名称</span>
-        <input id="LikeWord" type="text" maxlength="50" class="span2" placeholder="用户的真实姓名" />
+        <span class="add-on">站点名称</span>
+        <input id="LikeWord" type="text" maxlength="50" class="span2" placeholder="角色名称" />
     </div>
     <div class="input-prepend inline">
         <span class="add-on">添加时间</span>
-        <input id="StartTime" type="text" class="easyui-datetimebox" style="width: 139px" placeholder="开始时间" />
+        <input id="StartTime" type="text" class="easyui-datetimebox" style="width:139px" placeholder="开始时间" />
         <span>-</span>
-        <input id="EndTime" type="text" class="easyui-datetimebox" style="width: 139px" placeholder="结束时间" />
+        <input id="EndTime" type="text" class="easyui-datetimebox" style="width:139px" placeholder="结束时间" />
     </div>
 
     <div class="input-append inline">
@@ -21,9 +22,9 @@
 <div id="system-iframe-center" data-options="region:'center'" style="overflow-y: hidden; border-width: 0px;">
     <div id="datagrid"></div>
     <div id="toolbar" class="z-toolbar" style="background: #f4f4f4;">
-        @Html.ActionLinkWithPermission("添加", "Add", "Role", new { }, new { id = "btnAdd", @class = "easyui-linkbutton", data_options = "iconCls:'icon-add',plain:'true'" })
-        @Html.ActionLinkWithPermission("编辑", "Edit", "Role", new { }, new { id = "btnEdit", @class = "easyui-linkbutton", data_options = "iconCls:'icon-edit',plain:'true'" })
-        @Html.ActionLinkWithPermission("删除", "Delete", "Role", new { }, new { id = "btnDelete", @class = "easyui-linkbutton", data_options = "iconCls:'icon-remove',plain:'true'" })
+        @Html.ActionLink("添加", "Add", "Web", new { }, new { id = "btnAdd", @class = "easyui-linkbutton", data_options = "iconCls:'icon-add',plain:'true'" })
+        @Html.ActionLink("编辑", "Edit", "Web", new { }, new { id = "btnEdit", @class = "easyui-linkbutton", data_options = "iconCls:'icon-edit',plain:'true'" })
+        @Html.ActionLink("删除", "Delete", "Web", new { }, new { id = "btnDelete", @class = "easyui-linkbutton", data_options = "iconCls:'icon-remove',plain:'true'" })
         <a id="btnRefresh" href="javascript:;" class="easyui-linkbutton" title="刷新" data-options="iconCls:'icon-reload',plain:'true'">刷新</a>
     </div>
 </div>
@@ -44,7 +45,7 @@
             $dg.datagrid({
                 loadMsg: '数据加载中，请稍后……',
                 method: 'post',
-                url: '@Url.ActionWithPermission("GetDataGrid", "User")',
+                url: '@Url.Action("GetDataGrid", "Web")',
                 sortName: 'Sort',
                 sortOrder: 'desc',
                 pageList: [5, 10, 20, 30, 40, 50, 100, 200, 500],
@@ -52,20 +53,14 @@
                 toolbar: '#toolbar',
                 columns: [[
                     { field: 'ID', checkbox: true, width: 20, align: 'center' },
-                    { field: 'Account', title: '帐户名', width: 120, align: 'center', sortable: true },
-                     { field: 'RealName', title: '用户名', width: 120, align: 'center', sortable: true },
-                      { field: 'Gender', title: '性别', width: 60, align: 'center', sortable: true, formatter: function (value) { return value == 1 ? "男" : "女"; } },
+                    { field: 'Name', title: '站点名称', width: 120, align: 'center', sortable: true },
+                    { field: 'Domain', title: '域名', width: 120, align: 'center', sortable: true },
 
-                     { field: 'HaveGroups', title: '部门', width: 60, align: 'center', sortable: true, formatter: function (value) { if (value == '') { return '--'; } return value; } },
-
-                     { field: 'HaveRoles', title: '角色', width: 60, align: 'center', sortable: true, formatter: function (value) { if (value == '') { return '--'; } return value; } },
-
-                     { field: 'HaveWebs', title: '拥有站点', width: 60, align: 'center', sortable: true, formatter: function (value) { if (value == '') { return '--'; } return value; } },
-                    { field: 'Status', title: '状态', width: 60, align: 'center', sortable: true, formatter: function (value) { return Common.formatBoolean(value == 1); } },
-
+                    { field: 'Status', title: '状态', width: 60, align: 'center', sortable: true, formatter: function (value) { return Common.formatBoolean(value==1); } },
+                    //{ field: 'AddUserName', title: '添加人', width: 100, align: 'center', sortable: true },
                     { field: 'CreateDate', title: '添加时间', width: 80, align: 'center', sortable: true, formatter: function (value) { return Common.formatDate(value); } },
                     { field: 'EditDate', title: '更新时间', width: 80, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return Common.formatDate(value); } },
-                    { field: 'Description', title: '简介', width: 300, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return value; } }
+                    { field: 'Description', title: '站点描述', width: 300, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return value; } }
 
                 ]],
                 fit: true,
@@ -110,7 +105,7 @@
                             buffer.append(selecteds[i].ID);
                         }
                         var idList = buffer.toString(",");
-                        $.post('@Url.ActionWithPermission("Delete", "User")', { idList: idList },
+                        $.post('@Url.Action("Delete", "Web")', { idList: idList },
                             function (data) {
                                 if (data.success) {
                                     $.messager.alert('提示', data.message, 'info');
@@ -150,16 +145,16 @@
             $('#datagrid-delete').on('click', function () {
                 $.messager.confirm('确认', '是否删除此条数据？', function (r) {
                     if (r) {
-                        $.post('@Url.ActionWithPermission("Delete", "Role")', { idList: rowData["ID"] },
-function (data) {
-    if (data.success) {
-        $.messager.alert('提示', data.message, 'info');
-        $dg.datagrid('reload');
-        $dg.datagrid('clearSelections');
-    } else {
-        $.messager.alert('错误', data.message, 'error');
-    }
-});
+                        $.post('@Url.Action("Delete", "Web")', { idList: rowData["ID"] },
+                function (data) {
+                    if (data.success) {
+                        $.messager.alert('提示', data.message, 'info');
+                        $dg.datagrid('reload');
+                        $dg.datagrid('clearSelections');
+                    } else {
+                        $.messager.alert('错误', data.message, 'error');
+                    }
+                });
                 }
                 });
             });
@@ -171,15 +166,13 @@ function (data) {
             $('#datagrid-reload').on('click', function () {
                 $dg.datagrid('reload');
             });
-
-
             //重置表单
             $('#btnSearchRest').on('click', function () {
                 $('#frmSearch')[0].reset();
             });
             //编辑
             function Edit(id) {
-                $.post('@Url.ActionWithPermission("Get", "User")/' + id, function (data) {
+                $.post('@Url.Action("Get", "Web")/' + id, function (data) {
                     $('#frmAddEdit').form('load', data);
                     var isDisplay = data.IsDisplay ? 'True' : 'False';
                     $('#_IsDisplay').val(isDisplay);
@@ -195,8 +188,8 @@ function (data) {
             });
             $('#btnOK').on('click', function () {
 
-                var add = "@Url.ActionWithPermission("add", "User")";
-                var edit = "@Url.ActionWithPermission("edit", "User")";
+                var add = "@Url.Action("add", "Web")";
+                var edit = "@Url.Action("edit", "Web")";
                 var action = $('#_ID').val() == '0' ? add : edit;
                 if ($('#frmAddEdit').form('validate')) {
                     $.ajax({

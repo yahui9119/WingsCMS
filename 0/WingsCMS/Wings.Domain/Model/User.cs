@@ -19,6 +19,21 @@ namespace Wings.Domain.Model
             Groups = new List<Group>();
         }
         /// <summary>
+        /// 分组id集合
+        /// 忽略
+        /// </summary>
+        public string[] GroupIDS { get; set; }
+        /// <summary>
+        /// 角色id集合
+        /// 忽略
+        /// </summary>
+        public string[] RoleIDS { get; set; }
+        /// <summary>
+        /// 站点id集合
+        /// 忽略
+        /// </summary>
+        public string[] WebIDS { get; set; }
+        /// <summary>
         /// 用户名
         /// </summary>
         public virtual string Account { get; set; }

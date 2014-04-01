@@ -26,6 +26,16 @@
 					<xs:documentation>The Pressentation.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="webSite" type="tns:Wings.Framework.Config.WebSiteElementCT">
+				<xs:annotation>
+					<xs:documentation>The WebSite.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="connectionStrings" type="tns:Wings.Framework.Config.ConnectionStringsCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The ConnectionStrings.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="Wings.Framework.Config.PressentationElementCT">
@@ -85,6 +95,39 @@
 		<xs:attribute name="sender" use="optional" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Sender.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Wings.Framework.Config.WebSiteElementCT">
+		<xs:attribute name="iD" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The ID.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Wings.Framework.Config.ConnectionStringsCollectionCT">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="connectionString" type="tns:Wings.Framework.Config.ConnectionStringCT">
+				<xs:annotation>
+					<xs:documentation>The ConnectionString Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="Wings.Framework.Config.ConnectionStringCT">
+		<xs:attribute name="key" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Key.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="value" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Value.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

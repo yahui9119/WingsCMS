@@ -39,6 +39,9 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Ignore(u => u.HaveGroups);
             Ignore(u => u.HaveRoles);
             Ignore(u => u.HaveWebs);
+            Ignore(u => u.WebIDS);
+            Ignore(u => u.GroupIDS);
+            Ignore(u => u.RoleIDS);
         }
     }
 }

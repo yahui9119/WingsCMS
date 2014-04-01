@@ -9,6 +9,13 @@ namespace Wings.Framework.Plugin
     public class PluginsManger : IPluginsManger
     {
         /// <summary>
+        /// 站点扩展初始化
+        /// </summary>
+        public static void Init()
+        {
+            
+        }
+        /// <summary>
         /// 安装插件
         /// </summary>
         /// <param name="plugin">插件</param>

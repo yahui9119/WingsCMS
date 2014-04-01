@@ -17,7 +17,8 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(a => a.ID).IsRequired()
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(a => a.CreateDate).IsRequired();
-            //Property(a => a.Creator).IsRequired();
+            Property(a => a.Creator).IsOptional();
+            Property(a => a.Status).IsOptional();
             Property(a => a.EditDate).IsRequired();
             Property(a => a.Version).IsRequired().HasMaxLength(32).IsRowVersion();
         }

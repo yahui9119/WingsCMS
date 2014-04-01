@@ -51,7 +51,7 @@ namespace Wings.DataObjects
             }
             else
             {
-                groups = (GroupDTOList)groups.OrderByDescending(g => g.Index).ToList();
+                groups = groups.OrderByDescending(g => g.Index).ToList() ;
                 groups.ForEach(g =>
                 {
                     GroupDTO dto = new GroupDTO();

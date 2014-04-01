@@ -13,7 +13,7 @@ namespace Wings.Domain.Model
     {
         public Action()
         {
-            ChildAction = new List<Action>();
+           //ChildAction = new List<Action>();
         }
         public virtual Web web { get; set; }
         /// <summary>
@@ -29,13 +29,17 @@ namespace Wings.Domain.Model
         /// </summary>
         public virtual string Description { get; set; }
         ///// <summary>
-        ///// 父访问点
+        ///// 
         ///// </summary>
-        public virtual Action ParentAction { get; set; }
-        /// <summary>
-        /// 子访问点
-        /// </summary>
-        public virtual  List<Action> ChildAction { get; set; }
+        public virtual Guid ViewActionID { get; set; }
+        /////// <summary>
+        /////// 父访问点
+        /////// </summary>
+        //public virtual Action ParentAction { get; set; }
+        ///// <summary>
+        ///// 子访问点
+        ///// </summary>
+        //public virtual  List<Action> ChildAction { get; set; }
 
         /// <summary>
         /// 是否是按钮

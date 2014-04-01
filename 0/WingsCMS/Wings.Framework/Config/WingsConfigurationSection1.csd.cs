@@ -151,6 +151,58 @@ namespace Wings.Framework.Config
             }
         }
         #endregion
+        
+        #region WebSite Property
+        /// <summary>
+        /// The XML name of the <see cref="WebSite"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string WebSitePropertyName = "webSite";
+        
+        /// <summary>
+        /// Gets or sets the WebSite.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The WebSite.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Wings.Framework.Config.WingsConfigurationSection.WebSitePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Wings.Framework.Config.WebSiteElement WebSite
+        {
+            get
+            {
+                return ((global::Wings.Framework.Config.WebSiteElement)(base[global::Wings.Framework.Config.WingsConfigurationSection.WebSitePropertyName]));
+            }
+            set
+            {
+                base[global::Wings.Framework.Config.WingsConfigurationSection.WebSitePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region ConnectionStrings Property
+        /// <summary>
+        /// The XML name of the <see cref="ConnectionStrings"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ConnectionStringsPropertyName = "connectionStrings";
+        
+        /// <summary>
+        /// Gets or sets the ConnectionStrings.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The ConnectionStrings.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Wings.Framework.Config.WingsConfigurationSection.ConnectionStringsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Wings.Framework.Config.ConnectionStringsCollection ConnectionStrings
+        {
+            get
+            {
+                return ((global::Wings.Framework.Config.ConnectionStringsCollection)(base[global::Wings.Framework.Config.WingsConfigurationSection.ConnectionStringsPropertyName]));
+            }
+            set
+            {
+                base[global::Wings.Framework.Config.WingsConfigurationSection.ConnectionStringsPropertyName] = value;
+            }
+        }
+        #endregion
     }
 }
 namespace Wings.Framework.Config
@@ -618,6 +670,324 @@ namespace Wings.Framework.Config
             set
             {
                 base[global::Wings.Framework.Config.EmailClientElement.SenderPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace Wings.Framework.Config
+{
+    
+    
+    /// <summary>
+    /// The WebSiteElement Configuration Element.
+    /// </summary>
+    public partial class WebSiteElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region ID Property
+        /// <summary>
+        /// The XML name of the <see cref="ID"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string IDPropertyName = "iD";
+        
+        /// <summary>
+        /// Gets or sets the ID.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The ID.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Wings.Framework.Config.WebSiteElement.IDPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public virtual string ID
+        {
+            get
+            {
+                return ((string)(base[global::Wings.Framework.Config.WebSiteElement.IDPropertyName]));
+            }
+            set
+            {
+                base[global::Wings.Framework.Config.WebSiteElement.IDPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Name Property
+        /// <summary>
+        /// The XML name of the <see cref="Name"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string NamePropertyName = "name";
+        
+        /// <summary>
+        /// Gets or sets the Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Name.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Wings.Framework.Config.WebSiteElement.NamePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual string Name
+        {
+            get
+            {
+                return ((string)(base[global::Wings.Framework.Config.WebSiteElement.NamePropertyName]));
+            }
+            set
+            {
+                base[global::Wings.Framework.Config.WebSiteElement.NamePropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace Wings.Framework.Config
+{
+    
+    
+    /// <summary>
+    /// A collection of ConnectionString instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::Wings.Framework.Config.ConnectionString), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::Wings.Framework.Config.ConnectionStringsCollection.ConnectionStringPropertyName)]
+    public partial class ConnectionStringsCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::Wings.Framework.Config.ConnectionString"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ConnectionStringPropertyName = "connectionString";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::Wings.Framework.Config.ConnectionStringsCollection.ConnectionStringPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::Wings.Framework.Config.ConnectionStringsCollection.ConnectionStringPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::Wings.Framework.Config.ConnectionString)(element)).Key;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::Wings.Framework.Config.ConnectionString"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::Wings.Framework.Config.ConnectionString"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::Wings.Framework.Config.ConnectionString();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::Wings.Framework.Config.ConnectionString"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::Wings.Framework.Config.ConnectionString"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Wings.Framework.Config.ConnectionString this[int index]
+        {
+            get
+            {
+                return ((global::Wings.Framework.Config.ConnectionString)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::Wings.Framework.Config.ConnectionString"/> with the specified key.
+        /// </summary>
+        /// <param name="key">The key of the <see cref="global::Wings.Framework.Config.ConnectionString"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Wings.Framework.Config.ConnectionString this[object key]
+        {
+            get
+            {
+                return ((global::Wings.Framework.Config.ConnectionString)(base.BaseGet(key)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::Wings.Framework.Config.ConnectionString"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="connectionString">The <see cref="global::Wings.Framework.Config.ConnectionString"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public void Add(global::Wings.Framework.Config.ConnectionString connectionString)
+        {
+            base.BaseAdd(connectionString);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::Wings.Framework.Config.ConnectionString"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="connectionString">The <see cref="global::Wings.Framework.Config.ConnectionString"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public void Remove(global::Wings.Framework.Config.ConnectionString connectionString)
+        {
+            base.BaseRemove(this.GetElementKey(connectionString));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::Wings.Framework.Config.ConnectionString"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::Wings.Framework.Config.ConnectionString"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Wings.Framework.Config.ConnectionString GetItemAt(int index)
+        {
+            return ((global::Wings.Framework.Config.ConnectionString)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::Wings.Framework.Config.ConnectionString"/> with the specified key.
+        /// </summary>
+        /// <param name="key">The key of the <see cref="global::Wings.Framework.Config.ConnectionString"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Wings.Framework.Config.ConnectionString GetItemByKey(string key)
+        {
+            return ((global::Wings.Framework.Config.ConnectionString)(base.BaseGet(((object)(key)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace Wings.Framework.Config
+{
+    
+    
+    /// <summary>
+    /// The ConnectionString Configuration Element.
+    /// </summary>
+    public partial class ConnectionString : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Key Property
+        /// <summary>
+        /// The XML name of the <see cref="Key"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string KeyPropertyName = "key";
+        
+        /// <summary>
+        /// Gets or sets the Key.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Key.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Wings.Framework.Config.ConnectionString.KeyPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public virtual string Key
+        {
+            get
+            {
+                return ((string)(base[global::Wings.Framework.Config.ConnectionString.KeyPropertyName]));
+            }
+            set
+            {
+                base[global::Wings.Framework.Config.ConnectionString.KeyPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Value Property
+        /// <summary>
+        /// The XML name of the <see cref="Value"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ValuePropertyName = "value";
+        
+        /// <summary>
+        /// Gets or sets the Value.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Value.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Wings.Framework.Config.ConnectionString.ValuePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual string Value
+        {
+            get
+            {
+                return ((string)(base[global::Wings.Framework.Config.ConnectionString.ValuePropertyName]));
+            }
+            set
+            {
+                base[global::Wings.Framework.Config.ConnectionString.ValuePropertyName] = value;
             }
         }
         #endregion
