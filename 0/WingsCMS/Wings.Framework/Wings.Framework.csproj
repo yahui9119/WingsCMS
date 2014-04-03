@@ -73,6 +73,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
@@ -100,6 +101,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WingsConfigurationSection.csd</DependentUpon>
     </Compile>
+    <Compile Include="Config\WingsConfigurationWrite.cs" />
     <Compile Include="Infrastructure\DisposableObject.cs" />
     <Compile Include="Infrastructure\ICoreServiceContract.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
@@ -108,8 +110,10 @@
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Infrastructure\PagedResult.cs" />
+    <Compile Include="Plugin\Contracts\ConfiguredString.cs" />
     <Compile Include="Plugin\Contracts\IPluginService.cs" />
     <Compile Include="Plugin\Contracts\IPluginServiceCallBack.cs" />
+    <Compile Include="Plugin\Contracts\Permission.cs" />
     <Compile Include="Plugin\Controls\CheckBoxList.cs" />
     <Compile Include="Plugin\Controls\MVCLinkExtensions.cs" />
     <Compile Include="Plugin\Controls\HtmlPrefixScope.cs" />
@@ -121,7 +125,6 @@
     <Compile Include="Plugin\Controls\MVCUrlHelperExtensions.cs" />
     <Compile Include="Plugin\Controls\RadioBoxList.cs" />
     <Compile Include="Plugin\Controls\SeoPager.cs" />
-    <Compile Include="Plugin\Services\PluginService.cs" />
     <Compile Include="Plugin\Services\PluginServiceCallBack.cs" />
     <Compile Include="Plugin\Web\CachedConfigContext.cs" />
     <Compile Include="Plugin\Web\WingsMembershipProvider.cs" />

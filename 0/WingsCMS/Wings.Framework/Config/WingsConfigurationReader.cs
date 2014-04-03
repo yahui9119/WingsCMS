@@ -22,8 +22,6 @@ namespace Wings.Framework.Config
         static WingsConfigurationReader() { }
         private WingsConfigurationReader()
         {
-            string EmailHost = WingsConfigurationSection.Instance.EmailClient.Host;
-
             this.configuration = WingsConfigurationSection.Instance;
             if (this.configuration == null)
             {

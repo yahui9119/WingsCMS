@@ -9,6 +9,7 @@ using Wings.DataObjects;
 using Wings.Domain.Model;
 using Wings.Domain.Repositories;
 using Wings.Events.Bus;
+using Wings.Framework.Plugin.Contracts;
 
 namespace Wings.Core.Implementation
 {
@@ -40,32 +41,26 @@ namespace Wings.Core.Implementation
             //this.actionRepository = actionRepository;
             this.bus = bus;
         }
-        /// <summary>
-        /// 新安装一个站点 一般在调试该站点的时候使用
-        /// </summary>
-        /// <param name="web"></param>
-        public WebDTO InstallPlugin(WebDTO webdto)
+
+
+        public void Init(Guid webid, List<Permission> permission)
         {
-            Web web = Mapper.Map<WebDTO, Web>(webdto);
-            webRepository.Add(web);
-            Context.Commit();
-            return Mapper.Map<Web, WebDTO>(web);
+            throw new NotImplementedException();
         }
 
-        public WebDTO UpdatePlugin(DataObjects.WebDTO webdto)
+        public void Login(string account, string password, Guid webid)
         {
-            Web web = Mapper.Map<WebDTO, Web>(webdto);
-            webRepository.Update(web);
-            Context.Commit();
-            return Mapper.Map<Web, WebDTO>(web);
+            throw new NotImplementedException();
         }
 
-        public void UnstallPlugin(DataObjects.WebDTO webdto)
+        public void LoginOut(string account)
         {
-            Web web = webRepository.GetByKey(Guid.Parse(webdto.ID));
-            web.Status = Wings.Domain.Model.Status.Deleted;
-            webRepository.Update(web);
-            Context.Commit();
+            throw new NotImplementedException();
+        }
+
+        public void OnlineHeartbeat(string account)
+        {
+            throw new NotImplementedException();
         }
     }
 }

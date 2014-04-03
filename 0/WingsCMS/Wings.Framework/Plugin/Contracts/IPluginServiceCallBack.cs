@@ -1,15 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Wings.Framework.Plugin.Contracts
 {
     /// <summary>
-    /// 插件服务双工通信回调
+    /// 扩展站点服务双工通信回调
     /// </summary>
+    [ServiceContract(Namespace = "http://www.wings.com")]
     public interface IPluginServiceCallBack
     {
+        /// <summary>
+        /// 更新站点此用户的权限
+        /// </summary>
+        [OperationContract(IsOneWay = true)]
+        void SavePermission(List<Permission> permissions, Guid userid);
+        /// <summary>
+        /// 更新站点的配置信息
+        /// </summary>
+        [OperationContract(IsOneWay = true)]
+        void SaveConfig(List<ConfiguredString> configs);
     }
 }

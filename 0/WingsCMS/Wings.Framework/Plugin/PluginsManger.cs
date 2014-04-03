@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
+using Wings.Framework.Plugin.Contracts;
+using Wings.Framework.Plugin.Services;
 using Wings.Framework.Routes;
 
 namespace Wings.Framework.Plugin
@@ -13,7 +16,34 @@ namespace Wings.Framework.Plugin
         /// </summary>
         public static void Init()
         {
-            
+
+        }
+        private static IPluginService _service;
+        public static IPluginService Service
+        {
+            get
+            {
+                if (_service == null)
+                {
+                    InstanceContext instanceContext = new InstanceContext(new PluginServiceCallBack());
+                    DuplexChannelFactory<IPluginService> channelFactory = new DuplexChannelFactory<IPluginService>(instanceContext, "PluginService");
+                    _service = channelFactory.CreateChannel();
+                }
+                try
+                {
+                    _service.OnlineHeartbeat("yhwang,test");
+                }
+                catch (Exception ex)
+                {
+                    new Log.Log().Error(ex);
+                    InstanceContext instanceContext = new InstanceContext(new PluginServiceCallBack());
+                    DuplexChannelFactory<IPluginService> channelFactory = new DuplexChannelFactory<IPluginService>(instanceContext, "PluginService");
+                    _service = channelFactory.CreateChannel();
+                }
+                return _service;
+
+
+            }
         }
         /// <summary>
         /// 安装插件
@@ -32,7 +62,7 @@ namespace Wings.Framework.Plugin
                 //记录日志ex
                 return false;
             }
-          
+
         }
         /// <summary>
         /// 卸载插件

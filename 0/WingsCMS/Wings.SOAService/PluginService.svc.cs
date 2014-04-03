@@ -8,6 +8,7 @@ using System.Text;
 using Wings.Contracts;
 using Wings.DataObjects;
 using Wings.Framework;
+using Wings.Framework.Plugin.Contracts;
 
 namespace Wings.SOAService
 {
@@ -18,46 +19,36 @@ namespace Wings.SOAService
     public class PluginService : IPluginService
     {
         private readonly IPluginService pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
-
-        public DataObjects.WebDTO InstallPlugin(DataObjects.WebDTO webdto)
+        public void Init(Guid webid, List<Permission> permission)
         {
+            throw new NotImplementedException();
+        }
+
+        public void Login(string account, string password, Guid webid)
+        {
+            IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
+            List<ConfiguredString> list = new List<ConfiguredString>();
+            list.Add(new ConfiguredString() { key = "sdfsdf", value = "gasfasdfsdf" });
+            callback.SaveConfig(list);
+        }
+
+        public void LoginOut(string account)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnlineHeartbeat(string accounts)
+        {
+
             try
             {
-                return pluginServiceImpl.InstallPlugin(webdto);
+                pluginServiceImpl.OnlineHeartbeat(accounts);
             }
             catch (Exception ex)
             {
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
-        }
 
-        public DataObjects.WebDTO UpdatePlugin(DataObjects.WebDTO webdto)
-        {
-            try
-            {
-                return pluginServiceImpl.UpdatePlugin(webdto);
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
-            }
-        }
-
-        public void UnstallPlugin(DataObjects.WebDTO web)
-        {
-            try
-            {
-                pluginServiceImpl.UnstallPlugin(web);
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
-            }
-        }
-
-        public void Dispose()
-        {
-            pluginServiceImpl.Dispose();
         }
     }
 }
