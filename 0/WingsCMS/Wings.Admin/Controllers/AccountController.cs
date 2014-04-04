@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,14 +17,16 @@ namespace Wings.Admin.Controllers
     {
         //
         // GET: /Account/
-
+        [Description("[站点登录显示页面]")]
+        [Anonymous]
         public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
         [Anonymous]
-        public ActionResult Login(string username, string password,bool remember=false)
+        [Description("[站点登录接受提交页面]")]
+        public ActionResult Login(string username, string password, bool remember = false)
         {
             //var username =;
             //var password = "";
@@ -34,22 +37,23 @@ namespace Wings.Admin.Controllers
                 Pagination p = new Pagination();
                 p.page = 1;
                 p.rows = 10;
-                
+
                 var test = proxy.Channel.GetAllUsers();
             }
-            if(islogin)
+            if (islogin)
             {
-                 FormsAuthentication.SetAuthCookie(username, remember);
-                 return RedirectToAction("index", "home");
+                FormsAuthentication.SetAuthCookie(username, remember);
+                return RedirectToAction("index", "home");
             }
             else
             {
                 ModelState.AddModelError("error", "用户名或密码错误");
-                
+
             }
             return View();
         }
         [HttpPost]
+        [Description("[站点登出]")]
         [LoginAllowView]
         public ActionResult LogOut()
         {

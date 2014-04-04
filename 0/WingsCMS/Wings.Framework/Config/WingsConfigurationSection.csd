@@ -114,6 +114,11 @@
             <externalTypeMoniker name="/ead7cc33-26fa-4d1c-90e9-1fd66bf8c300/String" />
           </type>
         </attributeProperty>
+        <attributeProperty name="Assembly" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="assembly" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/ead7cc33-26fa-4d1c-90e9-1fd66bf8c300/String" />
+          </type>
+        </attributeProperty>
       </attributeProperties>
     </configurationElement>
     <configurationElementCollection name="ConnectionStringsCollection" namespace="Wings.Framework.Config" xmlItemName="connectionString" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">

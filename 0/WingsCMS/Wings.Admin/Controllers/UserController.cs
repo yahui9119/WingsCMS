@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,13 +16,14 @@ namespace Wings.Admin.Controllers
     {
         //
         // GET: /User/
-
+        [Description("[用户管理【主页】]")]
         public ActionResult Index()
         {
 
             return View();
         }
         [HttpPost]
+        [Description("[用户管理【获取分页表格】]")]
         public ActionResult GetDataGrid(Pagination p)
         {
             DataObjectListWithPagination<UserDTOList> pageData = new DataObjectListWithPagination<UserDTOList>();
@@ -33,6 +35,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[用户管理【添加】]")]
         public ActionResult Add(UserDTO user)
         {
             Result result = new Result();
@@ -56,6 +59,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[用户管理【编辑】]")]
         public ActionResult Edit(UserDTO user)
         {
             Result result = new Result();
@@ -75,6 +79,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[用户管理【获取单个用户信息】]")]
         public ActionResult Get(Guid ID)
         {
             UserDTO userdto = new UserDTO();
@@ -85,6 +90,7 @@ namespace Wings.Admin.Controllers
             return Json(userdto);
         }
         [HttpPost]
+        [Description("[用户管理【批量标记删除用户】]")]
         public ActionResult Delete(IDList idlist)
         {
             Result result = new Result();

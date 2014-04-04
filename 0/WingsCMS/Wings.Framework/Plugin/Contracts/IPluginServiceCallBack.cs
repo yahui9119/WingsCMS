@@ -16,12 +16,12 @@ namespace Wings.Framework.Plugin.Contracts
         /// <summary>
         /// 更新站点此用户的权限
         /// </summary>
-        [OperationContract(IsOneWay = true)]
+        [OperationContract(IsOneWay = false)]
         void SavePermission(List<Permission> permissions, Guid userid);
         /// <summary>
         /// 更新站点的配置信息
         /// </summary>
-        [OperationContract(IsOneWay = true)]
+        [OperationContract(IsOneWay = false)]
         void SaveConfig(List<ConfiguredString> configs);
     }
 }

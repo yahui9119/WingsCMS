@@ -13,13 +13,10 @@ namespace Wings.Framework.Plugin.Services
     /// </summary>
     public class PluginServiceCallBack : IPluginServiceCallBack
     {
-
-
         public void SavePermission(List<Permission> permissions, Guid userid)
         {
             Caching.CacheManager.Instance.Add("Permission", userid.ToString(), permissions);
         }
-
         public void SaveConfig(List<ConfiguredString> configs)
         {
             if (configs != null && configs.Count > 0)

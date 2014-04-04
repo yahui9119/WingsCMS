@@ -109,6 +109,11 @@
 				<xs:documentation>The Name.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="assembly" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Assembly.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="Wings.Framework.Config.ConnectionStringsCollectionCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">

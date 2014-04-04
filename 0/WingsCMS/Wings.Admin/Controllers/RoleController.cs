@@ -8,6 +8,7 @@ using Wings.DataObjects;
 using Wings.Framework.Communication;
 using Wings.Contracts;
 using Wings.DataObjects.Custom;
+using System.ComponentModel;
 
 namespace Wings.Admin.Controllers
 {
@@ -18,12 +19,14 @@ namespace Wings.Admin.Controllers
     {
         //
         // GET: /Role/
+        [Description("[角色管理【主页】]")]
         public ActionResult Index()
         {
 
             return View();
         }
         [HttpPost]
+        [Description("[角色管理【获取分页表格】]")]
         public ActionResult GetDataGrid(Pagination p)
         {
             DataObjectListWithPagination<RoleDTOList> pageData = new DataObjectListWithPagination<RoleDTOList>();
@@ -35,6 +38,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[角色管理【获取树形列表】]")]
         public ActionResult Tree()
         {
             RoleDTOList dtolist;
@@ -47,6 +51,7 @@ namespace Wings.Admin.Controllers
             return Json(dtolist.ToTree());
         }
         [HttpPost]
+        [Description("[角色管理【添加】]")]
         public ActionResult Add(RoleDTO role)
         {
             Result result = new Result();
@@ -69,6 +74,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[角色管理【编辑】]")]
         public ActionResult Edit(RoleDTO role)
         {
             Result result = new Result();
@@ -88,6 +94,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[角色管理【获取角色信息】]")]
         public ActionResult Get(Guid ID)
         {
             RoleDTO roledto = new RoleDTO();
@@ -98,6 +105,7 @@ namespace Wings.Admin.Controllers
             return Json(roledto);
         }
         [HttpPost]
+        [Description("[角色管理【批量标记删除角色】]")]
         public ActionResult Delete(IDList idlist)
         {
             Result result = new Result();

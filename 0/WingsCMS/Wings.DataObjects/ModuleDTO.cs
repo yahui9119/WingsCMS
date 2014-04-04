@@ -9,7 +9,41 @@ namespace Wings.DataObjects
 {
 
     public class ModuleDTOList : List<ModuleDTO>
-    { }
+    {
+        public ModuleDTOList ToViewModel(List<ModuleDTO> modules = null)
+        {
+            ModuleDTOList gdtolist = new ModuleDTOList();
+            if (modules == null)
+            {
+                modules = this;
+                return ToViewModel(modules);
+            }
+            else
+            {
+                modules = modules.OrderByDescending(g => g.Index).ToList();
+                modules.ForEach(g =>
+                {
+                    ModuleDTO dto = new ModuleDTO();
+                    dto.CreateDate = g.CreateDate;
+                    dto.Creator = g.Creator;
+                    dto.Description = g.Description;
+                    dto.EditDate = g.EditDate;
+                    dto.ID = g.ID.ToString();
+                    dto.Name = g.Name;
+                    dto.ParentID = g.ParentID;
+                    dto.ParentName = g.ParentName;
+                    dto.Status = (Wings.DataObjects.Status)g.Status;
+                    dto.Index = g.Index;
+                    if (g.ChildModule != null && g.ChildModule.Count > 0)
+                    {
+                        dto.ChildModule = this.ToViewModel(g.ChildModule);
+                    }
+                    gdtolist.Add(dto);
+                });
+            }
+            return gdtolist;
+        }
+    }
     [DataContract]
     public class ModuleDTO:BaseDTO
     {
@@ -17,6 +51,8 @@ namespace Wings.DataObjects
         {
             ChildModule = new List<ModuleDTO>();
         }
+        public virtual Guid? ParentID { get; set; }
+        public virtual string ParentName{ get; set; }
         [DataMember]
         /// <summary>
         /// 菜单名

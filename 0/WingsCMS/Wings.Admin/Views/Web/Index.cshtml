@@ -53,15 +53,13 @@
                 toolbar: '#toolbar',
                 columns: [[
                     { field: 'ID', checkbox: true, width: 20, align: 'center' },
+                    //{ field: 'ID', title: '站点标示', width: 120, align: 'center', sortable: true },
                     { field: 'Name', title: '站点名称', width: 120, align: 'center', sortable: true },
                     { field: 'Domain', title: '域名', width: 120, align: 'center', sortable: true },
-
                     { field: 'Status', title: '状态', width: 60, align: 'center', sortable: true, formatter: function (value) { return Common.formatBoolean(value==1); } },
-                    //{ field: 'AddUserName', title: '添加人', width: 100, align: 'center', sortable: true },
                     { field: 'CreateDate', title: '添加时间', width: 80, align: 'center', sortable: true, formatter: function (value) { return Common.formatDate(value); } },
                     { field: 'EditDate', title: '更新时间', width: 80, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return Common.formatDate(value); } },
                     { field: 'Description', title: '站点描述', width: 300, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return value; } }
-
                 ]],
                 fit: true,
                 pagination: true,

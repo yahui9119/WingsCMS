@@ -43,24 +43,31 @@ namespace Wings.Core.Implementation
         }
 
 
+
+
+        Guid IPluginService.Login(string account, string password, Guid webid)
+        {
+            return Guid.Empty;
+        }
+
+        public List<Permission> GetPermissionByUserID(Guid accountid, Guid webid)
+        {
+            return new List<Permission>();
+        }
+
+        public void LoginOut(Guid accountid, Guid webid)
+        {
+           
+        }
+
+        public void OnlineHeartbeat(Guid accountid, Guid webid)
+        {
+           
+        }
+
         public void Init(Guid webid, List<Permission> permission)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Login(string account, string password, Guid webid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LoginOut(string account)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnlineHeartbeat(string account)
-        {
-            throw new NotImplementedException();
+           
         }
     }
 }

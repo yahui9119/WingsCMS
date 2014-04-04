@@ -31,7 +31,7 @@ namespace Wings.Framework.Plugin
                 }
                 try
                 {
-                    _service.OnlineHeartbeat("yhwang,test");
+                    _service.OnlineHeartbeat(Guid.Empty,Guid.Empty);
                 }
                 catch (Exception ex)
                 {

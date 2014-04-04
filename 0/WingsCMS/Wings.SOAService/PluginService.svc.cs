@@ -29,20 +29,54 @@ namespace Wings.SOAService
             IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
             List<ConfiguredString> list = new List<ConfiguredString>();
             list.Add(new ConfiguredString() { key = "sdfsdf", value = "gasfasdfsdf" });
+            list.Add(new ConfiguredString() { key = "sdf2f", value = "gasfsdf" });
+            callback.SaveConfig(list);
             callback.SaveConfig(list);
         }
 
-        public void LoginOut(string account)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void OnlineHeartbeat(string accounts)
+        Guid IPluginService.Login(string account, string password, Guid webid)
         {
-
             try
             {
-                pluginServiceImpl.OnlineHeartbeat(accounts);
+                return pluginServiceImpl.Login(account,password, webid);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public List<Permission> GetPermissionByUserID(Guid accountid, Guid webid)
+        {
+            try
+            {
+                return pluginServiceImpl.GetPermissionByUserID(accountid, webid);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void LoginOut(Guid accountid, Guid webid)
+        {
+            try
+            {
+                pluginServiceImpl.LoginOut(accountid, webid);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+
+        }
+
+        public void OnlineHeartbeat(Guid accountid, Guid webid)
+        {
+            try
+            {
+                pluginServiceImpl.OnlineHeartbeat(accountid,webid);
             }
             catch (Exception ex)
             {

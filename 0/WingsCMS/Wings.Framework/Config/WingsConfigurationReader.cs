@@ -61,6 +61,45 @@ namespace Wings.Framework.Config
             }
         }
         #endregion
+        #region 站点相关
+        /// <summary>
+        /// 站点id
+        /// </summary>
+        public Guid WebID {
+            get {
+                var id=configuration.WebSite.ID;
+                Guid temp=Guid.Empty;
+                if(Guid.TryParse(id,out temp))
+                {
+                  //转换成功
+                }
+                return temp;
+            }
+        }
+        /// <summary>
+        /// 站点名字
+        /// </summary>
+        public string WebName {
+            get
+            {
+               
+                return configuration.WebSite.Name;
+            }
+
+        }
+        /// <summary>
+        /// 站点程序集 多个用英文逗号分开
+        /// </summary>
+        public string WebAssembly
+        {
+            get
+            {
+
+                return configuration.WebSite.Assembly;
+            }
+
+        }
+        #endregion
         /// <summary>
         /// 获取一个<see cref="Boolean"/>值，该值表示指定的角色名称是否已在配置信息中注册。
         /// </summary>

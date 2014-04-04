@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,12 +19,14 @@ namespace Wings.Admin.Controllers
 
         //
         // GET: /Web/
+        [Description("[站点管理【首页】]")]
         public ActionResult Index()
         {
 
             return View();
         }
         [HttpPost]
+        [Description("[站点管理【获取分页表格】]")]
         public ActionResult GetDataGrid(Pagination p)
         {
             DataObjectListWithPagination<WebDTOList> pageData = new DataObjectListWithPagination<WebDTOList>();
@@ -35,6 +38,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[站点管理【获取树形列表】]")]
         public ActionResult Tree()
         {
             WebDTOList groupdtolist;
@@ -47,6 +51,7 @@ namespace Wings.Admin.Controllers
             return Json(groupdtolist.ToTree());
         }
         [HttpPost]
+        [Description("[站点管理【添加】]")]
         public ActionResult Add(WebDTO Web)
         {
             Result result = new Result();
@@ -70,6 +75,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[站点管理【编辑】]")]
         public ActionResult Edit(WebDTO Web)
         {
             Result result = new Result();
@@ -89,6 +95,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[站点管理【获取单个信息】]")]
         public ActionResult Get(Guid ID)
         {
             WebDTO Webdto = new WebDTO();
@@ -99,6 +106,7 @@ namespace Wings.Admin.Controllers
             return Json(Webdto);
         }
         [HttpPost]
+        [Description("[站点管理【批量标记删除】]")]
         public ActionResult Delete(IDList idlist)
         {
             Result result = new Result();

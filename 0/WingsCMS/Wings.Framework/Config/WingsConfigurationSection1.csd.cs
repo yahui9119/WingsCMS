@@ -747,6 +747,32 @@ namespace Wings.Framework.Config
             }
         }
         #endregion
+        
+        #region Assembly Property
+        /// <summary>
+        /// The XML name of the <see cref="Assembly"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string AssemblyPropertyName = "assembly";
+        
+        /// <summary>
+        /// Gets or sets the Assembly.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Assembly.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Wings.Framework.Config.WebSiteElement.AssemblyPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual string Assembly
+        {
+            get
+            {
+                return ((string)(base[global::Wings.Framework.Config.WebSiteElement.AssemblyPropertyName]));
+            }
+            set
+            {
+                base[global::Wings.Framework.Config.WebSiteElement.AssemblyPropertyName] = value;
+            }
+        }
+        #endregion
     }
 }
 namespace Wings.Framework.Config

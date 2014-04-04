@@ -10,8 +10,8 @@ namespace Wings.Framework.Plugin.Contracts
     /// <summary>
     /// 插件服务契约
     /// </summary>
-    
-     [ServiceContract(Namespace = "http://www.wings.com", CallbackContract = typeof(IPluginServiceCallBack))]
+
+    [ServiceContract(Namespace = "http://www.wings.com", CallbackContract = typeof(IPluginServiceCallBack))]
     public interface IPluginService
     {
         /// <summary>
@@ -20,27 +20,36 @@ namespace Wings.Framework.Plugin.Contracts
         /// </summary>
         /// <param name="webid"></param>
         /// <param name="permission"></param>
-        [OperationContract(IsOneWay = true)]
+        [OperationContract(IsOneWay = false)]
         void Init(Guid webid, List<Permission> permission);
         /// <summary>
-        /// 玩家在一个站点登录
+        /// 用户在一个站点登录
+        /// 返回用户id
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="password"></param>
+        /// <param name="account">账号名字</param>
+        /// <param name="password">经过MD5加密</param>
         /// <param name="webid"></param>
-        [OperationContract(IsOneWay = true)]
-        void Login(string account, string password, Guid webid );
+        [OperationContract(IsOneWay = false)]
+        Guid Login(string account, string password, Guid webid);
+        /// <summary>
+        /// 获取用户
+        /// </summary>
+        /// <param name="accountid"></param>
+        /// <param name="webid"></param>
+        /// <returns></returns>
+        [OperationContract(IsOneWay = false)]
+        List<Permission> GetPermissionByUserID(Guid accountid, Guid webid);
         /// <summary>
         /// 登出
         /// </summary>
         /// <param name="account"></param>
-        [OperationContract(IsOneWay = true)]
-        void LoginOut(string account);
+        [OperationContract(IsOneWay = false)]
+        void LoginOut(Guid accountid,Guid webid);
         /// <summary>
         /// 在线心跳
         /// </summary>
         /// <param name="account"></param>
-        [OperationContract(IsOneWay = true)]
-        void OnlineHeartbeat(string account);
+        [OperationContract(IsOneWay = false)]
+        void OnlineHeartbeat(Guid accountid, Guid webid);
     }
 }

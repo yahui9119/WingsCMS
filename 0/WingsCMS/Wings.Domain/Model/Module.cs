@@ -43,10 +43,6 @@ namespace Wings.Domain.Model
         /// 排序索引
         /// </summary>
         public virtual int Index { get; set; }
-        ///// <summary>
-        ///// 父菜单标示
-        ///// </summary>
-        //public Guid ParentID { get; set; }
         /// <summary>
         /// 父栏目
         /// </summary>
@@ -60,9 +56,9 @@ namespace Wings.Domain.Model
         /// </summary>
         public virtual bool IsMenus { get; set; }
         /// <summary>
-        /// 是否启用
+        /// 所属的站点
         /// </summary>
-        public virtual bool IsActive { get; set; }
+        public virtual Web Web { get; set; }
         /// <summary>
         /// 拥有着的分组
         /// </summary>
@@ -71,7 +67,13 @@ namespace Wings.Domain.Model
         /// 拥有着的角色
         /// </summary>
         public virtual List<Role> Roles { get; set; }
+        /// <summary>
+        /// 被允许的用户
+        /// </summary>
         public virtual List<User> UserAllow { get; set; }
+        /// <summary>
+        /// 不被允许的用户
+        /// </summary>
         public virtual List<User> UserBan { get; set; }
         
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,13 +16,14 @@ namespace Wings.Admin.Controllers
     {
         //
         // GET: /Group/
-
+        [Description("[分组管理【主页】]")]
         public ActionResult Index()
         {
 
             return View();
         }
         [HttpPost]
+        [Description("[分组管理【获取分组列表】]")]
         public ActionResult GetDataGrid(Pagination p)
         {
             GroupDTOList groupdata = new GroupDTOList();
@@ -34,6 +36,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[分组管理【获取树形列表】]")]
         public ActionResult Tree()
         {
             GroupDTOList groupdtolist;
@@ -45,7 +48,9 @@ namespace Wings.Admin.Controllers
             }
             return Json(groupdtolist.ToTree());
         }
+
         [HttpPost]
+        [Description("[分组管理【添加】]")]
         public ActionResult Add(GroupDTO groupdto)
         {
             Result result = new Result();
@@ -67,6 +72,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[分组管理【编辑】]")]
         public ActionResult Edit(GroupDTO group)
         {
             Result result = new Result();
@@ -86,6 +92,7 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[分组管理【获取】]")]
         public ActionResult Get(Guid ID)
         {
             GroupDTO groupdto = new GroupDTO();
@@ -96,6 +103,7 @@ namespace Wings.Admin.Controllers
             return Json(groupdto);
         }
         [HttpPost]
+        [Description("[分组管理【标记删除】]")]
         public ActionResult Delete(IDList idlist)
         {
             Result result = new Result();

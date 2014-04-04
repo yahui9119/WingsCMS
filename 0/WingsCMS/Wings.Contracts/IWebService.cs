@@ -74,14 +74,14 @@ namespace Wings.Contracts
         /// <param name="moduledto"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        ModuleDTO CreateModule(Guid webid, ModuleDTO moduledto);
+        ModuleDTOList CreateModule(ModuleDTOList moduledtos);
         /// <summary>
         /// 修改模块
         /// </summary>
         /// <param name="moduledto"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        ModuleDTO EditModule(ModuleDTO moduledto);
+        ModuleDTOList EditModule(ModuleDTOList moduledto);
         /// <summary>
         /// 删除一个模块
         /// </summary>
@@ -95,7 +95,7 @@ namespace Wings.Contracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        WebDTOList GetAllWebModules();
+        ModuleDTOList GetAllWebModules(Guid webid);
         /// <summary>
         /// 根部模块id获取此模块的基本信息
         /// </summary>
@@ -103,7 +103,14 @@ namespace Wings.Contracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        ModuleDTO GetModuleByID(Guid id);
-
+        ModuleDTOList GetModuleByID(Guid id);
+        /// <summary>
+        /// 根部模块id获取此模块的基本信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        ModuleDTOList GetModuleByParentID(Guid parentid);
     }
 }

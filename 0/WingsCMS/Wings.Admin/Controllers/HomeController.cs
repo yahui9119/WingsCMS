@@ -8,6 +8,8 @@ using Wings.Framework.Plugin;
 using Wings.Framework.Plugin.UI;
 using Wings.DataObjects;
 using Wings.Framework.Caching;
+using Wings.Framework.Plugin.Web;
+using System.ComponentModel;
 
 namespace Wings.Admin.Controllers
 {
@@ -15,6 +17,7 @@ namespace Wings.Admin.Controllers
     {
         [DefaultPage]
         [LoginAllowView]
+        [Description("[站点主页【首页】]")]
         public ActionResult Index()
         {
             return View();
@@ -25,6 +28,7 @@ namespace Wings.Admin.Controllers
         /// </summary>
         /// <returns></returns>
         [LoginAllowView]
+        [Description("[站点主页【主页】]")]
         public ActionResult Main()
         {
             return View();
@@ -34,10 +38,11 @@ namespace Wings.Admin.Controllers
         /// </summary>
         /// <returns></returns>
         [LoginAllowView]
+        [Description("[站点主页【获取菜单列表】]")]
         public ActionResult LoadMenus()
         {
             PluginsManger.Service.Login("test", "test", Guid.Empty);
-          
+           
             //List<MenusDTO> menus = new List<MenusDTO>();
             //for (int i = 0; i < 3; i++)
             //{
@@ -60,7 +65,7 @@ namespace Wings.Admin.Controllers
             //    menus.Add(menu);
             //}
 
-            return Json(CacheManager.Instance.Get("Permission", "test"), JsonRequestBehavior.AllowGet);
+            return Json(WebControllerAction.GetAllAction(), JsonRequestBehavior.AllowGet);
         }
     }
 }
