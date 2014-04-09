@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using Wings.DataObjects.Custom;
 
 namespace Wings.DataObjects
-
 {
 
     public class ModuleDTOList : List<ModuleDTO>
@@ -31,6 +31,7 @@ namespace Wings.DataObjects
                     dto.ID = g.ID.ToString();
                     dto.Name = g.Name;
                     dto.ParentID = g.ParentID;
+                    dto.ICON = g.ICON;
                     dto.ParentName = g.ParentName;
                     dto.Status = (Wings.DataObjects.Status)g.Status;
                     dto.Index = g.Index;
@@ -43,16 +44,54 @@ namespace Wings.DataObjects
             }
             return gdtolist;
         }
+        public List<Tree> ToTree(List<ModuleDTO> moduledtolist = null)
+        {
+            List<Tree> trees = new List<Tree>();
+
+            if (moduledtolist == null)
+            {
+                moduledtolist = this;
+            }
+            if (moduledtolist.Count == 0)
+            {
+                return null;
+            }
+            moduledtolist.OrderByDescending(g => g.Index).ToList().ForEach(g =>
+            {
+                Tree tree = new Tree();
+                tree.id = g.ID.ToString();
+                tree.text = g.Name;
+                if (g.ChildModule != null && g.ChildModule.Count > 0)
+                {
+                    tree.children = ToTree(g.ChildModule.ToList());
+                }
+                trees.Add(tree);
+            });
+            return trees;
+        }
     }
     [DataContract]
-    public class ModuleDTO:BaseDTO
+    public class ModuleDTO : BaseDTO
     {
         public ModuleDTO()
         {
             ChildModule = new List<ModuleDTO>();
         }
-        public virtual Guid? ParentID { get; set; }
-        public virtual string ParentName{ get; set; }
+        public virtual Guid? ParentID
+        {
+            get
+            {
+                return parentID;
+            }
+            set
+            {
+                if (value.HasValue)
+                {
+                    parentID=value.Value;
+                }
+            }
+        }
+        public virtual string ParentName { get; set; }
         [DataMember]
         /// <summary>
         /// 菜单名
@@ -63,6 +102,19 @@ namespace Wings.DataObjects
         /// 详情
         /// </summary>
         public virtual string Description { get; set; }
+        private Guid _actionid { get; set; }
+        [DataMember]
+        public Guid ActionID
+        {
+            get
+            {
+                return _actionid;
+            }
+            set
+            {
+                _actionid = value;
+            }
+        }
         [DataMember]
         /// <summary>
         /// 可访问点的id 
@@ -97,6 +149,24 @@ namespace Wings.DataObjects
         /// 父栏目
         /// </summary>
         public virtual ModuleDTO ParentModule { get; set; }
+        public Guid _parentId
+        {
+            get
+            {
+                return parentID;
+            }
+            set
+            {
+                parentID = value;
+            }
+        }
+        [DataMember]
+        private Guid parentID
+        {
+            get;
+            set;
+
+        }
         [DataMember]
         /// <summary>
         /// 子菜单
@@ -112,6 +182,22 @@ namespace Wings.DataObjects
         /// 是否启用
         /// </summary>
         public virtual bool IsActive { get; set; }
+        private Guid _webid;
+        public Guid WebID
+        {
+            get
+            {
+                return _webid;
+            }
+            set
+            {
+                _webid = value;
+            }
+        }
+        /// <summary>
+        /// 所属的站点
+        /// </summary>
+        public virtual WebDTO Web { get; set; }
         [DataMember]
         /// <summary>
         /// 拥有着的分组
@@ -126,6 +212,6 @@ namespace Wings.DataObjects
         public virtual List<UserDTO> UserAllow { get; set; }
         [DataMember]
         public virtual List<UserDTO> UserBan { get; set; }
-        
+
     }
 }

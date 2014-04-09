@@ -100,7 +100,7 @@ namespace Wings.Core.Implementation
             return result;
         }
 
-       
+
         public WebDTOList CreateWeb(WebDTOList webdtos)
         {
             return PerformCreateObjects<WebDTOList, WebDTO, Web>(webdtos, webRepository);
@@ -144,43 +144,52 @@ namespace Wings.Core.Implementation
         }
         public ModuleDTO GetModuleByID(Guid id)
         {
-            throw new NotImplementedException();
+            var module = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(id)));
+            return Mapper.Map<Module, ModuleDTO>(module);
         }
 
 
         public WebDTOList GetAllWebs()
         {
             WebDTOList dtolist = new WebDTOList();
-            var result=webRepository.GetAll();
+            var result = webRepository.GetAll();
             foreach (var item in result)
             {
                 dtolist.Add(Mapper.Map<Web, WebDTO>(item));
             }
-            return dtolist.ToViewModel() ;
+            return dtolist.ToViewModel();
         }
         #region 菜单
         public ModuleDTO CreateModule(Guid webid, DataObjects.ModuleDTO moduledto)
         {
+            Module parentmodule = null;
             var module = Mapper.Map<ModuleDTO, Module>(moduledto);
-            if (module.ParentModule != null && module.ParentModule.ID != null)
+            module.Web = webRepository.Find(Specification<Web>.Eval(w => w.ID.Equals(webid)));
+            if (moduledto.ParentID.HasValue)
             {
-                module.ParentModule = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(module.ParentModule.ID)));
+                parentmodule = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(moduledto.ParentID.Value)));
+                parentmodule.ChildModule.Add(module);
+                moduleRepository.Update(parentmodule);
             }
-            moduleRepository.Add(module);
+            else
+            {
+                moduleRepository.Add(module);
+
+            }
             Context.Commit();
             return Mapper.Map<Module, ModuleDTO>(module);
         }
 
         public ModuleDTO EditModule(DataObjects.ModuleDTO moduledto)
         {
-            var module = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(Guid.Parse(moduledto.ID))));
-            if (moduledto.ParentModule != null && moduledto.ParentModule.ID != null)
+            Module parentmodule = null;
+            var module = Mapper.Map<ModuleDTO, Module>(moduledto);
+            module.Web = webRepository.Find(Specification<Web>.Eval(w => w.ID.Equals(moduledto.WebID)));
+            if (moduledto.ParentID.HasValue)
             {
-                module.ParentModule = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(Guid.Parse(moduledto.ParentModule.ID))));
+                parentmodule = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(moduledto.ParentID.Value)));
             }
-            module.Name = moduledto.Name;
-            module.Description = moduledto.Description;
-            module.EditDate = DateTime.Now;
+            module.ParentModule = parentmodule;
             moduleRepository.Update(module);
             Context.Commit();
             return Mapper.Map<Module, ModuleDTO>(module);
@@ -193,17 +202,29 @@ namespace Wings.Core.Implementation
         /// <returns></returns>
         public ModuleDTOList GetAllWebModules(Guid webid)
         {
-            
+
             ModuleDTOList dtolist = new ModuleDTOList();
             var modules = moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)));
             foreach (var item in modules)
             {
-                
+
                 dtolist.Add(Mapper.Map<Module, ModuleDTO>(item));
             }
             return dtolist.ToViewModel();
         }
         #endregion
 
+
+
+        public ModuleDTOList GetModuleByParentID(Guid parentid)
+        {
+            ModuleDTOList dtolist = new ModuleDTOList();
+            var modules = moduleRepository.GetAll(Specification<Module>.Eval(m => m.ParentModule.ID.Equals(parentid)));
+            foreach (var item in modules)
+            {
+                dtolist.Add(Mapper.Map<Module, ModuleDTO>(item));
+            }
+            return dtolist.ToViewModel();
+        }
     }
 }

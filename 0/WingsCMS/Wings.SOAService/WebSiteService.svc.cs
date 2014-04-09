@@ -116,11 +116,11 @@ namespace Wings.SOAService
             }
         }
 
-        public WebDTOList GetAllWebModules()
+        public  ModuleDTOList GetAllWebModules(Guid webid)
         {
             try
             {
-                return webServiceImpl.GetAllWebModules();
+                return webServiceImpl.GetAllWebModules(webid);
             }
             catch (Exception ex)
             {
@@ -163,6 +163,19 @@ namespace Wings.SOAService
             try
             {
                 return webServiceImpl.GetAllWebs();
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+
+        public ModuleDTOList GetModuleByParentID(Guid parentid)
+        {
+            try
+            {
+                return webServiceImpl.GetModuleByParentID(parentid);
             }
             catch (Exception ex)
             {

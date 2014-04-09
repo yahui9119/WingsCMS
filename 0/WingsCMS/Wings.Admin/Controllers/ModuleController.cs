@@ -21,88 +21,87 @@ namespace Wings.Admin.Controllers
             return View();
         }
         [HttpPost]
-        [Description("[分组管理【获取分组列表】]")]
+        [Description("[菜单管理【获取菜单列表】]")]
         public ActionResult GetDataGrid(Pagination p)
         {
             var webid = Guid.Empty;
+            var strwebid = HttpContext.Request.Form["webid"];
+            Guid.TryParse(strwebid, out webid);
             ModuleDTOList groupdata = new ModuleDTOList();
             using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
             {
                 groupdata = proxy.Channel.GetAllWebModules(webid);
             }
-            groupdata.ForEach(g => g.ChildGroup = null);
+            groupdata.ForEach(g => g.ChildModule = null);
             var result = new DataGrid() { total = groupdata.Count, rows = groupdata };
             return Json(result);
         }
         [HttpPost]
-        [Description("[分组管理【获取树形列表】]")]
+        [Description("[菜单管理【获取树形列表】]")]
         public ActionResult Tree()
         {
-            ModuleDTOList  ModuleDTOlist;
+            ModuleDTOList ModuleDTOlist;
             using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
             {
 
-                 ModuleDTOlist = proxy.Channel.GetGroupParentID(null);
+                ModuleDTOlist = proxy.Channel.GetModuleByParentID(Guid.Empty);
 
             }
-            return Json( ModuleDTOlist.ToTree());
+            return Json(ModuleDTOlist.ToTree());
         }
 
         [HttpPost]
-        [Description("[分组管理【添加】]")]
-        public ActionResult Add(ModuleDTO  ModuleDTO)
+        [Description("[菜单管理【添加】]")]
+        public ActionResult Add(ModuleDTO ModuleDTO)
         {
             Result result = new Result();
             result.message = "添加部门失败";
             using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
             {
-                 ModuleDTO.CreateDate = DateTime.Now;
-                 ModuleDTO.EditDate = DateTime.Now;
-                 ModuleDTO.Creator = null;
-                 ModuleDTOList dtolist = new  ModuleDTOList();
-                dtolist.Add( ModuleDTO);
-                proxy.Channel.CreateGroup(dtolist);
-                if (!string.IsNullOrEmpty( ModuleDTO.ID))
+                ModuleDTO.CreateDate = DateTime.Now;
+                ModuleDTO.EditDate = DateTime.Now;
+                ModuleDTO.Creator = null;
+
+                proxy.Channel.CreateModule(Wings.Framework.Config.WingsConfigurationReader.Instance.WebID, ModuleDTO);
+                if (!string.IsNullOrEmpty(ModuleDTO.ID))
                 {
                     result.success = true;
-                    result.message = "添加部门成功";
+                    result.message = "添加菜单成功";
                 }
             }
             return Json(result);
         }
         [HttpPost]
-        [Description("[分组管理【编辑】]")]
-        public ActionResult Edit( ModuleDTO group)
+        [Description("[菜单管理【编辑】]")]
+        public ActionResult Edit(ModuleDTO dto)
         {
             Result result = new Result();
             result.message = "修改部门失败";
             using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
             {
-                group.EditDate = DateTime.Now;
-                ModuleDTOList dtolist = new ModuleDTOList();
-                dtolist.Add(group);
-                proxy.Channel.EditGroup(dtolist);
-                if (!string.IsNullOrEmpty(group.ID))
+                dto.EditDate = DateTime.Now;
+                proxy.Channel.EditModule(dto);
+                if (!string.IsNullOrEmpty(dto.ID))
                 {
                     result.success = true;
-                    result.message = "修改部门成功";
+                    result.message = "修改菜单成功";
                 }
             }
             return Json(result);
         }
         [HttpPost]
-        [Description("[分组管理【获取】]")]
+        [Description("[菜单管理【获取】]")]
         public ActionResult Get(Guid ID)
         {
-             ModuleDTO  ModuleDTO = new  ModuleDTO();
+            ModuleDTO ModuleDTO = new ModuleDTO();
             using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
             {
-                 ModuleDTO = proxy.Channel.GetGroupByID(ID);
+                ModuleDTO = proxy.Channel.GetModuleByID(ID);
             }
-            return Json( ModuleDTO);
+            return Json(ModuleDTO);
         }
         [HttpPost]
-        [Description("[分组管理【标记删除】]")]
+        [Description("[菜单管理【标记删除】]")]
         public ActionResult Delete(IDList idlist)
         {
             Result result = new Result();
@@ -114,7 +113,7 @@ namespace Wings.Admin.Controllers
                 result.message = "您提交的数据为空，请重新选择!";
                 return Json(result);
             }
-            ModuleDTOList dtolist = new ModuleDTOList();
+            IDList dtolist = new IDList();
             idlist.Where(f => !string.IsNullOrEmpty(f)).ToList().ForEach(s =>
             {
                 Guid temp = Guid.Empty;
@@ -123,7 +122,7 @@ namespace Wings.Admin.Controllers
 
                     if (Guid.TryParse(g, out temp))
                     {
-                        dtolist.Add(new  ModuleDTO() { ID = g }); ;
+                        dtolist.Add(g.ToString()); ;
                     }
                 }
                     );

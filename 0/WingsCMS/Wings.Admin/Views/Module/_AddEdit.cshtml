@@ -2,27 +2,46 @@
     <form id="frmAddEdit" class="form-horizontal" method="post">
         <input type="hidden" name="ID" />
         <div class="control-group">
-            <label class="control-label" for="_RoleName">角色名称</label>
+            <label class="control-label" for="_ModuleName">菜单名称</label>
             <div class="controls">
-                <input name="Name" id="_RoleName" class="span3 easyui-validatebox" placeholder="角色名称" maxlength="50" type="text" data-options="required:true" />
+                <input name="Name" id="_ModuleName" class="span3 easyui-validatebox" placeholder="菜单名称" maxlength="50" type="text" data-options="required:true" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_ICON">图标</label>
+            <div class="controls">
+                <input name="ICON" id="_ICON" class="span3 easyui-validatebox" placeholder="ICON" type="text" data-options="required:true,missingMessage: '此输入项为必输项，请选择图标'" style="width: 180px;" />
+                <span class="help-inline"><a class="t-icon" style="width: 18px; height: 18px;"></a></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_ParentID">父菜单</label>
+            <div class="controls">
+                <input name="ParentID" id="_ParentID" class="span3 easyui-validatebox" placeholder="父菜单" maxlength="50" type="text" />
+            </div>
+
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_Index">排序</label>
+            <div class="controls">
+                <input name="Index" id="_Index" class="span3 easyui-validatebox" placeholder="菜单名称" maxlength="50" type="text" data-options="required:true" />
             </div>
         </div>
         <div class="input-prepend inline">
-            <label class="control-label" for="_IsDisplay">状态</label>
+            <label class="control-label" for="_Status">状态</label>
             <div class="controls">
-                <select name="Status" style="width: 216px;">
+                <select name="Status" id="_Status" style="width: 216px;">
                     <option value="-1">已删除</option>
                     <option value="-1">禁用</option>
                     <option value="1">正常</option>
                     <option value="2">未激活</option>
                 </select>
-                @*@Html.DropDownList("Status",(List<SelectListItem>)ViewData["Status"]), new { id = "Status", })*@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="_Description">角色描述</label>
+            <label class="control-label" for="_Description">菜单描述</label>
             <div class="controls">
-                <textarea id="_Description" name="Description" class="span3 easyui-validatebox" placeholder="角色描述" data-options="required:true" rows="4" maxlength="500"></textarea>
+                <textarea id="_Description" name="Description" class="span3 easyui-validatebox" placeholder="菜单描述" data-options="required:true" rows="4" maxlength="500"></textarea>
             </div>
         </div>
         <div class="control-group">

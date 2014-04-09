@@ -31,32 +31,33 @@
         <div id="treegrid-reload" data-options="iconCls:'icon-reload'" title="刷新">刷新</div>
     </div>
     @Html.Partial("_AddEdit")
+    @Html.Partial("_Icon")
 </div>
 @section JS{
     <script type="text/javascript">
         $(document).ready(function () {
             $treeGrid = $('#treegrid');
-            
+
             $("#webtree").tree(
                 {
                     url: "@Url.ActionWithPermission("Tree", "Web")",
                     onSelect: function (node) {
-                        webid = node.id;
-                        $treeGrid.treegrid('load',  webtreeselect() );
+                        $treeGrid.treegrid('load', webtreeselect());
                     }
                 });
             var _rowData;
             function webtreeselect() {
-                var node= $("#webtree").getSelected;
-                var webid=0;
-                if(node)
-                {
-                    webid=node.id;
+                var node = $("#webtree").tree("getSelected");
+                var webid = 0;
+                if (node) {
+                    return {
+                        webid: node.id
+                    }
                 }
                 return {
-                    webid:webid
+                    webid: webid
                 }
-            } 
+            }
             $treeGrid.treegrid({
                 state: 'open',
                 idField: 'ID',
@@ -72,7 +73,7 @@
                 fixed: false,
                 singleSelect: true,
                 toolbar: '#toolbar',
-                columns: [[                    { field: 'ID', checkbox: true, align: 'center', width: 20 },                    { title: '部门名称', field: 'Name', width: '200', align: 'left' },
+                columns: [[                    { field: 'ID', checkbox: true, align: 'center', width: 20 },                    { title: '菜单名称', field: 'Name', width: '200', align: 'left' },
                     { title: '排序', field: 'Index', width: '50', align: 'center' },
                     {
                         title: '显示', field: 'Status', width: '50', align: 'center',
@@ -103,7 +104,7 @@
                 $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' }).combotree('setValue', 0);
                 $('#AddEdit').window({
                     iconCls: 'icon-add',
-                    title: '添加部门'
+                    title: '添加菜单'
                 }).window('open');
             });
             //新增菜单
@@ -130,7 +131,7 @@
             });
             //刷新
             $('#btnReload,#treegrid-reload').on('click', function () {
-                $treeGrid.treegrid('load', webtreeselect() );
+                $treeGrid.treegrid('load', webtreeselect());
             });
             //添加右击菜单内容
             function onRowContextMenu(e, row) {
@@ -152,7 +153,7 @@
                 });
                 $('#AddEdit').window({
                     iconCls: 'icon-edit',
-                    title: '编辑部门'
+                    title: '编辑菜单'
                 }).window('open');
             }
             //重置表单
@@ -196,6 +197,7 @@
                     }
                 });
             });
+            Common.getIcon('_ICON');
             $('#btnOK').on('click', function () {
                 var add = "@Url.Action("Add", "Module")";
                 var edit = "@Url.Action("Edit", "Module")";
