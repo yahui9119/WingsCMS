@@ -126,6 +126,7 @@
     <Compile Include="Plugin\Controls\RadioBoxList.cs" />
     <Compile Include="Plugin\Controls\SeoPager.cs" />
     <Compile Include="Plugin\Services\PluginServiceCallBack.cs" />
+    <Compile Include="Plugin\Utils\ChannelManager.cs" />
     <Compile Include="Plugin\Web\CachedConfigContext.cs" />
     <Compile Include="Plugin\Web\WebControllerAction.cs" />
     <Compile Include="Plugin\Web\WingsMembershipProvider.cs" />

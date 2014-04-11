@@ -1,6 +1,5 @@
 ﻿<div id="AddEdit" class="easyui-window" data-options="modal:true,closed:true,maximizable:false,resizable:false,minimizable:false,collapsible:false" style="padding: 10px; width: 340px;">
     <form id="frmAddEdit" class="form-horizontal" method="post">
-        <input type="hidden" name="ID" />
         <div class="control-group">
             <label class="control-label" for="_ModuleName">菜单名称</label>
             <div class="controls">
@@ -27,6 +26,18 @@
                 <input name="Index" id="_Index" class="span3 easyui-validatebox" placeholder="菜单名称" maxlength="50" type="text" data-options="required:true" />
             </div>
         </div>
+        <div class="control-group">
+            <label class="control-label" for="_Action">使用Action</label>
+            <div class="controls">
+                <input name="ActionID" id="_Action" class="span3 easyui-validatebox" placeholder="绝对路径" maxlength="50" type="text"  />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_Url">自定义地址</label>
+            <div class="controls">
+                <input name="Url" id="_Url" class="span3 easyui-validatebox" placeholder="绝对路径" maxlength="50" type="text"  />
+            </div>
+        </div>
         <div class="input-prepend inline">
             <label class="control-label" for="_Status">状态</label>
             <div class="controls">
@@ -46,6 +57,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
+                <input type="hidden" id="WebID" name="_webid" />
                 <input id="_ID" name="ID" type="hidden" />
                 <a id="btnOK" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
                 <a id="btnRest" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">重置</a>

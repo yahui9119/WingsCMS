@@ -164,8 +164,8 @@ namespace Wings.Core.Implementation
         {
             Module parentmodule = null;
             var module = Mapper.Map<ModuleDTO, Module>(moduledto);
-            module.Web = webRepository.Find(Specification<Web>.Eval(w => w.ID.Equals(webid)));
-            if (moduledto.ParentID.HasValue)
+            module.Web = webRepository.Find(Specification<Web>.Eval(w => w.ID.Equals(moduledto.WebID)));
+            if (moduledto.ParentID.HasValue&&moduledto.ParentID.Value!=Guid.Empty)
             {
                 parentmodule = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(moduledto.ParentID.Value)));
                 parentmodule.ChildModule.Add(module);
@@ -204,7 +204,7 @@ namespace Wings.Core.Implementation
         {
 
             ModuleDTOList dtolist = new ModuleDTOList();
-            var modules = moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)));
+            var modules = moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)).And(Specification<Module>.Eval(m=>m.ParentModule==null)));
             foreach (var item in modules)
             {
 

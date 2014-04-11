@@ -38,15 +38,23 @@ namespace Wings.Admin.Controllers
         }
         [HttpPost]
         [Description("[菜单管理【获取树形列表】]")]
-        public ActionResult Tree()
+        public ActionResult Tree(string WebId="")
         {
-            ModuleDTOList ModuleDTOlist;
-            using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
+            WebId = Request.QueryString["WebId"];
+            Guid webid = Guid.Empty;
+            ModuleDTOList ModuleDTOlist = new ModuleDTOList();
+            if (Guid.TryParse(WebId, out webid))
             {
+                using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
+                {
 
-                ModuleDTOlist = proxy.Channel.GetModuleByParentID(Guid.Empty);
+                    ModuleDTOlist = proxy.Channel.GetAllWebModules(webid);
 
+                }
+ 
             }
+          
+          
             return Json(ModuleDTOlist.ToTree());
         }
 
@@ -61,7 +69,7 @@ namespace Wings.Admin.Controllers
                 ModuleDTO.CreateDate = DateTime.Now;
                 ModuleDTO.EditDate = DateTime.Now;
                 ModuleDTO.Creator = null;
-
+                ModuleDTO.IsActive = true;
                 proxy.Channel.CreateModule(Wings.Framework.Config.WingsConfigurationReader.Instance.WebID, ModuleDTO);
                 if (!string.IsNullOrEmpty(ModuleDTO.ID))
                 {

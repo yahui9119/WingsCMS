@@ -76,7 +76,9 @@ namespace Wings.DataObjects
         public ModuleDTO()
         {
             ChildModule = new List<ModuleDTO>();
+
         }
+        [DataMember]
         public virtual Guid? ParentID
         {
             get
@@ -87,10 +89,11 @@ namespace Wings.DataObjects
             {
                 if (value.HasValue)
                 {
-                    parentID=value.Value;
+                    parentID = value.Value;
                 }
             }
         }
+        [DataMember]
         public virtual string ParentName { get; set; }
         [DataMember]
         /// <summary>
@@ -149,15 +152,30 @@ namespace Wings.DataObjects
         /// 父栏目
         /// </summary>
         public virtual ModuleDTO ParentModule { get; set; }
-        public Guid _parentId
+        [DataMember]
+        public Guid? _parentId
         {
             get
             {
-                return parentID;
+                if(parentID!=Guid.Empty)
+                {
+                    return parentID;
+                }
+                if (ParentModule != null)
+                {
+                    Guid temp=Guid.Empty;
+                    Guid.TryParse(ParentModule.ID, out temp);
+                    return temp;
+                }
+                return null;
+                
             }
             set
             {
-                parentID = value;
+                if(value.HasValue)
+                {
+                    parentID=value.Value;
+                }
             }
         }
         [DataMember]
@@ -182,16 +200,20 @@ namespace Wings.DataObjects
         /// 是否启用
         /// </summary>
         public virtual bool IsActive { get; set; }
-        private Guid _webid;
+        [DataMember]
+        public string _webid { get; set; }
+        [DataMember]
         public Guid WebID
         {
             get
             {
-                return _webid;
+                Guid temp = Guid.Empty;
+                Guid.TryParse(_webid, out temp);
+                return temp;
             }
             set
             {
-                _webid = value;
+                _webid = value != null ? value.ToString() : string.Empty;
             }
         }
         /// <summary>

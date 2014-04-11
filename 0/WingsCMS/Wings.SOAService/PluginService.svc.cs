@@ -9,6 +9,7 @@ using Wings.Contracts;
 using Wings.DataObjects;
 using Wings.Framework;
 using Wings.Framework.Plugin.Contracts;
+using Wings.Framework.Plugin.Utils;
 
 namespace Wings.SOAService
 {
@@ -21,12 +22,14 @@ namespace Wings.SOAService
         private readonly IPluginService pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
         public void Init(Guid webid, List<Permission> permission)
         {
-            throw new NotImplementedException();
+            IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
+            ChannelManager.Instance.Add(webid, callback);//添加通信管道
         }
 
         public void Login(string account, string password, Guid webid)
         {
             IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
+            ChannelManager.Instance.Add(webid, callback);//添加通信管道
             List<ConfiguredString> list = new List<ConfiguredString>();
             list.Add(new ConfiguredString() { key = "sdfsdf", value = "gasfasdfsdf" });
             list.Add(new ConfiguredString() { key = "sdf2f", value = "gasfsdf" });
@@ -71,7 +74,7 @@ namespace Wings.SOAService
             }
 
         }
-
+        //暂不启用
         public void OnlineHeartbeat(Guid accountid, Guid webid)
         {
             try

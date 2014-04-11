@@ -42,7 +42,7 @@
                 {
                     url: "@Url.ActionWithPermission("Tree", "Web")",
                     onSelect: function (node) {
-                        $treeGrid.treegrid('load', webtreeselect());
+                        $treeGrid.treegrid('reload', webtreeselect());
                     }
                 });
             var _rowData;
@@ -101,7 +101,8 @@
             $('#btnAdd,#treegrid-add').on('click', function () {
                 $('#frmAddEdit')[0].reset();
                 $('#_ID').val('0');
-                $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' }).combotree('setValue', 0);
+                $('#WebID').val(webtreeselect().webid);
+                $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' + "?WebId=" + webtreeselect().webid }).combotree('setValue', 0);
                 $('#AddEdit').window({
                     iconCls: 'icon-add',
                     title: '添加菜单'
@@ -144,8 +145,8 @@
             }
             //编辑
             function Edit(id) {
-                $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' }).combotree('setValue', 0);
-
+                $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' + "?WebId=" + webtreeselect().webid }).combotree('setValue', 0);
+                $('#WebID').val(webtreeselect().webid);
                 $.post('@Url.Action("Get", "Module")/' + id, function (data) {
                     $('#frmAddEdit').form('load', data);
                     var isDisplay = data.IsDisplay ? 'True' : 'False';
