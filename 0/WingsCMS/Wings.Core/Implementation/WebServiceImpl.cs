@@ -200,11 +200,11 @@ namespace Wings.Core.Implementation
         /// </summary>
         /// <param name="webid"></param>
         /// <returns></returns>
-        public ModuleDTOList GetAllWebModules(Guid webid)
+        public ModuleDTOList GetAllWebModules(Guid webid,bool IsMix=false)
         {
 
             ModuleDTOList dtolist = new ModuleDTOList();
-            var modules = moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)).And(Specification<Module>.Eval(m=>m.ParentModule==null)));
+            var modules = IsMix?moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid))):moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)).And(Specification<Module>.Eval(m => m.ParentModule == null)));
             foreach (var item in modules)
             {
 

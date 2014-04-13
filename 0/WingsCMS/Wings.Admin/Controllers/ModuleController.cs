@@ -30,7 +30,7 @@ namespace Wings.Admin.Controllers
             ModuleDTOList groupdata = new ModuleDTOList();
             using (ServiceProxy<IWebService> proxy = new ServiceProxy<IWebService>())
             {
-                groupdata = proxy.Channel.GetAllWebModules(webid);
+                groupdata = proxy.Channel.GetAllWebModules(webid,true);
             }
             groupdata.ForEach(g => g.ChildModule = null);
             var result = new DataGrid() { total = groupdata.Count, rows = groupdata };

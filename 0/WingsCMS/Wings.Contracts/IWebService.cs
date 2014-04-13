@@ -95,7 +95,7 @@ namespace Wings.Contracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        ModuleDTOList GetAllWebModules(Guid webid);
+        ModuleDTOList GetAllWebModules(Guid webid, bool IsMix = false);
         /// <summary>
         /// 根部模块id获取此模块的基本信息
         /// </summary>

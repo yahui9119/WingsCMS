@@ -116,11 +116,11 @@ namespace Wings.SOAService
             }
         }
 
-        public  ModuleDTOList GetAllWebModules(Guid webid)
+        public ModuleDTOList GetAllWebModules(Guid webid, bool IsMix = false)
         {
             try
             {
-                return webServiceImpl.GetAllWebModules(webid);
+                return webServiceImpl.GetAllWebModules(webid,IsMix);
             }
             catch (Exception ex)
             {
