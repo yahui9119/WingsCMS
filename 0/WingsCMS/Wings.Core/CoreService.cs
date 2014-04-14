@@ -8,6 +8,7 @@ using Wings.Domain;
 using Wings.Domain.Model;
 using Wings.Domain.Repositories;
 using Wings.Framework.Infrastructure;
+using Wings.Framework.Plugin.Contracts;
 
 namespace Wings.Core
 {
@@ -255,9 +256,19 @@ namespace Wings.Core
                     Guid.TryParse(d.ID, out result);
                     return result;
                 }));
+            Mapper.CreateMap<Permission, Wings.Domain.Model.Action>()
+                .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
+                .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
+                .ForMember(a => a.Controller, p => p.ResolveUsing(pe => pe.Controller))
+                .ForMember(a => a.IsButton, p => p.ResolveUsing(pe => pe.IsPost));
+            Mapper.CreateMap<Wings.Domain.Model.Action, Permission>()
+                .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
+                .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
+                .ForMember(p => p.Controller, a => a.ResolveUsing(pe => pe.Controller))
+                .ForMember(p => p.IsPost, a => a.ResolveUsing(pe => pe.IsButton)); ;
         }
         #endregion
-
+        
 
     }
 }

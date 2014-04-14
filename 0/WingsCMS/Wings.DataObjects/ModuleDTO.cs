@@ -23,18 +23,7 @@ namespace Wings.DataObjects
                 modules = modules.OrderByDescending(g => g.Index).ToList();
                 modules.ForEach(g =>
                 {
-                    ModuleDTO dto = new ModuleDTO();
-                    dto.CreateDate = g.CreateDate;
-                    dto.Creator = g.Creator;
-                    dto.Description = g.Description;
-                    dto.EditDate = g.EditDate;
-                    dto.ID = g.ID.ToString();
-                    dto.Name = g.Name;
-                    dto.ParentID = g.ParentID;
-                    dto.ICON = g.ICON;
-                    dto.ParentName = g.ParentName;
-                    dto.Status = (Wings.DataObjects.Status)g.Status;
-                    dto.Index = g.Index;
+                    ModuleDTO dto = g.ToViewModel();
                     if (g.ChildModule != null && g.ChildModule.Count > 0)
                     {
                         dto.ChildModule = this.ToViewModel(g.ChildModule);
@@ -78,12 +67,42 @@ namespace Wings.DataObjects
             ChildModule = new List<ModuleDTO>();
 
         }
+        public ModuleDTO ToViewModel()
+        {
+            ModuleDTO dto = new ModuleDTO();
+            dto.CreateDate = this.CreateDate;
+            dto.Creator = this.Creator;
+            dto.Description = this.Description;
+            dto.EditDate = this.EditDate;
+            dto.ID = this.ID.ToString();
+            dto.Name = this.Name;
+            dto.ParentID = this.ParentID;
+            dto.ICON = this.ICON;
+            dto.ParentName = this.ParentName;
+            if (this.ParentModule != null)
+            {
+                Guid temp = Guid.Empty;
+                Guid.TryParse(this.ParentModule.ID, out temp);
+                dto._parentId = temp;
+            }
+
+            dto.Status = (Wings.DataObjects.Status)this.Status;
+            dto.Index = this.Index;
+            return dto;
+        }
         [DataMember]
         public virtual Guid? ParentID
         {
             get
             {
-                return parentID;
+                if (parentID == Guid.Empty)
+                {
+                    return null;
+                }
+                else
+                {
+                    return parentID;
+                }
             }
             set
             {

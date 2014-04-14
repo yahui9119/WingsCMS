@@ -61,10 +61,6 @@ namespace Wings.DataObjects
                     dto.IsButton = a.IsButton;
                     dto.Status = a.Status;
                     dto.Version = a.Version;
-                    //if (a.ChildAction != null && a.ChildAction.Count > 0)
-                    //{
-                    //    dto.ChildAction = ToViewModel(a.ChildAction);
-                    //}
                     dtolist.Add(dto);
                 });
             }

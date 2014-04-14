@@ -12,6 +12,7 @@ using Wings.Domain.Repositories;
 using Wings.Domain.Specifications;
 using Wings.Events.Bus;
 using Wings.Framework;
+using Wings.Framework.Plugin.Utils;
 
 namespace Wings.Core.Implementation
 {
@@ -145,10 +146,15 @@ namespace Wings.Core.Implementation
         public ModuleDTO GetModuleByID(Guid id)
         {
             var module = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(id)));
-            return Mapper.Map<Module, ModuleDTO>(module);
+            return Mapper.Map<Module, ModuleDTO>(module).ToViewModel();
         }
 
-
+        public ActionDTOList GetAllAction(Guid WebID)
+        {
+            //var channel= ChannelManager.Instance.Get(WebID);
+            //var test= channel.GetAllPermission();
+            return null;
+        }
         public WebDTOList GetAllWebs()
         {
             WebDTOList dtolist = new WebDTOList();
@@ -177,7 +183,7 @@ namespace Wings.Core.Implementation
 
             }
             Context.Commit();
-            return Mapper.Map<Module, ModuleDTO>(module);
+            return Mapper.Map<Module, ModuleDTO>(module).ToViewModel();
         }
 
         public ModuleDTO EditModule(DataObjects.ModuleDTO moduledto)
@@ -192,7 +198,7 @@ namespace Wings.Core.Implementation
             module.ParentModule = parentmodule;
             moduleRepository.Update(module);
             Context.Commit();
-            return Mapper.Map<Module, ModuleDTO>(module);
+            return Mapper.Map<Module, ModuleDTO>(module).ToViewModel();
         }
 
         /// <summary>

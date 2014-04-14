@@ -38,6 +38,7 @@ namespace Wings.Framework.Plugin.Contracts
         /// </summary>
         [DataMember]
         public string Description { get; set; }
+        
         /// <summary>
         /// 是否是post提交的action
         /// </summary>

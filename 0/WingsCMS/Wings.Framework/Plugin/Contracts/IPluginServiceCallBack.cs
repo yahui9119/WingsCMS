@@ -23,5 +23,11 @@ namespace Wings.Framework.Plugin.Contracts
         /// </summary>
         [OperationContract(IsOneWay = false)]
         void SaveConfig(List<ConfiguredString> configs);
+        /// <summary>
+        /// 获取此站点的所有访问点
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract(IsOneWay = false)]
+        List<Permission> GetAllPermission();
     }
 }

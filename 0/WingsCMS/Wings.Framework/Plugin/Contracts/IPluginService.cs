@@ -34,11 +34,12 @@ namespace Wings.Framework.Plugin.Contracts
         /// <summary>
         /// 获取用户
         /// </summary>
-        /// <param name="accountid"></param>
-        /// <param name="webid"></param>
+        /// <param name="accountid">用户id</param>
+        /// <param name="webid">站点id</param>
+        /// <param name="IsAdmin">是否是超级管理员</param>
         /// <returns></returns>
         [OperationContract(IsOneWay = false)]
-        List<Permission> GetPermissionByUserID(Guid accountid, Guid webid);
+        List<Permission> GetPermissionByUserID(Guid accountid, Guid webid,bool IsAdmin=false);
         /// <summary>
         /// 登出
         /// </summary>

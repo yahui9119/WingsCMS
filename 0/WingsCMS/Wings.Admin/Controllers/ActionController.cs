@@ -17,6 +17,7 @@ namespace Wings.Admin.Controllers
         }
         public ActionResult Tree(string WebID)
         {
+
             return Json(null,JsonRequestBehavior.AllowGet);
         }
     }

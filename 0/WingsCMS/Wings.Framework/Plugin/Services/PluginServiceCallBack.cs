@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wings.Framework.Config;
 using Wings.Framework.Plugin.Contracts;
+using Wings.Framework.Plugin.Web;
 
 namespace Wings.Framework.Plugin.Services
 {
@@ -28,6 +29,12 @@ namespace Wings.Framework.Plugin.Services
                 });
                 WingsConfigurationWrite.SetConfigureString(configtrings);
             }
+        }
+
+
+        public List<Permission> GetAllPermission()
+        {
+            return WebControllerAction.GetAllAction();
         }
     }
 }

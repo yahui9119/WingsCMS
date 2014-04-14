@@ -24,6 +24,14 @@ namespace Wings.SOAService
         {
             IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
             ChannelManager.Instance.Add(webid, callback);//添加通信管道
+            try
+            {
+                pluginServiceImpl.Init(webid, permission);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
         }
 
         public void Login(string account, string password, Guid webid)
@@ -50,7 +58,7 @@ namespace Wings.SOAService
             }
         }
 
-        public List<Permission> GetPermissionByUserID(Guid accountid, Guid webid)
+        public List<Permission> GetPermissionByUserID(Guid accountid, Guid webid, bool IsAdmin = false)
         {
             try
             {
