@@ -265,7 +265,7 @@ namespace Wings.Core
                 .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
                 .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
                 .ForMember(p => p.Controller, a => a.ResolveUsing(pe => pe.Controller))
-                .ForMember(p => p.IsPost, a => a.ResolveUsing(pe => pe.IsButton)); ;
+                .ForMember(p => p.IsPost, a => a.ResolveUsing(pe => pe.IsButton));
         }
         #endregion
         
