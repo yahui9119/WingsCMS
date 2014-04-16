@@ -24,21 +24,32 @@ namespace Wings.Domain.Model
         /// </summary>
         public virtual string Description { get; set; }
         /// <summary>
-        /// 可访问点的id 
+        /// 使用的控制器名字 
+        /// 可以为空
         /// </summary>
-        public virtual Action Action { get; set; }
-        ///// <summary>
-        ///// 访问点的id
-        ///// </summary>
-        //public Guid ActionID { get; set; }
+        public virtual string ControllerName { get; set; }
         /// <summary>
-        /// 图标
+        /// 使用的访问点名字
         /// </summary>
-        public virtual string ICON { get; set; }
+        public virtual string ActionName { get; set; }
+        /// <summary>
+        /// 是否是post请求
+        /// 默认为false
+        /// </summary>
+        public virtual bool IsPost { get; set; }
         /// <summary>
         /// 转跳链接
         /// </summary>
         public virtual string Url { get; set; }
+        /// <summary>
+        /// 打开类型
+        /// </summary>
+        public virtual string Target { get; set; }
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public virtual string ICON { get; set; }
+        
         /// <summary>
         /// 排序索引
         /// </summary>

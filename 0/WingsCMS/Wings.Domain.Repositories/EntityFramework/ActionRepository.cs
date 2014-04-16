@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Wings.Domain.Repositories.EntityFramework
 {
-    public class ActionRepository : EntityFrameworkRepository<Model.Action> ,IActionRepository
-    {
-        public ActionRepository(IRepositoryContext Context)
-            : base(Context)
-        {
+    //public class ActionRepository : EntityFrameworkRepository<Model.Action> ,IActionRepository
+    //{
+    //    public ActionRepository(IRepositoryContext Context)
+    //        : base(Context)
+    //    {
  
-        }
-    }
+    //    }
+    //}
 }

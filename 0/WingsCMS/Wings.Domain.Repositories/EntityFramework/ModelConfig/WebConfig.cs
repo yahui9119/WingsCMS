@@ -21,7 +21,7 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
                 uw.MapRightKey("UserID");
                 uw.ToTable("UserWeb");
             });
-            HasMany(w => w.Actions).WithOptional(a => a.web).Map(a => a.MapKey("WebID"));
+            //HasMany(w => w.Actions).WithOptional(a => a.web).Map(a => a.MapKey("WebID"));
         }
     }
 }

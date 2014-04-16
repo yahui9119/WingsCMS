@@ -177,9 +177,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActionController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\GroupPermissionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RolePermissionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WebController.cs" />
     <Compile Include="Global.asax.cs">
@@ -874,6 +876,8 @@
     <Content Include="Views\Web\_AddEdit.cshtml" />
     <Content Include="Views\Module\Index.cshtml" />
     <Content Include="Views\Module\_AddEdit.cshtml" />
+    <Content Include="Views\RolePermission\Index.cshtml" />
+    <Content Include="Views\GroupPermission\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace Wings.Core.Implementation
     public class PluginServiceImpl : CoreService, IPluginService
     {
         //private readonly IUserRepository userRepository;
-        private readonly IActionRepository actionRepository;
+        //private readonly IActionRepository actionRepository;
 
         //private readonly IRoleRepository roleRepository;
         //private readonly IGroupRepository groupRespository;
@@ -25,7 +25,7 @@ namespace Wings.Core.Implementation
         private readonly IWebRepository webRepository;
         private readonly IEventBus bus;
         public PluginServiceImpl(IRepositoryContext context,
-            IActionRepository actionRepository,
+            //IActionRepository actionRepository,
             //IUserRepository userRepository,
             //IRoleRepository roleRepository,
             //IGroupRepository groupRespository,
@@ -39,7 +39,7 @@ namespace Wings.Core.Implementation
             //this.groupRespository = groupRespository;
             //this.moduleRepository = moduleReposiroty;
             this.webRepository = webRepository;
-            this.actionRepository = actionRepository;
+            //this.actionRepository = actionRepository;
             this.bus = bus;
         }
 
@@ -68,29 +68,29 @@ namespace Wings.Core.Implementation
 
         public void Init(Guid webid, List<Permission> permission)
         {
-            var actions = actionRepository.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.web.ID.Equals(webid)));
-            permission.ForEach(p =>
-            {
-                var action =actions!=null?actions.Where(a => a.ActionName == p.Action && a.Controller == p.Controller && a.IsButton == p.IsPost).FirstOrDefault():null;
-                if (action == null)
-                {
-                    action=Mapper.Map<Permission, Wings.Domain.Model.Action>(p);
-                    action.CreateDate = DateTime.Now;
-                    action.EditDate = DateTime.Now;
-                    action.Status = Wings.Domain.Model.Status.Active;
-                    action.web = webRepository.Get(Specification<Web>.Eval(w => w.ID.Equals(webid)));
-                    actionRepository.Add(action);
-                }
-                else
-                {
-                    action.EditDate = DateTime.Now;
-                    action.Status = Wings.Domain.Model.Status.Active;
-                    action.Description = p.Description;
-                    actionRepository.Update(action);
-                }
-            });
+            //var actions = actionRepository.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.web.ID.Equals(webid)));
+            //permission.ForEach(p =>
+            //{
+            //    var action =actions!=null?actions.Where(a => a.ActionName == p.Action && a.Controller == p.Controller && a.IsButton == p.IsPost).FirstOrDefault():null;
+            //    if (action == null)
+            //    {
+            //        action=Mapper.Map<Permission, Wings.Domain.Model.Action>(p);
+            //        action.CreateDate = DateTime.Now;
+            //        action.EditDate = DateTime.Now;
+            //        action.Status = Wings.Domain.Model.Status.Active;
+            //        action.web = webRepository.Get(Specification<Web>.Eval(w => w.ID.Equals(webid)));
+            //        actionRepository.Add(action);
+            //    }
+            //    else
+            //    {
+            //        action.EditDate = DateTime.Now;
+            //        action.Status = Wings.Domain.Model.Status.Active;
+            //        action.Description = p.Description;
+            //        actionRepository.Update(action);
+            //    }
+            //});
 
-            Context.Commit();
+            //Context.Commit();
         }
     }
 }

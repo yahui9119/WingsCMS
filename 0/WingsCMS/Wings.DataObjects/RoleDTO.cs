@@ -17,16 +17,8 @@ namespace Wings.DataObjects
             {
                 this.ForEach(r => 
                 {
-                    RoleDTO dto = new RoleDTO();
-                    dto.ID = r.ID;
-                    dto.Name = r.Name;
-                    dto.Status = r.Status;
-                    dto.Version = r.Version;
-                    dto.CreateDate = r.CreateDate;
-                    dto.Creator = r.Creator;
-                    dto.Description = r.Description;
-                    dto.EditDate = r.EditDate;
-                    viewmodels.Add(dto);
+                   
+                    viewmodels.Add(r.ToViewModule());
                 });
             }
             return viewmodels;
@@ -53,6 +45,19 @@ namespace Wings.DataObjects
         public RoleDTO()
         {
             Users = new List<UserDTO>();
+        }
+        public RoleDTO ToViewModule()
+        {
+            RoleDTO dto = new RoleDTO();
+            dto.ID = this.ID;
+            dto.Name = this.Name;
+            dto.Status = this.Status;
+            dto.Version = this.Version;
+            dto.CreateDate = this.CreateDate;
+            dto.Creator = this.Creator;
+            dto.Description = this.Description;
+            dto.EditDate = this.EditDate;
+            return dto;
         }
         [DataMember]
         /// <summary>

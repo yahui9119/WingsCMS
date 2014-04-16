@@ -206,14 +206,14 @@ namespace Wings.Core
                 })); ;
             Mapper.CreateMap<User, UserDTO>();
 
-            Mapper.CreateMap<ActionDTO, Wings.Domain.Model.Action>()
-                .ForMember(root => root.ID, dto => dto.ResolveUsing(d =>
-                {
-                    Guid result = Guid.Empty;
-                    Guid.TryParse(d.ID, out result);
-                    return result;
-                })); ;
-            Mapper.CreateMap<Wings.Domain.Model.Action, ActionDTO>();
+            //Mapper.CreateMap<ActionDTO, Wings.Domain.Model.Action>()
+            //    .ForMember(root => root.ID, dto => dto.ResolveUsing(d =>
+            //    {
+            //        Guid result = Guid.Empty;
+            //        Guid.TryParse(d.ID, out result);
+            //        return result;
+            //    })); ;
+            //Mapper.CreateMap<Wings.Domain.Model.Action, ActionDTO>();
 
             Mapper.CreateMap<Group, GroupDTO>();
             Mapper.CreateMap<GroupDTO, Group>()
@@ -256,16 +256,16 @@ namespace Wings.Core
                     Guid.TryParse(d.ID, out result);
                     return result;
                 }));
-            Mapper.CreateMap<Permission, Wings.Domain.Model.Action>()
-                .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
-                .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
-                .ForMember(a => a.Controller, p => p.ResolveUsing(pe => pe.Controller))
-                .ForMember(a => a.IsButton, p => p.ResolveUsing(pe => pe.IsPost));
-            Mapper.CreateMap<Wings.Domain.Model.Action, Permission>()
-                .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
-                .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
-                .ForMember(p => p.Controller, a => a.ResolveUsing(pe => pe.Controller))
-                .ForMember(p => p.IsPost, a => a.ResolveUsing(pe => pe.IsButton));
+            //Mapper.CreateMap<Permission, Wings.Domain.Model.Action>()
+            //    .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
+            //    .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
+            //    .ForMember(a => a.Controller, p => p.ResolveUsing(pe => pe.Controller))
+            //    .ForMember(a => a.IsButton, p => p.ResolveUsing(pe => pe.IsPost));
+            //Mapper.CreateMap<Wings.Domain.Model.Action, Permission>()
+            //    .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
+            //    .ForMember(p => p.Action, a => a.ResolveUsing(aa => aa.ActionName))
+            //    .ForMember(p => p.Controller, a => a.ResolveUsing(pe => pe.Controller))
+            //    .ForMember(p => p.IsPost, a => a.ResolveUsing(pe => pe.IsButton));
         }
         #endregion
         

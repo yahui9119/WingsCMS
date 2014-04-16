@@ -79,6 +79,10 @@ namespace Wings.DataObjects
             dto.ParentID = this.ParentID;
             dto.ICON = this.ICON;
             dto.ParentName = this.ParentName;
+            dto.ControllerName = this.ControllerName;
+            dto.ActionName = this.ActionName;
+            dto.IsPost = this.IsPost;
+            dto.IsMenus = this.IsMenus;
             if (this.ParentModule != null)
             {
                 Guid temp = Guid.Empty;
@@ -124,24 +128,7 @@ namespace Wings.DataObjects
         /// 详情
         /// </summary>
         public virtual string Description { get; set; }
-        private Guid _actionid { get; set; }
-        [DataMember]
-        public Guid ActionID
-        {
-            get
-            {
-                return _actionid;
-            }
-            set
-            {
-                _actionid = value;
-            }
-        }
-        [DataMember]
-        /// <summary>
-        /// 可访问点的id 
-        /// </summary>
-        public virtual Action Action { get; set; }
+
         [DataMember]
         ///// <summary>
         ///// 访问点的id
@@ -154,9 +141,31 @@ namespace Wings.DataObjects
         public virtual string ICON { get; set; }
         [DataMember]
         /// <summary>
+        /// 使用的控制器名字 
+        /// 可以为空
+        /// </summary>
+        public virtual string ControllerName { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 使用的访问点名字
+        /// </summary>
+        public virtual string ActionName { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 是否是post请求
+        /// 默认为false
+        /// </summary>
+        public virtual bool IsPost { get; set; }
+        [DataMember]
+        /// <summary>
         /// 转跳链接
         /// </summary>
         public virtual string Url { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 打开类型
+        /// </summary>
+        public virtual string Target { get; set; }
         [DataMember]
         /// <summary>
         /// 排序索引
@@ -176,24 +185,24 @@ namespace Wings.DataObjects
         {
             get
             {
-                if(parentID!=Guid.Empty)
+                if (parentID != Guid.Empty)
                 {
                     return parentID;
                 }
                 if (ParentModule != null)
                 {
-                    Guid temp=Guid.Empty;
+                    Guid temp = Guid.Empty;
                     Guid.TryParse(ParentModule.ID, out temp);
                     return temp;
                 }
                 return null;
-                
+
             }
             set
             {
-                if(value.HasValue)
+                if (value.HasValue)
                 {
-                    parentID=value.Value;
+                    parentID = value.Value;
                 }
             }
         }

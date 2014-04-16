@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wings.DataObjects;
 using Wings.Framework.Infrastructure;
+using Wings.Framework.Plugin.Contracts;
 
 namespace Wings.Contracts
 {
@@ -112,5 +113,13 @@ namespace Wings.Contracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         ModuleDTOList GetModuleByParentID(Guid parentid);
+        /// <summary>
+        /// 获取站点所有的访问点
+        /// </summary>
+        /// <param name="WebID"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        List<Permission> GetAllAction(Guid WebID);
     }
 }

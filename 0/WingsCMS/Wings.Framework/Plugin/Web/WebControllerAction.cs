@@ -4,7 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Wings.Framework.Config;
 using Wings.Framework.Plugin.Contracts;
 
@@ -23,6 +25,7 @@ namespace Wings.Framework.Plugin.Web
             {
                 return permissList;
             }
+
             var assemblylist = assembly.Split(',').ToList();
             assemblylist.ForEach(s =>
                 {
@@ -32,7 +35,7 @@ namespace Wings.Framework.Plugin.Web
                     {
                         if (type.BaseType.Name == "WingsController")//如果是Controller
                         {
-                            
+
                             var actions = type.GetMethods().ToList();
                             if (actions != null)
                             {
@@ -43,12 +46,15 @@ namespace Wings.Framework.Plugin.Web
                                             var permission = new Permission();
 
                                             permission.Controller = type.Name.Replace("Controller", "");//去除Controller的后缀
-                  
+
                                             permission.Action = m.Name;
                                             object[] actionattrs = m.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true);
 
                                             permission.Description = actionattrs.Length > 0 ? (actionattrs[0] as System.ComponentModel.DescriptionAttribute).Description : string.Empty;
                                             permission.IsPost = m.GetCustomAttributes(typeof(HttpPostAttribute), true).Length > 0;
+                                           
+                                            
+                                            //permission.Url = new UrlHelper(requestcontext, RouteTable.Routes).Action(permission.Controller, permission.Action);
                                             permissList.Add(permission);
                                         }
                                     });

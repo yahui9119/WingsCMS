@@ -58,6 +58,10 @@ namespace Wings.DataObjects
             Users = new List<UserDTO>();
             Modules = new List<ModuleDTO>();
         }
+     public virtual string _id { get {
+
+         return this.ID;
+     } }
         [DataMember]
         /// <summary>
         /// 站点名字
@@ -88,10 +92,10 @@ namespace Wings.DataObjects
         /// 站点下菜单模块列表
         /// </summary>
         public virtual List<ModuleDTO> Modules { get; set; }
-        [DataMember]
-        /// <summary>
-        /// 该站点拥有的访问点
-        /// </summary>
-        public virtual List<ActionDTO> Actions { get; set; }
+        //[DataMember]
+        ///// <summary>
+        ///// 该站点拥有的访问点
+        ///// </summary>
+        //public virtual List<ActionDTO> Actions { get; set; }
     }
 }

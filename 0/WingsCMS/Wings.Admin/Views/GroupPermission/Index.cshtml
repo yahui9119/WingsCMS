@@ -30,8 +30,7 @@
         <div class="menu-sep"></div>
         <div id="treegrid-reload" data-options="iconCls:'icon-reload'" title="刷新">刷新</div>
     </div>
-    @Html.Partial("_AddEdit")
-    @Html.Partial("_Icon")
+    @*@Html.Partial("_AddEdit")*@
 </div>
 @section JS{
     <script type="text/javascript">
@@ -57,7 +56,8 @@
                 return {
                     webid: webid
                 }
-            }
+            };
+
             $treeGrid.treegrid({
                 state: 'open',
                 idField: 'ID',
@@ -77,7 +77,7 @@
                     { title: '排序', field: 'Index', width: '50', align: 'center' },
                       {
                           title: '图标', field: 'ICON', width: '50', align: 'center', formatter: function (value) {
-                              return '<a  style="width: 18px; height: 18px;" class="t-icon '+value+'"></a>';
+                              return '<a  style="width: 18px; height: 18px;" class="t-icon ' + value + '"></a>';
                           }
                       },
                     {
@@ -149,24 +149,23 @@
                     top: e.pageY
                 });
             }
-            function ininaction()
-            {
+            function ininaction() {
                 $('#_Action').combotree({
                     url: '@Url.Action("Tree", "Action")' + "/" + webtreeselect().webid, onSelect: function (node) {
-                     var id = node.id;
-                     var values = id.split('/');
-                     $("#_Controller").val(values[0]);
-                     $("#_ActionName").val(values[1]);
-                     if (values[2] == "True") {
-                         $("#_IsPost").attr('checked', "checked")
-                     }
-                     else {
-                         $("#_IsPost").removeAttr("checked");
-                     }
-                     $("#_IsPost").val(values[2]);
-                 }
-             }).combotree('setValue', null);
-         }
+                        var id = node.id;
+                        var values = id.split('/');
+                        $("#_Controller").val(values[0]);
+                        $("#_ActionName").val(values[1]);
+                        if (values[2] == "True") {
+                            $("#_IsPost").attr('checked', "checked")
+                        }
+                        else {
+                            $("#_IsPost").removeAttr("checked");
+                        }
+                        $("#_IsPost").val(values[2]);
+                    }
+                }).combotree('setValue', null);
+                }
             //编辑
             function Edit(id) {
                 $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' + "?WebId=" + webtreeselect().webid }).combotree('setValue', null);

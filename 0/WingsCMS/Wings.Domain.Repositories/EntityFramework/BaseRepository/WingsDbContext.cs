@@ -19,10 +19,10 @@ namespace Wings.Domain.Repositories.EntityFramework
 
         }
 
-        public DbSet<Wings.Domain.Model.Action> Actions
-        {
-            get { return Set<Wings.Domain.Model.Action>(); }
-        }
+        //public DbSet<Wings.Domain.Model.Action> Actions
+        //{
+        //    get { return Set<Wings.Domain.Model.Action>(); }
+        //}
 
         public DbSet<User> Users
         {
@@ -56,7 +56,7 @@ namespace Wings.Domain.Repositories.EntityFramework
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new ActionConfig());
+            //modelBuilder.Configurations.Add(new ActionConfig());
 
             modelBuilder.Configurations.Add(new UserConfig());
 

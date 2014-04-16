@@ -383,7 +383,7 @@ namespace Wings.Core.Implementation
                     resultmdtolist.Remove(Mapper.Map<Module, ModuleDTO>(m));
                 }
             });
-            return resultmdtolist;
+            return resultmdtolist.ToViewModel();
         }
         /// <summary>
         /// 授予用户权限
@@ -418,13 +418,13 @@ namespace Wings.Core.Implementation
             //调用用户权限跟新
             user.UpdateModule(IsBan);
             Context.Commit();//提交当前事务单元
-            return Mapper.Map<User, UserDTO>(user);
+            return Mapper.Map<User, UserDTO>(user).ToViewModel();
 
         }
 
         public RoleDTOList CreateRole(RoleDTOList roles)
         {
-            return PerformCreateObjects<RoleDTOList, RoleDTO, Role>(roles, roleRepository);
+            return PerformCreateObjects<RoleDTOList, RoleDTO, Role>(roles, roleRepository).ToViewModel();
         }
 
         public RoleDTOList EditRole(RoleDTOList roles)
@@ -435,7 +435,7 @@ namespace Wings.Core.Implementation
                 r.Description = rdto.Description;
                 r.EditDate = DateTime.Now;
                 r.Status = (Domain.Model.Status)rdto.Status;
-            });
+            }).ToViewModel();
         }
 
         public void DeleteRole(RoleDTOList roles)
@@ -466,7 +466,7 @@ namespace Wings.Core.Implementation
                         udtoList.Add(Mapper.Map<User, UserDTO>(u));
                     }
                 });
-            return udtoList;
+            return udtoList.ToViewModel();
         }
         /// <summary>
         /// 赋予角色权限
@@ -491,7 +491,7 @@ namespace Wings.Core.Implementation
             role.Modules = modules;
             roleRepository.Update(role);
             Context.Commit();
-            return Mapper.Map<Role, RoleDTO>(role);
+            return Mapper.Map<Role, RoleDTO>(role).ToViewModule();
         }
 
         public DataObjectListWithPagination<RoleDTOList> GetRolesByPage(Pagination pagination)
@@ -558,7 +558,7 @@ namespace Wings.Core.Implementation
                 user.UpdateRole();
                 coordinator.Commit();
             }
-            return Mapper.Map<User, UserDTO>(user);
+            return Mapper.Map<User, UserDTO>(user).ToViewModel();
         }
 
         /// <summary>
@@ -568,7 +568,7 @@ namespace Wings.Core.Implementation
         /// <returns></returns>
         public RoleDTO GetRoleByID(Guid roleid)
         {
-            return Mapper.Map<Role, RoleDTO>(roleRepository.Get(Specification<Role>.Eval(r => r.ID.Equals(roleid))));
+            return Mapper.Map<Role, RoleDTO>(roleRepository.Get(Specification<Role>.Eval(r => r.ID.Equals(roleid)))).ToViewModule();
         }
         /// <summary>
         /// 获取所有的角色

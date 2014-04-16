@@ -48,16 +48,16 @@ namespace Wings.Repository.Test
             //user2.Email = "sdf@df.com";
             //user2.LastloginTime = DateTime.Now;
             //ur.Remove(user2);
-            Wings.Domain.Model.Action parentaction = new Domain.Model.Action();
-            parentaction.Status = Status.Active;
-            parentaction.IsButton = true;
-            parentaction.ActionName = "testaction";
-            parentaction.Description = "sdfsdf";
-            parentaction.Controller = "testcontroller";
-            parentaction.CreateDate = DateTime.Now;
-            parentaction.EditDate = DateTime.Now;
-             EntityFrameworkRepositoryContext context = new EntityFrameworkRepositoryContext();
-            ActionRepository repository = new ActionRepository(context);
+            //Wings.Domain.Model.Action parentaction = new Domain.Model.Action();
+            //parentaction.Status = Status.Active;
+            //parentaction.IsButton = true;
+            //parentaction.ActionName = "testaction";
+            //parentaction.Description = "sdfsdf";
+            //parentaction.Controller = "testcontroller";
+            //parentaction.CreateDate = DateTime.Now;
+            //parentaction.EditDate = DateTime.Now;
+            // EntityFrameworkRepositoryContext context = new EntityFrameworkRepositoryContext();
+            //ActionRepository repository = new ActionRepository(context);
             //parentaction.ChildAction = new List<Domain.Model.Action>();
             //for (int i = 0; i < 2; i++)
             //{
@@ -73,20 +73,20 @@ namespace Wings.Repository.Test
                
             //}
 
-            repository.Add(parentaction);
-            context.Commit();
-            context.Dispose();
-            EntityFrameworkRepositoryContext context1 = new EntityFrameworkRepositoryContext();
-            ActionRepository repository1 = new ActionRepository(context1);
-            var resul2 = repository1.Get(Specification<Wings.Domain.Model.Action>.Eval(a => a.ID == Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
-            //List<Wings.Domain.Model.Action> result = (List<Wings.Domain.Model.Action>)repository1.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count != 0));
+            //repository.Add(parentaction);
+            //context.Commit();
+            //context.Dispose();
+            //EntityFrameworkRepositoryContext context1 = new EntityFrameworkRepositoryContext();
+            //ActionRepository repository1 = new ActionRepository(context1);
+            //var resul2 = repository1.Get(Specification<Wings.Domain.Model.Action>.Eval(a => a.ID == Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
+            ////List<Wings.Domain.Model.Action> result = (List<Wings.Domain.Model.Action>)repository1.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.ChildAction.Count != 0));
            
-            //var actionget = result.Find(a => a.ID.Equals(Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
-            //actionget.ActionName = "1111111111111";
-            //actionget.ChildAction.RemoveAt(0);
+            ////var actionget = result.Find(a => a.ID.Equals(Guid.Parse("CBFC2460-0FAF-E311-BEE4-D067E50A7F1D")));
+            ////actionget.ActionName = "1111111111111";
+            ////actionget.ChildAction.RemoveAt(0);
            
-            //repository1.Update(actionget);
-            //context1.Commit();
+            ////repository1.Update(actionget);
+            ////context1.Commit();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wings.Domain.Repositories
 {
-    public interface IActionRepository:IRepository<Model.Action>
-    {
-    }
+    //public interface IActionRepository:IRepository<Model.Action>
+    //{
+    //}
 }

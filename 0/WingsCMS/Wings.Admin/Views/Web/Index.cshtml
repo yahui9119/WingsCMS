@@ -9,9 +9,9 @@
     </div>
     <div class="input-prepend inline">
         <span class="add-on">添加时间</span>
-        <input id="StartTime" type="text" class="easyui-datetimebox" style="width:139px" placeholder="开始时间" />
+        <input id="StartTime" type="text" class="easyui-datetimebox" style="width: 139px" placeholder="开始时间" />
         <span>-</span>
-        <input id="EndTime" type="text" class="easyui-datetimebox" style="width:139px" placeholder="结束时间" />
+        <input id="EndTime" type="text" class="easyui-datetimebox" style="width: 139px" placeholder="结束时间" />
     </div>
 
     <div class="input-append inline">
@@ -53,13 +53,15 @@
                 toolbar: '#toolbar',
                 columns: [[
                     { field: 'ID', checkbox: true, width: 20, align: 'center' },
-                    //{ field: 'ID', title: '站点标示', width: 120, align: 'center', sortable: true },
+
+                    
                     { field: 'Name', title: '站点名称', width: 120, align: 'center', sortable: true },
                     { field: 'Domain', title: '域名', width: 120, align: 'center', sortable: true },
-                    { field: 'Status', title: '状态', width: 60, align: 'center', sortable: true, formatter: function (value) { return Common.formatBoolean(value==1); } },
+                    { field: 'Status', title: '状态', width: 60, align: 'center', sortable: true, formatter: function (value) { return Common.formatBoolean(value == 1); } },
                     { field: 'CreateDate', title: '添加时间', width: 80, align: 'center', sortable: true, formatter: function (value) { return Common.formatDate(value); } },
                     { field: 'EditDate', title: '更新时间', width: 80, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return Common.formatDate(value); } },
-                    { field: 'Description', title: '站点描述', width: 300, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return value; } }
+                    { field: 'Description', title: '站点描述', width: 200, align: 'center', sortable: true, formatter: function (value) { if (value == null) { return '--'; } return value; } }
+                ,{field: '_id', title: '站点标示', width: 240, align: 'center', sortable: true }
                 ]],
                 fit: true,
                 pagination: true,
@@ -144,15 +146,15 @@
                 $.messager.confirm('确认', '是否删除此条数据？', function (r) {
                     if (r) {
                         $.post('@Url.Action("Delete", "Web")', { idList: rowData["ID"] },
-                function (data) {
-                    if (data.success) {
-                        $.messager.alert('提示', data.message, 'info');
-                        $dg.datagrid('reload');
-                        $dg.datagrid('clearSelections');
-                    } else {
-                        $.messager.alert('错误', data.message, 'error');
-                    }
-                });
+        function (data) {
+            if (data.success) {
+                $.messager.alert('提示', data.message, 'info');
+                $dg.datagrid('reload');
+                $dg.datagrid('clearSelections');
+            } else {
+                $.messager.alert('错误', data.message, 'error');
+            }
+        });
                 }
                 });
             });

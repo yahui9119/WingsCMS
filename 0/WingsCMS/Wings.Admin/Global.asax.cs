@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Wings.Framework.Plugin;
 
 namespace Wings.Admin
 {
@@ -16,6 +17,8 @@ namespace Wings.Admin
     {
         protected void Application_Start()
         {
+            PluginsManger.Init();
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

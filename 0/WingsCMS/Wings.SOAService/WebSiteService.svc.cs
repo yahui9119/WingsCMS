@@ -182,5 +182,18 @@ namespace Wings.SOAService
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
+
+
+        public List<Framework.Plugin.Contracts.Permission> GetAllAction(Guid WebID)
+        {
+            try
+            {
+                return webServiceImpl.GetAllAction(WebID);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
     }
 }

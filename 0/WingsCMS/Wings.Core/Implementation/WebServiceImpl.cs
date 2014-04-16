@@ -12,6 +12,7 @@ using Wings.Domain.Repositories;
 using Wings.Domain.Specifications;
 using Wings.Events.Bus;
 using Wings.Framework;
+using Wings.Framework.Plugin.Contracts;
 using Wings.Framework.Plugin.Utils;
 
 namespace Wings.Core.Implementation
@@ -149,11 +150,10 @@ namespace Wings.Core.Implementation
             return Mapper.Map<Module, ModuleDTO>(module).ToViewModel();
         }
 
-        public ActionDTOList GetAllAction(Guid WebID)
+        public List<Permission> GetAllAction(Guid WebID)
         {
-            //var channel= ChannelManager.Instance.Get(WebID);
-            //var test= channel.GetAllPermission();
-            return null;
+            var channel = ChannelManager.Instance.Get(WebID);
+            return channel.GetAllPermission();
         }
         public WebDTOList GetAllWebs()
         {
@@ -171,7 +171,7 @@ namespace Wings.Core.Implementation
             Module parentmodule = null;
             var module = Mapper.Map<ModuleDTO, Module>(moduledto);
             module.Web = webRepository.Find(Specification<Web>.Eval(w => w.ID.Equals(moduledto.WebID)));
-            if (moduledto.ParentID.HasValue&&moduledto.ParentID.Value!=Guid.Empty)
+            if (moduledto.ParentID.HasValue && moduledto.ParentID.Value != Guid.Empty)
             {
                 parentmodule = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(moduledto.ParentID.Value)));
                 parentmodule.ChildModule.Add(module);
@@ -190,13 +190,27 @@ namespace Wings.Core.Implementation
         {
             Module parentmodule = null;
             var module = Mapper.Map<ModuleDTO, Module>(moduledto);
-            module.Web = webRepository.Find(Specification<Web>.Eval(w => w.ID.Equals(moduledto.WebID)));
+            var mod = moduleRepository.Get(Specification<Module>.Eval(m => m.ID.Equals(module.ID)));
+
             if (moduledto.ParentID.HasValue)
             {
                 parentmodule = moduleRepository.Find(Specification<Module>.Eval(m => m.ID.Equals(moduledto.ParentID.Value)));
             }
-            module.ParentModule = parentmodule;
-            moduleRepository.Update(module);
+            mod.ParentModule = parentmodule;
+            mod.ActionName = module.ActionName;
+            mod.ControllerName = module.ControllerName;
+            mod.Creator = module.Creator;
+            mod.Description = module.Description;
+            mod.EditDate = module.EditDate;
+            mod.ICON = module.ICON;
+            mod.Index = module.Index;
+            mod.IsMenus = module.IsMenus;
+            mod.IsPost = module.IsPost;
+            mod.Name = module.Name;
+            mod.Target = module.Target;
+            mod.Url = module.Url;
+
+            moduleRepository.Update(mod);
             Context.Commit();
             return Mapper.Map<Module, ModuleDTO>(module).ToViewModel();
         }
@@ -206,11 +220,11 @@ namespace Wings.Core.Implementation
         /// </summary>
         /// <param name="webid"></param>
         /// <returns></returns>
-        public ModuleDTOList GetAllWebModules(Guid webid,bool IsMix=false)
+        public ModuleDTOList GetAllWebModules(Guid webid, bool IsMix = false)
         {
 
             ModuleDTOList dtolist = new ModuleDTOList();
-            var modules = IsMix?moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid))):moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)).And(Specification<Module>.Eval(m => m.ParentModule == null)));
+            var modules = IsMix ? moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid))) : moduleRepository.GetAll(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)).And(Specification<Module>.Eval(m => m.ParentModule == null)));
             foreach (var item in modules)
             {
 

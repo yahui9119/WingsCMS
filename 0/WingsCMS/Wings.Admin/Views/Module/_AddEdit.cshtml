@@ -9,8 +9,8 @@
         <div class="control-group">
             <label class="control-label" for="_ICON">图标</label>
             <div class="controls">
-                <input name="ICON" id="_ICON" class="span3 easyui-validatebox" placeholder="ICON" type="text" data-options="required:true,missingMessage: '此输入项为必输项，请选择图标'" style="width: 180px;" />
-                <span class="help-inline"><a class="t-icon" style="width: 18px; height: 18px;"></a></span>
+                <input name="ICON" id="_ICON" class="span3 easyui-validatebox" placeholder="请选择图标" type="text" data-options="required:true,missingMessage: '此输入项为必输项，请选择图标'" style="width: 180px;" />
+                <span class="help-inline"><a class="t-icon" id="iconshow" style="width: 18px; height: 18px;"></a></span>
             </div>
         </div>
         <div class="control-group">
@@ -20,6 +20,24 @@
             </div>
 
         </div>
+          <div class="control-group">
+            <label class="control-label" for="_Action">自动获取配置</label>
+            <div class="controls">
+                <input name="Action" id="_Action" class="span3 easyui-validatebox" placeholder="自动获取" maxlength="50" type="text" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_Url">访问地址</label>
+            <div class="controls">
+                <input name="Url" id="_Url" class="span3 easyui-validatebox" placeholder="绝对路径，权重高" maxlength="50" type="text" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_Target">打开方式</label>
+            <div class="controls">
+                <input name="Target" id="_Target" class="span3 easyui-validatebox" placeholder="target" maxlength="50" type="text" />
+            </div>
+        </div>
         <div class="control-group">
             <label class="control-label" for="_Index">排序</label>
             <div class="controls">
@@ -27,15 +45,27 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="_Action">使用Action</label>
+            <label class="control-label" for="_Controller">Controller</label>
             <div class="controls">
-                <input name="ActionID" id="_Action" class="span3 easyui-validatebox" placeholder="绝对路径" maxlength="50" type="text"  />
+                <input name="ControllerName" id="_Controller" class="span3 easyui-validatebox" placeholder="控制器（C），权重中" maxlength="50" type="text" />
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="_Url">自定义地址</label>
+            <label class="control-label" for="_ActionName">Action</label>
             <div class="controls">
-                <input name="Url" id="_Url" class="span3 easyui-validatebox" placeholder="绝对路径" maxlength="50" type="text"  />
+                <input name="ActionName" id="_ActionName" class="span3 easyui-validatebox" placeholder="作用(A)，权重中" maxlength="50" type="text" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_IsMenus">是菜单</label>
+            <div class="controls">
+                <input name="IsMenus" id="_IsMenus" class="span3 easyui-validatebox" onclick="this.value=this.checked?'true':'false'" type="checkbox" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="_IsPost">是POST请求</label>
+            <div class="controls">
+                <input name="IsPost" id="_IsPost" class="span3 easyui-validatebox" onclick="this.value = this.checked ? 'true' : 'false'"  type="checkbox" />
             </div>
         </div>
         <div class="input-prepend inline">
@@ -43,7 +73,7 @@
             <div class="controls">
                 <select name="Status" id="_Status" style="width: 216px;">
                     <option value="-1">已删除</option>
-                    <option value="-1">禁用</option>
+                    <option value="0">禁用</option>
                     <option value="1">正常</option>
                     <option value="2">未激活</option>
                 </select>
