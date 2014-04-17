@@ -24,7 +24,7 @@ namespace Wings.SOAService
         {
             try
             {
-                return userServiceImpl.CheckPassword(UserName,Password);
+                return userServiceImpl.CheckPassword(UserName, Password);
             }
             catch (Exception ex)
             {
@@ -130,7 +130,7 @@ namespace Wings.SOAService
         {
             try
             {
-                return userServiceImpl.AssignUserPermission(userid, moduleids,IsBan);
+                return userServiceImpl.AssignUserPermission(userid, moduleids, IsBan);
             }
             catch (Exception ex)
             {
@@ -186,18 +186,28 @@ namespace Wings.SOAService
             }
         }
 
-        public DataObjects.RoleDTO AssignRolePermission(Guid roleid, DataObjects.IDList moduleids)
+        public void AssignRolePermission(Guid roleid, Guid webid, List<Guid> moduleids)
         {
             try
             {
-                return userServiceImpl.AssignRolePermission(roleid,moduleids);
+                userServiceImpl.AssignRolePermission(roleid, webid, moduleids);
             }
             catch (Exception ex)
             {
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
-
+        public List<Guid> GetRolePermissionIDS(Guid roleid, Guid webid)
+        {
+            try
+            {
+                return userServiceImpl.GetRolePermissionIDS(roleid, webid);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
         public DataObjects.DataObjectListWithPagination<DataObjects.RoleDTOList> GetRolesByPage(DataObjects.Pagination pagination)
         {
             try
@@ -298,7 +308,7 @@ namespace Wings.SOAService
         {
             try
             {
-                
+
                 return userServiceImpl.GetGroupParentID(id);
             }
             catch (Exception ex)
@@ -311,9 +321,9 @@ namespace Wings.SOAService
         {
             try
             {
-                
+
                 return userServiceImpl.GetGroupByID(id);
-                
+
             }
             catch (Exception ex)
             {

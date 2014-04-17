@@ -137,7 +137,16 @@ namespace Wings.Contracts
         /// <param name="moduleids"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        RoleDTO AssignRolePermission(Guid roleid, IDList moduleids);
+        void AssignRolePermission(Guid roleid,Guid webid, List<Guid> moduleids);
+        /// <summary>
+        /// 获取角色的权限id
+        /// </summary>
+        /// <param name="roleid"></param>
+        /// <param name="webid"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        List<Guid> GetRolePermissionIDS(Guid roleid, Guid webid);
         /// <summary>
         /// 获取角色的分页
         /// </summary>

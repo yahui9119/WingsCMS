@@ -3,18 +3,18 @@
     <div class="panel" style="width: 125px;">
         <div class="panel-header accordion-header accordion-header-selected" style="width: 125px; height: 16px;">
             <div class="panel-title panel-with-icon">选择角色</div>
-           <div class="panel-tool"><a class="panel-tool-collapse" href="javascript:void(0)" style="display: none;"></a><a href="javascript:void(0)" class="layout-button-left"></a></div>
+            <div class="panel-tool"><a class="panel-tool-collapse" href="javascript:void(0)" style="display: none;"></a><a href="javascript:void(0)" class="layout-button-left"></a></div>
         </div>
-         <ul id="roletree"></ul>
+        <ul id="roletree"></ul>
     </div>
 </div>
-<div data-options="region:'center'" style="padding: 5px;">
+<div data-options="region:'center'" style="padding: 0px;">
     @*使用类似于query的方式实现*@
     @*查看子菜单*@
     <div id="treegrid"></div>
     <div id="toolbar" class="z-toolbar" style="background: #f4f4f4;">
-        <a id="btnAdd" href="javascript:;" class="easyui-linkbutton" title="授权" data-options="iconCls:'icon-add',plain:true">授权</a>
-     
+        <a id="btnauthorize" href="javascript:;" class="easyui-linkbutton" title="授权" data-options="iconCls:'icon-add',plain:true">授权</a>
+
         <a href="javascript:;" class="easyui-splitbutton" title="展开" data-options="menu:'#dropdown',iconCls:'icon-collapse',plain:true">展开</a>
         <a id="btnReload" href="javascript:;" class="easyui-linkbutton" title="刷新" data-options="iconCls:'icon-reload',plain:'true'">刷新</a>
     </div>
@@ -22,7 +22,7 @@
         <div id="btnCollapseAll" data-options="iconCls:'t-icon t-icon-12-18'">全部折叠</div>
         <div id="btnExpandAll" data-options="iconCls:'t-icon t-icon-13-18'">全部展开</div>
     </div>
-    
+
     @*@Html.Partial("_AddEdit")*@
 </div>
 @section JS{
@@ -40,10 +40,10 @@
             $("#roletree").tree(
                {
                    url: "@Url.ActionWithPermission("Tree", "Role")",
-                    onSelect: function (node) {
-                        $treeGrid.treegrid('reload', webtreeselect());
-                    }
-                });
+                   onSelect: function (node) {
+                       alert(node.id);
+                   }
+               });
             var _rowData;
             function webtreeselect() {
                 var node = $("#webtree").combotree('tree').tree("getSelected");
@@ -55,6 +55,18 @@
                 }
                 return {
                     webid: webid
+                }
+            }
+            function roletreeselect() {
+                var node = $("#roletree").tree("getSelected");
+                var roleid = 0;
+                if (node) {
+                    return {
+                        roleid: node.id
+                    }
+                }
+                return {
+                    roleid: roleid
                 }
             }
             $treeGrid.treegrid({
@@ -99,9 +111,22 @@
                     },
                     { title: '描述', field: 'Description', width: '220', align: 'center' }
                 ]],
-              
+                onLoadSuccess: function (data) {
+                    var roleid = roletreeselect().roleid;
+                    var webid = webtreeselect().webid;
+                    $.post("@Url.ActionWithPermission("GetPermission", "RolePermission")", {
+                        webid: webid,
+                        roleid:roleid
+                    }, function (r) {
+                        if (r.success)
+                        {
+                            var data = r.data
+                            console.log(data);
+                        }
+                    })
+                }
             });
-           
+
             //全部折叠
             $('#btnCollapseAll,#treegrid-collapseAll').on('click', function () {
                 $treeGrid.treegrid('collapseAll');
@@ -114,14 +139,32 @@
             $('#btnReload,#treegrid-reload').on('click', function () {
                 $treeGrid.treegrid('load', webtreeselect());
             });
-            $('#btnDelete').on("click", function () {
-                var selected = $treeGrid.treegrid('getSelected');
-                if (Common.isEmptyObject(selected)) {
-                    $.messager.alert('提示', '至少选择一条数据删除！', 'warning');
+            $('#btnauthorize').on("click", function () {
+                var selecteds = $treeGrid.treegrid('getSelections');
+                if (Common.isEmptyObject(selecteds)) {
+                    $.messager.alert('提示', '至少选择一个菜单！', 'warning');
                 } else {
-                    $.messager.confirm('确认', '是否删除选中的数据？', function (r) {
+                    var roleid = roletreeselect().roleid;
+                    var webid = webtreeselect().webid;
 
-                        $.post('@Url.Action("Delete", "Module")', { idList: selected.ID },
+                    if (!roleid) {
+                        $.messager.alert('提示', "请先选择角色!");
+                        return;
+                    }
+                    if (!webid) {
+                        $.messager.alert('提示', "请先选择站点!");
+                        return;
+                    }
+                    $.messager.confirm('确认', '是否要授权给选择的角色？', function (r) {
+                        var moduleids = [];
+                        $.each(selecteds, function (i, v) {
+                            moduleids.push(v.ID);
+                        });
+                        $.post('@Url.Action("Authorization", "RolePermission")', {
+                            moduleids: moduleids.join(','),
+                            webid: webid,
+                            roleid: roleid
+                        },
                             function (data) {
                                 if (data.success) {
                                     $.messager.alert('提示', data.message, 'info');
@@ -132,7 +175,7 @@
                                 }
                             });
                     });
-                    }
+                }
                 return false;
             });
         });

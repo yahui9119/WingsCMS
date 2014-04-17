@@ -10,6 +10,6 @@ namespace Wings.DataObjects.Custom
     {
         public bool success { get; set; }
         public string message { get; set; }
-        public bool data { get; set; }
+        public object data { get; set; }
     }
 }

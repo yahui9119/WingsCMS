@@ -55,14 +55,15 @@ namespace Wings.Core.Implementation
 
         public UserDTOList CreateUser(UserDTOList user)
         {
-            user.ForEach(u=>
+            user.ForEach(u =>
             {
-              
+
             });
             return PerformCreateObjects<UserDTOList, UserDTO, User>(user, userRepository, udto =>
             {
 
-            }, u => {
+            }, u =>
+            {
                 if (u.GroupIDS != null)
                 {
                     List<Guid> groupids = new List<Guid>();
@@ -79,7 +80,7 @@ namespace Wings.Core.Implementation
                     });
                     List<GroupDTO> groups = new List<GroupDTO>();
                     u.Groups = groupRespository.GetAll(Specification<Group>.Eval(g => groupids.Contains(g.ID))).ToList();
-                    
+
                 }
 
                 // 角色保存
@@ -100,7 +101,7 @@ namespace Wings.Core.Implementation
                     });
                     List<RoleDTO> roles = new List<RoleDTO>();
 
-                     u.Roles =roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID))).ToList();
+                    u.Roles = roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID))).ToList();
                 }
                 //u.Webs = new List<Web>();
                 // 站点保存
@@ -119,7 +120,7 @@ namespace Wings.Core.Implementation
                         }
                     });
                     List<WebDTO> webs = new List<WebDTO>();
-                     u.Webs=webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID))).ToList();
+                    u.Webs = webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID))).ToList();
 
                 }
             }).ToViewModel();
@@ -127,7 +128,7 @@ namespace Wings.Core.Implementation
             //{
             //    //u.Groups = new List<Group>();
             //    // 部门保存
-                
+
             //}).ToViewModel();
 
         }
@@ -474,26 +475,38 @@ namespace Wings.Core.Implementation
         /// <param name="roleid"></param>
         /// <param name="moduleids"></param>
         /// <returns></returns>
-        public RoleDTO AssignRolePermission(Guid roleid, IDList moduleids)
+        public void AssignRolePermission(Guid roleid, Guid webid, List<Guid> moduleids)
         {
-            List<Guid> mids = new List<Guid>();
-            moduleids.ForEach(m =>
-            {
-                Guid id = new Guid();
-                if (Guid.TryParse(m, out id))
-                {
-                    mids.Add(id);
-                }
-
-            });
+            List<Guid> mids = moduleids;
             var role = roleRepository.Find(Specification<Role>.Eval(r => r.ID.Equals(roleid)));
-            var modules = moduleRepository.GetAll(Specification<Module>.Eval(m => mids.Contains(m.ID))).ToList();
-            role.Modules = modules;
+            var oldmodule = role.Modules;
+            role.Modules = null;
+            oldmodule.RemoveAll(m => m.Web.ID.Equals(webid));
+            
+            var newmodules = moduleRepository.GetAll(Specification<Module>.Eval(m => (mids.Contains(m.ID)))
+                .And(Specification<Module>.Eval(m=>m.Web.ID.Equals(webid)))).ToList();
+            oldmodule.AddRange(newmodules);
+            role.Modules = oldmodule;
             roleRepository.Update(role);
             Context.Commit();
-            return Mapper.Map<Role, RoleDTO>(role).ToViewModule();
         }
-
+        public List<Guid> GetRolePermissionIDS(Guid roleid, Guid webid)
+        {
+            List<Guid> ids = null;
+            var role = roleRepository.Get(Specification<Role>.Eval(r => r.ID.Equals(roleid)));
+            var permission = moduleRepository.FindAll((Specification<Module>.Eval(m => m.Web.ID.Equals(webid))));
+            
+            if (permission != null)
+            {
+                permission=permission.Where(p => p.Roles.Contains(role));
+                ids = new List<Guid>();
+                permission.ToList().ForEach(p =>
+                {
+                    ids.Add(p.ID);
+                });
+            }
+            return ids;
+        }
         public DataObjectListWithPagination<RoleDTOList> GetRolesByPage(Pagination pagination)
         {
             Specification<Role> starttime = Specification<Role>.Eval(u => pagination.StartTime != null ? u.CreateDate > pagination.StartTime : true);
