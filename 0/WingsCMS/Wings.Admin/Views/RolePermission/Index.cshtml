@@ -41,7 +41,7 @@
                {
                    url: "@Url.ActionWithPermission("Tree", "Role")",
                    onSelect: function (node) {
-                       alert(node.id);
+                       $treeGrid.treegrid('reload', webtreeselect());
                    }
                });
             var _rowData;
@@ -76,7 +76,7 @@
                 url: '@Url.Action("GetDataGrid", "Module")',
                 border: false,
                 fitColumns: false,
-                title: '菜单管理',
+                title: '选择菜单',
                 iconCls: 't-icon t-icon-15-4',
                 rownumbers: true,
                 animate: true,
@@ -116,12 +116,17 @@
                     var webid = webtreeselect().webid;
                     $.post("@Url.ActionWithPermission("GetPermission", "RolePermission")", {
                         webid: webid,
-                        roleid:roleid
+                        roleid: roleid
                     }, function (r) {
-                        if (r.success)
-                        {
+                        if (r.success) {
                             var data = r.data
                             console.log(data);
+                            $.each(data, function (i, v) {
+
+                                console.log(v);
+                                $('input[value=' + v + ']').click();
+                            })
+
                         }
                     })
                 }
@@ -141,21 +146,25 @@
             });
             $('#btnauthorize').on("click", function () {
                 var selecteds = $treeGrid.treegrid('getSelections');
-                if (Common.isEmptyObject(selecteds)) {
-                    $.messager.alert('提示', '至少选择一个菜单！', 'warning');
-                } else {
+                var message = "是否要授权给选择的角色？"
+                if (Common.isEmptyObject(selecteds))
+                {
+                    message = "是否要清空选择的角色的授权?";
+                }
+                //else 
+                {
                     var roleid = roletreeselect().roleid;
                     var webid = webtreeselect().webid;
 
                     if (!roleid) {
-                        $.messager.alert('提示', "请先选择角色!");
+                        $.messager.alert('提示', "请先选择!");
                         return;
                     }
                     if (!webid) {
                         $.messager.alert('提示', "请先选择站点!");
                         return;
                     }
-                    $.messager.confirm('确认', '是否要授权给选择的角色？', function (r) {
+                    $.messager.confirm('确认', message, function (r) {
                         var moduleids = [];
                         $.each(selecteds, function (i, v) {
                             moduleids.push(v.ID);

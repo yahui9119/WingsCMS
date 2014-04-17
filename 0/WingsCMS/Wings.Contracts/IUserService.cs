@@ -234,6 +234,19 @@ namespace Wings.Contracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         GroupDTOList GetAllGroups();
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void AssignGroupPermission(Guid groupid, Guid webid, List<Guid> moduleids);
+        /// <summary>
+        /// 获取角色的权限id
+        /// </summary>
+        /// <param name="roleid"></param>
+        /// <param name="webid"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        List<Guid> GetGroupPermissionIDS(Guid groupid, Guid webid);
         #endregion
     }
 }

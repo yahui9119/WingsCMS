@@ -926,3 +926,65 @@
    在 DynamicModule.ns.Wrapped_IUserService_61eed33f327f4a559dc7e6b833cdd9b5.<GetRolePermissionIDS_DelegateImplementation>__15(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
 -----------------------------------------
 
+时间:2014-04-17 16:06:16,446 
+级别:ERROR 
+类名:Wings.Logger
+文件:d:\GitHub\WingsCMS\0\WingsCMS\Wings.Framework\Log\Log.cs 第60行
+ [16] 
+ 日志内容:System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.AssignRolePermission(Guid roleid, Guid webid, List`1 moduleids) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 482
+   在 DynamicModule.ns.Wrapped_IUserService_5cb3ca6795d545fda4a619fc92d480e8.<AssignRolePermission_DelegateImplementation>__14(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+-----------------------------------------
+
+时间:2014-04-17 16:06:33,097 
+级别:ERROR 
+类名:Wings.Logger
+文件:d:\GitHub\WingsCMS\0\WingsCMS\Wings.Framework\Log\Log.cs 第60行
+ [17] 
+ 日志内容:System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.AssignRolePermission(Guid roleid, Guid webid, List`1 moduleids) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 482
+   在 DynamicModule.ns.Wrapped_IUserService_5cb3ca6795d545fda4a619fc92d480e8.<AssignRolePermission_DelegateImplementation>__14(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+-----------------------------------------
+
+时间:2014-04-17 16:07:07,674 
+级别:ERROR 
+类名:Wings.Logger
+文件:d:\GitHub\WingsCMS\0\WingsCMS\Wings.Framework\Log\Log.cs 第60行
+ [5] 
+ 日志内容:System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.UserServiceImpl.AssignRolePermission(Guid roleid, Guid webid, List`1 moduleids) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\UserServiceImpl.cs:行号 482
+   在 DynamicModule.ns.Wrapped_IUserService_c079c72562f64b46a3ef85b2a7f685e0.<AssignRolePermission_DelegateImplementation>__14(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+-----------------------------------------
+
+时间:2014-04-17 16:13:33,110 
+级别:ERROR 
+类名:Wings.Logger
+文件:d:\GitHub\WingsCMS\0\WingsCMS\Wings.Framework\Log\Log.cs 第60行
+ [26] 
+ 日志内容:System.TimeoutException: 发送到 http://arthurw/Temporary_Listen_Addresses/d96dc90c-d939-40aa-bb6f-52ad58046e43/e861fd0f-447e-4e79-93d1-6a90e66b1313 的请求操作在配置的超时(00:00:59.8258833)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+
+Server stack trace: 
+   在 System.ServiceModel.Dispatcher.DuplexChannelBinder.SyncDuplexRequest.WaitForReply(TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 Wings.Framework.Plugin.Contracts.IPluginServiceCallBack.GetAllPermission()
+   在 Wings.Core.Implementation.WebServiceImpl.GetAllAction(Guid WebID) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\WebServiceImpl.cs:行号 156
+   在 DynamicModule.ns.Wrapped_IWebService_c171353af67f4388827787742914f371.<GetAllAction_DelegateImplementation>__13(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+-----------------------------------------
+
+时间:2014-04-17 16:13:56,693 
+级别:ERROR 
+类名:Wings.Logger
+文件:d:\GitHub\WingsCMS\0\WingsCMS\Wings.Framework\Log\Log.cs 第60行
+ [22] 
+ 日志内容:System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Wings.Core.Implementation.WebServiceImpl.GetAllAction(Guid WebID) 位置 d:\GitHub\WingsCMS\0\WingsCMS\Wings.Core\Implementation\WebServiceImpl.cs:行号 156
+   在 DynamicModule.ns.Wrapped_IWebService_c171353af67f4388827787742914f371.<GetAllAction_DelegateImplementation>__13(IMethodInvocation inputs, GetNextInterceptionBehaviorDelegate getNext)
+-----------------------------------------
+

@@ -748,6 +748,45 @@ namespace Wings.Core.Implementation
             return gdtolist;
         }
         /// <summary>
+        /// 赋予用户组权限
+        /// </summary>
+        /// <param name="groupid"></param>
+        /// <param name="moduleids"></param>
+        /// <returns></returns>
+        public void AssignGroupPermission(Guid groupid, Guid webid, List<Guid> moduleids)
+        {
+            List<Guid> mids = moduleids;
+
+            var group = groupRespository.Find(Specification<Group>.Eval(r => r.ID.Equals(groupid)));
+            var oldmodule = group.Modules;
+            group.Modules = null;
+            oldmodule.RemoveAll(m => m.Web.ID.Equals(webid));
+
+            var newmodules = moduleRepository.GetAll(Specification<Module>.Eval(m => (mids.Contains(m.ID)))
+                .And(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)))).ToList();
+            oldmodule.AddRange(newmodules);
+            group.Modules = oldmodule;
+            groupRespository.Update(group);
+            Context.Commit();
+        }
+        public List<Guid> GetGroupPermissionIDS(Guid groupid, Guid webid)
+        {
+            List<Guid> ids = null;
+            var group = groupRespository.Get(Specification<Group>.Eval(r => r.ID.Equals(groupid)));
+            var permission = moduleRepository.FindAll((Specification<Module>.Eval(m => m.Web.ID.Equals(webid))));
+
+            if (permission != null)
+            {
+                permission = permission.Where(p => p.Groups.Contains(group));
+                ids = new List<Guid>();
+                permission.ToList().ForEach(p =>
+                {
+                    ids.Add(p.ID);
+                });
+            }
+            return ids;
+        }
+        /// <summary>
         /// 获取所有的有效站点模块
         /// </summary>
         /// <returns></returns>

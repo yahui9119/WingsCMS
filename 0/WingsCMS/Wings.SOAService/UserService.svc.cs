@@ -342,7 +342,29 @@ namespace Wings.SOAService
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
-
+        public void AssignGroupPermission(Guid groupid, Guid webid, List<Guid> moduleids)
+        {
+            try
+            {
+                userServiceImpl.AssignGroupPermission(groupid,webid,moduleids);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+        public List<Guid> GetGroupPermissionIDS(Guid groupid, Guid webid)
+        {
+            List<Guid> ids = null;
+            try
+            {
+                return userServiceImpl.GetGroupPermissionIDS(groupid, webid);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
         public void Dispose()
         {
             userServiceImpl.Dispose();

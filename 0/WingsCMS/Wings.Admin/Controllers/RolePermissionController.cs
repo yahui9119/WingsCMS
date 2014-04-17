@@ -31,7 +31,7 @@ namespace Wings.Admin.Controllers
             result.message = "授权失败";
             Guid WebId = Guid.Empty;
             Guid RoleID = Guid.Empty;
-            if (string.IsNullOrWhiteSpace(webid) || string.IsNullOrWhiteSpace(moduleids) || string.IsNullOrWhiteSpace(roleid) || !Guid.TryParse(webid, out WebId) || !Guid.TryParse(roleid, out RoleID))
+            if (string.IsNullOrWhiteSpace(webid) || string.IsNullOrWhiteSpace(roleid) || !Guid.TryParse(webid, out WebId) || !Guid.TryParse(roleid, out RoleID))
             {
                 return Json(result);
             }
@@ -81,6 +81,7 @@ namespace Wings.Admin.Controllers
                 try
                 {
                     ids = proxy.Channel.GetRolePermissionIDS(RoleID, WebId);
+                    result.success = true;
                     result.data = ids;
                     result.message = "获取角色权限成功！";
                 }
