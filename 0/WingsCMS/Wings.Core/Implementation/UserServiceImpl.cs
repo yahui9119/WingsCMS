@@ -277,6 +277,26 @@ namespace Wings.Core.Implementation
             return Mapper.Map<User, UserDTO>(userRepository.GetByKey(UserID)).ToViewModel();
         }
         /// <summary>
+        /// 通过分组id获取用户列表
+        /// </summary>
+        /// <param name="GroupID"></param>
+        /// <returns></returns>
+        public UserDTOList GetUsersByGroupID(Guid GroupID)
+        {
+            UserDTOList userlist = new UserDTOList();
+            var group = groupRespository.Get(Specification<Group>.Eval(g => g.ID.Equals(GroupID)));
+            if (group != null && group.Users != null && group.Users.Count > 0)
+            {
+                group.Users.ForEach(u =>
+                    {
+                        userlist.Add(Mapper.Map<User, UserDTO>(u));
+                    });
+
+            }
+            return userlist.ToViewModel();
+
+        }
+        /// <summary>
         /// 获取所有的用户
         /// </summary>
         /// <param name="pagination"></param>
@@ -482,9 +502,9 @@ namespace Wings.Core.Implementation
             var oldmodule = role.Modules;
             role.Modules = null;
             oldmodule.RemoveAll(m => m.Web.ID.Equals(webid));
-            
+
             var newmodules = moduleRepository.GetAll(Specification<Module>.Eval(m => (mids.Contains(m.ID)))
-                .And(Specification<Module>.Eval(m=>m.Web.ID.Equals(webid)))).ToList();
+                .And(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)))).ToList();
             oldmodule.AddRange(newmodules);
             role.Modules = oldmodule;
             roleRepository.Update(role);
@@ -495,10 +515,10 @@ namespace Wings.Core.Implementation
             List<Guid> ids = null;
             var role = roleRepository.Get(Specification<Role>.Eval(r => r.ID.Equals(roleid)));
             var permission = moduleRepository.FindAll((Specification<Module>.Eval(m => m.Web.ID.Equals(webid))));
-            
+
             if (permission != null)
             {
-                permission=permission.Where(p => p.Roles.Contains(role));
+                permission = permission.Where(p => p.Roles.Contains(role));
                 ids = new List<Guid>();
                 permission.ToList().ForEach(p =>
                 {

@@ -35,6 +35,21 @@ namespace Wings.Admin.Controllers
             return Json(result);
         }
         [HttpPost]
+        [Description("[用户管理【根据分组获取用户列表】]")]
+        public ActionResult Tree(string id = "")
+        {
+            List<Tree> trees = null;
+            Guid temp = Guid.Empty;
+            if (Guid.TryParse(id, out temp))
+            {
+                using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
+                {
+                    trees = proxy.Channel.GetUsersByGroupID(temp).ToTree();
+                }
+            }
+            return Json(trees);
+        }
+        [HttpPost]
         [Description("[用户管理【添加】]")]
         public ActionResult Add(UserDTO user)
         {
@@ -44,7 +59,7 @@ namespace Wings.Admin.Controllers
             {
                 user.CreateDate = DateTime.Now;
                 user.EditDate = DateTime.Now;
-                
+
                 user.Creator = null;
                 user.LastloginTime = DateTime.Now;
                 UserDTOList dtolist = new UserDTOList();

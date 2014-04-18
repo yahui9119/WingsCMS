@@ -65,6 +65,15 @@ namespace Wings.Contracts
         [FaultContract(typeof(FaultData))]
         UserDTO GetUserByID(Guid UserID);
         /// <summary>
+        /// 通过分组id获取用户列表
+        /// </summary>
+        /// <param name="GroupID"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        UserDTOList GetUsersByGroupID(Guid GroupID);
+
+        /// <summary>
         /// 获取所有的用户
         /// </summary>
         /// <param name="pagination"></param>
@@ -137,7 +146,7 @@ namespace Wings.Contracts
         /// <param name="moduleids"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void AssignRolePermission(Guid roleid,Guid webid, List<Guid> moduleids);
+        void AssignRolePermission(Guid roleid, Guid webid, List<Guid> moduleids);
         /// <summary>
         /// 获取角色的权限id
         /// </summary>
@@ -216,7 +225,7 @@ namespace Wings.Contracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        
+
         //[ApplyProxyDataContractResolver]
         GroupDTOList GetGroupParentID(Guid? id);
         /// <summary>

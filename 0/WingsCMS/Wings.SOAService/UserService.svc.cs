@@ -91,6 +91,17 @@ namespace Wings.SOAService
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
+        public UserDTOList GetUsersByGroupID(Guid GroupID)
+        {
+            try
+            {
+                return userServiceImpl.GetUsersByGroupID(GroupID);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
         public UserDTOList GetAllUsers()
         {
             try
@@ -346,7 +357,7 @@ namespace Wings.SOAService
         {
             try
             {
-                userServiceImpl.AssignGroupPermission(groupid,webid,moduleids);
+                userServiceImpl.AssignGroupPermission(groupid, webid, moduleids);
             }
             catch (Exception ex)
             {
