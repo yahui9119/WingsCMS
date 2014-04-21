@@ -16,24 +16,26 @@ namespace Wings.Repository.Test
             List<string> strs=new List<string> ();
             strs.Add("test11");
             strs.Add("test22");
-           
-            //UserRepository ur = new UserRepository(context);
-            //User user = new User();
-            //user.Name = "test11";
-            //user.Password = "123456";
-            //user.PhoneNum = "15267189886";
-            //user.QQ = "123123123";
-            //user.Zip = "450000";
-            //user.Address = "sdfd";
-            //user.CreateDate = DateTime.Now;
-            //user.Creator = Guid.NewGuid();
-            //user.EditDate = DateTime.Now;
-            //user.Email = "sdf@df.com";
-            //user.LastloginTime = DateTime.Now;
-            // ur.Add(user);
-           
-            //var getuser =ur.GetUserByEmail("sdf@df.com");
-            //var user2= ur.Find(Specification<User>.Eval(u => strs.Contains(u.Name)));
+
+            EntityFrameworkRepositoryContext context = new EntityFrameworkRepositoryContext();
+            UserRepository ur = new UserRepository(context);
+            User user = new User();
+            user.Account = "test11";
+            user.RealName = "张三";
+            user.Password = "123456";
+            user.PhoneNum = "15267189886";
+            user.QQ = "123123123";
+            user.Zip = "450000";
+            user.Address = "sdfd";
+            user.CreateDate = DateTime.Now;
+            user.Creator = Guid.NewGuid();
+            user.EditDate = DateTime.Now;
+            user.Email = "sdf@df.com";
+            user.LastloginTime = DateTime.Now;
+            ur.Add(user);
+
+            var getuser = ur.GetUserByEmail("sdf@df.com");
+            var user2 = ur.Find(Specification<User>.Eval(u => strs.Contains(u.Account)));
             
            
             //user2.Name = "test11";
