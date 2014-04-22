@@ -98,7 +98,7 @@ namespace Wings.Contracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        ModuleDTOList GetUserPermission(Guid UserID);
+        List<Guid> GetUserPermission(Guid UserID,Guid WebID,bool IsBan);
         /// <summary>
         /// 分配特殊用户模块
         /// 已经拥有则不修改 没有则添加 原来有现在没有则标记取消授权
@@ -107,7 +107,7 @@ namespace Wings.Contracts
         /// <param name="moduleids"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        UserDTO AssignUserPermission(Guid userid, IDList moduleids, bool IsBan);
+        void AssignUserPermission(Guid userid, Guid webid, List<Guid> moduleids, bool IsBan);
 
         #region 用户角色
         /// <summary>

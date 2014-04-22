@@ -413,36 +413,172 @@ namespace Wings.Core.Implementation
         /// <param name="moduleids"></param>
         /// <param name="IsBan">是否禁用</param>
         /// <returns></returns>
-        public UserDTO AssignUserPermission(Guid userid, IDList moduleids, bool IsBan)
+        public void AssignUserPermission(Guid userid, Guid webid, List<Guid> moduleids, bool IsBan)
         {
-            List<Guid> mids = new List<Guid>();
-            moduleids.ForEach(m =>
-            {
-                Guid id = new Guid();
-                if (Guid.TryParse(m, out id))
-                {
-                    mids.Add(id);
-                }
 
-            });
-            List<Module> modules = moduleRepository.FindAll(Specification<Module>.Eval(m => mids.Contains(m.ID))).ToList();
+            List<Module> modules = moduleRepository.FindAll(Specification<Module>.Eval(m => moduleids.Contains(m.ID)).And(Specification<Module>.Eval(m => m.Web.ID.Equals(webid)))).ToList();
             var user = userRepository.Find(Specification<User>.Eval(u => u.ID.Equals(userid)));
             if (IsBan)//是否是禁用
             {
-                user.ModuleBan = modules;
+                var tempBanmodules = user.ModuleBan;
+                var tempAllowmodules = user.ModuleAllow;
+                user.ModuleAllow = null;
+                user.ModuleBan = null;
+                if (tempBanmodules != null)
+                {
+                    tempBanmodules.RemoveAll(t => t.Web.ID.Equals(webid));
+                }
+                //去除特设允许
+                if (tempAllowmodules != null)
+                {
+                    tempAllowmodules.RemoveAll(t => moduleids.Contains(t.ID));
+                }
+                tempBanmodules.AddRange(modules);
+                user.ModuleBan = tempBanmodules;
+                user.ModuleAllow = tempAllowmodules;
             }
             else
             {
-                user.ModuleAllow = modules;
+                var tempmodules = user.ModuleAllow;
+
+                user.ModuleAllow = null;
+                if (tempmodules != null)
+                {
+                    tempmodules.RemoveAll(t => t.Web.ID.Equals(webid));
+                }
+                List<Guid> HaveYet = new List<Guid>();
+                if (user.Roles != null)
+                {
+                    user.Roles.ForEach(r =>
+                    {
+                        //if (r.Status == Wings.Domain.Model.Status.Active)
+                        {
+                            if (r.Modules != null)
+                            {
+                                r.Modules.ForEach(m =>
+                                {
+                                    if (m.Web.ID.Equals(webid))
+                                    {
+                                        HaveYet.Add(m.ID);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                    );
+                }
+                if (user.Groups != null)
+                {
+                    user.Groups.ForEach(g =>
+                    {
+                        //if (g.Status == Wings.Domain.Model.Status.Active)
+                        {
+                            if (g.Modules != null)
+                            {
+                                g.Modules.ForEach(m =>
+                                {
+                                    if (m.Web.ID.Equals(webid))
+                                    {
+                                        HaveYet.Add(m.ID);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+                if (modules != null)
+                {
+                    modules.RemoveAll(m => HaveYet.Contains(m.ID));
+                    tempmodules.AddRange(modules);
+                }
+                user.ModuleAllow = tempmodules;
             }
             userRepository.Update(user);
             //调用用户权限跟新
             user.UpdateModule(IsBan);
             Context.Commit();//提交当前事务单元
-            return Mapper.Map<User, UserDTO>(user).ToViewModel();
-
         }
+        /// <summary>
+        /// 获取用户权限
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="webid"></param>
+        /// <returns></returns>
+        /// 
 
+        public List<Guid> GetUserPermission(Guid userid, Guid webid, bool IsBan)
+        {
+            List<Guid> moduleids = new List<Guid>();
+            var user = userRepository.Find(Specification<User>.Eval(u => u.ID.Equals(userid)));
+
+            
+          
+            if (user == null)
+            {
+                return moduleids;
+            }
+            if (IsBan)
+            {
+                if (user.ModuleBan != null)
+                {
+                    user.ModuleBan.ForEach(m =>
+                    {
+                        moduleids.Add(m.ID);
+                    });
+                }
+            }
+            else
+            {
+                if (user.ModuleAllow != null)
+                {
+                    user.ModuleAllow.ForEach(m =>
+                    {
+                        moduleids.Add(m.ID);
+                    }
+                    );
+                }
+                if (user.Roles != null)
+                {
+                    user.Roles.ForEach(r =>
+                    {
+                        //if (r.Status == Wings.Domain.Model.Status.Active)
+                        {
+                            if (r.Modules != null)
+                            {
+                                r.Modules.ForEach(m =>
+                                {
+                                    if (m.Web.ID.Equals(webid))
+                                    {
+                                        moduleids.Add(m.ID);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                    );
+                }
+                if (user.Groups != null)
+                {
+                    user.Groups.ForEach(g =>
+                    {
+                        //if (g.Status == Wings.Domain.Model.Status.Active)
+                        {
+                            if (g.Modules != null)
+                            {
+                                g.Modules.ForEach(m =>
+                                {
+                                    if (m.Web.ID.Equals(webid))
+                                    {
+                                        moduleids.Add(m.ID);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+            return moduleids;
+        }
         public RoleDTOList CreateRole(RoleDTOList roles)
         {
             return PerformCreateObjects<RoleDTOList, RoleDTO, Role>(roles, roleRepository).ToViewModel();

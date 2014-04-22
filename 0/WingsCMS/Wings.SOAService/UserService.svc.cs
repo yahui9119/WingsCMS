@@ -125,11 +125,11 @@ namespace Wings.SOAService
             }
         }
 
-        public DataObjects.ModuleDTOList GetUserPermission(Guid UserID)
+        public List<Guid> GetUserPermission(Guid UserID,Guid WebID,bool IsBan)
         {
             try
             {
-                return userServiceImpl.GetUserPermission(UserID);
+                return userServiceImpl.GetUserPermission(UserID, WebID,IsBan);
             }
             catch (Exception ex)
             {
@@ -137,11 +137,11 @@ namespace Wings.SOAService
             }
         }
 
-        public DataObjects.UserDTO AssignUserPermission(Guid userid, DataObjects.IDList moduleids, bool IsBan)
+        public void AssignUserPermission(Guid userid,Guid webid, List<Guid> moduleids, bool IsBan)
         {
             try
             {
-                return userServiceImpl.AssignUserPermission(userid, moduleids, IsBan);
+                userServiceImpl.AssignUserPermission(userid,webid, moduleids, IsBan);
             }
             catch (Exception ex)
             {

@@ -183,8 +183,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\RolePermissionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\UserPermissionAssignController.cs" />
-    <Compile Include="Controllers\UserPermissionBanController.cs" />
+    <Compile Include="Controllers\UserPermissionController.cs" />
     <Compile Include="Controllers\WebController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -880,7 +879,7 @@
     <Content Include="Views\Module\_AddEdit.cshtml" />
     <Content Include="Views\RolePermission\Index.cshtml" />
     <Content Include="Views\GroupPermission\Index.cshtml" />
-    <Content Include="Views\UserPermissionAssign\Index.cshtml" />
+    <Content Include="Views\UserPermission\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

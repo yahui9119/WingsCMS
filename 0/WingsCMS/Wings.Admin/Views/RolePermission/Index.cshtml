@@ -1,12 +1,10 @@
 ﻿<div data-options="region:'west',title:'选择站点',split:true" style="width: 125px;">
     <input id="webtree" type="text" style="width: 120px" />
-    <div class="panel" style="width: 125px;">
-        <div class="panel-header accordion-header accordion-header-selected" style="width: 125px; height: 16px;">
-            <div class="panel-title panel-with-icon">选择角色</div>
-            <div class="panel-tool"><a class="panel-tool-collapse" href="javascript:void(0)" style="display: none;"></a><a href="javascript:void(0)" class="layout-button-left"></a></div>
-        </div>
+    <div class="easyui-panel" title="选择角色" iconcls="icon-search" collapsible="true" style="padding: 5px; width: 120px; height: 250px; border:0">
         <ul id="roletree"></ul>
+
     </div>
+
 </div>
 <div data-options="region:'center'" style="padding: 0px;">
     @*使用类似于query的方式实现*@
@@ -84,7 +82,9 @@
                 fixed: false,
                 singleSelect: false,
                 toolbar: '#toolbar',
-                columns: [[                    { field: 'ID', checkbox: true, align: 'center', width: 20 },                    { title: '菜单名称', field: 'Name', width: '200', align: 'left' },
+                columns: [[
+                    { field: 'ID', checkbox: true, align: 'center', width: 20 },
+                    { title: '菜单名称', field: 'Name', width: '200', align: 'left' },
                     { title: '排序', field: 'Index', width: '50', align: 'center' },
                       {
                           title: '图标', field: 'ICON', width: '50', align: 'center', formatter: function (value) {
@@ -147,8 +147,7 @@
             $('#btnauthorize').on("click", function () {
                 var selecteds = $treeGrid.treegrid('getSelections');
                 var message = "是否要授权给选择的角色？"
-                if (Common.isEmptyObject(selecteds))
-                {
+                if (Common.isEmptyObject(selecteds)) {
                     message = "是否要清空选择的角色的授权?";
                 }
                 //else 
@@ -165,6 +164,9 @@
                         return;
                     }
                     $.messager.confirm('确认', message, function (r) {
+                        if (!r) {
+                            return;
+                        }
                         var moduleids = [];
                         $.each(selecteds, function (i, v) {
                             moduleids.push(v.ID);

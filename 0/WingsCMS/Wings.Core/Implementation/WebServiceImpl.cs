@@ -152,8 +152,13 @@ namespace Wings.Core.Implementation
 
         public List<Permission> GetAllAction(Guid WebID)
         {
+            List<Permission> permissions = new List<Permission>();
             var channel = ChannelManager.Instance.Get(WebID);
-            return channel.GetAllPermission();
+            if (channel != null)
+            {
+                permissions = channel.GetAllPermission();
+            }
+            return permissions;
         }
         public WebDTOList GetAllWebs()
         {
