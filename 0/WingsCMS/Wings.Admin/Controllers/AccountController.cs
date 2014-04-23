@@ -43,6 +43,8 @@ namespace Wings.Admin.Controllers
             if (islogin)
             {
                 FormsAuthentication.SetAuthCookie(username, remember);
+                //FormsAuthentication.CookieDomain 跨域的时候要配置 
+                //FormsAuthentication.RedirectFromLoginPage();  登录记录登录状态之后自动转跳
                 return RedirectToAction("index", "home");
             }
             else
@@ -57,6 +59,7 @@ namespace Wings.Admin.Controllers
         [LoginAllowView]
         public ActionResult LogOut()
         {
+            FormsAuthentication.SignOut();
             return View();
         }
 
