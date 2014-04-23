@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebMatrix.WebData;
+using Wings.Admin.Models;
 using Wings.Contracts;
 using Wings.DataObjects;
 using Wings.Framework.Communication;
@@ -23,37 +25,24 @@ namespace Wings.Admin.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         [Anonymous]
+        [ValidateAntiForgeryToken]
         [Description("[站点登录接受提交页面]")]
-        public ActionResult Login(string username, string password, bool remember = false)
+        public ActionResult Login(LoginModel model, string returnUrl)
         {
-            //var username =;
-            //var password = "";
-            bool islogin = false;
-            using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
-            {
-                islogin = proxy.Channel.CheckPassword(username, password);
-                Pagination p = new Pagination();
-                p.page = 1;
-                p.rows = 10;
+            //if (ModelState.IsValid && WebSecurity.Login(model.Account, model.Password, persistCookie: model.RememberMe))
+            //{
+            //    return RedirectToLocal(returnUrl);
+            //}
 
-                var test = proxy.Channel.GetAllUsers();
-            }
-            if (islogin)
-            {
-                FormsAuthentication.SetAuthCookie(username, remember);
-                //FormsAuthentication.CookieDomain 跨域的时候要配置 
-                //FormsAuthentication.RedirectFromLoginPage();  登录记录登录状态之后自动转跳
-                return RedirectToAction("index", "home");
-            }
-            else
-            {
-                ModelState.AddModelError("error", "用户名或密码错误");
-
-            }
-            return View();
+            // 如果我们进行到这一步时某个地方出错，则重新显示表单
+            ModelState.AddModelError("", "提供的用户名或密码不正确。");
+            return View(model);
         }
+       
         [HttpPost]
         [Description("[站点登出]")]
         [LoginAllowView]

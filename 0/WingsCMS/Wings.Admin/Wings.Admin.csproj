@@ -188,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,14 +243,52 @@
     <Content Include="Content\images\icons\tabicons.png" />
     <Content Include="Content\images\icons\tip.png" />
     <Content Include="Content\images\icons\undo.png" />
+    <Content Include="Content\images\index\menuitem.gif" />
+    <Content Include="Content\images\index\navbar.gif" />
+    <Content Include="Content\images\index\sidebar.gif" />
+    <Content Include="Content\images\index\sidebarbottom.jpg" />
+    <Content Include="Content\images\index\sidebarselected.gif" />
+    <Content Include="Content\images\index\submenu.gif" />
+    <Content Include="Content\images\index\time.gif" />
+    <Content Include="Content\images\index\togglebtn.gif" />
+    <Content Include="Content\images\index\top.jpg" />
+    <Content Include="Content\images\index\topbg.gif" />
+    <Content Include="Content\images\index\topbg.jpg" />
+    <Content Include="Content\images\index\topicon.gif" />
+    <Content Include="Content\images\index\topmenu.gif" />
+    <Content Include="Content\images\index\triangle.gif" />
+    <Content Include="Content\images\index\triangle2.gif" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\login-bg.jpg" />
     <Content Include="Content\images\loginbg.png" />
+    <Content Include="Content\images\login\bbs_ico.jpg" />
+    <Content Include="Content\images\login\bg.gif" />
+    <Content Include="Content\images\login\button.gif" />
+    <Content Include="Content\images\login\contentbg.jpg" />
+    <Content Include="Content\images\login\footerbg.jpg" />
+    <Content Include="Content\images\login\headbg.jpg" />
+    <Content Include="Content\images\login\head_bg.gif" />
+    <Content Include="Content\images\login\help_ico.jpg" />
+    <Content Include="Content\images\login\inputbg.jpg" />
+    <Content Include="Content\images\login\newtitle.jpg" />
+    <Content Include="Content\images\login\short_input.jpg" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\Menu\header.gif" />
+    <Content Include="Content\images\Menu\head_bg.gif" />
+    <Content Include="Content\images\Menu\head_logo.png" />
+    <Content Include="Content\images\Menu\login_bg.jpg" />
+    <Content Include="Content\images\Menu\nav_bg.gif" />
+    <Content Include="Content\images\Menu\siteico.gif" />
+    <Content Include="Content\images\Menu\table_th_bg.gif" />
     <Content Include="Content\images\navsub_bg.gif" />
     <Content Include="Content\images\tabsleft.gif" />
     <Content Include="Content\images\tabsright.gif" />
     <Content Include="Content\images\top-bg.gif" />
+    <Content Include="Content\images\ui\button1.gif" />
+    <Content Include="Content\images\ui\button2.gif" />
+    <Content Include="Content\images\ui\gridalt.gif" />
+    <Content Include="Content\images\ui\gridbar.jpg" />
+    <Content Include="Content\images\ui\toggle.gif" />
     <Content Include="Content\images\user.gif" />
     <Content Include="Content\javascript\b.main.js" />
     <Content Include="Content\javascript\e.main.js" />
@@ -886,7 +925,6 @@
     <Folder Include="Content\kindeditor\asp.net\bin\" />
     <Folder Include="Content\kindeditor\attached\" />
     <Folder Include="Filters\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
