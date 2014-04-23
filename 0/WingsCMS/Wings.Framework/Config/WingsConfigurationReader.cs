@@ -65,13 +65,15 @@ namespace Wings.Framework.Config
         /// <summary>
         /// 站点id
         /// </summary>
-        public Guid WebID {
-            get {
-                var id=configuration.WebSite.ID;
-                Guid temp=Guid.Empty;
-                if(Guid.TryParse(id,out temp))
+        public Guid WebID
+        {
+            get
+            {
+                var id = configuration.WebSite.ID;
+                Guid temp = Guid.Empty;
+                if (Guid.TryParse(id, out temp))
                 {
-                  //转换成功
+                    //转换成功
                 }
                 return temp;
             }
@@ -79,10 +81,11 @@ namespace Wings.Framework.Config
         /// <summary>
         /// 站点名字
         /// </summary>
-        public string WebName {
+        public string WebName
+        {
             get
             {
-               
+
                 return configuration.WebSite.Name;
             }
 
@@ -96,8 +99,18 @@ namespace Wings.Framework.Config
             {
 
                 return configuration.WebSite.Assembly;
+
             }
 
+        }
+        public Guid WebAdminID
+        {
+            get
+            {
+                Guid temp = Guid.Empty;
+                Guid.TryParse(configuration.WebSite.AdminID, out temp);
+                return temp;
+            }
         }
         #endregion
         /// <summary>
@@ -107,7 +120,7 @@ namespace Wings.Framework.Config
         /// <returns>如果指定的角色名称已经存在于配置信息中，则返回true，否则返回false。</returns>
         public bool RoleNameRegistered(string roleName)
         {
-            
+
             foreach (PermissionkeyElement pke in this.configuration.PermissionKeys)
                 if (pke.RoleName == roleName)
                     return true;

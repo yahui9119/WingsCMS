@@ -19,7 +19,7 @@ namespace Wings.SOAService
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     public class PluginService : IPluginService
     {
-        private readonly IPluginService pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
+        private IPluginService pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
         public void Init(Guid webid, List<Permission> permission)
         {
             IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
@@ -50,6 +50,7 @@ namespace Wings.SOAService
         {
             try
             {
+                pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
                 return pluginServiceImpl.Login(account,password, webid);
             }
             catch (Exception ex)
@@ -62,7 +63,7 @@ namespace Wings.SOAService
         {
             try
             {
-                return pluginServiceImpl.GetPermissionByUserID(accountid, webid);
+                return pluginServiceImpl.GetPermissionByUserID(accountid, webid, IsAdmin);
             }
             catch (Exception ex)
             {

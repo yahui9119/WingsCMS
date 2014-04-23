@@ -37,12 +37,32 @@ namespace Wings.Admin.Controllers
             //{
             //    return RedirectToLocal(returnUrl);
             //}
+            var webid=Wings.Framework.Config.WingsConfigurationReader.Instance.WebID;
+            var adminid=Wings.Framework.Config.WingsConfigurationReader.Instance.WebAdminID;
+            if (ModelState.IsValid)
+            {
+                if (false)
+                {
+                    ModelState.AddModelError("", "验证码不正确。");
+                }
 
+                var accountid = PluginsManger.Service.Login(model.Account, model.Password,webid );
+                if (accountid == null || accountid.Equals(Guid.Empty))
+                {
+                    ModelState.AddModelError("", "提供的账户或密码不正确。");
+                }
+                else
+                {
+                    var PermissionList= PluginsManger.Service.GetPermissionByUserID(accountid, webid, adminid == accountid);
+                    FormsAuthentication.RedirectFromLoginPage(model.Account, model.RememberMe);
+                }
+
+            }
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
-            ModelState.AddModelError("", "提供的用户名或密码不正确。");
+
             return View(model);
         }
-       
+
         [HttpPost]
         [Description("[站点登出]")]
         [LoginAllowView]

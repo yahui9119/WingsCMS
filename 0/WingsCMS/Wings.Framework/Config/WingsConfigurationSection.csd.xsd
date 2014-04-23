@@ -114,6 +114,11 @@
 				<xs:documentation>The Assembly.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="adminID" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The AdminID.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="Wings.Framework.Config.ConnectionStringsCollectionCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">

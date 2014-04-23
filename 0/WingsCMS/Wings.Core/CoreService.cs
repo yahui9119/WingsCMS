@@ -19,6 +19,7 @@ namespace Wings.Core
     {
         #region Private Fields
         private readonly IRepositoryContext context;
+
         #endregion
 
         #region Ctor
@@ -268,7 +269,7 @@ namespace Wings.Core
             //    .ForMember(p => p.IsPost, a => a.ResolveUsing(pe => pe.IsButton));
         }
         #endregion
-        
+
 
     }
 }

@@ -10,36 +10,30 @@ using Wings.Domain.Model;
 using Wings.Domain.Repositories;
 using Wings.Domain.Specifications;
 using Wings.Events.Bus;
+using Wings.Framework;
 using Wings.Framework.Plugin.Contracts;
 
 namespace Wings.Core.Implementation
 {
     public class PluginServiceImpl : CoreService, IPluginService
     {
-        //private readonly IUserRepository userRepository;
+        private readonly  IUserRepository userRepository;
         //private readonly IActionRepository actionRepository;
 
         //private readonly IRoleRepository roleRepository;
         //private readonly IGroupRepository groupRespository;
         //private readonly IModuleRepository moduleRepository;
-        private readonly IWebRepository webRepository;
-        private readonly IEventBus bus;
+        private  IWebRepository webRepository;
+        private  IEventBus bus;
         public PluginServiceImpl(IRepositoryContext context,
-            //IActionRepository actionRepository,
-            //IUserRepository userRepository,
-            //IRoleRepository roleRepository,
-            //IGroupRepository groupRespository,
-            //IModuleRepository moduleReposiroty,
-            IWebRepository webRepository,
-            IEventBus bus)
+            IUserRepository userRepository,
+             IWebRepository webRepository,
+             IEventBus bus
+            )
             : base(context)
         {
-            //this.userRepository = userRepository;
-            //this.roleRepository = roleRepository;
-            //this.groupRespository = groupRespository;
-            //this.moduleRepository = moduleReposiroty;
+            this.userRepository = userRepository;
             this.webRepository = webRepository;
-            //this.actionRepository = actionRepository;
             this.bus = bus;
         }
 
@@ -48,6 +42,14 @@ namespace Wings.Core.Implementation
 
         Guid IPluginService.Login(string account, string password, Guid webid)
         {
+          
+            var user = userRepository.Get(Specification<User>.Eval(u => u.Account.Equals(account) && u.Password.Equals(password)));
+            if (user != null)
+            {
+                user.Forbidden();
+                bus.Commit();
+                return user.ID;
+            }
             return Guid.Empty;
         }
 
