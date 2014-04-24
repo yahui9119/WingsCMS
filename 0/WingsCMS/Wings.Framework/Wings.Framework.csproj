@@ -114,6 +114,7 @@
     <Compile Include="Plugin\Contracts\IPluginService.cs" />
     <Compile Include="Plugin\Contracts\IPluginServiceCallBack.cs" />
     <Compile Include="Plugin\Contracts\Permission.cs" />
+    <Compile Include="Plugin\Contracts\UserInfo.cs" />
     <Compile Include="Plugin\Controls\CheckBoxList.cs" />
     <Compile Include="Plugin\Controls\MVCLinkExtensions.cs" />
     <Compile Include="Plugin\Controls\HtmlPrefixScope.cs" />
@@ -127,8 +128,7 @@
     <Compile Include="Plugin\Controls\SeoPager.cs" />
     <Compile Include="Plugin\Services\PluginServiceCallBack.cs" />
     <Compile Include="Plugin\Utils\ChannelManager.cs" />
-    <Compile Include="Plugin\Web\CachedConfigContext.cs" />
-    <Compile Include="Plugin\Web\WebControllerAction.cs" />
+    <Compile Include="Plugin\Web\WebSetting.cs" />
     <Compile Include="Plugin\Web\WingsMembershipProvider.cs" />
     <Compile Include="Plugin\WingsController.cs" />
     <Compile Include="Routes\CustomRouting.cs" />

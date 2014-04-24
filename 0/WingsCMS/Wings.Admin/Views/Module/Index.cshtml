@@ -73,7 +73,9 @@
                 fixed: false,
                 singleSelect: true,
                 toolbar: '#toolbar',
-                columns: [[                    { field: 'ID', checkbox: true, align: 'center', width: 20 },                    { title: '菜单名称', field: 'Name', width: '200', align: 'left' },
+                columns: [[
+                    { field: 'ID', checkbox: true, align: 'center', width: 20 },
+                    { title: '菜单名称', field: 'Name', width: '200', align: 'left' },
                     { title: '排序', field: 'Index', width: '50', align: 'center' },
                       {
                           title: '图标', field: 'ICON', width: '50', align: 'center', formatter: function (value) {
@@ -105,10 +107,12 @@
             //新增
             $('#btnAdd,#treegrid-add').on('click', function () {
                 ininaction();
+                var selected = $treeGrid.treegrid('getSelected');
+                var parentid=selected?selected.ID:null;
                 $('#frmAddEdit')[0].reset();
                 $('#_ID').val('0');
                 $('#WebID').val(webtreeselect().webid);
-                $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' + "?WebId=" + webtreeselect().webid }).combotree('setValue', null);
+                $('#_ParentID').combotree({ url: '@Url.Action("Tree", "Module")' + "?WebId=" + webtreeselect().webid }).combotree('setValue', parentid);
                 $('#AddEdit').window({
                     iconCls: 'icon-add',
                     title: '添加菜单'

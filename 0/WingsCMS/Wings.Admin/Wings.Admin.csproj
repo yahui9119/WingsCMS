@@ -919,6 +919,7 @@
     <Content Include="Views\RolePermission\Index.cshtml" />
     <Content Include="Views\GroupPermission\Index.cshtml" />
     <Content Include="Views\UserPermission\Index.cshtml" />
+    <Content Include="Views\Account\LogOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

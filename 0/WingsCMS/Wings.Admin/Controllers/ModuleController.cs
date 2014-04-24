@@ -8,10 +8,11 @@ using Wings.Contracts;
 using Wings.DataObjects;
 using Wings.DataObjects.Custom;
 using Wings.Framework.Communication;
+using Wings.Framework.Plugin;
 
 namespace Wings.Admin.Controllers
 {
-    public class ModuleController : Controller
+    public class ModuleController : WingsController
     {
         //
         // GET: /Module/

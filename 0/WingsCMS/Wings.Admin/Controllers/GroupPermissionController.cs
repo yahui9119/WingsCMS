@@ -7,10 +7,11 @@ using System.Web.Mvc;
 using Wings.Contracts;
 using Wings.DataObjects.Custom;
 using Wings.Framework.Communication;
+using Wings.Framework.Plugin;
 
 namespace Wings.Admin.Controllers
 {
-    public class GroupPermissionController : Controller
+    public class GroupPermissionController : WingsController
     {
         //
         // GET: /GroupPermission/

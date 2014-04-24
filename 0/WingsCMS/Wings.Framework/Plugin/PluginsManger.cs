@@ -16,7 +16,7 @@ namespace Wings.Framework.Plugin
         /// </summary>
         public static void Init()
         {
-            Service.Init(Wings.Framework.Config.WingsConfigurationReader.Instance.WebID,Web.WebControllerAction.GetAllAction());
+            Service.Init(Wings.Framework.Config.WingsConfigurationReader.Instance.WebID,Web.WebSetting.GetAllAction());
         }
         private static IPluginService _service;
         public static IPluginService Service

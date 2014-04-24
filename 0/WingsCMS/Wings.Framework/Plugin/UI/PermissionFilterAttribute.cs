@@ -7,7 +7,9 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.WebPages;
 using Wings.Framework.Caching;
+using Wings.Framework.Config;
 using Wings.Framework.Plugin.Contracts;
+using Wings.Framework.Plugin.Web;
 
 namespace Wings.Framework.Plugin.UI
 {
@@ -29,16 +31,21 @@ namespace Wings.Framework.Plugin.UI
             {
                 throw new ArgumentNullException("filterContext");
             }
-
-            //是否登录和允许匿名访问 即无权限控制
-            if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
+            //判断当前用户是否是管理员
+            var userinfo= WebSetting.GetUser();
+            if (userinfo != null && userinfo.ID == WingsConfigurationReader.Instance.WebAdminID)
             {
-                if (filterContext.ActionDescriptor.IsDefined(typeof(AnonymousAttribute), false))
-                {
-                    IsIgnored = true;
+                IsIgnored = true;
+            }
+            //是否登录和允许匿名访问 即无权限控制
+            if (filterContext.ActionDescriptor.IsDefined(typeof(AnonymousAttribute), false))
+            {
+                IsIgnored = true;
 
-                }
-                else
+            }
+            if (!filterContext.HttpContext.User.Identity.IsAuthenticated && !IsIgnored)
+            {
+
                 {
                     FormsAuthentication.RedirectToLoginPage();
                 }
@@ -54,10 +61,10 @@ namespace Wings.Framework.Plugin.UI
                     else
                     {
                         //读取缓存 是否包含此控制器和访问
-                        var permissionsobj = CacheManager.Instance.Get("Permission", filterContext.HttpContext.User.Identity.Name);
-                        if (permissionsobj != null)
+                        var permissionsobjs = WebSetting.GetPermission();
+                        if (permissionsobjs != null)
                         {
-                            List<Permission> permissions = (List<Permission>)permissionsobj;
+                            List<Permission> permissions = (List<Permission>)permissionsobjs;
                             var path = filterContext.HttpContext.Request.Path.ToLower();
                             string controller = filterContext.RouteData.Values["controller"].ToString();
                             string action = filterContext.RouteData.Values["action"].ToString();
@@ -65,9 +72,20 @@ namespace Wings.Framework.Plugin.UI
                             if (permissions != null && permissions.Count > 0)
                             {
 
-                                int index = permissions.FindIndex(p =>
-                                 p.Action.ToLower() == action && p.Controller.ToLower() == controller && p.IsPost == ispost);
-                                IsIgnored = index >= 0;
+                                var result = permissions.Find(p =>
+                                    {
+                                        if (p.Action == null || p.Controller == null)
+                                        {
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            return p.Action.ToLower() == action && p.Controller.ToLower() == controller && p.IsPost == ispost;    
+                                        }
+                                    }
+                                    );
+
+                                IsIgnored = result != null;
                             }
                         }
                     }
@@ -76,7 +94,8 @@ namespace Wings.Framework.Plugin.UI
             //
             if (!IsIgnored)
             {
-                filterContext.Result = new JsonResult() { Data = new { success = false, message = "抱歉 您不具有此页面的访问权限！" } };
+                filterContext.Result = new JsonResult() { Data = new { success = false, message = "抱歉 您不具有此页面的访问权限,如有疑问请联系管理员！" }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
             }
             base.OnActionExecuting(filterContext);
         }

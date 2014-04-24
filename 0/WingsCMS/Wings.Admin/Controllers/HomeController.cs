@@ -65,7 +65,7 @@ namespace Wings.Admin.Controllers
             //    menus.Add(menu);
             //}
 
-            return Json(WebControllerAction.GetAllAction(), JsonRequestBehavior.AllowGet);
+            return Json(WebSetting.GetAllAction(), JsonRequestBehavior.AllowGet);
         }
     }
 }

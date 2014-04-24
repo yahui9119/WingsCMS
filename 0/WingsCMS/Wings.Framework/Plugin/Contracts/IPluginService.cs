@@ -30,7 +30,7 @@ namespace Wings.Framework.Plugin.Contracts
         /// <param name="password">经过MD5加密</param>
         /// <param name="webid"></param>
         [OperationContract(IsOneWay = false)]
-        Guid Login(string account, string password, Guid webid);
+        UserInfo Login(string account, string password, Guid webid);
         /// <summary>
         /// 获取用户
         /// </summary>

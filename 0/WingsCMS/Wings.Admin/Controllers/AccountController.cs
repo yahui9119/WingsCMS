@@ -12,6 +12,7 @@ using Wings.DataObjects;
 using Wings.Framework.Communication;
 using Wings.Framework.Plugin;
 using Wings.Framework.Plugin.UI;
+using Wings.Framework.Plugin.Web;
 
 namespace Wings.Admin.Controllers
 {
@@ -46,29 +47,27 @@ namespace Wings.Admin.Controllers
                     ModelState.AddModelError("", "验证码不正确。");
                 }
 
-                var accountid = PluginsManger.Service.Login(model.Account, model.Password,webid );
-                if (accountid == null || accountid.Equals(Guid.Empty))
+                var account = PluginsManger.Service.Login(model.Account, model.Password,webid );
+                if (account == null || account.Equals(Guid.Empty))
                 {
                     ModelState.AddModelError("", "提供的账户或密码不正确。");
                 }
                 else
                 {
-                    var PermissionList= PluginsManger.Service.GetPermissionByUserID(accountid, webid, adminid == accountid);
-                    FormsAuthentication.RedirectFromLoginPage(model.Account, model.RememberMe);
+                    var PermissionList = PluginsManger.Service.GetPermissionByUserID(account.ID, webid, adminid == account.ID);
+                    WebSetting.UserOnline(account, model.RememberMe);
+                    WebSetting.SaveUserPermission(PermissionList);
                 }
-
             }
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
 
             return View(model);
         }
-
-        [HttpPost]
         [Description("[站点登出]")]
         [LoginAllowView]
         public ActionResult LogOut()
         {
-            FormsAuthentication.SignOut();
+            WebSetting.UserOffLine();
             return View();
         }
 

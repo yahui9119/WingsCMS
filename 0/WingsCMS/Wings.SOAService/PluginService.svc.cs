@@ -46,7 +46,7 @@ namespace Wings.SOAService
         }
 
 
-        Guid IPluginService.Login(string account, string password, Guid webid)
+        UserInfo IPluginService.Login(string account, string password, Guid webid)
         {
             try
             {
@@ -63,6 +63,7 @@ namespace Wings.SOAService
         {
             try
             {
+                pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
                 return pluginServiceImpl.GetPermissionByUserID(accountid, webid, IsAdmin);
             }
             catch (Exception ex)

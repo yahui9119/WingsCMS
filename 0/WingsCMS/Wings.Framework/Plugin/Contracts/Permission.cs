@@ -38,11 +38,39 @@ namespace Wings.Framework.Plugin.Contracts
         /// </summary>
         [DataMember]
         public string Description { get; set; }
-        
         /// <summary>
         /// 是否是post提交的action
         /// </summary>
         [DataMember]
         public bool IsPost { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 转跳链接
+        /// </summary>
+        public string Url { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 打开类型
+        /// </summary>
+        public string Target { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public string ICON { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 排序索引
+        /// </summary>
+        public int Index { get; set; }
+        [DataMember]
+        /// <summary>
+        /// 是否是菜单
+        /// </summary>
+        public bool IsMenus { get; set; }
+        /// <summary>
+        /// 父菜单标识
+        /// </summary>
+        public Guid ParentID { get; set; }
     }
 }

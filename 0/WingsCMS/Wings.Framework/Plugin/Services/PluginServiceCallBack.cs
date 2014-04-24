@@ -34,7 +34,7 @@ namespace Wings.Framework.Plugin.Services
 
         public List<Permission> GetAllPermission()
         {
-            return WebControllerAction.GetAllAction();
+            return WebSetting.GetAllAction();
         }
     }
 }
