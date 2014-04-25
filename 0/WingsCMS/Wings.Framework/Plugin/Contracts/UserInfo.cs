@@ -10,6 +10,8 @@ namespace Wings.Framework.Plugin.Contracts
     /// <summary>
     /// 登录后返回的用户信息
     /// </summary>
+    [Serializable]
+    [DataContract]
     public class UserInfo
     {
         [DataMember]

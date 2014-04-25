@@ -11,6 +11,7 @@ namespace Wings.Framework.Plugin.Contracts
     /// 权限数据契约
     /// </summary>
     [DataContract]
+    [Serializable]
     public class Permission
     {
         /// <summary>
