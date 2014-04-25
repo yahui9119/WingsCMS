@@ -126,7 +126,14 @@ namespace Wings.Framework.Plugin.Web
         {
             FormsAuthentication.SignOut();
             HttpContext.Current.Session[UserSessionName] = null;
+            var userinfo = GetUser();
+            if (userinfo != null)
+            {
+                Caching.CacheManager.Instance.Add(PermissionCacheName, userinfo.ID.ToString(),null);
+            }
+            
             FormsAuthentication.RedirectToLoginPage();
+
         }
     }
 }

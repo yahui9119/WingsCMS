@@ -12,9 +12,6 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>The Enterprise Library Common assembly contains elements that are shared among multiple application blocks. By supplying a set of commonly used functions to all the application blocks, the Common assembly reduces the dependency of one application block on another.</description>
     <summary>The Enterprise Library Common assembly contains elements that are shared among multiple application blocks.</summary>
-    <releaseNotes />
-    <copyright />
-    <language />
     <tags>entlib entlib6 Enterprise Library common core LOB</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="mscorlib" targetFramework=".NETFramework4.5" />
