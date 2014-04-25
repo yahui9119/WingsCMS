@@ -80,7 +80,7 @@ namespace Wings.Framework.Plugin.UI
                                         }
                                         else
                                         {
-                                            return p.Action.ToLower() == action && p.Controller.ToLower() == controller && p.IsPost == ispost;    
+                                            return p.Action.ToLower() == action.ToLower() && p.Controller.ToLower() == controller.ToLower() && p.IsPost == ispost;    
                                         }
                                     }
                                     );

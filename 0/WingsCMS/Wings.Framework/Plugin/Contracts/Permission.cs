@@ -17,12 +17,12 @@ namespace Wings.Framework.Plugin.Contracts
         /// 模块标示
         /// </summary>
         [DataMember]
-        public Guid ModuleID { get; set; }
+        public Guid ID { get; set; }
         /// <summary>
         /// 模块名字
         /// </summary>
         [DataMember]
-        public string ModuleName { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 控制器
         /// </summary>
@@ -71,6 +71,6 @@ namespace Wings.Framework.Plugin.Contracts
         /// <summary>
         /// 父菜单标识
         /// </summary>
-        public Guid ParentID { get; set; }
+        public Guid parentID { get; set; }
     }
 }

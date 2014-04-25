@@ -257,7 +257,7 @@ namespace Wings.Core
                     Guid.TryParse(d.ID, out result);
                     return result;
                 }));
-            Mapper.CreateMap<ModuleDTO, Permission>();
+            Mapper.CreateMap<ModuleDTO, Permission>().ForMember(m=>m.Action,p=>p.ResolveUsing(pe=>pe.ActionName)).ForMember(m=>m.Controller,p=>p.ResolveUsing(pe=>pe.ControllerName));
             //Mapper.CreateMap<Permission, Wings.Domain.Model.Action>()
             //    .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
             //    .ForMember(a => a.ActionName, p => p.ResolveUsing(pe => pe.Action))
