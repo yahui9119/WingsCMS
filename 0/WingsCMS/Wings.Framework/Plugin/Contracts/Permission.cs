@@ -69,9 +69,10 @@ namespace Wings.Framework.Plugin.Contracts
         /// 是否是菜单
         /// </summary>
         public bool IsMenus { get; set; }
+        [DataMember]
         /// <summary>
         /// 父菜单标识
         /// </summary>
-        public Guid parentID { get; set; }
+        public Guid? _parentId { get; set; }
     }
 }

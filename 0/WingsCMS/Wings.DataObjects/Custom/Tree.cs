@@ -12,6 +12,9 @@ namespace Wings.DataObjects.Custom
     {
         public string id { get; set; }
         public string text { get; set; }
+        public string iconCls { get; set; }
+        public string state { get; set; }
+        public object attributes { get; set; }
         public List<Tree> children { get; set; }
     }
 }

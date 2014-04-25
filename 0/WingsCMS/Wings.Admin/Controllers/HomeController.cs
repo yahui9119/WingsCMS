@@ -10,6 +10,8 @@ using Wings.DataObjects;
 using Wings.Framework.Caching;
 using Wings.Framework.Plugin.Web;
 using System.ComponentModel;
+using Wings.Framework.Plugin.Contracts;
+using Wings.DataObjects.Custom;
 
 namespace Wings.Admin.Controllers
 {
@@ -41,31 +43,49 @@ namespace Wings.Admin.Controllers
         [Description("[站点主页【获取菜单列表】]")]
         public ActionResult LoadMenus()
         {
-            PluginsManger.Service.Login("test", "test", Guid.Empty);
-           
-            //List<MenusDTO> menus = new List<MenusDTO>();
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    MenusDTO menu = new MenusDTO();
-            //    menu.ID = Guid.NewGuid().ToString();
-            //    menu.Name = "系统维护";
-            //    menu.Url = "javascript:;";
-            //    menu.ICO = "";
-            //    menu.ChildMenus = new List<MenusDTO>();
-            //    for (int j = 0; j < 2; j++)
-            //    {
-            //        MenusDTO menu2 = new MenusDTO();
-            //        menu2.ID = Guid.NewGuid().ToString();
-            //        menu2.Name = "系统维护";
-            //        menu2.Url = "javascript:;";
-            //        menu2.ICO = "";
-            //        menu.ChildMenus.Add(menu2);
+            List<Tree> Menus = null;
+            List<Permission> permissions = WebSetting.GetPermission();
+            if (permissions != null)
+            {
+                var Root = permissions.Where(p => p._parentId == null || p._parentId == Guid.Empty).OrderBy(p => p.Index);
+                if (Root != null)
+                {
+                    Menus = GetMenus(Root.ToList(), permissions.Where(p=>p.IsMenus==true).ToList());
+                }
+            }
 
-            //    }
-            //    menus.Add(menu);
-            //}
+            return Json(Menus);
+        }
+        private List<Tree> GetMenus(List<Permission> PList, List<Permission> ALLList)
+        {
+            List<Tree> trees = new List<Tree>();
+            PList.ForEach(
+                p =>
+                {
+                    Tree t = new Tree();
+                    t.id = p.ID.ToString();
 
-            return Json(WebSetting.GetAllAction(), JsonRequestBehavior.AllowGet);
+                    t.iconCls = string.Format("t-icon {0}", p.ICON);
+                    //t.state = "open";
+                    t.text = p.Name;
+                    if (!string.IsNullOrWhiteSpace(p.Url))
+                    {
+                        t.attributes = new { rel = p.Url };
+                    }
+                    if (!string.IsNullOrWhiteSpace(p.Controller) && !string.IsNullOrWhiteSpace(p.Action))
+                    {
+                        t.attributes = new { rel = Url.Action(p.Action, p.Controller) };
+                    }
+                    var childtree = ALLList.Where(pc => pc._parentId.Equals(p.ID));
+                    if (childtree != null && childtree.Count() > 0)
+                    {
+                        t.children = GetMenus(childtree.ToList(), ALLList);
+                    }
+                    trees.Add(t);
+                }
+                );
+
+            return trees;
         }
     }
 }
