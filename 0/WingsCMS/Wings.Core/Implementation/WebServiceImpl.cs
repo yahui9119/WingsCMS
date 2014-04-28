@@ -105,7 +105,7 @@ namespace Wings.Core.Implementation
 
         public WebDTOList CreateWeb(WebDTOList webdtos)
         {
-            return PerformCreateObjects<WebDTOList, WebDTO, Web>(webdtos, webRepository);
+            return PerformCreateObjects<WebDTOList, WebDTO, Web>(webdtos, webRepository).ToViewModel();
         }
 
         public WebDTOList EditWeb(WebDTOList webdtos)
@@ -117,7 +117,7 @@ namespace Wings.Core.Implementation
                 w.Domain = wdto.Domain;
                 w.EditDate = DateTime.Now;
                 w.Status = (Wings.Domain.Model.Status)wdto.Status;
-            });
+            }).ToViewModel();
         }
 
         public void DeleteWeb(IDList webids)

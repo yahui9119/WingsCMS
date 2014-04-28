@@ -35,6 +35,15 @@ namespace Wings.Domain.Repositories
         /// <param name="Email"></param>
         /// <returns></returns>
         User GetUserByEmail(string Email);
+        /// <summary>
+        /// 更新用户信息 并且更新用户的分组角色使用站点等信息
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="GroupIDS"></param>
+        /// <param name="RoleIDS"></param>
+        /// <param name="WebIDS"></param>
+        /// <returns></returns>
+        void EditUser(User user, List<Guid> GroupIDS, List<Guid> RoleIDS, List<Guid> WebIDS);
         ///// <summary>
         ///// 根据分页信息获取用户列表
         ///// </summary>

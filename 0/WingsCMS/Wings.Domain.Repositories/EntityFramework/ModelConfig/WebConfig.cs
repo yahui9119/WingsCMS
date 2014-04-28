@@ -15,12 +15,7 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(w => w.Description).IsRequired().HasMaxLength(200);
             Property(w => w.Domain).IsRequired().HasMaxLength(50);
             HasMany(w => w.Modules).WithOptional(w=>w.Web).Map(w => w.MapKey("WebID"));
-            HasMany(w => w.Users).WithMany(u => u.Webs).Map(uw =>
-            {
-                uw.MapLeftKey("WebID");
-                uw.MapRightKey("UserID");
-                uw.ToTable("UserWeb");
-            });
+          
             //HasMany(w => w.Actions).WithOptional(a => a.web).Map(a => a.MapKey("WebID"));
         }
     }

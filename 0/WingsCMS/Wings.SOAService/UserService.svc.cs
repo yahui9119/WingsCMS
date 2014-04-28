@@ -56,18 +56,28 @@ namespace Wings.SOAService
             }
         }
 
-        public DataObjects.UserDTOList EidtUser(DataObjects.UserDTOList user)
+        public DataObjects.UserDTOList EditUsers(DataObjects.UserDTOList user)
         {
             try
             {
-                return userServiceImpl.EidtUser(user);
+                return userServiceImpl.EditUsers(user);
             }
             catch (Exception ex)
             {
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
-
+        public void EditUser(UserDTO uto)
+        {
+            try
+            {
+                userServiceImpl.EditUser(uto);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
         public void DeleteUser(DataObjects.IDList UserIDs)
         {
             try
@@ -380,5 +390,8 @@ namespace Wings.SOAService
         {
             userServiceImpl.Dispose();
         }
+
+
+       
     }
 }

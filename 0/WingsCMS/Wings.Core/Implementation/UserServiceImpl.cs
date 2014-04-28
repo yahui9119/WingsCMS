@@ -137,136 +137,131 @@ namespace Wings.Core.Implementation
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public UserDTOList EidtUser(UserDTOList user)
+        public UserDTOList EditUsers(UserDTOList user)
         {
             return PerformUpdateObjects<UserDTOList, UserDTO, User>(user, userRepository, uto => uto.ID, (u, uto) =>
             {
-                if (!string.IsNullOrEmpty(uto.Account))
-                {
-                    u.Account = uto.Account;
-                }
-                if (!string.IsNullOrEmpty(uto.Address))
-                {
-                    u.Address = uto.Address;
-                }
-                if (!string.IsNullOrEmpty(uto.ALiWangWang))
-                {
-                    u.ALiWangWang = uto.ALiWangWang;
-                }
-                if (uto.Birthday != null)
-                {
 
-                    u.Birthday = uto.Birthday;
-
-                }
-                u.EditDate = DateTime.Now;
-                if (!string.IsNullOrEmpty(uto.Email))
-                {
-                    u.Email = uto.Email;
-                }
-                if (!uto.IsMan)
-                {
-                    u.IsMan = uto.IsMan;
-                }
-                if (!string.IsNullOrEmpty(uto.Password))
-                {
-                    u.Password = uto.Password;
-                }
-                if (!string.IsNullOrEmpty(uto.PhoneNum))
-                {
-                    u.PhoneNum = uto.PhoneNum;
-                }
-                if (!string.IsNullOrEmpty(uto.QQ))
-                {
-                    u.QQ = uto.QQ;
-                }
-                if (!string.IsNullOrEmpty(uto.RealName))
-                {
-                    u.RealName = uto.RealName;
-                }
-                if (uto.Version != null)
-                {
-                    u.Version = uto.Version;
-                }
-                if (!string.IsNullOrEmpty(uto.Zip))
-                {
-                    u.Zip = uto.Zip;
-                }
-                u.Status = (Domain.Model.Status)uto.Status;
-                u.Groups = null;
-                // 部门保存
-                if (uto.GroupIDS != null)
-                {
-                    List<Guid> groupids = new List<Guid>();
-                    uto.GroupIDS.ToList().ForEach(i =>
-                    {
-                        if (!string.IsNullOrEmpty(i))
-                        {
-                            Guid swap = Guid.Empty;
-                            if (Guid.TryParse(i, out swap))
-                            {
-                                groupids.Add(swap);
-                            }
-                        }
-                    });
-                    var groups = groupRespository.GetAll(Specification<Group>.Eval(g => groupids.Contains(g.ID)));
-                    if (groups != null && groups.Count() > 0)
-                    {
-                        u.Groups = new List<Group>();
-                        groups.ToList().ForEach(g => u.Groups.Add(g));
-                    }
-                }
-
-                // 角色保存
-                u.Roles = null;
-                if (uto.RoleIDS != null)
-                {
-                    List<Guid> roleids = new List<Guid>();
-                    uto.RoleIDS.ToList().ForEach(i =>
-                    {
-                        if (!string.IsNullOrEmpty(i))
-                        {
-                            Guid swap = Guid.Empty;
-                            if (Guid.TryParse(i, out swap))
-                            {
-                                roleids.Add(swap);
-                            }
-                        }
-                    });
-                    var roles = roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID)));
-                    if (roles != null && roles.Count() > 0)
-                    {
-                        u.Roles = new List<Role>();
-                        roles.ToList().ForEach(r =>
-                            {
-                                u.Roles.Add(r);
-                            });
-                    }
-                }
-                u.Webs = null;
-                // 站点保存
-                if (uto.WebIDS != null)
-                {
-                    List<Guid> webids = new List<Guid>();
-                    uto.WebIDS.ToList().ForEach(i =>
-                    {
-                        if (!string.IsNullOrEmpty(i))
-                        {
-                            Guid swap = Guid.Empty;
-                            if (Guid.TryParse(i, out swap))
-                            {
-                                webids.Add(swap);
-                            }
-                        }
-                    });
-                    var webs = webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID)));
-                    if (webs != null && webs.Count() > 0)
-                    {
-                        u.Webs = new List<Web>();
-                        webs.ToList().ForEach(w => u.Webs.Add(w));
-                    }
-                }
             }).ToViewModel();
+        }
+
+        public void EditUser(UserDTO uto)
+        {
+            Guid id = Guid.Parse(uto.ID);
+            var u = userRepository.Find(Specification<User>.Eval(uu=>uu.ID.Equals(id)));
+            if (!string.IsNullOrEmpty(uto.Account))
+            {
+                u.Account = uto.Account;
+            }
+            if (!string.IsNullOrEmpty(uto.Address))
+            {
+                u.Address = uto.Address;
+            }
+            if (!string.IsNullOrEmpty(uto.ALiWangWang))
+            {
+                u.ALiWangWang = uto.ALiWangWang;
+            }
+            if (uto.Birthday != null)
+            {
+
+                u.Birthday = uto.Birthday;
+
+            }
+            u.EditDate = DateTime.Now;
+            if (!string.IsNullOrEmpty(uto.Email))
+            {
+                u.Email = uto.Email;
+            }
+            if (!uto.IsMan)
+            {
+                u.IsMan = uto.IsMan;
+            }
+            if (!string.IsNullOrEmpty(uto.Password))
+            {
+                u.Password = uto.Password;
+            }
+            if (!string.IsNullOrEmpty(uto.PhoneNum))
+            {
+                u.PhoneNum = uto.PhoneNum;
+            }
+            if (!string.IsNullOrEmpty(uto.QQ))
+            {
+                u.QQ = uto.QQ;
+            }
+            if (!string.IsNullOrEmpty(uto.RealName))
+            {
+                u.RealName = uto.RealName;
+            }
+            if (uto.Version != null)
+            {
+                u.Version = uto.Version;
+            }
+            if (!string.IsNullOrEmpty(uto.Zip))
+            {
+                u.Zip = uto.Zip;
+            }
+            u.Status = (Domain.Model.Status)uto.Status;
+            
+            // 部门保存
+            if (uto.GroupIDS != null)
+            {
+                u.Groups.Clear() ;
+                List<Guid> groupids = new List<Guid>();
+                uto.GroupIDS.ToList().ForEach(i =>
+                {
+                    if (!string.IsNullOrEmpty(i))
+                    {
+                        Guid swap = Guid.Empty;
+                        if (Guid.TryParse(i, out swap))
+                        {
+                            groupids.Add(swap);
+                        }
+                    }
+                });
+                u.Groups = groupRespository.GetAll(Specification<Group>.Eval(g => groupids.Contains(g.ID))).ToList();
+            }
+
+            // 角色保存
+
+            if (uto.RoleIDS != null)
+            {
+                u.Roles.Clear();
+                List<Guid> roleids = new List<Guid>();
+                uto.RoleIDS.ToList().ForEach(i =>
+                {
+                    if (!string.IsNullOrEmpty(i))
+                    {
+                        Guid swap = Guid.Empty;
+                        if (Guid.TryParse(i, out swap))
+                        {
+                            roleids.Add(swap);
+                        }
+                    }
+                });
+                u.Roles = roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID))).ToList();
+            }
+
+            // 站点保存
+            if (uto.WebIDS != null)
+            {
+                u.Webs.Clear();
+                List<Guid> webids = new List<Guid>();
+                uto.WebIDS.ToList().ForEach(i =>
+                {
+                    if (!string.IsNullOrEmpty(i))
+                    {
+                        Guid swap = Guid.Empty;
+                        if (Guid.TryParse(i, out swap))
+                        {
+                            webids.Add(swap);
+                        }
+                    }
+                });
+                u.Webs = webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID))).ToList();
+            }
+
+            userRepository.Update(u);
+            Context.Commit();
         }
         /// <summary>
         /// 批量删除用户
@@ -300,9 +295,9 @@ namespace Wings.Core.Implementation
             if (group != null && group.Users != null && group.Users.Count > 0)
             {
                 group.Users.ForEach(u =>
-                    {
-                        userlist.Add(Mapper.Map<User, UserDTO>(u));
-                    });
+                {
+                    userlist.Add(Mapper.Map<User, UserDTO>(u));
+                });
 
             }
             return userlist.ToViewModel();
@@ -610,9 +605,9 @@ namespace Wings.Core.Implementation
         public void DeleteRole(RoleDTOList roles)
         {
             PerformUpdateObjects<RoleDTOList, RoleDTO, Role>(roles, roleRepository, r => r.ID, (r, rdto) =>
-           {
-               r.Status = Wings.Domain.Model.Status.Deleted;
-           });
+            {
+                r.Status = Wings.Domain.Model.Status.Deleted;
+            });
         }
         /// <summary>
         /// 获取此角色下的所有用户
@@ -629,12 +624,12 @@ namespace Wings.Core.Implementation
             List<User> users = role.Users;
             UserDTOList udtoList = new UserDTOList();
             users.ForEach(u =>
+            {
+                if (u.Status == Wings.Domain.Model.Status.Active)//只获取有效数据
                 {
-                    if (u.Status == Wings.Domain.Model.Status.Active)//只获取有效数据
-                    {
-                        udtoList.Add(Mapper.Map<User, UserDTO>(u));
-                    }
-                });
+                    udtoList.Add(Mapper.Map<User, UserDTO>(u));
+                }
+            });
             return udtoList.ToViewModel();
         }
         /// <summary>
@@ -822,9 +817,9 @@ namespace Wings.Core.Implementation
         public void DeleteGroup(GroupDTOList groups)
         {
             PerformUpdateObjects<GroupDTOList, GroupDTO, Group>(groups, groupRespository, g => g.ID, (g, gdto) =>
-           {
-               g.Status = Wings.Domain.Model.Status.Deleted;
-           });
+            {
+                g.Status = Wings.Domain.Model.Status.Deleted;
+            });
         }
 
 

@@ -14,12 +14,7 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
         {
             Property(r => r.Name).IsRequired().HasMaxLength(50);
             Property(r => r.Description).IsRequired().HasMaxLength(200);
-            HasMany(r => r.Users).WithMany(u => u.Roles).Map(ur =>
-            {
-                ur.ToTable("UserRole");
-                ur.MapLeftKey("RoleID");
-                ur.MapRightKey("UserID");
-            });
+          
             HasMany(r => r.Modules).WithMany(m => m.Roles).Map(r => 
             {
                 r.MapLeftKey("RoleID");

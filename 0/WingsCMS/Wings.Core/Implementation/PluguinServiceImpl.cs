@@ -17,14 +17,14 @@ namespace Wings.Core.Implementation
 {
     public class PluginServiceImpl : CoreService, IPluginService
     {
-        private readonly  IUserRepository userRepository;
+        private readonly IUserRepository userRepository;
         //private readonly IActionRepository actionRepository;
 
         //private readonly IRoleRepository roleRepository;
         //private readonly IGroupRepository groupRespository;
         //private readonly IModuleRepository moduleRepository;
-        private  IWebRepository webRepository;
-        private  IEventBus bus;
+        private IWebRepository webRepository;
+        private IEventBus bus;
         public PluginServiceImpl(IRepositoryContext context,
             IUserRepository userRepository,
              IWebRepository webRepository,
@@ -53,7 +53,7 @@ namespace Wings.Core.Implementation
                 userinfo.Account = user.Account;
                 userinfo.RealName = user.RealName;
                 userinfo.ID = user.ID;
-                
+
                 return userinfo;
             }
             return userinfo;
@@ -61,51 +61,68 @@ namespace Wings.Core.Implementation
 
         public List<Permission> GetPermissionByUserID(Guid accountid, Guid webid, bool IsAdmin = false)
         {
-
+            List<Permission> plist = new List<Permission>();
             ModuleDTOList mdtolist = new ModuleDTOList();
             var user = userRepository.Find(Specification<User>.Eval(u => u.Status == Wings.Domain.Model.Status.Active).And(Specification<User>.Eval(u => u.ID.Equals(accountid))));
             if (user == null)
             {
-                return null;
+                return plist;
             }
-            //添加用户组模块
-            user.Groups.ForEach(g =>
+            ModuleDTOList resultmdtolist = new ModuleDTOList();
+            if (IsAdmin)
             {
-                if (g.Status.Equals(Wings.Domain.Model.Status.Active))
+                var web = webRepository.Get(Specification<Web>.Eval(w => w.ID.Equals(webid)));
+                if (web != null && web.Modules != null)
                 {
-                    g.Modules.ForEach(
-                        m =>
+                    web.Modules.ForEach(m =>
                         {
-                            mdtolist.Add(Mapper.Map<Module, ModuleDTO>(m));
+                            resultmdtolist.Add(Mapper.Map<Module, ModuleDTO>(m));
                         });
                 }
-            });
-            user.Roles.FindAll(t => t.Status == Wings.Domain.Model.Status.Active).ForEach(r =>
+              
+            }
+            else
             {
-                r.Modules.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ForEach(m =>
+
+                //添加用户组模块
+                user.Groups.ForEach(g =>
+                {
+                    if (g.Status.Equals(Wings.Domain.Model.Status.Active))
+                    {
+                        g.Modules.ForEach(
+                            m =>
+                            {
+                                mdtolist.Add(Mapper.Map<Module, ModuleDTO>(m));
+                            });
+                    }
+                });
+                user.Roles.FindAll(t => t.Status == Wings.Domain.Model.Status.Active).ForEach(r =>
+                {
+                    r.Modules.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ForEach(m =>
+                    {
+                        mdtolist.Add(Mapper.Map<Module, ModuleDTO>(m));
+                    });
+                });
+                user.ModuleAllow.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ForEach(m =>
                 {
                     mdtolist.Add(Mapper.Map<Module, ModuleDTO>(m));
                 });
-            });
-            user.ModuleAllow.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ForEach(m =>
-            {
-                mdtolist.Add(Mapper.Map<Module, ModuleDTO>(m));
-            });
-            //去除重复项
-            ModuleDTOList resultmdtolist = new ModuleDTOList();
-            mdtolist.GroupBy(m => m.ID).ToList().ForEach(m =>
-            {
-                resultmdtolist.Add(mdtolist.Find(mt => mt.ID == m.Key));
-            });
-            //去除禁用的
-            user.ModuleBan.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ForEach(m =>
-            {
-                if (resultmdtolist.Contains(Mapper.Map<Module, ModuleDTO>(m)))
+                //去除重复项
+
+                mdtolist.GroupBy(m => m.ID).ToList().ForEach(m =>
                 {
-                    resultmdtolist.Remove(Mapper.Map<Module, ModuleDTO>(m));
-                }
-            });
-            List<Permission> plist = new List<Permission>();
+                    resultmdtolist.Add(mdtolist.Find(mt => mt.ID == m.Key));
+                });
+                //去除禁用的
+                user.ModuleBan.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ForEach(m =>
+                {
+                    if (resultmdtolist.Contains(Mapper.Map<Module, ModuleDTO>(m)))
+                    {
+                        resultmdtolist.Remove(Mapper.Map<Module, ModuleDTO>(m));
+                    }
+                });
+
+            }
             resultmdtolist.ForEach(r => plist.Add(Mapper.Map<ModuleDTO, Permission>(r)));
             return plist;
         }

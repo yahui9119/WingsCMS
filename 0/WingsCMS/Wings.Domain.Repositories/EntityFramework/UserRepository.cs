@@ -32,5 +32,11 @@ namespace Wings.Domain.Repositories.EntityFramework
         {
             return Get(new UserEmailEqualsSpecification(Email));
         }
+
+
+        public void EditUser(User user, List<Guid> GroupIDS, List<Guid> RoleIDS, List<Guid> WebIDS)
+        {
+            DoUpdate(user);
+        }
     }
 }

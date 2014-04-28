@@ -45,10 +45,17 @@ namespace Wings.Contracts
         /// <summary>
         /// 编辑一个用户的个人信息
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="users"></param>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        UserDTOList EidtUser(UserDTOList user);
+        UserDTOList EditUsers(UserDTOList users);
+        /// <summary>
+        /// 更新单个用户的信息包括角色 分组 站点
+        /// </summary>
+        /// <param name="uto"></param>
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void EditUser(UserDTO uto);
         /// <summary>
         /// 删除一个用户
         /// </summary>

@@ -82,9 +82,8 @@ namespace Wings.Admin.Controllers
             using (ServiceProxy<IUserService> proxy = new ServiceProxy<IUserService>())
             {
                 user.EditDate = DateTime.Now;
-                UserDTOList dtolist = new UserDTOList();
-                dtolist.Add(user);
-                proxy.Channel.EidtUser(dtolist);
+
+                proxy.Channel.EditUser(user);
                 if (!string.IsNullOrEmpty(user.ID))
                 {
                     result.success = true;

@@ -24,17 +24,38 @@ namespace Wings.Domain.Repositories.EntityFramework.ModelConfig
             Property(u => u.ALiWangWang).HasMaxLength(50);
             Property(u => u.Address).IsRequired().HasMaxLength(200);
             Property(u => u.LastloginTime).IsRequired();
+            //多对多关联
+            HasMany(g => g.Groups).WithMany(u => u.Users).Map(g =>
+            {
+                g.ToTable("UserGroup");
+                g.MapLeftKey("UserId");
+                g.MapRightKey("GroupID"); 
+            });
+
+            HasMany(r => r.Roles).WithMany(u => u.Users).Map(ur =>
+            {
+                ur.ToTable("UserRole");
+                ur.MapLeftKey("UserID");
+                ur.MapRightKey("RoleID");
+            });
+            HasMany(u => u.Webs).WithMany(w => w.Users).Map(uw =>
+            {
+                uw.ToTable("UserWeb");
+                uw.MapLeftKey("UserID");
+                uw.MapRightKey("WebID");
+               
+            });
             HasMany(u => u.ModuleAllow).WithMany(m => m.UserAllow).Map(u =>
             {
+                u.ToTable("UserAllowPermission");
                 u.MapLeftKey("UserID");
                 u.MapRightKey("ModuleID");
-                u.ToTable("UserAllowPermission");
             });
             HasMany(u => u.ModuleBan).WithMany(m => m.UserBan).Map(u =>
             {
+                u.ToTable("UserBanPermission");
                 u.MapLeftKey("UserID");
                 u.MapRightKey("ModuleID");
-                u.ToTable("UserBanPermission");
             });
             Ignore(u => u.HaveGroups);
             Ignore(u => u.HaveRoles);
