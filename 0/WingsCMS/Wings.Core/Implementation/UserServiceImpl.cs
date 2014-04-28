@@ -193,7 +193,7 @@ namespace Wings.Core.Implementation
                     u.Zip = uto.Zip;
                 }
                 u.Status = (Domain.Model.Status)uto.Status;
-                u.Groups = new List<Group>();
+                u.Groups = null;
                 // 部门保存
                 if (uto.GroupIDS != null)
                 {
@@ -209,11 +209,16 @@ namespace Wings.Core.Implementation
                             }
                         }
                     });
-                    groupRespository.GetAll(Specification<Group>.Eval(g => groupids.Contains(g.ID))).ToList().ForEach(g => u.Groups.Add(g));
+                    var groups = groupRespository.GetAll(Specification<Group>.Eval(g => groupids.Contains(g.ID)));
+                    if (groups != null && groups.Count() > 0)
+                    {
+                        u.Groups = new List<Group>();
+                        groups.ToList().ForEach(g => u.Groups.Add(g));
+                    }
                 }
 
                 // 角色保存
-                u.Roles = new List<Role>();
+                u.Roles = null;
                 if (uto.RoleIDS != null)
                 {
                     List<Guid> roleids = new List<Guid>();
@@ -228,12 +233,17 @@ namespace Wings.Core.Implementation
                             }
                         }
                     });
-                    roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID))).ToList().ForEach(r =>
+                    var roles = roleRepository.GetAll(Specification<Role>.Eval(g => roleids.Contains(g.ID)));
+                    if (roles != null && roles.Count() > 0)
                     {
-                        u.Roles.Add(r);
-                    });
+                        u.Roles = new List<Role>();
+                        roles.ToList().ForEach(r =>
+                            {
+                                u.Roles.Add(r);
+                            });
+                    }
                 }
-                u.Webs = new List<Web>();
+                u.Webs = null;
                 // 站点保存
                 if (uto.WebIDS != null)
                 {
@@ -249,10 +259,12 @@ namespace Wings.Core.Implementation
                             }
                         }
                     });
-                    webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID))).ToList().ForEach(w =>
+                    var webs = webRepository.GetAll(Specification<Web>.Eval(g => webids.Contains(g.ID)));
+                    if (webs != null && webs.Count() > 0)
                     {
-                        u.Webs.Add(w);
-                    });
+                        u.Webs = new List<Web>();
+                        webs.ToList().ForEach(w => u.Webs.Add(w));
+                    }
                 }
             }).ToViewModel();
         }
@@ -511,8 +523,8 @@ namespace Wings.Core.Implementation
             List<Guid> moduleids = new List<Guid>();
             var user = userRepository.Find(Specification<User>.Eval(u => u.ID.Equals(userid)));
 
-            
-          
+
+
             if (user == null)
             {
                 return moduleids;
