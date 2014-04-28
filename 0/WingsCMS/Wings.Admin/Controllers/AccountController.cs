@@ -13,6 +13,8 @@ using Wings.Framework.Communication;
 using Wings.Framework.Plugin;
 using Wings.Framework.Plugin.UI;
 using Wings.Framework.Plugin.Web;
+using Wings.Framework.Utils;
+using Wings.Framework.Utils.ValidateCode;
 
 namespace Wings.Admin.Controllers
 {
@@ -38,25 +40,28 @@ namespace Wings.Admin.Controllers
             //{
             //    return RedirectToLocal(returnUrl);
             //}
-            var webid=Wings.Framework.Config.WingsConfigurationReader.Instance.WebID;
-            var adminid=Wings.Framework.Config.WingsConfigurationReader.Instance.WebAdminID;
+            var webid = Wings.Framework.Config.WingsConfigurationReader.Instance.WebID;
+            var adminid = Wings.Framework.Config.WingsConfigurationReader.Instance.WebAdminID;
             if (ModelState.IsValid)
             {
-                if (false)
+                if (!VerificationCode.TestCode(model.CheckCode))
                 {
                     ModelState.AddModelError("", "验证码不正确。");
-                }
 
-                var account = PluginsManger.Service.Login(model.Account, model.Password,webid );
-                if (account == null || account.Equals(Guid.Empty))
-                {
-                    ModelState.AddModelError("", "提供的账户或密码不正确。");
                 }
                 else
                 {
-                    var PermissionList = PluginsManger.Service.GetPermissionByUserID(account.ID, webid, adminid == account.ID);
-                    WebSetting.UserOnline(account, model.RememberMe);
-                    WebSetting.SaveUserPermission(PermissionList);
+                    var account = PluginsManger.Service.Login(model.Account, model.Password, webid);
+                    if (account == null || account.Equals(Guid.Empty))
+                    {
+                        ModelState.AddModelError("", "提供的账户或密码不正确。");
+                    }
+                    else
+                    {
+                        var PermissionList = PluginsManger.Service.GetPermissionByUserID(account.ID, webid, adminid == account.ID);
+                        WebSetting.UserOnline(account, model.RememberMe);
+                        WebSetting.SaveUserPermission(PermissionList);
+                    }
                 }
             }
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
@@ -70,6 +75,21 @@ namespace Wings.Admin.Controllers
             WebSetting.UserOffLine();
             return View();
         }
-
+        /// <summary>
+        /// 验证码
+        /// </summary>
+        /// <returns></returns>\
+         [Description("[获取验证码]")]
+        [Anonymous]
+        public FileContentResult GetVerifyCode()
+        {
+            string verifyCode = Text.CreateRandomCode(4);
+            using (System.IO.MemoryStream m = new System.IO.MemoryStream())
+            {
+                VerificationCode va = new VerificationCode(90,30,1,1,199,10);
+                var s = va.Create(verifyCode, m);
+                return File(m.ToArray(), "image/gif");
+            }
+        }
     }
 }

@@ -73,6 +73,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
@@ -169,10 +170,14 @@
     <Compile Include="UnityExtensions\UnityWcfExtension.cs" />
     <Compile Include="UnityExtensions\UnityWcfLifetimeManager.cs" />
     <Compile Include="Utils\Email.cs" />
+    <Compile Include="Utils\Text.cs" />
+    <Compile Include="Utils\ValidateCode\AnimatedGifEncoder.cs" />
+    <Compile Include="Utils\ValidateCode\CodeEncoder.cs" />
+    <Compile Include="Utils\ValidateCode\GifDecoder.cs" />
+    <Compile Include="Utils\ValidateCode\NeuQuant.cs" />
+    <Compile Include="Utils\ValidateCode\VerificationCode.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils\ValidateCode\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Config\WingsConfigurationSection.csd">
       <Generator>CsdFileGenerator</Generator>

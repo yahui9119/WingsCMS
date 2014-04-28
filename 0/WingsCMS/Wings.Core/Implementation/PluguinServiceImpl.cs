@@ -118,7 +118,7 @@ namespace Wings.Core.Implementation
                 {
                     if (resultmdtolist.Contains(Mapper.Map<Module, ModuleDTO>(m)))
                     {
-                        resultmdtolist.Remove(Mapper.Map<Module, ModuleDTO>(m));
+                        resultmdtolist.RemoveAll(mm => mm.ID.Equals(m.ID));
                     }
                 });
 
