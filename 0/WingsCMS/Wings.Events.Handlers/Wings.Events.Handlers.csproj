@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="SendEmailHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdatePermissionHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wings.Domain\Wings.Domain.csproj">

@@ -10,7 +10,7 @@ namespace Wings.Domain.Events
     /// 更新用户的权限事件
     /// </summary>
     [Serializable]
-    class UserUpdatePermissionEvent : DomainEvent
+    public class UserUpdatePermissionEvent : DomainEvent
     {
 
     }
