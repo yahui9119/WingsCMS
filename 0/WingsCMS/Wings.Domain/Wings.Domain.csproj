@@ -49,6 +49,7 @@
     <Compile Include="Events\Handlers\UserGroupUpdateEventHandler.cs" />
     <Compile Include="Events\Handlers\UserOfflineEventHandler.cs" />
     <Compile Include="Events\Handlers\UserOnlineEventHandler.cs" />
+    <Compile Include="Events\Handlers\UserUpdatePermissionHandler.cs" />
     <Compile Include="Events\UserOnlineEvent.cs" />
     <Compile Include="Events\Handlers\UserRoleUpdateEventHandler.cs" />
     <Compile Include="Events\Handlers\UserUpdateModuleEventHandler.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Events\UserOfflineEvent.cs" />
     <Compile Include="Events\UserRoleUpdateEvent.cs" />
     <Compile Include="Events\UserUpdateModuleEvent.cs" />
+    <Compile Include="Events\UserUpdatePermissionEvent.cs" />
     <Compile Include="Events\UserWebUpdateEvent.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
