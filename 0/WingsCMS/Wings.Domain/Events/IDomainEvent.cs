@@ -8,7 +8,7 @@ namespace Wings.Domain.Events
     /// <summary>
     /// 标示领域时间的接口，所有继承与此接口的类型都是一种领域事件
     /// </summary>
-    public interface IDomainEvent : Wings.Events.IEvent
+    public interface IDomainEvent : Wings.Framework.Events.IEvent
     {
         #region Properties
         /// <summary>

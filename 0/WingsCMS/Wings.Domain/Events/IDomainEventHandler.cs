@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wings.Events;
+using Wings.Framework.Events;
 
 namespace Wings.Domain.Events
 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Wings.Domain.Events;
+using Wings.Framework.Events;
 using Wings.Framework.Log;
 using Wings.Framework.Utils;
 

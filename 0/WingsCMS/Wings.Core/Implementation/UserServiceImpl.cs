@@ -11,7 +11,7 @@ using AutoMapper;
 using Wings.Domain.Specifications;
 using Wings.Framework;
 using Wings.Framework.Transactions;
-using Wings.Events.Bus;
+using Wings.Framework.Events.Bus;
 using System.Linq.Expressions;
 
 namespace Wings.Core.Implementation

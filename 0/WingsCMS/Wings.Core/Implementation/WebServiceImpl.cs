@@ -10,7 +10,7 @@ using Wings.DataObjects;
 using Wings.Domain.Model;
 using Wings.Domain.Repositories;
 using Wings.Domain.Specifications;
-using Wings.Events.Bus;
+using Wings.Framework.Events.Bus;
 using Wings.Framework;
 using Wings.Framework.Plugin.Contracts;
 using Wings.Framework.Plugin.Utils;

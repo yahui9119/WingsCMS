@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Wings.Events;
+using Wings.Framework.Events;
 using Wings.Framework.Infrastructure;
 
 namespace Wings.Domain.Repositories

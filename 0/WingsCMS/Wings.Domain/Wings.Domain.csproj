@@ -104,10 +104,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Wings.Events\Wings.Events.csproj">
-      <Project>{bb41ba83-75cc-4b71-ae3e-0afee80bcf35}</Project>
-      <Name>Wings.Events</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Wings.Framework\Wings.Framework.csproj">
       <Project>{f1c7efe6-96f5-419e-af73-117b844962ee}</Project>
       <Name>Wings.Framework</Name>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wings.Events.Bus;
+using Wings.Framework.Events.Bus;
 
 namespace Wings.Domain.Events.Handlers
 {
