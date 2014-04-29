@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using Wings.Core;
 using Wings.Domain.Repositories.EntityFramework;
+using Wings.Domain.Repositories.MongoDB;
 
 namespace Wings.SOAService
 {
@@ -16,6 +17,7 @@ namespace Wings.SOAService
         {
             //数据库初始化
             WingsDbContextInitailizer.Initailizer();
+            MongoDBBootstrapper.Bootstrap();
             CoreService.Initialize();//映射初始化
             log4net.Config.XmlConfigurator.Configure();//日志初始化
         }

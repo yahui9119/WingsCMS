@@ -39,6 +39,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB_BSon_AND_Driver.1.0.0\lib\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB_BSon_AND_Driver.1.0.0\lib\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -73,6 +79,20 @@
     <Compile Include="EntityFramework\BaseRepository\WingsDbContext.cs" />
     <Compile Include="EntityFramework\BaseRepository\WingsDbContextInitailizer.cs" />
     <Compile Include="EntityFramework\WebRepository.cs" />
+    <Compile Include="MongoDB\BaseRepository\GuidIDGeneratorConvention.cs" />
+    <Compile Include="MongoDB\BaseRepository\IMongoDBRepositoryContext.cs" />
+    <Compile Include="MongoDB\BaseRepository\IMongoDBRepositoryContextSettings.cs" />
+    <Compile Include="MongoDB\BaseRepository\MongoDBBootstrapper.cs" />
+    <Compile Include="MongoDB\BaseRepository\MongoDBRepository.cs" />
+    <Compile Include="MongoDB\BaseRepository\MongoDBRepositoryContext.cs" />
+    <Compile Include="MongoDB\BaseRepository\MongoDBRepositoryContextSettings.cs" />
+    <Compile Include="MongoDB\BaseRepository\UserLocalDateTimeConvention.cs" />
+    <Compile Include="MongoDB\GroupRepository.cs" />
+    <Compile Include="MongoDB\ModuleRepository.cs" />
+    <Compile Include="MongoDB\RoleRepository.cs" />
+    <Compile Include="MongoDB\UserOnlineRepository.cs" />
+    <Compile Include="MongoDB\UserRepository.cs" />
+    <Compile Include="MongoDB\WebRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specifications\UserEmailEqualsSpecification.cs" />
     <Compile Include="Specifications\UserNameEqualsSpecification.cs" />
@@ -95,6 +115,7 @@
       <Name>Wings.Framework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

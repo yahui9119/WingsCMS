@@ -32,14 +32,10 @@ namespace Wings.Admin.Controllers
 
         [HttpPost]
         [Anonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [Description("[站点登录接受提交页面]")]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            //if (ModelState.IsValid && WebSecurity.Login(model.Account, model.Password, persistCookie: model.RememberMe))
-            //{
-            //    return RedirectToLocal(returnUrl);
-            //}
             var webid = Wings.Framework.Config.WingsConfigurationReader.Instance.WebID;
             var adminid = Wings.Framework.Config.WingsConfigurationReader.Instance.WebAdminID;
             if (ModelState.IsValid)

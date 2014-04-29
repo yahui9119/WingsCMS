@@ -23,7 +23,7 @@ namespace Wings.SOAService
         public void Init(Guid webid, List<Permission> permission)
         {
             IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
-            ChannelManager.Instance.Add(webid, callback);//添加通信管道
+            AddCallback(webid, callback);
             try
             {
                 pluginServiceImpl.Init(webid, permission);
@@ -33,19 +33,23 @@ namespace Wings.SOAService
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
-
-        public void Login(string account, string password, Guid webid)
+        /// <summary>
+        /// 注册回调  在线用户  未实现
+        /// </summary>
+        /// <param name="webid"></param>
+        /// <param name="callback"></param>
+        void AddCallback(Guid webid, IPluginServiceCallBack callback, Guid? accountid=null)
         {
-            IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
+           
             ChannelManager.Instance.Add(webid, callback);//添加通信管道
-            List<ConfiguredString> list = new List<ConfiguredString>();
-            list.Add(new ConfiguredString() { key = "sdfsdf", value = "gasfasdfsdf" });
-            list.Add(new ConfiguredString() { key = "sdf2f", value = "gasfsdf" });
-            callback.SaveConfig(list);
-            callback.SaveConfig(list);
+            OperationContext.Current.Channel.Closed += new EventHandler(Channel_Closed);
+        }
+        void Channel_Closed(object sender, EventArgs e)
+        {
+            ChannelManager.Instance.Remove((IPluginServiceCallBack)sender);
         }
 
-
+       
         UserInfo IPluginService.Login(string account, string password, Guid webid)
         {
             try
@@ -87,6 +91,8 @@ namespace Wings.SOAService
         //暂不启用
         public void OnlineHeartbeat(Guid accountid, Guid webid)
         {
+            IPluginServiceCallBack callback = OperationContext.Current.GetCallbackChannel<IPluginServiceCallBack>();
+            AddCallback(webid, callback, accountid);
             try
             {
                 pluginServiceImpl.OnlineHeartbeat(accountid,webid);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using Wings.Framework.Plugin.Contracts;
 using Wings.Framework.Plugin.Services;
 using Wings.Framework.Routes;
@@ -11,18 +12,31 @@ namespace Wings.Framework.Plugin
 {
     public class PluginsManger : IPluginsManger
     {
+        private static int time = 0;
+        private static Timer timer = new Timer(t =>
+        {
+            time++;
+            if (time >= 3)//30s
+            {
+                time = 0;
+                _service.OnlineHeartbeat(Guid.Empty, Guid.Empty);
+            }
+
+        }, null, 0, 1000 * 10);//10s
         /// <summary>
         /// 站点扩展初始化
         /// </summary>
         public static void Init()
         {
-            Service.Init(Wings.Framework.Config.WingsConfigurationReader.Instance.WebID,Web.WebSetting.GetAllAction());
+            Service.Init(Wings.Framework.Config.WingsConfigurationReader.Instance.WebID, Web.WebSetting.GetAllAction());
+
         }
         private static IPluginService _service;
         public static IPluginService Service
         {
             get
             {
+                time = 0;
                 if (_service == null)
                 {
                     InstanceContext instanceContext = new InstanceContext(new PluginServiceCallBack());
@@ -31,11 +45,12 @@ namespace Wings.Framework.Plugin
                 }
                 try
                 {
-                    _service.OnlineHeartbeat(Guid.Empty,Guid.Empty);
+                    _service.OnlineHeartbeat(Guid.Empty, Guid.Empty);
                 }
                 catch (Exception ex)
                 {
-                    new Log.Log().Error(ex);
+
+                   Log.Instance.Error(ex);
                     InstanceContext instanceContext = new InstanceContext(new PluginServiceCallBack());
                     DuplexChannelFactory<IPluginService> channelFactory = new DuplexChannelFactory<IPluginService>(instanceContext, "PluginService");
                     _service = channelFactory.CreateChannel();
@@ -45,6 +60,7 @@ namespace Wings.Framework.Plugin
 
             }
         }
+
         /// <summary>
         /// 安装插件
         /// </summary>

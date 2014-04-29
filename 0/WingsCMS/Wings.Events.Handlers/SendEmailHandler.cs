@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Wings.Domain.Events;
 using Wings.Framework.Events;
-using Wings.Framework.Log;
+using Wings.Framework;
 using Wings.Framework.Utils;
 
 namespace Wings.Events.Handlers
@@ -29,7 +29,7 @@ namespace Wings.Events.Handlers
             }
             catch (Exception ex)
             {
-                new Log().Error(ex);
+                Log.Instance.Error(ex);
             }
         }
     }

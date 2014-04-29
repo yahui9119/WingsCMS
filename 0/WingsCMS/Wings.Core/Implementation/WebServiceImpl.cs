@@ -69,6 +69,11 @@ namespace Wings.Core.Implementation
             Specification<Web> starttime = Specification<Web>.Eval(u => pagination.StartTime != null ? u.CreateDate > pagination.StartTime : true);
             Specification<Web> endtime = Specification<Web>.Eval(u => pagination.EndTime != null ? u.CreateDate < pagination.EndTime : true);
             Specification<Web> likeword = Specification<Web>.Eval(u => (!string.IsNullOrEmpty(pagination.LikeWord) ? u.Name.Contains(pagination.LikeWord) : true));
+
+            //Specification<Web> starttime = Specification<Web>.Eval(u => true);
+            //Specification<Web> endtime = Specification<Web>.Eval(u => true);
+            //Specification<Web> likeword = Specification<Web>.Eval(u => u.Name.Contains("1"));
+
             Expression<Func<Web, dynamic>> sortPredicate;
             var property = typeof(Role).GetProperty(pagination.sort);
             if (property != null)
@@ -79,8 +84,9 @@ namespace Wings.Core.Implementation
             {
                 sortPredicate = r => r.CreateDate;
             }
+            SortOrder order = pagination.order.ToLower() == "desc" ? SortOrder.Descending : SortOrder.Ascending;
             PagedResult<Web> rolepages = webRepository.GetAll(starttime.And(endtime).And(likeword), sortPredicate
-            , pagination.order.ToLower() == "desc" ? SortOrder.Descending : SortOrder.Ascending, pagination.page, pagination.rows);
+            ,order, pagination.page, pagination.rows);
             DataObjectListWithPagination<WebDTOList> result = new DataObjectListWithPagination<WebDTOList>();
             if (rolepages == null)
             {

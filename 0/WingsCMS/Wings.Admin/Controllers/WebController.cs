@@ -65,11 +65,15 @@ namespace Wings.Admin.Controllers
                 Web.IsActive = true;
                 WebDTOList dtolist = new WebDTOList();
                 dtolist.Add(Web);
-                proxy.Channel.CreateWeb(dtolist);
-                if (!string.IsNullOrEmpty(Web.ID))
+                try
                 {
+                    proxy.Channel.CreateWeb(dtolist);
                     result.success = true;
                     result.message = "添加站点成功";
+                }
+                catch (Exception ex)
+                {
+                    
                 }
             }
             return Json(result);
@@ -85,11 +89,16 @@ namespace Wings.Admin.Controllers
                 Web.EditDate = DateTime.Now;
                 WebDTOList dtolist = new WebDTOList();
                 dtolist.Add(Web);
-                proxy.Channel.EditWeb(dtolist);
-                if (!string.IsNullOrEmpty(Web.ID))
+                try
                 {
+                    proxy.Channel.EditWeb(dtolist);
                     result.success = true;
                     result.message = "修改站点成功";
+                }
+                catch (Exception ex)
+                {
+                    
+                    throw;
                 }
             }
             return Json(result);

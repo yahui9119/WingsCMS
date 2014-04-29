@@ -35,15 +35,16 @@ namespace Wings.Framework.Plugin.Utils
         /// <param name="callbackChannel"></param>
         public  void Add(Guid WebID, IPluginServiceCallBack callbackChannel)
         {
-            if (callbackChannelList.Keys.Contains(WebID))
-            {
-                Console.WriteLine("已存在重复通道");
-            }
-            else
+            //if (callbackChannelList.Keys.Contains(WebID))
+            //{
+            //    Console.WriteLine("已存在重复通道");
+            //}
+            //else
             {
                 lock (SyncObj)
                 {
-                    callbackChannelList.Add(WebID, callbackChannel);
+                    callbackChannelList[WebID] = callbackChannel;
+                    //callbackChannelList.Add(WebID, callbackChannel);
                     Console.WriteLine("添加了新的通道");
                 }
             }
@@ -87,6 +88,22 @@ namespace Wings.Framework.Plugin.Utils
                 lock (SyncObj)
                 {
                     callbackChannelList.Remove(WebID);
+                    Console.WriteLine("移除了一个通道");
+                }
+            }
+        }
+        public void Remove(IPluginServiceCallBack callback)
+        {
+
+            if (!callbackChannelList.Values.Contains(callback))
+            {
+                Console.WriteLine("不存在待移除通道");
+            }
+            else
+            {
+                lock (SyncObj)
+                {
+                    callbackChannelList.Remove(callbackChannelList.First(c => c.Value == callback).Key);
                     Console.WriteLine("移除了一个通道");
                 }
             }

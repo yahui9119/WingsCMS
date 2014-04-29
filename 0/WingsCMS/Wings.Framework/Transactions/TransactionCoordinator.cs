@@ -17,7 +17,6 @@ namespace Wings.Framework.Transactions
                 foreach (var item in unitOfWorks)   
                 {
                     managedUnitOfWorks.Add(item);
-                    
                 }
             }
         }

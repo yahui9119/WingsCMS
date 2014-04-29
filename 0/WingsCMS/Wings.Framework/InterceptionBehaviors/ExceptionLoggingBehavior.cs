@@ -33,7 +33,7 @@ namespace Wings.Framework.InterceptionBehaviors
             var methodReturn = getNext().Invoke(input, getNext);
             if (methodReturn.Exception != null)
             {
-               new Log.Log().Error(methodReturn.Exception);
+              Log.Instance.Error(methodReturn.Exception);
             }
             return methodReturn;
         }
