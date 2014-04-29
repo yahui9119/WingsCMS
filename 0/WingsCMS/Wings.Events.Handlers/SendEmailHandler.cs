@@ -24,7 +24,6 @@ namespace Wings.Events.Handlers
             try
             {
 
-
                 Email.Send(evnt.UserEmail, "您的账号被禁用", string.Format("您的账号由于一些原因已经被管理员禁用，如果您有任何疑问请和管理员联系。{0}", evnt.ForbinddenDate));
             }
             catch (Exception ex)

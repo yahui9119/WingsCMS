@@ -9,6 +9,7 @@ using WebMatrix.WebData;
 using Wings.Admin.Models;
 using Wings.Contracts;
 using Wings.DataObjects;
+using Wings.Framework;
 using Wings.Framework.Communication;
 using Wings.Framework.Plugin;
 using Wings.Framework.Plugin.UI;
@@ -61,7 +62,7 @@ namespace Wings.Admin.Controllers
                 }
             }
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
-
+            
             return View(model);
         }
         [Description("[站点登出]")]
