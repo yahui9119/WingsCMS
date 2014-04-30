@@ -502,8 +502,9 @@ namespace Wings.Core.Implementation
             }
             userRepository.Update(user);
             //调用用户权限跟新
-            user.UpdateModule(IsBan);
+            user.UpdatePermission(webid);
             Context.Commit();//提交当前事务单元
+            bus.Commit();
         }
         /// <summary>
         /// 获取用户权限

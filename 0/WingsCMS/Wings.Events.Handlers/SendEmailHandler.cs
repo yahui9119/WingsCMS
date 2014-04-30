@@ -13,7 +13,7 @@ namespace Wings.Events.Handlers
     /// 标示发送邮件的时间处理器
     /// </summary>
     [HandlesAsynchronously]
-    public class SendEmailHandler : IEventHandler<UserForbiddenEvent>
+    public class SendEmailHandler : IEventHandler<UserForbiddenEvent>,IEventHandler<UserEnabledEvent>
     {
         /// <summary>
         /// 实例禁用用户事件
@@ -23,8 +23,20 @@ namespace Wings.Events.Handlers
         {
             try
             {
+                Email.Send(evnt.UserEmail, "【无需回复】您的账号被禁用", string.Format("您的账号已经被管理员禁用，如果您有任何疑问请和管理员联系。{0}", evnt.ForbinddenDate));
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Error(ex);
+            }
+        }
 
-                Email.Send(evnt.UserEmail, "您的账号被禁用", string.Format("您的账号由于一些原因已经被管理员禁用，如果您有任何疑问请和管理员联系。{0}", evnt.ForbinddenDate));
+        public void Handle(UserEnabledEvent evnt)
+        {
+            try
+            {
+
+                Email.Send(evnt.UserEmail, "【无需回复】您的账号已经启用", string.Format("您的账号已经被管理员启用，您可以使用您的账号登录了，如果您有任何疑问请和管理员联系。{0}", evnt.EnableDate));
             }
             catch (Exception ex)
             {

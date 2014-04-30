@@ -10,6 +10,10 @@ namespace Wings.Domain.Events.Handlers
     public class UserOfflineEventHandler:IDomainEventHandler<UserOfflineEvent>
     {
         private readonly IEventBus bus;
+        public UserOfflineEventHandler(IEventBus bus)
+        {
+            this.bus = bus;
+        }
         public void Handle(UserOfflineEvent evnt)
         {
             bus.Publish<UserOfflineEvent>(evnt);

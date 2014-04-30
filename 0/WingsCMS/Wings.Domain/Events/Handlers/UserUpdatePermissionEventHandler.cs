@@ -7,9 +7,13 @@ using Wings.Framework.Events.Bus;
 
 namespace Wings.Domain.Events.Handlers
 {
-    public class UserUpdatePermissionHandler : IDomainEventHandler<UserUpdatePermissionEvent>
+    public class UserUpdatePermissionEventHandler : IDomainEventHandler<UserUpdatePermissionEvent>
     {
         private readonly IEventBus bus;
+        public UserUpdatePermissionEventHandler(IEventBus bus)
+        {
+            this.bus = bus;
+        }
         public void Handle(UserUpdatePermissionEvent evnt)
         {
             bus.Publish<UserUpdatePermissionEvent>(evnt);

@@ -10,6 +10,11 @@ namespace Wings.Domain.Events.Handlers
     public class UserOnlineEventHandler : IDomainEventHandler<UserOnlineEvent>
     {
         private readonly IEventBus bus;
+
+        public UserOnlineEventHandler(IEventBus bus)
+        {
+            this.bus = bus;
+        }
         public void Handle(UserOnlineEvent evnt)
         {
             bus.Publish<UserOnlineEvent>(evnt);

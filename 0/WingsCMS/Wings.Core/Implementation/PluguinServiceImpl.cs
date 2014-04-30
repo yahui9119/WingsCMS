@@ -23,17 +23,20 @@ namespace Wings.Core.Implementation
         //private readonly IRoleRepository roleRepository;
         //private readonly IGroupRepository groupRespository;
         //private readonly IModuleRepository moduleRepository;
-        private IWebRepository webRepository;
-        private IEventBus bus;
+        private readonly IUserOnlineRepository useronlineRepositoty;
+        private readonly IWebRepository webRepository;
+        private readonly IEventBus bus;
         public PluginServiceImpl(IRepositoryContext context,
             IUserRepository userRepository,
              IWebRepository webRepository,
+            IUserOnlineRepository useronlineRepositoty,
              IEventBus bus
             )
             : base(context)
         {
             this.userRepository = userRepository;
             this.webRepository = webRepository;
+            this.useronlineRepositoty = useronlineRepositoty;
             this.bus = bus;
         }
 
@@ -42,7 +45,7 @@ namespace Wings.Core.Implementation
 
         UserInfo IPluginService.Login(string account, string password, Guid webid)
         {
-
+            var test= useronlineRepositoty.GetAll();
             UserInfo userinfo = null;
             var user = userRepository.Get(Specification<User>.Eval(u => u.Account.Equals(account) && u.Password.Equals(password)));
             if (user != null)
@@ -53,7 +56,8 @@ namespace Wings.Core.Implementation
                 userinfo.Account = user.Account;
                 userinfo.RealName = user.RealName;
                 userinfo.ID = user.ID;
-
+                user.Online(webid);
+                bus.Commit();
                 return userinfo;
             }
             return userinfo;
@@ -129,39 +133,25 @@ namespace Wings.Core.Implementation
 
         public void LoginOut(Guid accountid, Guid webid)
         {
-
+            var user = userRepository.Get(Specification<User>.Eval(u =>u.ID==accountid));
+            user.OffLine(webid);
+            bus.Commit();
         }
 
         public void OnlineHeartbeat(Guid accountid, Guid webid)
         {
-
+            
+            var user = userRepository.Get(Specification<User>.Eval(u => u.ID == accountid));
+            if (user != null)
+            {
+                user.Online(webid);
+                bus.Commit();
+            }
         }
 
         public void Init(Guid webid, List<Permission> permission)
         {
-            //var actions = actionRepository.GetAll(Specification<Wings.Domain.Model.Action>.Eval(a => a.web.ID.Equals(webid)));
-            //permission.ForEach(p =>
-            //{
-            //    var action =actions!=null?actions.Where(a => a.ActionName == p.Action && a.Controller == p.Controller && a.IsButton == p.IsPost).FirstOrDefault():null;
-            //    if (action == null)
-            //    {
-            //        action=Mapper.Map<Permission, Wings.Domain.Model.Action>(p);
-            //        action.CreateDate = DateTime.Now;
-            //        action.EditDate = DateTime.Now;
-            //        action.Status = Wings.Domain.Model.Status.Active;
-            //        action.web = webRepository.Get(Specification<Web>.Eval(w => w.ID.Equals(webid)));
-            //        actionRepository.Add(action);
-            //    }
-            //    else
-            //    {
-            //        action.EditDate = DateTime.Now;
-            //        action.Status = Wings.Domain.Model.Status.Active;
-            //        action.Description = p.Description;
-            //        actionRepository.Update(action);
-            //    }
-            //});
-
-            //Context.Commit();
+           
         }
     }
 }

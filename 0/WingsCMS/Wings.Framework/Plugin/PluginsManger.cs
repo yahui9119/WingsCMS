@@ -19,7 +19,15 @@ namespace Wings.Framework.Plugin
             if (time >= 3)//30s
             {
                 time = 0;
-                _service.OnlineHeartbeat(Guid.Empty, Guid.Empty);
+                try
+                {
+                    _service.OnlineHeartbeat(Guid.Empty, Guid.Empty);
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Error("【心跳】异常\r\n", ex);
+                }
+               
             }
 
         }, null, 0, 1000 * 10);//10s

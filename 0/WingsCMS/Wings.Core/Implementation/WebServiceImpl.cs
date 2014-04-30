@@ -26,6 +26,7 @@ namespace Wings.Core.Implementation
         public WebServiceImpl(IRepositoryContext context,
             IWebRepository webRepository,
             IModuleRepository moduleRepository,
+            IUserRepository userRepository,
             IEventBus bus
             )
             : base(context)
@@ -33,6 +34,7 @@ namespace Wings.Core.Implementation
             this.bus = bus;
             this.moduleRepository = moduleRepository;
             this.webRepository = webRepository;
+            this.userRepository = userRepository;
         }
 
 

@@ -10,7 +10,13 @@ namespace Wings.Domain.Events.Handlers
 {
     public class UserRoleUpdateEventHandler : IDomainEventHandler<UserRoleUpdateEvent>
     {
+
         private readonly IEventBus bus;
+
+        public UserRoleUpdateEventHandler(IEventBus bus)
+        {
+            this.bus = bus;
+        }
         public void Handle(UserRoleUpdateEvent evnt)
         {
             var user = evnt.Source as User;

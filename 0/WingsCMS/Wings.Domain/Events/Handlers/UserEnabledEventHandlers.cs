@@ -11,6 +11,10 @@ namespace Wings.Domain.Events.Handlers
     public class UserEnabledEventHandlers : IDomainEventHandler<UserEnabledEvent>
     {
         private readonly IEventBus bus;
+        public UserEnabledEventHandlers(IEventBus bus)
+        {
+            this.bus = bus;
+        }
         public void Handle(UserEnabledEvent evnt)
         {
             var user = evnt.Source as User;

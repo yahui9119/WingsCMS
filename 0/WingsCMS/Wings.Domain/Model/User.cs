@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wings.Domain.Events;
+using Wings.Framework.Plugin.Contracts;
 
 namespace Wings.Domain.Model
 {
@@ -218,11 +219,40 @@ namespace Wings.Domain.Model
             });
         }
         /// <summary>
-        /// 用户使用模块更新
+        /// 用户权限更新
         /// </summary>
-        public void UpdateModule(bool IsBan)
+        public void UpdatePermission(Guid WebID)
         {
-                
+            DomainEvent.Publish<UserUpdatePermissionEvent>(new UserUpdatePermissionEvent(this)
+            {
+                UserID = this.ID,
+                WebID = WebID,
+              
+            });
+        }
+        /// <summary>
+        /// 用户上线
+        /// </summary>
+        /// <param name="WebID"></param>
+        public void Online(Guid WebID)
+        {
+            DomainEvent.Publish<UserOnlineEvent>(new UserOnlineEvent(this)
+            {
+                UserID = this.ID,
+                WebID = WebID
+            });
+        }
+        /// <summary>
+        /// 用户下线
+        /// </summary>
+        /// <param name="WebID"></param>
+        public void OffLine(Guid WebID)
+        {
+            DomainEvent.Publish<UserOfflineEvent>(new UserOfflineEvent(this)
+            {
+                UserID = this.ID,
+                WebID = WebID
+            });
         }
     }
 }

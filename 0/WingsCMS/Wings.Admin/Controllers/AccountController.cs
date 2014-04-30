@@ -62,28 +62,35 @@ namespace Wings.Admin.Controllers
                 }
             }
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
-            
+
             return View(model);
         }
         [Description("[站点登出]")]
         [LoginAllowView]
         public ActionResult LogOut()
         {
+            var webid = Wings.Framework.Config.WingsConfigurationReader.Instance.WebID;
+            var userinfo = WebSetting.GetUser();
+            if (userinfo != null)
+            {
+                PluginsManger.Service.LoginOut(userinfo.ID, webid);
+            }
             WebSetting.UserOffLine();
+
             return View();
         }
         /// <summary>
         /// 验证码
         /// </summary>
         /// <returns></returns>\
-         [Description("[获取验证码]")]
+        [Description("[获取验证码]")]
         [Anonymous]
         public FileContentResult GetVerifyCode()
         {
             string verifyCode = Text.CreateRandomCode(4);
             using (System.IO.MemoryStream m = new System.IO.MemoryStream())
             {
-                VerificationCode va = new VerificationCode(90,30,1,1,199,10);
+                VerificationCode va = new VerificationCode(90, 30, 1, 1, 199, 10);
                 var s = va.Create(verifyCode, m);
                 return File(m.ToArray(), "image/gif");
             }

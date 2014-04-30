@@ -16,7 +16,7 @@ namespace Wings.Framework.Plugin.Services
     {
         public void SavePermission(List<Permission> permissions, Guid userid)
         {
-            Caching.CacheManager.Instance.Add("Permission", userid.ToString(), permissions);
+            WebSetting.SaveUserPermission(permissions,userid);
         }
         public void SaveConfig(List<ConfiguredString> configs)
         {

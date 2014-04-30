@@ -56,23 +56,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramework\ActionRepository.cs" />
     <Compile Include="EntityFramework\BaseRepository\EntityFrameworkRepository.cs" />
     <Compile Include="EntityFramework\BaseRepository\EntityFrameworkRepositoryContext.cs" />
     <Compile Include="EntityFramework\BaseRepository\IEntityFrameworkRepositoryContext.cs" />
     <Compile Include="EntityFramework\GroupRepository.cs" />
-    <Compile Include="EntityFramework\ModelConfig\ActionConfig.cs" />
     <Compile Include="EntityFramework\ModelConfig\BaseConfig.cs" />
     <Compile Include="EntityFramework\ModelConfig\GroupConfig.cs" />
     <Compile Include="EntityFramework\ModelConfig\ModuleConfig.cs" />
-    <Compile Include="EntityFramework\ModelConfig\PermissionConfig.cs" />
     <Compile Include="EntityFramework\ModelConfig\RoleConfig.cs" />
     <Compile Include="EntityFramework\ModelConfig\UserConfig.cs" />
     <Compile Include="EntityFramework\ModelConfig\UserOnlineConfig.cs" />
     <Compile Include="EntityFramework\ModelConfig\WebConfig.cs" />
     <Compile Include="EntityFramework\BaseRepository\SortByExtension.cs" />
     <Compile Include="EntityFramework\ModuleRepository.cs" />
-    <Compile Include="EntityFramework\PermissionRepository.cs" />
     <Compile Include="EntityFramework\RoleRepository.cs" />
     <Compile Include="EntityFramework\UserOnlineRepository.cs" />
     <Compile Include="EntityFramework\UserRepository.cs" />
@@ -82,7 +78,7 @@
     <Compile Include="MongoDB\BaseRepository\GuidIDGeneratorConvention.cs" />
     <Compile Include="MongoDB\BaseRepository\IMongoDBRepositoryContext.cs" />
     <Compile Include="MongoDB\BaseRepository\IMongoDBRepositoryContextSettings.cs" />
-    <Compile Include="MongoDB\BaseRepository\MongoDBBootstrapper.cs" />
+    <Compile Include="MongoDB\ModelConfig\MongoDBBootstrapper.cs" />
     <Compile Include="MongoDB\BaseRepository\MongoDBRepository.cs" />
     <Compile Include="MongoDB\BaseRepository\MongoDBRepositoryContext.cs" />
     <Compile Include="MongoDB\BaseRepository\MongoDBRepositoryContextSettings.cs" />

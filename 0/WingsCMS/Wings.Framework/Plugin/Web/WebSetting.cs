@@ -76,12 +76,20 @@ namespace Wings.Framework.Plugin.Web
         /// </summary>
         /// <param name="permission"></param>
         /// <param name="accountid"></param>
-        public static void SaveUserPermission(List<Permission> permission)
+        public static void SaveUserPermission(List<Permission> permission,Guid? userid=null)
         {
-            var userinfo = GetUser();
-            if (userinfo == null)
+            UserInfo userinfo = null;
+            if (!userid.HasValue)
             {
-                return;
+                userinfo = GetUser();
+                if (userinfo == null)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                userinfo = new UserInfo() { ID = userid .Value};
             }
             Caching.CacheManager.Instance.Add(PermissionCacheName, userinfo.ID.ToString(), permission);
         }

@@ -12,7 +12,11 @@ namespace Wings.Domain.Events.Handlers
     public class UserGroupUpdateEventHandler : IDomainEventHandler<UserGroupUpdateEvent>
     {
 
-        private readonly IEventBus bus;
+         private readonly IEventBus bus;
+         public UserGroupUpdateEventHandler(IEventBus bus)
+        {
+            this.bus = bus;
+        }
         public void Handle(UserGroupUpdateEvent evnt)
         {
             var user = evnt.Source as User;

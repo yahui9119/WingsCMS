@@ -42,11 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OnOffLineChangeHandler.cs" />
     <Compile Include="SendEmailHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdatePermissionHandler.cs" />
+    <Compile Include="CallbackPluginWebSiteHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Wings.Core\Wings.Core.csproj">
+      <Project>{9282daac-514e-4614-afd7-69fe43d5ee13}</Project>
+      <Name>Wings.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wings.Domain.Repositories\Wings.Domain.Repositories.csproj">
+      <Project>{2ad11a78-5884-4b1d-b838-23d3eca1dfd2}</Project>
+      <Name>Wings.Domain.Repositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wings.Domain\Wings.Domain.csproj">
       <Project>{6e9c05d0-4dc6-4c41-b328-11896f9f3372}</Project>
       <Name>Wings.Domain</Name>

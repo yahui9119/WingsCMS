@@ -26,6 +26,7 @@ namespace Wings.SOAService
             AddCallback(webid, callback);
             try
             {
+                pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
                 pluginServiceImpl.Init(webid, permission);
             }
             catch (Exception ex)
@@ -80,6 +81,7 @@ namespace Wings.SOAService
         {
             try
             {
+                pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
                 pluginServiceImpl.LoginOut(accountid, webid);
             }
             catch (Exception ex)
@@ -95,6 +97,7 @@ namespace Wings.SOAService
             AddCallback(webid, callback, accountid);
             try
             {
+                pluginServiceImpl = ServiceLocator.Instance.GetService<IPluginService>();
                 pluginServiceImpl.OnlineHeartbeat(accountid,webid);
             }
             catch (Exception ex)

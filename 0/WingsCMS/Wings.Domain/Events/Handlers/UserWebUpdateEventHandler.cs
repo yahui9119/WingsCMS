@@ -14,6 +14,10 @@ namespace Wings.Domain.Events.Handlers
     public class UserWebUpdateEventHandler : IDomainEventHandler<UserWebUpdateEvent>
     {
         private readonly IEventBus bus;
+        public UserWebUpdateEventHandler(IEventBus bus)
+        {
+            this.bus = bus;
+        }
         public void Handle(UserWebUpdateEvent evnt)
         {
             var user = evnt.Source as User;
