@@ -33,6 +33,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IBatisNet.DataAccess">
+      <HintPath>..\libs\IBatisNet\DataAccess\IBatisNet.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper">
+      <HintPath>..\libs\IBatisNet\DataMapper\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\libs\log4net.2.0.0\lib\net40-client\log4net.dll</HintPath>
     </Reference>
@@ -118,6 +124,7 @@
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
     <Compile Include="Events\IEventHandler.cs" />
+    <Compile Include="IBatisNet\MyBatisNet.cs" />
     <Compile Include="Infrastructure\DisposableObject.cs" />
     <Compile Include="Infrastructure\ICoreServiceContract.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
