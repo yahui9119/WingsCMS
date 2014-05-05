@@ -120,10 +120,10 @@ namespace Wings.Core.Implementation
                 //去除禁用的
                 user.ModuleBan.FindAll(m => m.Status == Wings.Domain.Model.Status.Active).ForEach(m =>
                 {
-                    if (resultmdtolist.Contains(Mapper.Map<Module, ModuleDTO>(m)))
-                    {
-                        resultmdtolist.RemoveAll(mm => mm.ID.Equals(m.ID));
-                    }
+                    //if (resultmdtolist.Contains(Mapper.Map<Module, ModuleDTO>(m)))
+                    //{
+                    resultmdtolist.RemoveAll(mm => mm.ID.Equals(Mapper.Map<Module, ModuleDTO>(m).ID));
+                    //}
                 });
 
             }

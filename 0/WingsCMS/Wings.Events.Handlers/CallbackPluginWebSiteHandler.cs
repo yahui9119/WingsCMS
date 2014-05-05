@@ -17,7 +17,6 @@ namespace Wings.Events.Handlers
     /// <summary>
     /// 回调扩展站点事件
     /// </summary>
-    [HandlesAsynchronously]
     public class CallbackPluginWebSiteHandler : IEventHandler<UserUpdatePermissionEvent>
     {
         /// <summary>

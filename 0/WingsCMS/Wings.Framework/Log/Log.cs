@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wings.Framework.Config;
+using Wings.Framework.Plugin.Web;
 
 namespace Wings.Framework
 {
@@ -21,16 +23,18 @@ namespace Wings.Framework
         }
         public static Log OperaInstance
         {
-            get {
+            get
+            {
                 return operainstance;
             }
         }
         static Log() { }
-        public Log() 
+        public Log()
         {
 
         }
-        public Log(string action) {
+        public Log(string action)
+        {
             log = log4net.LogManager.GetLogger(action);
         }
         private static log4net.ILog log = log4net.LogManager.GetLogger("Wings.Logger");
@@ -140,18 +144,52 @@ namespace Wings.Framework
             }
         }
         /// <summary>
-        /// 用户操作日志记录
+        /// 保存信息
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="operaname"></param>
-        /// <param name="IsSuccess"></param>
-        /// <param name="other"></param>
-        public void OperaInfo(string account, string operaname, bool IsSuccess, object other)
+        /// <param name="message">需要保存的信息</param>
+        /// <param name="level">1 info 2 warm 3 error 4 fatal</param>
+        public void SaveMessage(int level, string message, Exception ex = null)
         {
-            if (IsInfoEnabled)
+            Log4Net.LogMessage logmessage = new Log4Net.LogMessage();
+            var user = WebSetting.GetUser();
+            logmessage.UserName = System.Web.HttpContext.Current.Session.SessionID;
+            logmessage.UserID = Guid.Empty;
+            if (user != null)
             {
-                string otherinfo = Newtonsoft.Json.JsonConvert.SerializeObject(other);
-                log.Info(string.Format("用户：【{0}】：操作：{1} {2} 说明：{3}", account, operaname, IsSuccess ? "成功" : "失败", otherinfo));
+                logmessage.UserID = user.ID;
+                logmessage.UserName = user.Account;
+            }
+            logmessage.WebID = WingsConfigurationReader.Instance.WebID;
+            logmessage.WebName = WingsConfigurationReader.Instance.WebName;
+            switch (level)
+            {
+                case 1:
+                    if (IsInfoEnabled)
+                    {
+                        log.Info(logmessage, ex);
+                    };
+                    break;
+
+                case 2:
+                    if (IsWarnEnabled)
+                    {
+                        log.Warn(logmessage, ex);
+                    };
+                    break;
+                case 3:
+                    if (IsErrorEnabled)
+                    {
+                        log.Error(logmessage, ex);
+                    };
+                    break;
+                case 4:
+                    if (IsFatalEnabled)
+                    {
+                        log.Fatal(logmessage, ex);
+                    };
+                    break;
+                default:
+                    break;
             }
         }
     }

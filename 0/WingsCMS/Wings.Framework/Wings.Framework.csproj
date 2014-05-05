@@ -133,6 +133,12 @@
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Infrastructure\PagedResult.cs" />
+    <Compile Include="Log\LogMessage.cs" />
+    <Compile Include="Log\PatternConverter\CustomLayout.cs" />
+    <Compile Include="Log\PatternConverter\UserIDPatternConverter.cs" />
+    <Compile Include="Log\PatternConverter\UserNamePatternConverter.cs" />
+    <Compile Include="Log\PatternConverter\WebIDPatternConverter.cs" />
+    <Compile Include="Log\PatternConverter\WebNamePatternConverter.cs" />
     <Compile Include="Plugin\Contracts\ConfiguredString.cs" />
     <Compile Include="Plugin\Contracts\IPluginService.cs" />
     <Compile Include="Plugin\Contracts\IPluginServiceCallBack.cs" />
