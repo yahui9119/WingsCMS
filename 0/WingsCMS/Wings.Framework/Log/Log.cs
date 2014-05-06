@@ -37,7 +37,7 @@ namespace Wings.Framework
         {
             log = log4net.LogManager.GetLogger(action);
         }
-        private static log4net.ILog log = log4net.LogManager.GetLogger("Wings.Logger");
+        private  log4net.ILog log = log4net.LogManager.GetLogger("Wings.Logger");
 
         public bool IsDebugEnabled
         {
@@ -150,7 +150,7 @@ namespace Wings.Framework
         /// <param name="level">1 info 2 warm 3 error 4 fatal</param>
         public void SaveMessage(int level, string message, Exception ex = null)
         {
-            Log4Net.LogMessage logmessage = new Log4Net.LogMessage();
+            Log4Net.LogMessage logmessage = new Log4Net.LogMessage(message);
             var user = WebSetting.GetUser();
             logmessage.UserName = System.Web.HttpContext.Current.Session.SessionID;
             logmessage.UserID = Guid.Empty;

@@ -18,7 +18,7 @@ namespace Wings.Admin
         protected void Application_Start()
         {
             PluginsManger.Init();
-
+            log4net.Config.XmlConfigurator.Configure();//日志初始化
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

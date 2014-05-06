@@ -27,6 +27,7 @@ namespace Wings.Admin.Controllers
         [Anonymous]
         public ActionResult Login()
         {
+           
             Log.OperaInstance.SaveMessage(1, "载入登录页面");
             return View();
         }
